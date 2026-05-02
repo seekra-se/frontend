@@ -1,11 +1,11 @@
-nav{
+.global-nav {
     display: flex;
     justify-content: center;
     padding: 10px 0;
     border-bottom: 1px solid #000000;
 }
 
-nav ul {
+.global-nav ul {
     display: flex;
     list-style: none;
     margin: 0;
@@ -13,11 +13,11 @@ nav ul {
     gap: 30px;
 }
 
-nav a{
+.nav-item a {
     text-decoration: none;
     color: black;
 }
 
-nav a:hover{
+.nav-item a:hover {
     text-decoration: underline;
 }
