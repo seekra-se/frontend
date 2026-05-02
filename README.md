@@ -1,3 +1,3 @@
-# repository-template
+# frontend
 
-The template for repositories
+The frontend of the search engine Seekra.
