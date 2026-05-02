@@ -4,6 +4,7 @@ nav{
     padding: 10px 0;
     border-bottom: 1px solid #000000;
 }
+
 nav ul {
     display: flex;
     list-style: none;
@@ -11,10 +12,12 @@ nav ul {
     padding: 0;
     gap: 30px;
 }
+
 nav a{
     text-decoration: none;
     color: black;
 }
+
 nav a:hover{
     text-decoration: underline;
 }
