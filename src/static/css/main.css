@@ -23,26 +23,43 @@ header p {
 
 form {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     margin-top: 20px;
     width: 100%;
-    gap: 10px;
 }
 
-form button{
-    margin-left: 0;
-    border-radius: 999px;
-    border: 1.5px solid #ccc;
-    padding: 10px 15px;
-}
-
-form input{
+.search-wrapper {
+    display: flex;
+    align-items: center;
     width: 80%;
-    border-radius: 999px;
     border: 1.5px solid #ccc;
-    padding: 10px 15px;
+    border-radius: 999px;
+    padding: 4px 4px 4px 16px;
 }
+
+.search-wrapper input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.search-wrapper button {
+    border-radius: 999px;
+    border: none;
+    padding: 8px 20px;
+    background: #4562BE;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.search-wrapper button:hover {
+    background: #374FA5;
+}
+
+
 
 footer{
     text-align: center;
