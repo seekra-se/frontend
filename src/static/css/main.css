@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: #ffffff;
 }
 
 header {
@@ -31,6 +32,9 @@ form {
 
 form button{
     margin-left: 0;
+    border-radius: 999px;
+    border: 1.5px solid #ccc;
+    padding: 10px 15px;
 }
 
 form input{
