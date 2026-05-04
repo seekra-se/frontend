@@ -17,6 +17,7 @@ header h1 {
 
 header p {
     margin-top: 0;
+    font-size: small;
 }
 
 form {
