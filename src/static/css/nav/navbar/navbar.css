@@ -1,7 +1,8 @@
 .global-nav {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     padding: 10px 0;
+    margin-right: 40px;
 }
 
 .global-nav ul {
