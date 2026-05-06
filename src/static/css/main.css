@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 40px; /* ← Abstand nach oben */
+    padding-top: 40px;
 }
 
 .global-header h1 {
