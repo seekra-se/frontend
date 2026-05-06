@@ -3,7 +3,7 @@ import Searchbar from '../features/search/components/Searchbar.vue'
 </script>
 
 <template>
-    <div class="content-background">
+    <div class="main-content">
         <header class="global-header">
             <h1>Seekra</h1>
             <span class="slogan">
@@ -18,6 +18,15 @@ import Searchbar from '../features/search/components/Searchbar.vue'
 </template>
 
 <style scoped>
+.main-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 60px;
+}
+
 .global-header {
     text-align: center;
     display: flex;
