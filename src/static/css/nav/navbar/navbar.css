@@ -1,8 +1,21 @@
 .global-nav {
     display: flex;
-    justify-content: end;
-    padding: 10px 0;
-    margin-right: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.global-nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.global-nav ul a{
+    text-decoration: none;
+    color: black;
 }
 
 .global-nav ul {
