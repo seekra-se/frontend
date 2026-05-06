@@ -12,7 +12,6 @@
     --padding: 4px;
     display: flex;
     align-items: center;
-    width: 80%;
     border: 1.5px solid #ccc;
     box-shadow: 0 0px 32px rgba(69, 98, 190, 0.25);
     border-radius: calc(var(--submit-button-content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
