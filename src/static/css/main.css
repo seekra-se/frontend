@@ -1,14 +1,6 @@
 body {
     margin: 0;
-    background-color: #ffffff;
-}
-.content-background  {
-    background: 
-        radial-gradient(ellipse at 40% 60%, rgba(255,255,255,0.55) 0%, transparent 75%),
-        linear-gradient(160deg, #c8d8f0, #7aa0d8, #5077C7, #dce8f8);
-    height: 400px;
-    display: flex;
-    flex-direction: column;
+    background: linear-gradient(135deg, #ffffff 0%, #E6F3FC 100%);
 }
 
 .global-header {
