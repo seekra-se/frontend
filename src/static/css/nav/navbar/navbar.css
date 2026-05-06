@@ -18,6 +18,10 @@
     color: black;
 }
 
+.global-nav ul a:hover{
+     text-decoration: underline;
+}
+
 .global-nav ul {
     display: flex;
     list-style: none;
