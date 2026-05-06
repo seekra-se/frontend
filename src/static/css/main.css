@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: #ffffff;
+    font-size: 16px;
 }
 .content-background  {
     background: 
@@ -37,12 +38,16 @@ form {
 }
 
 .search-wrapper {
+    --submit-button-padding-y: 8px;
+    --submit-button-content-height: 18px;
+    --padding: 4px;
     display: flex;
     align-items: center;
     width: 80%;
     border: 1.5px solid #ccc;
-    border-radius: 999px;
-    padding: 4px 4px 4px 16px;
+    border-radius: calc(var(--submit-button-content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
+    padding: var(--padding);
+    padding-left: calc(var(--submit-button-content-height) + var(--padding));
 }
 
 .search-wrapper input {
@@ -54,9 +59,11 @@ form {
 }
 
 .search-button {
-    border-radius: 999px;
+    font-size: 1rem;
+    height: calc(var(--submit-button-content-height) + 2 * var(--submit-button-padding-y));
+    border-radius: calc(var(--submit-button-content-height) * 0.5 + var(--submit-button-padding-y));
     border: none;
-    padding: 8px 20px;
+    padding: var(--submit-button-padding-y) 20px;
     background: #4562BE;
     color: white;
     cursor: pointer;
