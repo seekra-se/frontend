@@ -16,18 +16,19 @@ body {
 }
 
 .global-header h1 {
-    display: inline-block;
+    display: block;
     margin-bottom: 0;
     background: linear-gradient(to right, #689BDB, #5F8DDC, #5077C7, #4562BE, #374FA5, #22298F);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-size: 6rem;
-    margin-bottom: 0;
+    padding: 0;
+    line-height: 1;
 }
 
 .slogan{
-    margin-top: 0;
+    margin: 0;
     font-size: small;
 }
 
