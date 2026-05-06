@@ -2,10 +2,20 @@ body {
     margin: 0;
     min-height: 100vh;
     background: linear-gradient(135deg, #ffffff 0%, #E6F3FC 100%);
+    font-size: 16px;
 }
 
 html {
     height: 100%;
+}
+
+.content-background  {
+    background: 
+        radial-gradient(ellipse at 40% 60%, rgba(255,255,255,0.55) 0%, transparent 75%),
+        linear-gradient(160deg, #c8d8f0, #7aa0d8, #5077C7, #dce8f8);
+    height: 300px;
+    display: flex;
+    flex-direction: column;
 }
 
 .global-header {
@@ -19,7 +29,6 @@ html {
 .global-header h1 {
     display: inline-block;
     margin: 0;
-    padding: 0;
     line-height: 1;
     background: linear-gradient(to right, #689BDB, #5F8DDC, #5077C7, #4562BE, #374FA5, #22298F);
     -webkit-background-clip: text;
@@ -28,7 +37,7 @@ html {
     font-size: 6rem;
 }
 
-.slogan {
+.slogan{
     margin: 0;
     font-size: small;
 }
