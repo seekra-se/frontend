@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .search-wrapper {
     --submit-button-padding-y: 8px;
     --submit-button-content-height: 18px;

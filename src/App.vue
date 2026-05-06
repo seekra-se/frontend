@@ -10,7 +10,7 @@ import Navbar from './features/nav/components/Navbar.vue';
     </div>
 </template>
 
-<style>
+<style scoped>
 .content-background  {
     background: 
         radial-gradient(ellipse at 40% 60%, rgba(255,255,255,0.55) 0%, transparent 75%),

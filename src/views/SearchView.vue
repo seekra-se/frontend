@@ -17,7 +17,7 @@ import Searchbar from '../features/search/components/Searchbar.vue'
     </div>
 </template>
 
-<style>
+<style scoped>
 .global-header {
     text-align: center;
     display: flex;
