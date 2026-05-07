@@ -26,6 +26,7 @@
     width: 100%;
     font-size: 1rem;
     background: transparent;
+    height: calc(var(--content-height) + 2 * var(--submit-button-padding-y));
 }
 
 .search-button {
