@@ -1,57 +1,17 @@
-body {
-    margin: 0;
-    min-height: 100vh;
-    background-color: #ffffff;
-    font-size: 16px;
-}
+<template>
+    <div class="search-wrapper">
+        <input type="search" name="search" placeholder="Search..." required />
+        <button type="submit" class="search-button">Search</button>
+    </div>
+</template>
 
-.content-background  {
-    background: 
-        radial-gradient(ellipse at 40% 60%, rgba(255,255,255,0.55) 0%, transparent 75%),
-        linear-gradient(160deg, #c8d8f0, #7aa0d8, #5077C7, #dce8f8);
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-}
-
-.global-header {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 40px;
-}
-
-.global-header h1 {
-    display: inline-block;
-    margin: 0;
-    line-height: 1;
-    background: linear-gradient(to right, #689BDB, #5F8DDC, #5077C7, #4562BE, #374FA5, #22298F);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 6rem;
-}
-
-.slogan{
-    margin: 0;
-    font-size: small;
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-    width: 100%;
-}
-
+<style scoped>
 .search-wrapper {
     --submit-button-padding-y: 8px;
     --submit-button-content-height: 18px;
     --padding: 4px;
     display: flex;
     align-items: center;
-    width: 80%;
     border: 1.5px solid #ccc;
     box-shadow: 0 0px 32px rgba(69, 98, 190, 0.25);
     border-radius: calc(var(--submit-button-content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
@@ -82,8 +42,4 @@ form {
 .search-button:hover {
     background: #374FA5;
 }
-
-footer{
-    text-align: center;
-    margin-top: 20px;
-}
+</style>

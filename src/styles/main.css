@@ -1,0 +1,10 @@
+form {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+footer{
+    text-align: center;
+    margin-top: 20px;
+}
