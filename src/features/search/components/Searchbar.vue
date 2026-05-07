@@ -8,7 +8,7 @@
 <style scoped>
 .search-wrapper {
     --submit-button-padding-y: 8px;
-    --submit-button-content-height: 18px;
+    --submit-button-content-height: 32px;
     --padding: 4px;
     display: flex;
     align-items: center;
