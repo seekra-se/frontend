@@ -19,12 +19,12 @@ import Searchbar from '../features/search/components/Searchbar.vue'
 
 <style scoped>
 .main-content {
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     gap: 60px;
+    flex-grow: 1;
 }
 
 .global-header {
