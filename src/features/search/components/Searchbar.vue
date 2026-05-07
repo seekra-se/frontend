@@ -17,6 +17,7 @@
     border-radius: calc(var(--submit-button-content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
     padding: var(--padding);
     padding-left: calc(var(--submit-button-content-height) + var(--padding));
+    width: 100%;
 }
 
 .search-wrapper input {

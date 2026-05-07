@@ -50,4 +50,8 @@ import Searchbar from '../features/search/components/Searchbar.vue'
     margin: 0;
     font-size: small;
 }
+
+#search-form {
+    width: 70%;
+}
 </style>
