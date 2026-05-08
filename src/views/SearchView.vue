@@ -58,5 +58,6 @@ import Searchbar from '../features/search/components/Searchbar.vue'
 
 #search-form {
     width: 70%;
+    max-width: 624px;
 }
 </style>
