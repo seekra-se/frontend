@@ -26,14 +26,15 @@ limitations under the License.
     --submit-button-padding-y: 8px;
     --content-height: 32px;
     --padding: 4px;
+    --padding-left: calc(var(--content-height) + var(--padding));
     display: flex;
     align-items: center;
     border: 1.5px solid #ccc;
     box-shadow: 0 0px 32px rgba(69, 98, 190, 0.25);
     border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
     padding: var(--padding);
-    padding-left: calc(var(--content-height) + var(--padding));
-    width: 100%;
+    padding-left: var(--padding-left);
+    width: calc(100% - var(--padding-left));
 }
 
 .search-wrapper input {
