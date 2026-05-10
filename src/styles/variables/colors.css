@@ -50,6 +50,12 @@
     --light:                var(--white);
     --light-d-1:            var(--white-d-1);
     --light-d-2:            var(--white-d-2);
+    --light-d-3:            var(--white-d-3);
+    --light-d-4:            var(--white-d-4);
+    --light-d-5:            var(--white-d-5);
+    --light-d-6:            var(--white-d-6);
+    --light-d-7:            var(--white-d-7);
+    --light-d-8:            var(--white-d-8);
 
     --dark-bg:              var(--black-l-2);
     --light-bg:             oklch(1 0 0);
