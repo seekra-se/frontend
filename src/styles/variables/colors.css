@@ -1,0 +1,20 @@
+:root {
+    --primary-color-l-8:  oklch(0.897 0.202 260);
+    --primary-color-l-7:  oklch(0.847 0.202 260);
+    --primary-color-l-6:  oklch(0.797 0.202 260);
+    --primary-color-l-6:  oklch(0.747 0.202 260);
+    --primary-color-l-4:  oklch(0.697 0.202 260);
+    --primary-color-l-3:  oklch(0.647 0.202 260);
+    --primary-color-l-2:  oklch(0.597 0.202 260);
+    --primary-color-l-1:  oklch(0.547 0.202 260);
+    --primary-color:      oklch(0.497 0.202 260);
+    --primary-color-d-1:  oklch(0.447 0.202 260);
+    --primary-color-d-2:  oklch(0.397 0.202 260);
+    --primary-color-d-3:  oklch(0.347 0.202 260);
+    --primary-color-d-4:  oklch(0.297 0.202 260);
+    --primary-color-d-5:  oklch(0.247 0.202 260);
+    --primary-color-d-6:  oklch(0.197 0.202 260);
+    --primary-color-d-7:  oklch(0.147 0.202 260);
+    --primary-color-d-8:  oklch(0.097 0.202 260);
+
+}
