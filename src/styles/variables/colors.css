@@ -37,6 +37,12 @@
     --white-d-7:          oklch(0.65 0 0);
     --white-d-8:          oklch(0.6 0 0);
 
+    --dark-l-8:             var(--black-l-8);
+    --dark-l-7:             var(--black-l-7);
+    --dark-l-6:             var(--black-l-6);
+    --dark-l-5:             var(--black-l-5);
+    --dark-l-4:             var(--black-l-4);
+    --dark-l-3:             var(--black-l-3);
     --dark-l-2:             var(--black-l-2);
     --dark-l-1:             var(--black-l-1);
     --dark:                 var(--black);
