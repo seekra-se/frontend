@@ -18,8 +18,18 @@ limitations under the License.
 import Searchbar from '../features/search/components/Searchbar.vue';
 
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const searchQuery = ref('');
+
+const submitSearch = function () {
+    router.push({
+        name: 'searchResults',
+        query: { q: searchQuery.value }
+    })
+};
 </script>
 
 <template>
@@ -30,7 +40,7 @@ const searchQuery = ref('');
         </span>
     </header>
     
-    <form class="search-form">
+    <form class="search-form" @submit.prevent="submitSearch">
         <Searchbar v-model="searchQuery" ref="searchbar" />
     </form>
 </template>
