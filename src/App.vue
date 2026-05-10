@@ -31,7 +31,10 @@ import Footer from './features/footer/components/Footer.vue';
 
 <style scoped>
 .main-content {
-    width: 100%;
+    --main-content-padding-x: 30px;
+    --main-content-padding-y: 40px;
+    padding: var(--main-content-padding-y) var(--main-content-padding-x);
+    width: calc(100% - var(--main-content-padding-x) * 2);
     flex-grow: 1;
 }
 </style>
