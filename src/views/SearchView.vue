@@ -25,10 +25,7 @@ const router = useRouter();
 const searchQuery = ref('');
 
 const submitSearch = function () {
-    router.push({
-        name: 'searchResults',
-        query: { q: searchQuery.value }
-    })
+
 };
 </script>
 
@@ -41,9 +38,9 @@ const submitSearch = function () {
             </span>
         </header>
     
-        <form class="search-form" @submit.prevent="submitSearch">
-            <Searchbar v-model="searchQuery" ref="searchbar" />
-        </form>
+        <div class="search-container">
+            <Searchbar v-model="searchQuery" ref="searchbar" auto-submit />
+        </div>
     </div>
 </template>
 
@@ -79,7 +76,7 @@ const submitSearch = function () {
     font-size: small;
 }
 
-.search-form {
+.search-container {
     width: 70%;
     max-width: 624px;
 }

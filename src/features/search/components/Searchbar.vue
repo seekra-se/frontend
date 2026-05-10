@@ -16,20 +16,35 @@ limitations under the License.
 
 <script setup>
 const searchQuery = defineModel();
+
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+const props = defineProps(['autoSubmit'])
+
+const submitSearch = function () {
+    if (props.autoSubmit !== undefined) {
+        router.push({
+            name: 'searchResults',
+            query: { q: searchQuery.value }
+        });
+    };
+}
 </script>
 
 <template>
-    <div class="search-wrapper">
-        <input
-            v-model="searchQuery"
-            type="search"
-            name="search"
-            placeholder="Search..."
-            required
-        />
-        <button type="submit" class="search-button">Search</button>
-    </div>
-</template>
+    <form @submit.prevent="submitSearch">
+        <div class="search-wrapper">
+            <input
+                v-model="searchQuery"
+                type="search"
+                placeholder="Search..."
+                required
+            />
+            <button type="submit" class="search-button">Search</button>
+        </div>
+    </form>
+    </template>
 
 <style scoped>
 .search-wrapper {
