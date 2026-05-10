@@ -29,7 +29,7 @@
     --dark-l-1:             var(--black-l-1);
     --dark:                 var(--black);
 
-    --light:                 var(--white);
-    --light-d-1:             var(--white-d-1);
-    --light-d-2:             var(--white-d-2);
+    --light:                var(--white);
+    --light-d-1:            var(--white-d-1);
+    --light-d-2:            var(--white-d-2);
 }
