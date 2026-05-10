@@ -24,7 +24,7 @@ const copyrightPeriod =
     display: flex;
     justify-content: center;
     padding: var(--padding-y);
-    background-color: #f2f2f2;
+    background-color: var(--light-d-1);
     margin-top: var(--padding-y);
 }
 </style>
