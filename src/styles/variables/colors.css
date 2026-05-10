@@ -17,4 +17,7 @@
     --primary-color-d-7:  oklch(0.147 0.202 260);
     --primary-color-d-8:  oklch(0.097 0.202 260);
 
+    --black-l-2:          oklch(0.2, 0, 0);
+    --black-l-1:          oklch(0.1, 0, 0);
+    --black:              oklch(0, 0, 0);
 }
