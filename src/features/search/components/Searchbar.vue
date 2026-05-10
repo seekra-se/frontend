@@ -14,9 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+<script setup>
+const searchQuery = defineModel();
+</script>
+
 <template>
     <div class="search-wrapper">
-        <input type="search" name="search" placeholder="Search..." required />
+        <input
+            v-model="searchQuery"
+            type="search"
+            name="search"
+            placeholder="Search..."
+            required
+        />
         <button type="submit" class="search-button">Search</button>
     </div>
 </template>

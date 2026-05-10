@@ -15,7 +15,11 @@ limitations under the License.
 -->
 
 <script setup>
-import Searchbar from '../features/search/components/Searchbar.vue'
+import Searchbar from '../features/search/components/Searchbar.vue';
+
+import { ref } from 'vue';
+
+const searchQuery = ref('');
 </script>
 
 <template>
@@ -27,7 +31,7 @@ import Searchbar from '../features/search/components/Searchbar.vue'
     </header>
     
     <form class="search-form">
-        <Searchbar />
+        <Searchbar v-model="searchQuery" ref="searchbar" />
     </form>
 </template>
 
