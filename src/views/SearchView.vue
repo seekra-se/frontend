@@ -39,7 +39,7 @@ const submitSearch = function () {
         </header>
     
         <div class="search-container">
-            <Searchbar v-model="searchQuery" ref="searchbar" auto-submit />
+            <Searchbar v-model="searchQuery" ref="searchbar" class="search-bar" auto-submit />
         </div>
     </div>
 </template>
@@ -79,5 +79,11 @@ const submitSearch = function () {
 .search-container {
     width: 70%;
     max-width: 624px;
+}
+
+@media (max-width: 67.5rem) {
+    .search-container {
+        width: 100%;
+    }
 }
 </style>
