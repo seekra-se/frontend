@@ -52,6 +52,7 @@ searchQueryModel.value = props.searchQuery;
     border-radius: 28px;
     text-align: center;
     background-color: #f7f7f7;
+    animation: fade-in 0.8s ease-out;
     height: var(--error-message-height);
     display: flex;
     justify-content: center;
@@ -65,6 +66,20 @@ searchQueryModel.value = props.searchQuery;
     .search-results-error-message {
         padding: 1em;
         width: 100%;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 100;
+        transform: scale(1);
     }
 }
 </style>
