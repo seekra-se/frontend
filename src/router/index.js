@@ -17,12 +17,18 @@ limitations under the License.
 import { createRouter, createWebHistory } from 'vue-router'
 
 import SearchView from '../views/SearchView.vue';
+import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
 
 const routes = [
     {
         path: '/',
         name: 'startPage',
         component: SearchView
+    },
+    {
+        path: '/search',
+        name: 'searchResults',
+        component: SearchResultsView
     }
 ]
 
