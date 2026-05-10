@@ -26,7 +26,7 @@ import Searchbar from '../features/search/components/Searchbar.vue'
         </span>
     </header>
     
-    <form id="search-form">
+    <form class="search-form">
         <Searchbar />
     </form>
 </template>
@@ -56,7 +56,7 @@ import Searchbar from '../features/search/components/Searchbar.vue'
     font-size: small;
 }
 
-#search-form {
+.search-form {
     width: 70%;
     max-width: 624px;
 }
