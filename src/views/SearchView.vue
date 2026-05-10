@@ -33,19 +33,28 @@ const submitSearch = function () {
 </script>
 
 <template>
-    <header class="global-header">
-        <h1>Seekra</h1>
-        <span class="slogan">
-            Built to search.
-        </span>
-    </header>
+    <div class="search-content">
+        <header class="global-header">
+            <h1>Seekra</h1>
+            <span class="slogan">
+                Built to search.
+            </span>
+        </header>
     
-    <form class="search-form" @submit.prevent="submitSearch">
-        <Searchbar v-model="searchQuery" ref="searchbar" />
-    </form>
+        <form class="search-form" @submit.prevent="submitSearch">
+            <Searchbar v-model="searchQuery" ref="searchbar" />
+        </form>
+    </div>
 </template>
 
 <style scoped>
+.search-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
 .global-header {
     text-align: center;
     display: flex;
