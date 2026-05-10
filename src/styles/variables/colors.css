@@ -24,4 +24,8 @@
     --white:              oklch(1 0 0);
     --white-d-1:          oklch(0.9 0 0);
     --white-d-2:          oklch(0.8 0 0);
+
+    --dark-l-2:             var(--black-l-2);
+    --dark-l-1:             var(--black-l-1);
+    --dark:                 var(--black);
 }
