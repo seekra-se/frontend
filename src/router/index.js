@@ -31,13 +31,30 @@ const routes = [
         component: SearchResultsView,
         props: route => ({
             searchQuery: route.query.q
-        })
+        }),
+        meta: {
+            title: (route) => route.query.q
+        }
     }
 ];
 
 const router = createRouter({
     history: createWebHistory(),
     routes
-})
+});
 
-export default router
+// set page title
+router.afterEach(to => {
+    const title =
+        typeof to.meta.title === 'function'
+        ? to.meta.title(to)
+        : to.meta.title;
+
+    if (title) {
+        document.title = `${title} - Seekra`;
+    } else {
+        document.title = 'Seekra';
+    };
+});
+
+export default router;
