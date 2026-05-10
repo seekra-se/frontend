@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 import SearchView from '../views/SearchView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
@@ -28,9 +28,12 @@ const routes = [
     {
         path: '/search',
         name: 'searchResults',
-        component: SearchResultsView
+        component: SearchResultsView,
+        props: route => ({
+            searchQuery: route.query.q
+        })
     }
-]
+];
 
 const router = createRouter({
     history: createWebHistory(),
