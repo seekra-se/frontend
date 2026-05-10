@@ -32,4 +32,7 @@
     --light:                var(--white);
     --light-d-1:            var(--white-d-1);
     --light-d-2:            var(--white-d-2);
+
+    --dark-bg:              var(--dark-l-2);
+    --light-bg:             var(--light-d-2);
 }
