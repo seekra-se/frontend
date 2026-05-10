@@ -20,4 +20,8 @@
     --black-l-2:          oklch(0.2, 0, 0);
     --black-l-1:          oklch(0.1, 0, 0);
     --black:              oklch(0, 0, 0);
+
+    --white:              oklch(1 0 0);
+    --white-d-1:          oklch(0.9 0 0);
+    --white-d-2:          oklch(0.8 0 0);
 }
