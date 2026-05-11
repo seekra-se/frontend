@@ -78,7 +78,7 @@ const submitSearch = function () {
     border: none;
     padding: var(--submit-button-padding-y) 20px;
     background: var(--primary-color);
-    color: white;
+    color: var(--white);
     cursor: pointer;
     white-space: nowrap;
 }

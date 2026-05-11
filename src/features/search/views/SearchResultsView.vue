@@ -57,7 +57,7 @@ searchQueryModel.value = props.searchQuery;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    outline: 1px solid #dadada;
+    outline: 1px solid var(--light-d-2);
 }
 
 @media (max-width: 48rem) {
