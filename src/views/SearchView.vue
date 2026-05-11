@@ -64,7 +64,12 @@ const submitSearch = function () {
     display: inline-block;
     margin: 0;
     line-height: 1;
-    background: linear-gradient(to right, #689BDB, #5F8DDC, #5077C7, #4562BE, #374FA5, #22298F);
+    background: linear-gradient(
+        to right,
+        var(--primary-color-l-4),
+        var(--primary-color),
+        var(--primary-color-d-4)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

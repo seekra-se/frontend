@@ -54,7 +54,7 @@ const submitSearch = function () {
     --padding-left: calc(var(--content-height) + var(--padding));
     display: flex;
     align-items: center;
-    border: 1.5px solid #ccc;
+    border: 1.5px solid var(--light-d-3);
     box-shadow: 0 0px 32px rgba(69, 98, 190, 0.25);
     border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
     padding: var(--padding);
@@ -77,13 +77,13 @@ const submitSearch = function () {
     border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y));
     border: none;
     padding: var(--submit-button-padding-y) 20px;
-    background: #4562BE;
+    background: var(--primary-color);
     color: white;
     cursor: pointer;
     white-space: nowrap;
 }
 
 .search-button:hover {
-    background: #374FA5;
+    background: var(--primary-color-l-1);
 }
 </style>
