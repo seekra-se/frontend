@@ -1,5 +1,4 @@
 <template>
-    <div class="search-content">
         <header class="global-header">
             <h1>Seekra</h1>
             <span class="error-message">
@@ -7,7 +6,6 @@
             </span>
         </header>
         <RouterLink to="/" id="link">Back to Search</RouterLink>
-    </div>
 </template>
 
 <style scoped>
