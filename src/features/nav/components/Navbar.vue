@@ -16,7 +16,9 @@ limitations under the License.
 
 <template>
     <nav class="global-nav">
-        <span id="logo">Seekra</span>
+        <RouterLink to="/" class="link button link">
+            <span id="logo">Seekra</span>
+        </RouterLink>
         <ul class="right-links">
         </ul>
     </nav>

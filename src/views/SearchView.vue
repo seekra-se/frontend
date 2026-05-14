@@ -15,23 +15,43 @@ limitations under the License.
 -->
 
 <script setup>
-import Searchbar from '../features/search/components/Searchbar.vue'
+import Searchbar from '../features/search/components/Searchbar.vue';
+
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const searchQuery = ref('');
+
+const submitSearch = function () {
+
+};
 </script>
 
 <template>
-    <header class="global-header">
-        <h1>Seekra</h1>
-        <span class="slogan">
-            Built to search.
-        </span>
-    </header>
+    <div class="search-content">
+        <header class="global-header">
+            <h1>Seekra</h1>
+            <span class="slogan">
+                Built to search.
+            </span>
+        </header>
     
-    <form id="search-form">
-        <Searchbar />
-    </form>
+        <div class="search-container">
+            <Searchbar v-model="searchQuery" ref="searchbar" class="search-bar" auto-submit />
+        </div>
+    </div>
 </template>
 
 <style scoped>
+.search-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
 .global-header {
     text-align: center;
     display: flex;
@@ -61,8 +81,14 @@ import Searchbar from '../features/search/components/Searchbar.vue'
     font-size: small;
 }
 
-#search-form {
+.search-container {
     width: 70%;
     max-width: 624px;
+}
+
+@media (max-width: 67.5rem) {
+    .search-container {
+        width: 100%;
+    }
 }
 </style>

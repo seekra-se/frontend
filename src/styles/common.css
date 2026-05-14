@@ -24,3 +24,11 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover:not(.button-link) {
+    text-decoration: underline;
+}

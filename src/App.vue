@@ -31,11 +31,10 @@ import Footer from './features/footer/components/Footer.vue';
 
 <style scoped>
 .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 60px;
+    --main-content-padding-x: 30px;
+    --main-content-padding-y: 40px;
+    padding: var(--main-content-padding-y) var(--main-content-padding-x);
+    width: calc(100% - var(--main-content-padding-x) * 2);
     flex-grow: 1;
 }
 </style>
