@@ -1,10 +1,7 @@
 <template>
-        <header class="global-header">
-            <h1>Seekra</h1>
-            <span class="error-message">
-                The page you are looking for does not exist. Please check the URL or return to the search page.
-            </span>
-        </header>
+        <span class="error-message">
+            The page you are looking for does not exist. Please check the URL or return to the search page.
+        </span>
         <RouterLink to="/" id="link">Back to Search</RouterLink>
 </template>
 
