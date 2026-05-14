@@ -5,8 +5,4 @@
             ERROR: 404 Not Found
         </span>
     </header>
-    
-    <form id="search-form">
-        <Searchbar />
-    </form>
 </template>
