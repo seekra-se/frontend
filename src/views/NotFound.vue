@@ -1,3 +1,18 @@
+<script setup>
+import Searchbar from '../features/search/components/Searchbar.vue';
+
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const searchQuery = ref('');
+
+const submitSearch = function () {
+
+};
+</script>
+
 <template>
     <header class="global-header">
         <h1>Seekra</h1>
