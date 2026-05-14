@@ -18,6 +18,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import SearchView from '../views/SearchView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
+import NotFound from '../views/NotFound.vue';
 
 const routes = [
     {
@@ -35,7 +36,12 @@ const routes = [
         meta: {
             title: (route) => route.query.q
         }
-    }
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'notFound',
+        component: NotFound
+    },
 ];
 
 const router = createRouter({
