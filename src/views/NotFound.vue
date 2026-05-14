@@ -2,7 +2,7 @@
     <div class="search-content">
         <header class="global-header">
             <h1>Seekra</h1>
-            <span class="slogan">
+            <span class="error-message">
                 ERROR 404: Page Not Found
             </span>
         </header>
@@ -35,7 +35,7 @@
     font-size: 6rem;
 }
 
-.slogan{
+.error-message{
     margin: 0;
     font-weight: 600;
     font-size: 2vw;
