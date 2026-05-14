@@ -33,7 +33,8 @@
 
 .slogan{
     margin: 0;
-    font-size: small;
+    font-weight: 600;
+    font-size: 2vw;
 }
 
 </style>
