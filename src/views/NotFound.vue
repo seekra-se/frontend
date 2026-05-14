@@ -6,6 +6,7 @@
                 ERROR 404: Page Not Found
             </span>
         </header>
+        <RouterLink to="/">Back to Search</RouterLink>
     </div>
 </template>
 
