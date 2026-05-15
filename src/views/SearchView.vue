@@ -18,7 +18,7 @@ limitations under the License.
 import Searchbar from '../features/search/components/Searchbar.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import logo from '@/assets/logo.svg';   // ← HIER hin verschieben
+import logo from '@/assets/logo.svg';
 
 const router = useRouter();
 
