@@ -27,8 +27,8 @@ const isDark = inject('isDark');
             <button class="dark-mode-toggle"
                 @click="isDark = !isDark"
                 :aria-label="isDark ? 'Light mode' : 'Dark mode'">
-                <span v-if="isDark">☀️</span>
-                <span v-else>🌙</span>
+                <span v-if="isDark">☀</span>
+                <span v-else>⏾</span>
             </button>
         </li>
     </ul>
