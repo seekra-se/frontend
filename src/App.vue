@@ -17,16 +17,23 @@ limitations under the License.
 <script setup>
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
+import { ref, provide, watch } from 'vue';
+
+const isDark = ref(localStorage.getItem('theme') === 'dark');
+provide('isDark', isDark);
+watch(isDark, val => localStorage.setItem('theme', val ? 'dark' : 'light'));
 </script>
 
 <template>
-    <Navbar />
+    <div :class="{ dark: isDark }" class="app-wrapper">
+        <Navbar />
 
-    <div class="main-content">
-        <router-view />
+        <div class="main-content">
+            <router-view />
+        </div>
+
+        <Footer />
     </div>
-
-    <Footer />
 </template>
 
 <style scoped>
@@ -36,5 +43,10 @@ import Footer from './features/footer/components/Footer.vue';
     padding: var(--main-content-padding-y) var(--main-content-padding-x);
     width: calc(100% - var(--main-content-padding-x) * 2);
     flex-grow: 1;
+}
+.app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 </style>

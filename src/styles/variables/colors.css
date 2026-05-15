@@ -60,3 +60,18 @@
     --dark-bg:              var(--black-l-2);
     --light-bg:             oklch(1 0 0);
 }
+.dark {
+    color-scheme: dark;
+    background-color: var(--dark-bg);
+    color: var(--white-d-1);
+
+    --light:     var(--black-l-8);
+    --light-d-1: var(--black-l-7);
+    --light-d-2: var(--black-l-6);
+    --light-d-3: var(--black-l-5);
+    --light-d-4: var(--black-l-4);
+    --light-d-5: var(--black-l-3);
+    --light-d-6: var(--black-l-2);
+    --light-d-7: var(--black-l-1);
+    --light-d-8: var(--black);
+}

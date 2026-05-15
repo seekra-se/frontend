@@ -13,14 +13,25 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-
+<script setup>
+import { inject } from 'vue';
+const isDark = inject('isDark');
+</script>
 <template>
     <nav class="global-nav">
         <RouterLink to="/" class="link button link">
             <span id="logo">Seekra</span>
         </RouterLink>
-        <ul class="right-links">
-        </ul>
+    <ul class="right-links">
+        <li>
+            <button class="dark-mode-toggle"
+                @click="isDark = !isDark"
+                :aria-label="isDark ? 'Light mode' : 'Dark mode'">
+                <span v-if="isDark">☀️</span>
+                <span v-else>🌙</span>
+            </button>
+        </li>
+    </ul>
     </nav>
 </template>
 
@@ -47,5 +58,21 @@ limitations under the License.
 
 .global-nav .right-links a:hover{
     text-decoration: underline;
+}
+.dark-mode-toggle {
+    background: none;
+    border: 1.5px solid var(--light-d-3);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+    background: var(--light-d-2);
 }
 </style>
