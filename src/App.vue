@@ -17,9 +17,11 @@ limitations under the License.
 <script setup>
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
-import { ref, provide } from 'vue';
-const isDark = ref(false);
+import { ref, provide, watch } from 'vue';
+
+const isDark = ref(localStorage.getItem('theme') === 'dark');
 provide('isDark', isDark);
+watch(isDark, val => localStorage.setItem('theme', val ? 'dark' : 'light'));
 </script>
 
 <template>
