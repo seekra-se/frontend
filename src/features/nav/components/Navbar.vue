@@ -22,8 +22,16 @@ const isDark = inject('isDark');
         <RouterLink to="/" class="link button link">
             <span id="logo">Seekra</span>
         </RouterLink>
-        <ul class="right-links">
-        </ul>
+    <ul class="right-links">
+        <li>
+            <button class="dark-mode-toggle"
+                @click="isDark = !isDark"
+                :aria-label="isDark ? 'Light mode' : 'Dark mode'">
+                <span v-if="isDark">☀️</span>
+                <span v-else>🌙</span>
+            </button>
+        </li>
+    </ul>
     </nav>
 </template>
 
