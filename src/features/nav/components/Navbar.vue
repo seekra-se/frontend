@@ -20,7 +20,7 @@ const isDark = inject('isDark');
 <template>
     <nav class="global-nav">
         <RouterLink to="/" class="link button link">
-            <span id="logo">Seekra</span>
+        <img src="@/assets/logo.svg" alt="Seekra" class="nav-logo" />
         </RouterLink>
     <ul class="right-links">
         <li>
@@ -74,5 +74,9 @@ const isDark = inject('isDark');
 
 .dark-mode-toggle:hover {
     background: var(--light-d-2);
+}
+.nav-logo {
+    height: 32px;
+    width: auto;
 }
 </style>
