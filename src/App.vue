@@ -17,16 +17,21 @@ limitations under the License.
 <script setup>
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
+import { ref, provide } from 'vue';
+const isDark = ref(false);
+provide('isDark', isDark);
 </script>
 
 <template>
-    <Navbar />
+    <div :class="{ dark: isDark }">
+        <Navbar />
 
-    <div class="main-content">
-        <router-view />
+        <div class="main-content">
+            <router-view />
+        </div>
+
+        <Footer />
     </div>
-
-    <Footer />
 </template>
 
 <style scoped>
