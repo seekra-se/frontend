@@ -16,9 +16,9 @@ limitations under the License.
 
 <script setup>
 import Searchbar from '../features/search/components/Searchbar.vue';
-
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import logo from '@/assets/logo.svg';   // ← HIER hin verschieben
 
 const router = useRouter();
 
@@ -32,7 +32,7 @@ const submitSearch = function () {
 <template>
     <div class="search-content">
     <header class="global-header">
-        <img src="@/assets/logo.svg" alt="Seekra" class="header-logo" />
+        <img :src="logo" alt="Seekra" class="header-logo" />
         <span class="slogan">
             Built to search.
         </span>
