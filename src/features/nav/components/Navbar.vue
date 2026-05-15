@@ -15,12 +15,14 @@ limitations under the License.
 -->
 <script setup>
 import { inject } from 'vue';
+import logo from '@/assets/logo.svg';
+
 const isDark = inject('isDark');
 </script>
 <template>
     <nav class="global-nav">
         <RouterLink to="/" class="link button link">
-        <img src="@/assets/logo.svg" alt="Seekra" class="nav-logo" />
+        <img :src="logo" alt="Seekra" class="nav-logo" />
         </RouterLink>
     <ul class="right-links">
         <li>
