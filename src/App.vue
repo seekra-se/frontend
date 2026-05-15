@@ -25,7 +25,7 @@ watch(isDark, val => localStorage.setItem('theme', val ? 'dark' : 'light'));
 </script>
 
 <template>
-    <div :class="{ dark: isDark }">
+    <div :class="{ dark: isDark }" class="app-wrapper">
         <Navbar />
 
         <div class="main-content">
@@ -43,5 +43,10 @@ watch(isDark, val => localStorage.setItem('theme', val ? 'dark' : 'light'));
     padding: var(--main-content-padding-y) var(--main-content-padding-x);
     width: calc(100% - var(--main-content-padding-x) * 2);
     flex-grow: 1;
+}
+.app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 </style>
