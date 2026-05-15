@@ -13,7 +13,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-
+<script setup>
+import { inject } from 'vue';
+const isDark = inject('isDark');
+</script>
 <template>
     <nav class="global-nav">
         <RouterLink to="/" class="link button link">
