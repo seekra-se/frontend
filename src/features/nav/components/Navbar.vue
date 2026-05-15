@@ -59,4 +59,20 @@ const isDark = inject('isDark');
 .global-nav .right-links a:hover{
     text-decoration: underline;
 }
+.dark-mode-toggle {
+    background: none;
+    border: 1.5px solid var(--light-d-3);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+    background: var(--light-d-2);
+}
 </style>
