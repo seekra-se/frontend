@@ -76,7 +76,7 @@ const isDark = inject('isDark');
     background: var(--light-d-2);
 }
 .nav-logo {
-    height: 32px;
+    height: 24px;
     width: auto;
 }
 </style>
