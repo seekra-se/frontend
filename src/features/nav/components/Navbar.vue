@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import ColorThemeButton from '@/features/colorTheme/components/ColorThemeButton.vue';
+import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
 
 import logo from '@/assets/logo.svg';
 </script>
@@ -26,7 +26,7 @@ import logo from '@/assets/logo.svg';
         </RouterLink>
     <ul class="right-links">
         <li>
-            <ColorThemeButton />
+            <ColorSchemeButton />
         </li>
     </ul>
     </nav>

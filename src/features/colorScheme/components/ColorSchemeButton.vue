@@ -17,21 +17,21 @@ limitations under the License.
 <script setup>
 import { inject } from 'vue';
 
-const colorTheme = inject('colorTheme');
+const colorScheme = inject('colorScheme');
 
-const colorThemeNextMapper = {
+const colorSchemeNextMapper = {
     'light': 'dark',
     'dark': 'auto',
     'auto': 'light'
 };
 
-const colorThemeTextMapper = {
+const colorSchemeTextMapper = {
     'light': 'Switch to light mode',
     'dark': 'Switch to dark mode',
-    'auto': 'Switch to the system theme'
+    'auto': 'Switch to the system scheme'
 }
 
-const colorThemeIconMapper = {
+const colorSchemeIconMapper = {
     'dark': '⏾',
     'light': '☀',
     'auto': '◐'
@@ -39,17 +39,17 @@ const colorThemeIconMapper = {
 </script>
 
 <template>
-    <button class="color-theme-button"
-        @click="colorTheme = colorThemeNextMapper[colorTheme]"
-        :aria-label="colorThemeTextMapper[colorThemeNextMapper[colorTheme]]"
-        :title="colorThemeTextMapper[colorThemeNextMapper[colorTheme]]"
+    <button class="color-scheme-button"
+        @click="colorScheme = colorSchemeNextMapper[colorScheme]"
+        :aria-label="colorSchemeTextMapper[colorSchemeNextMapper[colorScheme]]"
+        :title="colorSchemeTextMapper[colorSchemeNextMapper[colorScheme]]"
     >
-        {{ colorThemeIconMapper[colorThemeNextMapper[colorTheme]] }}
+        {{ colorSchemeIconMapper[colorSchemeNextMapper[colorScheme]] }}
     </button>
 </template>
 
 <style scoped>
-.color-theme-button {
+.color-scheme-button {
     background: none;
     border: 1.5px solid var(--light-d-3);
     border-radius: 50%;
@@ -63,7 +63,7 @@ const colorThemeIconMapper = {
     color: var(--dark);
 }
 
-.color-theme-button:hover {
+.color-scheme-button:hover {
     background: var(--light-d-2);
 }
 </style>

@@ -18,17 +18,17 @@ limitations under the License.
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
 
-import { useColorTheme } from './features/colorTheme/composables/useColorTheme';
+import { useColorScheme } from './features/colorScheme/composables/useColorScheme';
 import { ref, provide, watch } from 'vue';
 
-const { getColorTheme, updateColorTheme } = useColorTheme();
-const colorTheme = ref(getColorTheme());
-provide('colorTheme', colorTheme);
-watch(colorTheme, val => updateColorTheme(val))
+const { getColorScheme, updateColorScheme } = useColorScheme();
+const colorScheme = ref(getColorScheme());
+provide('colorScheme', colorScheme);
+watch(colorScheme, val => updateColorScheme(val))
 </script>
 
 <template>
-    <div :class="{ dark: colorTheme === 'dark', 'color-scheme-auto': colorTheme === 'auto' }" id="app-wrapper">
+    <div :class="{ dark: colorScheme === 'dark', 'color-scheme-auto': colorScheme === 'auto' }" id="app-wrapper">
         <Navbar />
 
         <div class="main-content">
