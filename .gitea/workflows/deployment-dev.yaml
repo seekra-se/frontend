@@ -1,0 +1,45 @@
+name: Deploy on dev
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy on dev
+
+    runs-on: node-minio
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          set -euo pipefail
+          npm install
+
+      - name: Build
+        run: |
+          set -euo pipefail
+          npm run build
+
+      - name: Set alias
+        run: mc alias set minio ${{ vars.S3_DEV_URL }} ${{ secrets.S3_DEV_ACCESS_KEY }} ${{ secrets.S3_DEV_SECRET_KEY }}
+
+      - name: Upload build artifacts to S3
+        run: |
+          set -euo pipefail
+
+          BUCKET=${{ vars.S3_DEV_BUCKET_NAME }}
+          BUILD_ID=$(date +%s)-$(git rev-parse --short HEAD)
+
+          echo "Build ID: $BUILD_ID"
+
+          printf "Copying files ... "
+          mc cp --recursive ./dist/ "minio/$BUCKET/builds/$BUILD_ID/"
+          echo "done"
+
+          printf "Update current build pointer ... "
+          echo "$BUILD_ID" | mc pipe "minio/$BUCKET/current"
+          echo "done"
