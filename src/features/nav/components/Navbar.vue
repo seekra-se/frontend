@@ -15,6 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
+import DarkModeToggleButton from '@/features/colorTheme/components/DarkModeToggleButton.vue';
+
 import { inject } from 'vue';
 import logo from '@/assets/logo.svg';
 
@@ -27,12 +29,7 @@ const isDark = inject('isDark');
         </RouterLink>
     <ul class="right-links">
         <li>
-            <button class="dark-mode-toggle"
-                @click="isDark = !isDark"
-                :aria-label="isDark ? 'Light mode' : 'Dark mode'">
-                <span v-if="isDark">☀</span>
-                <span v-else>⏾</span>
-            </button>
+            <DarkModeToggleButton />
         </li>
     </ul>
     </nav>
