@@ -26,3 +26,7 @@ body {
 .link:hover:not(.button-link) {
     text-decoration: underline;
 }
+
+input {
+    color: var(--dark);
+}
