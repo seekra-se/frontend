@@ -28,7 +28,11 @@ watch(colorScheme, val => updateColorScheme(val))
 </script>
 
 <template>
-    <div :class="{ dark: colorScheme === 'dark', 'color-scheme-auto': colorScheme === 'auto' }" id="app-wrapper">
+    <div
+        :style="{ colorScheme: colorScheme === 'auto' ? 'normal' : (colorScheme === 'dark' ? 'dark' : 'light')}"
+        :class="{ dark: colorScheme === 'dark', 'color-scheme-auto': colorScheme === 'auto' }"
+        id="app-wrapper"
+    >
         <Navbar />
 
         <div class="main-content">
