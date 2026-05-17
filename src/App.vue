@@ -17,14 +17,18 @@ limitations under the License.
 <script setup>
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
+
+import { useColorTheme } from './features/colorTheme/composables/useColorTheme';
 import { ref, provide, watch } from 'vue';
 
-const isDark = ref(localStorage.getItem('theme') === 'dark');
-provide('isDark', isDark);
+const { getColorTheme, updateColorTheme, appHasDarkClass } = useColorTheme();
+const colorTheme = ref(getColorTheme());
+provide('colorTheme', colorTheme);
+watch(colorTheme, val => updateColorTheme(val))
 </script>
 
 <template>
-    <div :class="{ dark: isDark }" class="app-wrapper">
+    <div :class="{ dark: appHasDarkClass(colorTheme) }" class="app-wrapper">
         <Navbar />
 
         <div class="main-content">
