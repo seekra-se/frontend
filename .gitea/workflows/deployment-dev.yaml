@@ -1,0 +1,15 @@
+name: Deploy on dev
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy on dev
+
+    runs-on: node-minio
+
+    steps:
+      - uses: actions/checkout@v4
