@@ -16,17 +16,17 @@ limitations under the License.
 
 export const useColorTheme = function () {
     const getColorTheme = function () {
-        let colorTheme = localStorage.getItem('theme') || 'light';
-        if (!(colorTheme === 'dark' || colorTheme === 'light')) {
-            colorTheme = 'light';
+        let colorTheme = localStorage.getItem('theme') || 'auto';
+        if (!(colorTheme === 'dark' || colorTheme === 'light' || colorTheme === 'auto')) {
+            colorTheme = 'auto';
         };
         return colorTheme;
     };
 
     const updateColorTheme = function (newTheme) {
         let actualNewTheme = newTheme;
-        if (!(actualNewTheme === 'light' || actualNewTheme === 'dark')) {
-            actualNewTheme = 'light';
+        if (!(actualNewTheme === 'dark' || actualNewTheme === 'light' || actualNewTheme === 'auto')) {
+            actualNewTheme = 'auto';
         };
 
         localStorage.setItem('theme', actualNewTheme);
