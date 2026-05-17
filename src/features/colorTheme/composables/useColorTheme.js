@@ -32,13 +32,8 @@ export const useColorTheme = function () {
         localStorage.setItem('theme', actualNewTheme);
     };
 
-    const appHasDarkClass = function (colorTheme) {
-        return colorTheme === 'dark';
-    };
-
     return {
         getColorTheme,
-        updateColorTheme,
-        appHasDarkClass
+        updateColorTheme
     };
 };

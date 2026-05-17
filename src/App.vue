@@ -21,14 +21,14 @@ import Footer from './features/footer/components/Footer.vue';
 import { useColorTheme } from './features/colorTheme/composables/useColorTheme';
 import { ref, provide, watch } from 'vue';
 
-const { getColorTheme, updateColorTheme, appHasDarkClass } = useColorTheme();
+const { getColorTheme, updateColorTheme } = useColorTheme();
 const colorTheme = ref(getColorTheme());
 provide('colorTheme', colorTheme);
 watch(colorTheme, val => updateColorTheme(val))
 </script>
 
 <template>
-    <div :class="{ dark: appHasDarkClass(colorTheme) }" class="app-wrapper">
+    <div :class="{ dark: colorTheme === 'dark' }" class="app-wrapper">
         <Navbar />
 
         <div class="main-content">
