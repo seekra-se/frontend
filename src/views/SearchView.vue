@@ -16,9 +16,9 @@ limitations under the License.
 
 <script setup>
 import Searchbar from '../features/search/components/Searchbar.vue';
-
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import logo from '@/assets/logo.svg';
 
 const router = useRouter();
 
@@ -31,12 +31,12 @@ const submitSearch = function () {
 
 <template>
     <div class="search-content">
-        <header class="global-header">
-            <h1>Seekra</h1>
-            <span class="slogan">
-                Built to search.
-            </span>
-        </header>
+    <header class="global-header">
+        <img :src="logo" alt="Seekra" class="header-logo" />
+        <span class="slogan">
+            Built to search.
+        </span>
+    </header>
     
         <div class="search-container">
             <Searchbar v-model="searchQuery" ref="searchbar" class="search-bar" auto-submit />
@@ -60,20 +60,9 @@ const submitSearch = function () {
     padding-top: 40px;
 }
 
-.global-header h1 {
-    display: inline-block;
-    margin: 0;
-    line-height: 1;
-    background: linear-gradient(
-        to right,
-        var(--primary-color-l-4),
-        var(--primary-color),
-        var(--primary-color-d-4)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 6rem;
+.header-logo {
+    width: 320px;
+    max-width: 100%;
 }
 
 .slogan{
