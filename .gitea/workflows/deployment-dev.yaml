@@ -18,3 +18,8 @@ jobs:
         run: |
           set -euo pipefail
           npm install
+
+      - name: Build
+        run: |
+          set -euo pipefail
+          npm run build
