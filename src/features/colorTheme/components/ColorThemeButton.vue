@@ -60,6 +60,7 @@ const colorThemeIconMapper = {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--dark);
 }
 
 .color-theme-button:hover {
