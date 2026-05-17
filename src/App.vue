@@ -28,7 +28,7 @@ watch(colorTheme, val => updateColorTheme(val))
 </script>
 
 <template>
-    <div :class="{ dark: colorTheme === 'dark' }" class="app-wrapper">
+    <div :class="{ dark: colorTheme === 'dark' }" id="app-wrapper">
         <Navbar />
 
         <div class="main-content">
@@ -47,9 +47,12 @@ watch(colorTheme, val => updateColorTheme(val))
     width: calc(100% - var(--main-content-padding-x) * 2);
     flex-grow: 1;
 }
-.app-wrapper {
+
+#app-wrapper {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--light-bg);
+    color: var(--dark);
 }
 </style>
