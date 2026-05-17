@@ -21,18 +21,30 @@ const colorTheme = inject('colorTheme');
 
 const colorThemeNextMapper = {
     'light': 'dark',
-    'dark': 'light'
+    'dark': 'auto',
+    'auto': 'light'
 };
+
+const colorThemeTextMapper = {
+    'light': 'Switch to light mode',
+    'dark': 'Switch to dark mode',
+    'auto': 'Switch to the system theme'
+}
+
+const colorThemeIconMapper = {
+    'dark': '⏾',
+    'light': '☀',
+    'auto': '◐'
+}
 </script>
 
 <template>
     <button class="color-theme-button"
         @click="colorTheme = colorThemeNextMapper[colorTheme]"
-        :aria-label="`Switch to ${colorThemeNextMapper[colorTheme]} mode`"
-        :title="`Switch to ${colorThemeNextMapper[colorTheme]} mode`"
+        :aria-label="colorThemeTextMapper[colorThemeNextMapper[colorTheme]]"
+        :title="colorThemeTextMapper[colorThemeNextMapper[colorTheme]]"
     >
-        <span v-if="colorTheme === 'dark'">☀</span>
-        <span v-else-if="colorTheme === 'light'">⏾</span>
+        {{ colorThemeIconMapper[colorThemeNextMapper[colorTheme]] }}
     </button>
 </template>
 
