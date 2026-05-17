@@ -28,7 +28,7 @@ watch(colorTheme, val => updateColorTheme(val))
 </script>
 
 <template>
-    <div :class="{ dark: colorTheme === 'dark' }" id="app-wrapper">
+    <div :class="{ dark: colorTheme === 'dark', 'color-scheme-auto': colorTheme === 'auto' }" id="app-wrapper">
         <Navbar />
 
         <div class="main-content">
