@@ -15,10 +15,9 @@ limitations under the License.
 -->
 
 <script setup>
-import { inject } from 'vue';
-import logo from '@/assets/logo.svg';
+import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
 
-const isDark = inject('isDark');
+import logo from '@/assets/logo.svg';
 </script>
 <template>
     <nav class="global-nav">
@@ -27,12 +26,7 @@ const isDark = inject('isDark');
         </RouterLink>
     <ul class="right-links">
         <li>
-            <button class="dark-mode-toggle"
-                @click="isDark = !isDark"
-                :aria-label="isDark ? 'Light mode' : 'Dark mode'">
-                <span v-if="isDark">☀</span>
-                <span v-else>⏾</span>
-            </button>
+            <ColorSchemeButton />
         </li>
     </ul>
     </nav>
@@ -62,22 +56,7 @@ const isDark = inject('isDark');
 .global-nav .right-links a:hover{
     text-decoration: underline;
 }
-.dark-mode-toggle {
-    background: none;
-    border: 1.5px solid var(--light-d-3);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.dark-mode-toggle:hover {
-    background: var(--light-d-2);
-}
 .nav-logo {
     height: 24px;
     width: auto;

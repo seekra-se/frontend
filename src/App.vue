@@ -17,15 +17,22 @@ limitations under the License.
 <script setup>
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
+
+import { useColorScheme } from './features/colorScheme/composables/useColorScheme';
 import { ref, provide, watch } from 'vue';
 
-const isDark = ref(localStorage.getItem('theme') === 'dark');
-provide('isDark', isDark);
-watch(isDark, val => localStorage.setItem('theme', val ? 'dark' : 'light'));
+const { getColorScheme, updateColorScheme } = useColorScheme();
+const colorScheme = ref(getColorScheme());
+provide('colorScheme', colorScheme);
+watch(colorScheme, val => updateColorScheme(val))
 </script>
 
 <template>
-    <div :class="{ dark: isDark }" class="app-wrapper">
+    <div
+        :style="{ colorScheme: colorScheme === 'auto' ? 'normal' : (colorScheme === 'dark' ? 'dark' : 'light')}"
+        :class="{ dark: colorScheme === 'dark', 'color-scheme-auto': colorScheme === 'auto' }"
+        id="app-wrapper"
+    >
         <Navbar />
 
         <div class="main-content">
@@ -44,9 +51,12 @@ watch(isDark, val => localStorage.setItem('theme', val ? 'dark' : 'light'));
     width: calc(100% - var(--main-content-padding-x) * 2);
     flex-grow: 1;
 }
-.app-wrapper {
+
+#app-wrapper {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--light-bg);
+    color: var(--dark);
 }
 </style>
