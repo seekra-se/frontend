@@ -40,8 +40,7 @@ const copyrightPeriod =
     display: flex;
     justify-content: center;
     padding: var(--padding-y);
-    background-color: var(--light-d-1);
     margin-top: var(--padding-y);
-    background-color: oklch(0.17 0 0);
+    background-color: var(--light-bg);
 }
 </style>
