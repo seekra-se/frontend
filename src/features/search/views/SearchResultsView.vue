@@ -17,6 +17,10 @@ limitations under the License.
 <script setup>
 import Searchbar from '@/features/search/components/Searchbar.vue';
 
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 const props = defineProps(['searchQuery']);
 
 const searchQueryModel = defineModel();
@@ -29,7 +33,7 @@ searchQueryModel.value = props.searchQuery;
     <div class="search-results-error-message-container">
         <div class="search-results-error-message">
             <p>Search is not available right now.</p>
-            <p>Please try again to another time.</p>
+            <p>{{ t('error.tryAgainToAnotherTime') }}</p>
         </div>
     </div>
     <div class="search-results-container">

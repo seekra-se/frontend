@@ -4,5 +4,8 @@
             "submit": "Search",
             "placeholder": "Search..."
         }
+    },
+    "error": {
+        "tryAgainToAnotherTime": "Please try again to another time."
     }
 }
