@@ -19,6 +19,10 @@ import getCurrentLanguage from './utils/currentLanguage';
 
 export const fallbackLocale = 'en';
 
+const SUPPORTED_LANGUAGES = [
+    'en'
+];
+
 export const i18n = createI18n({
     legacy: false,
     locale: getCurrentLanguage(),
@@ -29,6 +33,10 @@ export const i18n = createI18n({
 const loadedLanguages = new Set();
 
 export async function loadLanguage (locale) {
+    if (!SUPPORTED_LANGUAGES.includes(locale)) {
+        locale = fallbackLocale;
+    }
+
     if (loadedLanguages.has(locale)) {
         i18n.global.locale.value = locale;
         return;
