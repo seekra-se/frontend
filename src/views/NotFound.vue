@@ -25,7 +25,9 @@ const { t } = useI18n();
        <span class="error-message">
             {{ t('error.pageNotFound') }}
         </span>
-        <RouterLink to="/" id="link">Back to Search</RouterLink>
+        <RouterLink to="/" id="link">
+            {{ t('links.back.search') }}
+        </RouterLink>
     </div>
 </template>
 

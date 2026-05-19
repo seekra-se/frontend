@@ -11,5 +11,10 @@
     "error": {
         "tryAgainToAnotherTime": "Please try again to another time.",
         "pageNotFound": "The page you are looking for does not exist. Please check the URL or return to the search page."
+    },
+    "links": {
+        "back": {
+            "search": "Back to Search"
+        }
     }
 }
