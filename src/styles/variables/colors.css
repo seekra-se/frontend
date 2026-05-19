@@ -90,7 +90,7 @@ limitations under the License.
         --dark:                 var(--white);
 
         --light:                var(--black);
-        --light-d-1:            oklch(0.24 0 0);
+        --light-d-1:            oklch(0.10 0 0);
         --light-d-2:            var(--black-l-2);
         --light-d-3:            var(--black-l-3);
         --light-d-4:            var(--black-l-4);
@@ -100,7 +100,7 @@ limitations under the License.
         --light-d-8:            var(--black-l-8);
 
         --dark-bg:              var(--white);
-        --light-bg:             oklch(0.14 0 0);
+        --light-bg:             oklch(0.18 0 0);
     }
 }
 
@@ -116,7 +116,7 @@ limitations under the License.
     --dark:                 var(--white);
 
     --light:                var(--black);
-    --light-d-1:            oklch(0.24 0 0);
+    --light-d-1:            oklch(0.10 0 0);
     --light-d-2:            var(--black-l-2);
     --light-d-3:            var(--black-l-3);
     --light-d-4:            var(--black-l-4);
@@ -126,5 +126,5 @@ limitations under the License.
     --light-d-8:            var(--black-l-8);
 
     --dark-bg:              var(--white);
-    --light-bg:             oklch(0.14 0 0);
+    --light-bg:             oklch(0.18 0 0);
 }
