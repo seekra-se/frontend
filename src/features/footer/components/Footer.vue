@@ -42,5 +42,6 @@ const copyrightPeriod =
     padding: var(--padding-y);
     margin-top: var(--padding-y);
     background-color: var(--light-bg);
+    border-top: 1px solid var(--light-d-8);
 }
 </style>
