@@ -1,1 +1,8 @@
-{}
+{
+    "search": {
+        "searchBar": {
+            "submit": "Search",
+            "placeholder": "Search..."
+        }
+    }
+}

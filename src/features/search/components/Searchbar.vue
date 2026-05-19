@@ -18,6 +18,9 @@ limitations under the License.
 const searchQuery = defineModel();
 
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const router = useRouter()
 const props = defineProps(['autoSubmit'])
@@ -38,10 +41,10 @@ const submitSearch = function () {
             <input
                 v-model="searchQuery"
                 type="search"
-                placeholder="Search..."
+                :placeholder="t('search.searchBar.placeholder')"
                 required
             />
-            <button type="submit" class="search-button">Search</button>
+            <button type="submit" class="search-button">{{ t('search.searchBar.submit') }}</button>
         </div>
     </form>
     </template>
