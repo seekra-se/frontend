@@ -16,5 +16,14 @@
         "back": {
             "search": "Back to Search"
         }
+    },
+    "preferences": {
+        "colorScheme": {
+            "switch": {
+                "light": "Switch to light mode",
+                "dark": "Switch to dark mode",
+                "auto": "Switch to the system color scheme"
+            }
+        }
     }
 }
