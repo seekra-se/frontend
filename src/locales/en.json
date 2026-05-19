@@ -3,6 +3,9 @@
         "searchBar": {
             "submit": "Search",
             "placeholder": "Search..."
+        },
+        "error": {
+            "searchNotAvailable": "Search is not available right now."
         }
     },
     "error": {

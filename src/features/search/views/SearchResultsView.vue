@@ -32,7 +32,7 @@ searchQueryModel.value = props.searchQuery;
 
     <div class="search-results-error-message-container">
         <div class="search-results-error-message">
-            <p>Search is not available right now.</p>
+            <p>{{ t('search.error.searchNotAvailable') }}</p>
             <p>{{ t('error.tryAgainToAnotherTime') }}</p>
         </div>
     </div>
