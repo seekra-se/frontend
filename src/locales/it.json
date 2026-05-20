@@ -1,0 +1,30 @@
+{
+    "search": {
+        "searchBar": {
+            "submit": "Cerca",
+            "placeholder": "Cerca..."
+        },
+        "error": {
+            "searchNotAvailable": "La ricerca non è disponibile al momento."
+        }
+    },
+    "error": {
+        "tryAgainToAnotherTime": "Per favore riprova più tardi.",
+        "pageNotFound": "La pagina che cerchi non esiste. Controlla l'URL o torna alla pagina di ricerca."
+    },
+    "links": {
+        "back": {
+            "search": "Torna alla ricerca"
+        }
+    },
+    "preferences": {
+        "colorScheme": {
+            "switch": {
+                "light": "Passa alla modalità chiara",
+                "dark": "Passa alla modalità scura",
+                "auto": "Usa la combinazione colori di sistema"
+            }
+        }
+    },
+    "slogan": "Costruito per cercare."
+}
