@@ -16,8 +16,15 @@ limitations under the License.
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import { i18n, loadLanguage } from './i18n';
+import getCurrentLanguage from './utils/currentLanguage';
 import router from './router'
 import './styles/common.css'
 import './styles/variables/colors.css'
 
-createApp(App).use(router).mount('#app')
+await loadLanguage(getCurrentLanguage());
+
+createApp(App)
+    .use(router)
+    .use(i18n)
+    .mount('#app')

@@ -14,12 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+</script>
+
 <template>
     <div class="not-found">
        <span class="error-message">
-            The page you are looking for does not exist. Please check the URL or return to the search page.
+            {{ t('error.pageNotFound') }}
         </span>
-        <RouterLink to="/" id="link">Back to Search</RouterLink>
+        <RouterLink to="/" id="link">
+            {{ t('links.back.search') }}
+        </RouterLink>
     </div>
 </template>
 

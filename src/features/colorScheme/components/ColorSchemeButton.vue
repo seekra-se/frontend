@@ -16,6 +16,9 @@ limitations under the License.
 
 <script setup>
 import { inject } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const colorScheme = inject('colorScheme');
 
@@ -25,24 +28,22 @@ const colorSchemeNextMapper = {
     'auto': 'light'
 };
 
-const colorSchemeTextMapper = {
-    'light': 'Switch to light mode',
-    'dark': 'Switch to dark mode',
-    'auto': 'Switch to the system scheme'
-}
-
 const colorSchemeIconMapper = {
     'dark': '⏾',
     'light': '☀',
     'auto': '◐'
-}
+};
+
+const getTooltipTranslation = function (colorScheme) {
+    return t(`preferences.colorScheme.switch.${colorSchemeNextMapper[colorScheme]}`);
+};
 </script>
 
 <template>
     <button class="color-scheme-button"
         @click="colorScheme = colorSchemeNextMapper[colorScheme]"
-        :aria-label="colorSchemeTextMapper[colorSchemeNextMapper[colorScheme]]"
-        :title="colorSchemeTextMapper[colorSchemeNextMapper[colorScheme]]"
+        :aria-label="getTooltipTranslation(colorScheme)"
+        :title="getTooltipTranslation(colorScheme)"
     >
         {{ colorSchemeIconMapper[colorSchemeNextMapper[colorScheme]] }}
     </button>
