@@ -15,6 +15,8 @@ limitations under the License.
 */
 
 export default function getCurrentLanguage () {
+    const saved = localStorage.getItem('locale');
+    if (saved) return saved;
     const locale = new Intl.Locale(navigator.language);
     return locale.language;
 };
