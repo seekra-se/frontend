@@ -19,6 +19,10 @@ import getCurrentLanguage from './utils/currentLanguage';
 
 export const fallbackLocale = 'en';
 
+
+export const LANGUAGES_RTL = [
+    'ar'
+];
 const SUPPORTED_LANGUAGES = [
     'en', 'de', 'fr', 'es', 'it', 'pt', 'zh', 'ja', 'ar', 'hi'
 ];

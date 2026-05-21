@@ -17,7 +17,7 @@ limitations under the License.
 <script setup>
 import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { loadLanguage } from '@/i18n';
+import { loadLanguage, LANGUAGES_RTL } from '@/i18n';
 
 const { locale } = useI18n();
 
@@ -40,7 +40,7 @@ async function selectLanguage(code) {
     await loadLanguage(code);
     localStorage.setItem('locale', code);
     document.documentElement.lang = code;
-    document.documentElement.dir = code === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = LANGUAGES_RTL.includes(code) ? 'rtl' : 'ltr';
     isOpen.value = false;
 }
 
