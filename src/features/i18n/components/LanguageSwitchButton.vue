@@ -22,6 +22,7 @@ import { loadLanguage, LANGUAGES_RTL } from '@/i18n';
 const { t, locale } = useI18n();
 
 const isOpen = ref(false);
+const languageDropdown = ref(null);
 
 const languages = [
     { code: 'en', flag: '🇬🇧' },
@@ -41,24 +42,37 @@ async function selectLanguage(code) {
     localStorage.setItem('locale', code);
     document.documentElement.lang = code;
     document.documentElement.dir = LANGUAGES_RTL.includes(code) ? 'rtl' : 'ltr';
+    close();
+};
+
+const close = function () {
+    document.removeEventListener('click', closeWrapperOnClickOutsite);
     isOpen.value = false;
-}
+};
 
-function toggle() {
-    isOpen.value = !isOpen.value;
-}
+const closeWrapperOnClickOutsite = function (e) {
+    if (languageDropdown.value) {
+        if (!languageDropdown.value.contains(e.target)) {
+            close();
+        };
+    };
+};
 
-function closeOnBlur() {
-    // A short delay so that the click on the option can be registered
-    setTimeout(() => { isOpen.value = false; }, 150);
-}
+const open = function () {
+    if (!isOpen.value) {
+        isOpen.value = true;
+        setTimeout(() => {
+            document.addEventListener('click', closeWrapperOnClickOutsite);
+        }, 0);
+    };
+};
 </script>
 
 <template>
-    <div class="language-switch" @blur="closeOnBlur" tabindex="-1">
+    <div class="language-switch" tabindex="-1">
         <button
             class="language-button button"
-            @click="toggle"
+            @click="open"
             :aria-expanded="isOpen"
             aria-haspopup="listbox"
         >
@@ -67,7 +81,7 @@ function closeOnBlur() {
             <span class="chevron" :class="{ open: isOpen }">▾</span>
         </button>
 
-        <ul v-if="isOpen" class="language-dropdown" role="listbox">
+        <ul v-if="isOpen" ref="languageDropdown" class="language-dropdown" role="listbox">
             <li
                 v-for="lang in languages"
                 :key="lang.code"
