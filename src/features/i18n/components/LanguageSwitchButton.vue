@@ -49,7 +49,7 @@ function toggle() {
 }
 
 function closeOnBlur() {
-    // Kleines Delay damit Click auf Option noch registriert wird
+    // A short delay so that the click on the option can be registered
     setTimeout(() => { isOpen.value = false; }, 150);
 }
 </script>
