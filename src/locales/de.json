@@ -9,8 +9,8 @@
         }
     },
     "error": {
-        "tryAgainToAnotherTime": "Bitte versuche es zu einem anderen Zeitpunkt erneut.",
-        "pageNotFound": "Die gesuchte Seite existiert nicht. Bitte überprüfe die URL oder kehre zur Suchseite zurück."
+        "tryAgainToAnotherTime": "Bitte versuchen Sie es zu einem anderen Zeitpunkt erneut.",
+        "pageNotFound": "Die gesuchte Seite existiert nicht. Bitte überprüfen Sie die URL oder kehren Sie zur Suchseite zurück."
     },
     "links": {
         "back": {
