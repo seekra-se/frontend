@@ -24,6 +24,16 @@
                 "dark": "Zum dunklen Modus wechseln",
                 "auto": "Zum System-Farbschema wechseln"
             }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
         }
     },
     "slogan": "Gebaut zum Suchen."

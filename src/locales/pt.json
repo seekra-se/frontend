@@ -24,6 +24,16 @@
                 "dark": "Mudar para modo escuro",
                 "auto": "Usar esquema de cores do sistema"
             }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
         }
     },
     "slogan": "Feito para pesquisar."

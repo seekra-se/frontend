@@ -24,6 +24,16 @@
                 "dark": "Passer en mode sombre",
                 "auto": "Utiliser le thème système"
             }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
         }
     },
     "slogan": "Conçu pour chercher."

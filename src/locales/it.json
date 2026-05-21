@@ -24,6 +24,16 @@
                 "dark": "Passa alla modalità scura",
                 "auto": "Usa la combinazione colori di sistema"
             }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
         }
     },
     "slogan": "Costruito per cercare."

@@ -19,17 +19,17 @@ import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { loadLanguage, LANGUAGES_RTL } from '@/i18n';
 
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 const isOpen = ref(false);
 
 const languages = [
-    { code: 'en', label: 'English',    flag: '🇬🇧' },
-    { code: 'de', label: 'Deutsch',    flag: '🇩🇪' },
-    { code: 'fr', label: 'Français',   flag: '🇫🇷' },
-    { code: 'es', label: 'Español',    flag: '🇪🇸' },
-    { code: 'it', label: 'Italiano',   flag: '🇮🇹' },
-    { code: 'pt', label: 'Português',  flag: '🇵🇹' },
+    { code: 'en', flag: '🇬🇧' },
+    { code: 'de', flag: '🇩🇪' },
+    { code: 'fr', flag: '🇫🇷' },
+    { code: 'es', flag: '🇪🇸' },
+    { code: 'it', flag: '🇮🇹' },
+    { code: 'pt', flag: '🇵🇹' },
 ];
 
 const currentLanguage = computed(
@@ -77,7 +77,7 @@ function closeOnBlur() {
                 @click="selectLanguage(lang.code)"
             >
                 <span class="flag">{{ lang.flag }}</span>
-                <span class="lang-label">{{ lang.label }}</span>
+                <span class="lang-label">{{ t(`preferences.locale.languages.${lang.code}`) }}</span>
             </li>
         </ul>
     </div>
