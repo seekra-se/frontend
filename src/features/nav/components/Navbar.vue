@@ -16,7 +16,7 @@ limitations under the License.
 
 <script setup>
 import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
-import LanguageSwitchButton from '@/features/language/components/LanguageSwitchButton.vue';
+import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
 import logo from '@/assets/logo.svg';
 </script>
 
