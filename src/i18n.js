@@ -24,7 +24,12 @@ export const LANGUAGES_RTL = [
     'ar'
 ];
 const SUPPORTED_LANGUAGES = [
-    'en', 'de', 'fr', 'es', 'it', 'pt'
+    'en',
+    'de',
+    'fr',
+    'es',
+    'it',
+    'pt'
 ];
 
 export const i18n = createI18n({
