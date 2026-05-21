@@ -111,7 +111,6 @@ const open = function () {
     border-radius: 6px;
     padding: 4px 10px;
     cursor: pointer;
-    font-size: 0.9rem;
     color: var(--dark);
 }
 
