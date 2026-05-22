@@ -64,7 +64,7 @@ searchQueryModel.value = props.searchQuery;
 .search-results-error-message {
     padding: var(--error-message-padding);
     font-size: 18px;
-    box-shadow: 0px 0px 42px #cdcdcdb3;
+    box-shadow: 0px 0px 42px var(--gray-box-shadow);
     border-radius: 28px;
     text-align: center;
     background-color: var(--light-bg);
