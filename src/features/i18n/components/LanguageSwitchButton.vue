@@ -133,7 +133,7 @@ const open = function () {
     right: 0;
     top: calc(100% + 6px);
     background-color: var(--light-bg);
-    border: 1px solid var(--light-d-1);
+    border: 1px solid var(--light-d-3);
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     list-style: none;
