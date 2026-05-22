@@ -100,7 +100,7 @@ const open = function () {
 }
 
 .language-button:hover {
-    background-color: var(--light-d-1);
+    background-color: var(--light-hover);
 }
 
 .chevron {
@@ -138,7 +138,7 @@ const open = function () {
 }
 
 .language-dropdown li:hover {
-    background-color: var(--light-d-1);
+    background-color: var(--light-hover);
 }
 
 .language-dropdown li.active {

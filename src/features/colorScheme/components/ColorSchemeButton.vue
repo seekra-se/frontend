@@ -65,6 +65,6 @@ const getTooltipTranslation = function (colorScheme) {
 }
 
 .color-scheme-button:hover {
-    background: var(--light-d-2);
+    background: var(--light-hover);
 }
 </style>
