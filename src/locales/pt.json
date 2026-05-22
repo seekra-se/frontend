@@ -27,12 +27,12 @@
         },
         "locale": {
             "languages": {
-                "en": "🇬🇧 English",
-                "de": "🇩🇪 Deutsch",
-                "fr": "🇫🇷 Français",
-                "es": "🇪🇸 Español",
-                "it": "🇮🇹 Italiano",
-                "pt": "🇵🇹 Português"
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
             }
         }
     },
