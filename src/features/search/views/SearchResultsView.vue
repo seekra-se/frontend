@@ -67,7 +67,7 @@ searchQueryModel.value = props.searchQuery;
     box-shadow: 0px 0px 42px #cdcdcdb3;
     border-radius: 28px;
     text-align: center;
-    background-color: #f7f7f7;
+    background-color: var(--light-bg);
     animation: fade-in 0.8s ease-out;
     height: var(--error-message-height);
     display: flex;
