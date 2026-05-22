@@ -23,7 +23,7 @@ export const fallbackLocale = 'en';
 export const LANGUAGES_RTL = [
     'ar'
 ];
-const SUPPORTED_LANGUAGES = [
+export const SUPPORTED_LANGUAGES = [
     'en',
     'de',
     'fr',

@@ -15,27 +15,14 @@ limitations under the License.
 -->
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { loadLanguage, LANGUAGES_RTL } from '@/i18n';
+import { loadLanguage, LANGUAGES_RTL, SUPPORTED_LANGUAGES } from '@/i18n';
 
 const { t, locale } = useI18n();
 
 const isOpen = ref(false);
 const languageDropdown = ref(null);
-
-const languages = [
-    { code: 'en', flag: '🇬🇧' },
-    { code: 'de', flag: '🇩🇪' },
-    { code: 'fr', flag: '🇫🇷' },
-    { code: 'es', flag: '🇪🇸' },
-    { code: 'it', flag: '🇮🇹' },
-    { code: 'pt', flag: '🇵🇹' },
-];
-
-const currentLanguage = computed(
-    () => languages.find(l => l.code === locale.value) ?? languages[0]
-);
 
 async function selectLanguage(code) {
     await loadLanguage(code);
@@ -76,22 +63,20 @@ const open = function () {
             :aria-expanded="isOpen"
             aria-haspopup="listbox"
         >
-            <span class="flag">{{ currentLanguage.flag }}</span>
-            <span class="lang-code">{{ currentLanguage.code.toUpperCase() }}</span>
+            <span class="lang-code">{{ t(`preferences.locale.languages.${locale}`) }}</span>
             <span class="chevron" :class="{ open: isOpen }">▾</span>
         </button>
 
         <ul v-if="isOpen" ref="languageDropdown" class="language-dropdown" role="listbox">
             <li
-                v-for="lang in languages"
-                :key="lang.code"
+                v-for="lang in SUPPORTED_LANGUAGES"
+                :key="lang"
                 role="option"
-                :aria-selected="lang.code === locale"
-                :class="{ active: lang.code === locale }"
-                @click="selectLanguage(lang.code)"
+                :aria-selected="lang === locale"
+                :class="{ active: lang === locale }"
+                @click="selectLanguage(lang)"
             >
-                <span class="flag">{{ lang.flag }}</span>
-                <span class="lang-label">{{ t(`preferences.locale.languages.${lang.code}`) }}</span>
+                <span class="lang-label">{{ t(`preferences.locale.languages.${lang}`) }}</span>
             </li>
         </ul>
     </div>
