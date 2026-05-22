@@ -1,0 +1,40 @@
+{
+    "search": {
+        "searchBar": {
+            "submit": "Buscar",
+            "placeholder": "Buscar..."
+        },
+        "error": {
+            "searchNotAvailable": "La búsqueda no está disponible en este momento."
+        }
+    },
+    "error": {
+        "tryAgainToAnotherTime": "Por favor, inténtalo de nuevo más tarde.",
+        "pageNotFound": "La página que buscas no existe. Comprueba la URL o vuelve a la página de búsqueda."
+    },
+    "links": {
+        "back": {
+            "search": "Volver a la búsqueda"
+        }
+    },
+    "preferences": {
+        "colorScheme": {
+            "switch": {
+                "light": "Cambiar al modo claro",
+                "dark": "Cambiar al modo oscuro",
+                "auto": "Usar el esquema de color del sistema"
+            }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
+        }
+    },
+    "slogan": "Hecho para buscar."
+}

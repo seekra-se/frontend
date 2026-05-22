@@ -1,0 +1,40 @@
+{
+    "search": {
+        "searchBar": {
+            "submit": "Pesquisar",
+            "placeholder": "Pesquisar..."
+        },
+        "error": {
+            "searchNotAvailable": "A pesquisa não está disponível no momento."
+        }
+    },
+    "error": {
+        "tryAgainToAnotherTime": "Por favor, tente novamente mais tarde.",
+        "pageNotFound": "A página que você procura não existe. Verifique o URL ou volte à página de pesquisa."
+    },
+    "links": {
+        "back": {
+            "search": "Voltar à pesquisa"
+        }
+    },
+    "preferences": {
+        "colorScheme": {
+            "switch": {
+                "light": "Mudar para modo claro",
+                "dark": "Mudar para modo escuro",
+                "auto": "Usar esquema de cores do sistema"
+            }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
+        }
+    },
+    "slogan": "Feito para pesquisar."
+}

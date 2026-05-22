@@ -24,6 +24,16 @@
                 "dark": "Switch to dark mode",
                 "auto": "Switch to the system color scheme"
             }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
         }
     },
     "slogan": "Built to search."

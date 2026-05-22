@@ -19,8 +19,17 @@ import getCurrentLanguage from './utils/currentLanguage';
 
 export const fallbackLocale = 'en';
 
-const SUPPORTED_LANGUAGES = [
-    'en'
+
+export const LANGUAGES_RTL = [
+    'ar'
+];
+export const SUPPORTED_LANGUAGES = [
+    'en',
+    'de',
+    'fr',
+    'es',
+    'it',
+    'pt'
 ];
 
 export const i18n = createI18n({
