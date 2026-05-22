@@ -107,7 +107,7 @@ const open = function () {
     align-items: center;
     gap: 6px;
     background: none;
-    border: 1px solid var(--dark);
+    border: 1px solid var(--light-d-3);
     border-radius: 6px;
     padding: 4px 10px;
     cursor: pointer;
