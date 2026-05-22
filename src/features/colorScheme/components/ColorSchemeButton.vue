@@ -51,7 +51,7 @@ const colorSchemeIconMapper = {
 <style scoped>
 .color-scheme-button {
     background: none;
-    border: 1.5px solid var(--dark-l-8);
+    border: 1.5px solid var(--border);
     border-radius: 50%;
     width: 36px;
     height: 36px;

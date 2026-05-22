@@ -75,6 +75,8 @@ limitations under the License.
 
     --dark-bg:              var(--black-l-2);
     --light-bg:             var(--white);
+
+    --border:               var(--white-d-3);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -101,6 +103,8 @@ limitations under the License.
 
         --dark-bg:              var(--white);
         --light-bg:             oklch(0.18 0 0);
+
+        --border:               var(--black-l-6);
     }
 }
 
@@ -127,4 +131,6 @@ limitations under the License.
 
     --dark-bg:              var(--white);
     --light-bg:             oklch(0.18 0 0);
+
+    --border:               var(--black-l-6);
 }
