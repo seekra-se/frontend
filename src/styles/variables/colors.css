@@ -79,6 +79,7 @@ limitations under the License.
     --border:               var(--white-d-3);
 
     --gray-box-shadow:    oklch(0.8 0.0001 271 / 0.7);
+    --blue-box-shadow:    oklch(0.52 0.15 268 / 0.25);
 }
 
 @media (prefers-color-scheme: dark) {

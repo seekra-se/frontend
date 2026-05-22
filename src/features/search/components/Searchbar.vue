@@ -55,7 +55,7 @@ const submitSearch = function () {
     display: flex;
     align-items: center;
     border: 1.5px solid var(--border);
-    box-shadow: 0 0px 32px rgba(69, 98, 190, 0.25);
+    box-shadow: 0 0px 32px var(--blue-box-shadow);
     border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
     padding: var(--padding);
     padding-left: var(--padding-left);
