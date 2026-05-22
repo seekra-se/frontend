@@ -18,8 +18,10 @@ limitations under the License.
 import Searchbar from '../features/search/components/Searchbar.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import logo from '@/assets/logo.svg';
 
+const { t } = useI18n();
 const router = useRouter();
 
 const searchQuery = ref('');
@@ -34,7 +36,7 @@ const submitSearch = function () {
     <header class="global-header">
         <img :src="logo" alt="Seekra" class="header-logo" />
         <span class="slogan">
-            Built to search.
+            {{ t('slogan') }}
         </span>
     </header>
     

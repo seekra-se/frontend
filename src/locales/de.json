@@ -1,0 +1,40 @@
+{
+    "search": {
+        "searchBar": {
+            "submit": "Suchen",
+            "placeholder": "Suchen..."
+        },
+        "error": {
+            "searchNotAvailable": "Die Suche ist momentan nicht verfügbar."
+        }
+    },
+    "error": {
+        "tryAgainToAnotherTime": "Bitte versuchen Sie es zu einem anderen Zeitpunkt erneut.",
+        "pageNotFound": "Die gesuchte Seite existiert nicht. Bitte überprüfen Sie die URL oder kehren Sie zur Suchseite zurück."
+    },
+    "links": {
+        "back": {
+            "search": "Zurück zur Suche"
+        }
+    },
+    "preferences": {
+        "colorScheme": {
+            "switch": {
+                "light": "Zum hellen Modus wechseln",
+                "dark": "Zum dunklen Modus wechseln",
+                "auto": "Zum System-Farbschema wechseln"
+            }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
+        }
+    },
+    "slogan": "Gebaut zum Suchen."
+}

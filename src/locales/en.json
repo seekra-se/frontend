@@ -1,0 +1,40 @@
+{
+    "search": {
+        "searchBar": {
+            "submit": "Search",
+            "placeholder": "Search..."
+        },
+        "error": {
+            "searchNotAvailable": "Search is not available right now."
+        }
+    },
+    "error": {
+        "tryAgainToAnotherTime": "Please try again to another time.",
+        "pageNotFound": "The page you are looking for does not exist. Please check the URL or return to the search page."
+    },
+    "links": {
+        "back": {
+            "search": "Back to Search"
+        }
+    },
+    "preferences": {
+        "colorScheme": {
+            "switch": {
+                "light": "Switch to light mode",
+                "dark": "Switch to dark mode",
+                "auto": "Switch to the system color scheme"
+            }
+        },
+        "locale": {
+            "languages": {
+                "en": "English",
+                "de": "Deutsch",
+                "fr": "Français",
+                "es": "Español",
+                "it": "Italiano",
+                "pt": "Português"
+            }
+        }
+    },
+    "slogan": "Built to search."
+}

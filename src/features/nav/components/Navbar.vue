@@ -16,19 +16,23 @@ limitations under the License.
 
 <script setup>
 import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
-
+import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
 import logo from '@/assets/logo.svg';
 </script>
+
 <template>
     <nav class="global-nav">
         <RouterLink to="/" class="link button link">
-        <img :src="logo" alt="Seekra" class="nav-logo" />
+            <img :src="logo" alt="Seekra" class="nav-logo" />
         </RouterLink>
-    <ul class="right-links">
-        <li>
-            <ColorSchemeButton />
-        </li>
-    </ul>
+        <ul class="right-links">
+            <li>
+                <LanguageSwitchButton />
+            </li>
+            <li>
+                <ColorSchemeButton />
+            </li>
+        </ul>
     </nav>
 </template>
 
@@ -46,6 +50,7 @@ import logo from '@/assets/logo.svg';
     list-style: none;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .global-nav .right-links a {
