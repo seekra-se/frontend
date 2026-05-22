@@ -50,6 +50,7 @@ import logo from '@/assets/logo.svg';
     list-style: none;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .global-nav .right-links a {
