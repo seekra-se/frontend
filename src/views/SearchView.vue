@@ -19,7 +19,7 @@ import Searchbar from '../features/search/components/Searchbar.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import logo from '@/assets/logo.svg';
+import logo from '@/assets/images/logo.svg';
 
 const { t } = useI18n();
 const router = useRouter();
