@@ -55,7 +55,7 @@ import logo from '@/assets/logo.svg';
 
 .global-nav .right-links a {
     text-decoration: none;
-    color: #000;
+    color: var(--dark);
 }
 
 .global-nav .right-links a:hover{

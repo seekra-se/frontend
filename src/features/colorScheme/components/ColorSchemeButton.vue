@@ -52,7 +52,7 @@ const getTooltipTranslation = function (colorScheme) {
 <style scoped>
 .color-scheme-button {
     background: none;
-    border: 1.5px solid var(--light-d-3);
+    border: 1.5px solid var(--border);
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -65,6 +65,6 @@ const getTooltipTranslation = function (colorScheme) {
 }
 
 .color-scheme-button:hover {
-    background: var(--light-d-2);
+    background: var(--light-hover);
 }
 </style>

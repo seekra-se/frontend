@@ -75,6 +75,13 @@ limitations under the License.
 
     --dark-bg:              var(--black-l-2);
     --light-bg:             var(--white);
+
+    --border:               var(--white-d-3);
+
+    --gray-box-shadow:    oklch(0.8 0.0001 271 / 0.7);
+    --blue-box-shadow:    oklch(0.52 0.15 268 / 0.25);
+
+    --light-hover:          var(--light-d-2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -88,9 +95,9 @@ limitations under the License.
         --dark-l-2:             var(--white-d-2);
         --dark-l-1:             var(--white-d-1);
         --dark:                 var(--white);
-        
+
         --light:                var(--black);
-        --light-d-1:            var(--black-l-1);
+        --light-d-1:            oklch(0.10 0 0);
         --light-d-2:            var(--black-l-2);
         --light-d-3:            var(--black-l-3);
         --light-d-4:            var(--black-l-4);
@@ -98,9 +105,15 @@ limitations under the License.
         --light-d-6:            var(--black-l-6);
         --light-d-7:            var(--black-l-7);
         --light-d-8:            var(--black-l-8);
-        
+
         --dark-bg:              var(--white);
-        --light-bg:             var(--black);
+        --light-bg:             oklch(0.18 0 0);
+
+        --border:               var(--black-l-6);
+
+        --gray-box-shadow:    oklch(0.25 0.0001 271 / 0.7);
+
+        --light-hover:          var(--light-d-5);
     }
 }
 
@@ -114,9 +127,9 @@ limitations under the License.
     --dark-l-2:             var(--white-d-2);
     --dark-l-1:             var(--white-d-1);
     --dark:                 var(--white);
-    
+
     --light:                var(--black);
-    --light-d-1:            var(--black-l-1);
+    --light-d-1:            oklch(0.10 0 0);
     --light-d-2:            var(--black-l-2);
     --light-d-3:            var(--black-l-3);
     --light-d-4:            var(--black-l-4);
@@ -124,7 +137,13 @@ limitations under the License.
     --light-d-6:            var(--black-l-6);
     --light-d-7:            var(--black-l-7);
     --light-d-8:            var(--black-l-8);
-    
+
     --dark-bg:              var(--white);
-    --light-bg:             var(--black);
+    --light-bg:             oklch(0.18 0 0);
+
+    --border:               var(--black-l-6);
+
+    --gray-box-shadow:    oklch(0.25 0.0001 271 / 0.7);
+
+    --light-hover:          var(--light-d-5);
 }

@@ -68,16 +68,16 @@ searchQueryModel.value = props.searchQuery;
 .search-results-error-message {
     padding: var(--error-message-padding);
     font-size: 18px;
-    box-shadow: 0px 0px 42px #cdcdcdb3;
+    box-shadow: 0px 0px 42px var(--gray-box-shadow);
     border-radius: 28px;
     text-align: center;
-    background-color: #f7f7f7;
+    background-color: var(--light-bg);
     animation: fade-in 0.8s ease-out;
     height: var(--error-message-height);
     display: flex;
     justify-content: center;
     flex-direction: column;
-    outline: 1px solid var(--light-d-2);
+    outline: 1px solid var(--border);
 }
 
 @media (max-width: 48rem) {

@@ -92,7 +92,7 @@ const open = function () {
     align-items: center;
     gap: 6px;
     background: none;
-    border: 1px solid var(--light-d-3);
+    border: 1px solid var(--border);
     border-radius: 6px;
     padding: 4px 10px;
     cursor: pointer;
@@ -100,7 +100,7 @@ const open = function () {
 }
 
 .language-button:hover {
-    background-color: var(--light-d-1);
+    background-color: var(--light-hover);
 }
 
 .chevron {
@@ -118,7 +118,7 @@ const open = function () {
     right: 0;
     top: calc(100% + 6px);
     background-color: var(--light-bg);
-    border: 1px solid var(--light-d-3);
+    border: 1px solid var(--border);
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     list-style: none;
@@ -138,7 +138,7 @@ const open = function () {
 }
 
 .language-dropdown li:hover {
-    background-color: var(--light-d-1);
+    background-color: var(--light-hover);
 }
 
 .language-dropdown li.active {
