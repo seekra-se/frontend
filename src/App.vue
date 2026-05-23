@@ -17,7 +17,6 @@ limitations under the License.
 <script setup>
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
-import BaseLayout from './layouts/BaseLayout.vue';
 
 import { useColorScheme } from './features/colorScheme/composables/useColorScheme';
 import { ref, provide, watch } from 'vue';
@@ -36,9 +35,7 @@ watch(colorScheme, val => updateColorScheme(val))
     >
         <Navbar />
 
-        <BaseLayout class="main-content">
-            <router-view />
-        </BaseLayout>
+        <router-view class="main-content" />
 
         <Footer />
     </div>
