@@ -15,9 +15,11 @@ limitations under the License.
 */
 
 import { createRouter, createWebHistory } from 'vue-router';
+import { i18n } from '@/i18n';
 
 import SearchView from '../views/SearchView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
+import SettingsView from '@/features/settings/views/SettingsView.vue';
 import NotFound from '../views/NotFound.vue';
 
 const routes = [
@@ -35,6 +37,14 @@ const routes = [
         }),
         meta: {
             title: (route) => route.query.q
+        }
+    },
+    {
+        path: '/settings',
+        name: 'settings',
+        component: SettingsView,
+        meta: {
+            title: () => i18n.global.t('preferences.settings')
         }
     },
     {
