@@ -7,9 +7,9 @@ import Sidebar from '@/features/sidebar/components/Sidebar.vue';
         <Sidebar>
             <slot name="sidebar" />
         </Sidebar>
-        <div class="main-content">
+        <main class="main-content">
             <slot />
-        </div>
+        </main>
     </div>
 </template>
 
