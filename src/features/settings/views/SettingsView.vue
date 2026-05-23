@@ -8,7 +8,7 @@ const { t } = useI18n();
 
 <template>
     <div class="settings-page-wrapper">
-        <header>
+        <header class="header">
             <h1>
                 {{ t('preferences.settings') }}
             </h1>
@@ -28,5 +28,13 @@ const { t } = useI18n();
 .settings-page-wrapper {
     display: flex;
     flex-direction: column;
+}
+
+.header {
+    padding: var(--main-content-padding-y) var(--main-content-padding-x);
+}
+
+.header h1 {
+    margin: 0;
 }
 </style>
