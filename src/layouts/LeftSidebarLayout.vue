@@ -7,7 +7,7 @@ import Sidebar from '@/features/sidebar/components/Sidebar.vue';
         <Sidebar>
             <slot name="sidebar" />
         </Sidebar>
-        <div>
+        <div class="main-content">
             <slot />
         </div>
     </div>
@@ -17,5 +17,9 @@ import Sidebar from '@/features/sidebar/components/Sidebar.vue';
 .layout-container {
     display: grid;
     grid-template-columns: min(24%, 280px) 1fr;
+}
+
+.main-content {
+    padding: 20px;
 }
 </style>
