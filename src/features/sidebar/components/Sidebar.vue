@@ -1,7 +1,7 @@
 <template>
-    <div class="sidebar">
+    <nav class="sidebar">
         <slot />
-    </div>
+    </nav>
 </template>
 
 <style scoped>
