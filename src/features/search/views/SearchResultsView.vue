@@ -28,7 +28,7 @@ searchQueryModel.value = props.searchQuery;
 </script>
 
 <template>
-    <div>
+    <div class="main-content-padding">
         <Searchbar class="search-bar" v-model="searchQueryModel" auto-submit />
         
         <div class="search-results-error-message-container">

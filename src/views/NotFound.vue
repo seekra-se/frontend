@@ -21,7 +21,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <div class="not-found">
+    <div class="not-found main-content-padding">
        <span class="error-message">
             {{ t('error.pageNotFound') }}
         </span>

@@ -30,3 +30,8 @@ body {
 input {
     color: var(--dark);
 }
+
+.main-content-padding {
+    padding: var(--main-content-padding);
+    width: calc(100% - var(--main-content-padding-x) * 2);
+}
