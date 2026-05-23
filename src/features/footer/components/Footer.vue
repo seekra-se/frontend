@@ -28,8 +28,13 @@ const copyrightPeriod =
 
 <template>
     <footer class="global-footer">
-        <div class="copyright-note">
-            &copy; {{ copyrightPeriod }} Seekra
+        <div class="footer-segment">
+            <RouterLink to="settings">Settings</RouterLink>
+        </div>
+        <div class="footer-segment">
+            <div class="copyright-note">
+                &copy; {{ copyrightPeriod }} Seekra
+            </div>
         </div>
     </footer>
 </template>
@@ -37,10 +42,13 @@ const copyrightPeriod =
 <style scoped>
 .global-footer {
     --padding-y: 22px;
+    margin-top: var(--padding-y);
+}
+
+.footer-segment {
     display: flex;
     justify-content: center;
     padding: var(--padding-y);
-    margin-top: var(--padding-y);
     background-color: var(--light-bg);
     border-top: 1px solid var(--border);
 }
