@@ -1,2 +1,3 @@
 <template>
+    <slot />
 </template>
