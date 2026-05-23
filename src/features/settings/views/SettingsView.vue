@@ -7,17 +7,24 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <h1>
-        {{ t('preferences.settings') }}
-    </h1>
-    <BaseLayout class="layout">
-        <template #sidebar>
-        </template>
-    </BaseLayout>
+    <div class="settings-page-wrapper">
+        <h1>
+            {{ t('preferences.settings') }}
+        </h1>
+        <LeftSidebarLayout class="layout">
+            <template #sidebar>
+            </template>
+        </LeftSidebarLayout>
+    </div>
 </template>
 
 <style scoped>
 .layout {
     flex-grow: 1;
+}
+
+.settings-page-wrapper {
+    display: flex;
+    flex-direction: column;
 }
 </style>
