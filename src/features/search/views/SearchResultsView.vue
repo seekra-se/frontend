@@ -28,15 +28,17 @@ searchQueryModel.value = props.searchQuery;
 </script>
 
 <template>
-    <Searchbar class="search-bar" v-model="searchQueryModel" auto-submit />
-
-    <div class="search-results-error-message-container">
-        <div class="search-results-error-message">
-            <p>{{ t('search.error.searchNotAvailable') }}</p>
-            <p>{{ t('error.tryAgainToAnotherTime') }}</p>
+    <div>
+        <Searchbar class="search-bar" v-model="searchQueryModel" auto-submit />
+        
+        <div class="search-results-error-message-container">
+            <div class="search-results-error-message">
+                <p>{{ t('search.error.searchNotAvailable') }}</p>
+                <p>{{ t('error.tryAgainToAnotherTime') }}</p>
+            </div>
         </div>
-    </div>
-    <div class="search-results-container">
+        <div class="search-results-container">
+        </div>
     </div>
 </template>
 
