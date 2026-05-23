@@ -8,9 +8,11 @@ const { t } = useI18n();
 
 <template>
     <div class="settings-page-wrapper">
-        <h1>
-            {{ t('preferences.settings') }}
-        </h1>
+        <header>
+            <h1>
+                {{ t('preferences.settings') }}
+            </h1>
+        </header>
         <LeftSidebarLayout class="layout">
             <template #sidebar>
             </template>
