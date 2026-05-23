@@ -40,5 +40,14 @@ const size = computed(() => ensureUnit(props.size))
 </script>
 
 <template>
-    <img :src="Icon" :style="{ height: `${size}`, width: `${size}` }" />
+    <div class="icon-container">
+        <img :src="Icon" :style="{ height: `${size}`, width: `${size}` }" />
+    </div>
 </template>
+
+<style scoped>
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+</style>
