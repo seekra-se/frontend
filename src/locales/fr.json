@@ -18,6 +18,7 @@
         }
     },
     "preferences": {
+        "settings": "Paramètres",
         "colorScheme": {
             "switch": {
                 "light": "Passer en mode clair",

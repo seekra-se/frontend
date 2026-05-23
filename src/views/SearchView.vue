@@ -32,7 +32,7 @@ const submitSearch = function () {
 </script>
 
 <template>
-    <div class="search-content">
+    <div class="search-content main-content-padding">
     <header class="global-header">
         <img :src="logo" alt="Seekra" class="header-logo" />
         <span class="slogan">

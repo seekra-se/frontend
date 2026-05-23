@@ -18,6 +18,7 @@
         }
     },
     "preferences": {
+        "settings": "Einstellungen",
         "colorScheme": {
             "switch": {
                 "light": "Zum hellen Modus wechseln",

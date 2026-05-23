@@ -15,6 +15,10 @@ limitations under the License.
 -->
 
 <script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 const startYear = 2026
 const currentYear = new Date().getFullYear()
 
@@ -28,20 +32,32 @@ const copyrightPeriod =
 
 <template>
     <footer class="global-footer">
-        <div class="copyright-note">
-            &copy; {{ copyrightPeriod }} Seekra
+        <div class="footer-segment">
+            <RouterLink to="settings">
+                {{ t('preferences.settings') }}
+            </RouterLink>
+        </div>
+        <div class="footer-segment">
+            <div class="copyright-note">
+                &copy; {{ copyrightPeriod }} Seekra
+            </div>
         </div>
     </footer>
 </template>
 
 <style scoped>
 .global-footer {
-    --padding-y: 22px;
-    display: flex;
-    justify-content: center;
+    --padding-y: 16px;
+}
+
+.footer-segment {
     padding: var(--padding-y);
-    margin-top: var(--padding-y);
     background-color: var(--light-bg);
     border-top: 1px solid var(--border);
+}
+
+.copyright-note {
+    display: flex;
+    justify-content: center;
 }
 </style>

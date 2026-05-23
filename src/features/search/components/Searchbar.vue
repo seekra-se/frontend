@@ -36,18 +36,20 @@ const submitSearch = function () {
 </script>
 
 <template>
-    <form @submit.prevent="submitSearch">
-        <div class="search-wrapper">
-            <input
+    <div>
+        <form @submit.prevent="submitSearch">
+            <div class="search-wrapper">
+                <input
                 v-model="searchQuery"
                 type="search"
                 :placeholder="t('search.searchBar.placeholder')"
                 required
-            />
-            <button type="submit" class="search-button">{{ t('search.searchBar.submit') }}</button>
-        </div>
-    </form>
-    </template>
+                />
+                <button type="submit" class="search-button">{{ t('search.searchBar.submit') }}</button>
+            </div>
+        </form>
+    </div>
+</template>
 
 <style scoped>
 .search-wrapper {
