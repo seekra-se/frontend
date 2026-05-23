@@ -1,5 +1,5 @@
 <script setup>
-import BaseLayout from '@/layouts/BaseLayout.vue';
+import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 
 import { useI18n } from 'vue-i18n';
 
