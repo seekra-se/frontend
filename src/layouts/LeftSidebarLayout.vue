@@ -17,6 +17,7 @@ import Sidebar from '@/features/sidebar/components/Sidebar.vue';
 .layout-container {
     display: grid;
     grid-template-columns: min(24%, 280px) 1fr;
+    border-top: 1px solid var(--border);
 }
 
 .main-content {
