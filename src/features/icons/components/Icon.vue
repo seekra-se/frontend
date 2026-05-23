@@ -16,6 +16,7 @@ limitations under the License.
 
 <script setup>
 import { computed } from 'vue';
+import { ensureUnit } from '@/utils/cssDimensions';
 
 const props = defineProps({
     name: {
@@ -34,8 +35,10 @@ const icons = import.meta.glob('@/assets/icons/*.svg', {
 })
 
 const Icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`])
+
+const size = computed(() => ensureUnit(props.size))
 </script>
 
 <template>
-    <img :src="Icon" :style="{ height: `${props.size}px`, width: `${props.size}px` }" />
+    <img :src="Icon" :style="{ height: `${size}`, width: `${size}` }" />
 </template>
