@@ -48,7 +48,6 @@ const copyrightPeriod =
 <style scoped>
 .global-footer {
     --padding-y: 16px;
-    margin-top: var(--padding-y);
 }
 
 .footer-segment {
