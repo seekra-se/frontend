@@ -21,6 +21,10 @@ const props = defineProps({
     name: {
         required: true,
         type: String
+    },
+    size: {
+        type: [Number, String],
+        default: 24
     }
 })
 
@@ -33,5 +37,5 @@ const Icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`])
 </script>
 
 <template>
-    <img :src="Icon" />
+    <img :src="Icon" :style="{ height: `${props.size}px`, width: `${props.size}px` }" />
 </template>
