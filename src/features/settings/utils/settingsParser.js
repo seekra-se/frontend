@@ -17,21 +17,16 @@ limitations under the License.
 import { validateSettingsConfig } from './settingsValidator.js';
 
 /**
- * Loads and parses the settings configuration from a JSON file.
- * @param {string} [url='/settings.json']
+ * Loads and parses the settings configuration via dynamic import.
  * @returns {Promise<import('../types/settingsConfig').SettingsConfig>}
  */
-export async function loadSettingsConfig(url = '/settings.json') {
+export async function loadSettingsConfig() {
     let raw;
 
     try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-        raw = await response.json();
+        raw = (await import('../settings.json')).default;
     } catch (e) {
-        throw new Error(`[settings] Failed to load config from "${url}": ${e.message}`);
+        throw new Error(`[settings] Failed to load settings.json: ${e.message}`);
     }
 
     const result = validateSettingsConfig(raw);
