@@ -69,3 +69,12 @@ limitations under the License.
  * @typedef {Object} SettingsConfig
  * @property {SettingConfigEntry[]} contents
  */
+/**
+ * @typedef {{ type: 'bool', name: string, i18n: string, description?: string, default: boolean }} BoolSettingConfig
+ * @typedef {{ type: 'number', name: string, i18n: string, description?: string, default: number }} NumberSettingConfig
+ * @typedef {{ type: 'string', name: string, i18n: string, description?: string, default: string }} StringSettingConfig
+ * @typedef {{ type: 'selection', name: string, i18n: string, description?: string, default: string | string[], allowMultiple?: boolean, options: SelectionOption[] }} SelectionSettingConfig
+ * @typedef {{ type: 'section', name: string, i18n?: string, description?: string, content: SettingConfigEntry[] }} SectionSettingConfig
+ * @typedef {BoolSettingConfig | NumberSettingConfig | StringSettingConfig | SelectionSettingConfig | SectionSettingConfig} SettingConfigEntry
+ * @typedef {{ contents: SettingConfigEntry[] }} SettingsConfig
+ */
