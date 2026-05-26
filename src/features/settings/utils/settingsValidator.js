@@ -57,24 +57,22 @@ function validateEntry(entry, path) {
     assertString(entry.name, `${path}.name`);
     assertString(entry.i18n, `${path}.i18n`);
 
-    if (entry.default === undefined) {
-        throw new Error(`[settings] "${path}.default" is required`);
-    }
-
-    if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
-        throw new Error(`[settings] "${path}.default" must be a boolean`);
-    }
-    if (entry.type === 'number' && typeof entry.default !== 'number') {
-        throw new Error(`[settings] "${path}.default" must be a number`);
-    }
-    if (entry.type === 'string' && typeof entry.default !== 'string') {
-        throw new Error(`[settings] "${path}.default" must be a string`);
-    }
-    if (entry.type === 'selection') {
-        validateSelectionOptions(entry.options, path);
-        if (typeof entry.allowMultiple !== 'boolean') {
-            throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
-        }
+    if (entry.default !== undefined) {
+        if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
+             throw new Error(`[settings] "${path}.default" must be a boolean`);
+         }
+         if (entry.type === 'number' && typeof entry.default !== 'number') {
+             throw new Error(`[settings] "${path}.default" must be a number`);
+         }
+         if (entry.type === 'string' && typeof entry.default !== 'string') {
+             throw new Error(`[settings] "${path}.default" must be a string`);
+         }
+         if (entry.type === 'selection') {
+             validateSelectionOptions(entry.options, path);
+             if (typeof entry.allowMultiple !== 'boolean') {
+                 throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
+             }
+         }
     }
 }
 
