@@ -1,0 +1,101 @@
+/*
+Copyright 2026 Seekra
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+const VALID_TYPES = ['bool', 'number', 'string', 'selection', 'section'];
+
+function assertString(value, path) {
+    if (typeof value !== 'string' || value.trim() === '') {
+        throw new Error(`[settings] "${path}" must be a non-empty string`);
+    }
+}
+
+function assertType(value, path) {
+    if (!VALID_TYPES.includes(value)) {
+        throw new Error(
+            `[settings] "${path}" has invalid type "${value}". Must be one of: ${VALID_TYPES.join(', ')}`
+        );
+    }
+}
+
+function validateSelectionOptions(options, path) {
+    if (!Array.isArray(options) || options.length === 0) {
+        throw new Error(`[settings] "${path}.options" must be a non-empty array`);
+    }
+    options.forEach((opt, i) => {
+        assertString(opt.name, `${path}.options[${i}].name`);
+        assertString(opt.i18n, `${path}.options[${i}].i18n`);
+    });
+}
+
+function validateEntry(entry, path) {
+    assertType(entry.type, `${path}.type`);
+
+    if (entry.type === 'section') {
+        assertString(entry.name, `${path}.name`);
+        if (!Array.isArray(entry.content)) {
+            throw new Error(`[settings] "${path}.content" must be an array`);
+        }
+        entry.content.forEach((child, i) =>
+            validateEntry(child, `${path}.content[${i}]`)
+        );
+        return;
+    }
+
+    assertString(entry.name, `${path}.name`);
+    assertString(entry.i18n, `${path}.i18n`);
+
+    if (entry.default === undefined) {
+        throw new Error(`[settings] "${path}.default" is required`);
+    }
+
+    if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
+        throw new Error(`[settings] "${path}.default" must be a boolean`);
+    }
+    if (entry.type === 'number' && typeof entry.default !== 'number') {
+        throw new Error(`[settings] "${path}.default" must be a number`);
+    }
+    if (entry.type === 'string' && typeof entry.default !== 'string') {
+        throw new Error(`[settings] "${path}.default" must be a string`);
+    }
+    if (entry.type === 'selection') {
+        validateSelectionOptions(entry.options, path);
+        if (typeof entry.allowMultiple !== 'boolean') {
+            throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
+        }
+    }
+}
+
+/**
+ * Validates a raw settings config object.
+ * @param {unknown} raw
+ * @returns {{ valid: true, config: import('../types/settingsConfig').SettingsConfig } | { valid: false, error: string }}
+ */
+export function validateSettingsConfig(raw) {
+    try {
+        if (!raw || typeof raw !== 'object') {
+            throw new Error('[settings] Config must be an object');
+        }
+        if (!Array.isArray(raw.contents)) {
+            throw new Error('[settings] "contents" must be an array');
+        }
+        raw.contents.forEach((entry, i) =>
+            validateEntry(entry, `contents[${i}]`)
+        );
+        return { valid: true, config: raw };
+    } catch (e) {
+        return { valid: false, error: e.message };
+    }
+}
