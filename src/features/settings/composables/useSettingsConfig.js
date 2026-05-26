@@ -26,11 +26,11 @@ const loading = ref(false);
  * The config is loaded once and shared across all consumers.
  */
 export function useSettingsConfig() {
-    async function load(url = '/settings.json') {
+    async function load() {
         loading.value = true;
         error.value   = null;
         try {
-            config.value = await loadSettingsConfig(url);
+            config.value = await loadSettingsConfig();
         } catch (e) {
             error.value  = e.message;
             config.value = null;
