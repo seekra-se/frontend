@@ -33,18 +33,6 @@ limitations under the License.
  */
 
 /**
- * @typedef {BaseSettingConfig & { default: boolean }} BoolSettingConfig
- */
-
-/**
- * @typedef {BaseSettingConfig & { default: number }} NumberSettingConfig
- */
-
-/**
- * @typedef {BaseSettingConfig & { default: string }} StringSettingConfig
- */
-
-/**
  * @typedef {BaseSettingConfig & {
  *   default: string | string[],
  *   allowMultiple: boolean,
