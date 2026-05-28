@@ -56,6 +56,10 @@ const copyrightPeriod =
     border-top: 1px solid var(--border);
 }
 
+.global-footer a {
+    color: var(--dark);
+}
+
 .copyright-note {
     display: flex;
     justify-content: center;
