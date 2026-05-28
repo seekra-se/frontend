@@ -33,7 +33,7 @@ const copyrightPeriod =
 <template>
     <footer class="global-footer">
         <div class="footer-segment">
-            <RouterLink to="settings">
+            <RouterLink to="settings" class="link">
                 {{ t('preferences.settings') }}
             </RouterLink>
         </div>
