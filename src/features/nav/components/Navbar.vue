@@ -63,7 +63,7 @@ watch(() => route.query.q, q => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 40px;
+    padding: 18px 40px;
     height: 42px;
 }
 
