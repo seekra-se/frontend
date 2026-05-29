@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import Searchbar from '@/features/search/components/Searchbar.vue';
+import Searchbar from '@/features/nav/components/Searchbar-SearchResults.vue';
 
 import { useI18n } from 'vue-i18n';
 
