@@ -33,7 +33,7 @@ const copyrightPeriod =
 <template>
     <footer class="global-footer">
         <div class="footer-segment">
-            <RouterLink to="settings">
+            <RouterLink to="settings" class="link">
                 {{ t('preferences.settings') }}
             </RouterLink>
         </div>
@@ -54,6 +54,10 @@ const copyrightPeriod =
     padding: var(--padding-y);
     background-color: var(--light-bg);
     border-top: 1px solid var(--border);
+}
+
+.global-footer a {
+    color: var(--dark);
 }
 
 .copyright-note {
