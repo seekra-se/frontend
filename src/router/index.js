@@ -21,6 +21,7 @@ import SearchView from '../views/SearchView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
 import SettingsView from '@/features/settings/views/SettingsView.vue';
 import NotFound from '../views/NotFound.vue';
+import PrivacyPolicy from '@/views/legal/PrivacyPolicy.vue';
 
 const routes = [
     {
@@ -52,6 +53,15 @@ const routes = [
         name: 'notFound',
         component: NotFound
     },
+    {
+    path: '/privacy',
+    name: 'privacyPolicy',
+    component: PrivacyPolicy,
+    meta: {
+        title: () => 'Privacy Policy'
+    }
+    },
+
 ];
 
 const router = createRouter({
