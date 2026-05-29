@@ -64,6 +64,7 @@ watch(() => route.query.q, q => {
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
+    height: 42px;
 }
 
 .global-nav .right-links {
