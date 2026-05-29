@@ -20,7 +20,7 @@ import { useRoute } from 'vue-router';
 import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
 import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
 import logo from '@/assets/images/logo.svg';
-import Searchbar from '@/features/nav/components/Searchbar-SearchResults.vue';
+import Searchbar from '@/features/search/components/Searchbar.vue';
 
 const route = useRoute();
 const searchQueryModel = ref(route.name === 'searchResults' ? route.query.q || '' : '');
