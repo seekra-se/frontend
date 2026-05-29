@@ -37,5 +37,11 @@
             }
         }
     },
-    "slogan": "Hecho para buscar."
+    "slogan": "Hecho para buscar.",
+    
+    "legal": {
+    "privacy": {
+      "title": "Política de Privacidad"
+    }
+  }
 }

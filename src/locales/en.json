@@ -37,5 +37,10 @@
             }
         }
     },
-    "slogan": "Built to search."
+    "slogan": "Built to search.",
+    "legal": {
+    "privacy": {
+      "title": "Privacy Policy"
+    }
+  }
 }

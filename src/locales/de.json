@@ -37,5 +37,11 @@
             }
         }
     },
-    "slogan": "Gebaut zum Suchen."
+ "slogan": "Gebaut zum Suchen.",
+
+  "legal": {
+    "privacy": {
+      "title": "Datenschutzerklärung"
+    }
+  }
 }

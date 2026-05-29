@@ -16,28 +16,54 @@ limitations under the License.
 -->
 
 <script setup>
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+// 1. ALLE Sprachen importieren (Verhindert den ReferenceError)
+import de from '@/legal/privacy/de.md?raw';
+import en from '@/legal/privacy/en.md?raw';
+import fr from '@/legal/privacy/fr.md?raw';
+import es from '@/legal/privacy/es.md?raw';
+import it from '@/legal/privacy/it.md?raw';
+import pt from '@/legal/privacy/pt.md?raw';
+
+const { locale } = useI18n();
+
+const content = computed(() => {
+  const map = {
+    de,
+    en,
+    fr,
+    es,
+    it,
+    pt
+  };
+
+  // Falls eine Sprache mal nicht existiert, nutzen wir 'de' oder 'en' als Fallback
+  return map[locale.value] || de;
+});
 </script>
 
 <template>
   <main class="privacy-policy-content main-content-padding">
-    <h1>Privacy Policy</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h1>{{ $t('legal.privacy.title') }}</h1>
+
+    <div class="markdown-body">{{ content }}</div>
   </main>
 </template>
 
 <style scoped>
-.privacy-policy-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+.privacy-policy-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
-.privacy-policy-content {
-    flex: 1;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
+/* Sorgt dafür, dass die Zeilenumbrüche aus den .md Dateien erhalten bleiben */
+.markdown-body {
+  white-space: pre-wrap;
+  font-family: inherit;
+  line-height: 1.6;
 }
 </style>

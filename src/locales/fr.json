@@ -37,5 +37,11 @@
             }
         }
     },
-    "slogan": "Conçu pour chercher."
+    "slogan": "Conçu pour chercher.",
+    
+    "legal": {
+    "privacy": {
+      "title": "Politique de Confidentialité"
+    }
+  }
 }
