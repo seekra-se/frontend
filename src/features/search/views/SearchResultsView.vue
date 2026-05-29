@@ -21,7 +21,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <div class="main-content-padding">        
+    <div class="main-content-padding">
         <div class="search-results-error-message-container">
             <div class="search-results-error-message">
                 <p>{{ t('search.error.searchNotAvailable') }}</p>
