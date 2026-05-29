@@ -23,7 +23,7 @@ import logo from '@/assets/images/logo.svg';
 import Searchbar from '@/features/search/components/Searchbar.vue';
 
 const route = useRoute();
-const searchQueryModel = ref(route.name === 'searchResults' ? route.query.q || '' : '');
+const searchQueryModel = defineModel();
 
 watch(() => route.name, name => {
     searchQueryModel.value = name === 'searchResults' ? route.query.q || '' : '';
