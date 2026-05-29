@@ -15,22 +15,13 @@ limitations under the License.
 -->
 
 <script setup>
-import Searchbar from '@/features/nav/components/Searchbar-SearchResults.vue';
-
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
-
-const props = defineProps(['searchQuery']);
-
-const searchQueryModel = defineModel();
-searchQueryModel.value = props.searchQuery;
 </script>
 
 <template>
-    <div class="main-content-padding">
-        <Searchbar class="search-bar" v-model="searchQueryModel" auto-submit />
-        
+    <div class="main-content-padding">        
         <div class="search-results-error-message-container">
             <div class="search-results-error-message">
                 <p>{{ t('search.error.searchNotAvailable') }}</p>
