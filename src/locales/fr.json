@@ -38,10 +38,10 @@
         }
     },
     "slogan": "Conçu pour chercher.",
-    
+
     "legal": {
-    "privacy": {
-      "title": "Politique de Confidentialité"
-    }
-  }
+        "privacy": {
+            "title": "Politique de Confidentialité"
+        }
+     }
 }

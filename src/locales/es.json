@@ -38,10 +38,10 @@
         }
     },
     "slogan": "Hecho para buscar.",
-    
+
     "legal": {
-    "privacy": {
-      "title": "Política de Privacidad"
+        "privacy": {
+            "title": "Política de Privacidad"
+        }
     }
-  }
 }

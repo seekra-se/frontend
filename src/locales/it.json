@@ -38,10 +38,10 @@
         }
     },
     "slogan": "Costruito per cercare.",
-    
+
     "legal": {
-    "privacy": {
-      "title": "Politica di Privacy"
+        "privacy": {
+            "title": "Politica di Privacy"
+        }
     }
-  }
 }

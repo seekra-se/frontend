@@ -38,9 +38,10 @@
         }
     },
     "slogan": "Built to search.",
+
     "legal": {
-    "privacy": {
-      "title": "Privacy Policy"
+        "privacy": {
+            "title": "Privacy Policy"
+        }
     }
-  }
 }
