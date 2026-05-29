@@ -21,7 +21,7 @@ import SearchView from '../views/SearchView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
 import SettingsView from '@/features/settings/views/SettingsView.vue';
 import NotFound from '../views/NotFound.vue';
-import PrivacyPolicy from '@/views/legal/PrivacyPolicy.vue';
+import PrivacyPolicyView from '@/features/legal/views/PrivacyPolicyView.vue';
 
 const routes = [
     {
@@ -56,7 +56,7 @@ const routes = [
     {
     path: '/privacy',
     name: 'privacyPolicy',
-    component: PrivacyPolicy,
+    component: PrivacyPolicyView,
     meta: {
         title: () => 'Privacy Policy'
     }
