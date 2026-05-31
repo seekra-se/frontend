@@ -49,5 +49,6 @@ const size = computed(() => ensureUnit(props.size))
 .icon-container {
     display: flex;
     align-items: center;
+    filter: var(--invert);
 }
 </style>
