@@ -82,6 +82,8 @@ limitations under the License.
     --blue-box-shadow:    oklch(0.52 0.15 268 / 0.25);
 
     --light-hover:          var(--light-d-2);
+
+    --invert: invert(0);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -114,6 +116,8 @@ limitations under the License.
         --gray-box-shadow:    oklch(0.25 0.0001 271 / 0.7);
 
         --light-hover:          var(--light-d-5);
+
+        --invert: invert(1);
     }
 }
 
@@ -146,4 +150,6 @@ limitations under the License.
     --gray-box-shadow:    oklch(0.25 0.0001 271 / 0.7);
 
     --light-hover:          var(--light-d-5);
+
+    --invert: invert(1);
 }
