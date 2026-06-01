@@ -83,6 +83,7 @@ const submitSearch = function () {
 .search-button {
     font-size: 1rem;
     height: calc(var(--content-height) + 2 * var(--submit-button-padding-y));
+    width: calc(var(--content-height) + 2 * var(--submit-button-padding-y));
     border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y));
     border: none;
     padding: var(--submit-button-padding-y) 20px;
@@ -90,6 +91,9 @@ const submitSearch = function () {
     color: var(--white);
     cursor: pointer;
     white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-button:hover {
