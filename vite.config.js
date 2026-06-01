@@ -21,6 +21,9 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    target: 'es2020'
+  },
   plugins: [
     vue(),
     createHtmlPlugin({
