@@ -16,10 +16,15 @@ limitations under the License.
 
 <script setup>
 import Searchbar from '@/features/search/components/Searchbar.vue';
+
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 </script>
 
 <template>
     <Searchbar
+        v-if="route.name === 'searchResults'"
         auto-submit
     />
 </template>
