@@ -15,6 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
+import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
+
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -36,6 +38,7 @@ const copyrightPeriod =
             <RouterLink to="settings" class="link">
                 {{ t('preferences.settings') }}
             </RouterLink>
+            <LanguageSwitchButton />
         </div>
         <div class="footer-segment">
             <div class="copyright-note">
