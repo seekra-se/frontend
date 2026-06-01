@@ -15,6 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
+import Icon from '@/features/icons/components/Icon.vue';
+
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { loadLanguage, LANGUAGES_RTL, SUPPORTED_LANGUAGES } from '@/i18n';
@@ -64,7 +66,9 @@ const open = function () {
             aria-haspopup="listbox"
         >
             <span class="lang-code">{{ t(`preferences.locale.languages.${locale}`) }}</span>
-            <span class="chevron" :class="{ open: isOpen }">▾</span>
+            <span class="chevron" :class="{ open: isOpen }">
+                <Icon name="chevron-down" size="1em" />
+            </span>
         </button>
 
         <ul v-if="isOpen" ref="languageDropdown" class="language-dropdown" role="listbox">

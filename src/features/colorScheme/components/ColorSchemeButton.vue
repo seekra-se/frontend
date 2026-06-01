@@ -15,6 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
+import Icon from '@/features/icons/components/Icon.vue';
+
 import { inject } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -29,9 +31,9 @@ const colorSchemeNextMapper = {
 };
 
 const colorSchemeIconMapper = {
-    'dark': '⏾',
-    'light': '☀',
-    'auto': '◐'
+    'dark': 'crescent-moon',
+    'light': 'sun',
+    'auto': 'circle-black-white'
 };
 
 const getTooltipTranslation = function (colorScheme) {
@@ -45,7 +47,10 @@ const getTooltipTranslation = function (colorScheme) {
         :aria-label="getTooltipTranslation(colorScheme)"
         :title="getTooltipTranslation(colorScheme)"
     >
-        {{ colorSchemeIconMapper[colorSchemeNextMapper[colorScheme]] }}
+        <Icon
+            :name="colorSchemeIconMapper[colorSchemeNextMapper[colorScheme]]"
+            size="16"
+        />
     </button>
 </template>
 

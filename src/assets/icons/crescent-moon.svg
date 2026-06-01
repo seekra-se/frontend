@@ -1,0 +1,36 @@
+<!--
+Copyright 2026 Seekra
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+    <path
+        fill="currentColor"
+        stroke="none"
+        stroke-width="0"
+        d="
+            M12.621094 23.988281
+            c-6.960938 0 -12.621094 -5.664062000000001 -12.621094 -12.621093
+            c0 -4.8203130000000005 2.683594 -9.148438 7.003906 -11.300781800000001
+            c0.19140600000000063 -0.09765619999999942 0.4257819999999999 -0.058593699999999416 0.578125 0.09374980000000058
+            c0.15234400000000026 0.152344 0.19531300000000051 0.38671900000000003 0.09765699999999988 0.582032
+            c-0.7890629999999996 1.601562 -1.1875 3.320312 -1.1875 5.113281000000001
+            c0.0 6.402342999999999 5.207031 11.613281 11.609374000000003 11.613281
+            c1.8125 0.0 3.550781999999998 -0.41015600000000063 5.167968999999999 -1.2148439999999994
+            c0.19531299999999874 -0.09765600000000063 0.42968799999999874 -0.05859399999999937 0.5820310000000006 0.09375
+            c0.15234399999999937 0.15234399999999937 0.1914069999999981 0.38671899999999937 0.0976569999999981 0.5820319999999981
+            c-2.140625 4.351562000000001 -6.480468999999999 7.058593000000002 -11.328125 7.058593000000002
+        "
+    />
+</svg>
