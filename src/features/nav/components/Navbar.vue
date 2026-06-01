@@ -36,6 +36,7 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
             </li>
         </ul>
     </nav>
+    <NavbarSearchBarWrapper class="navbar-search-bar-wrapper-small-screens" />
 </template>
 
 <style scoped>
@@ -70,9 +71,17 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
     width: auto;
 }
 
+.navbar-search-bar-wrapper-small-screens {
+    display: none;
+}
+
 @media (max-width: 48rem) {
     .navbar-search-bar-wrapper {
         display: none;
+    }
+
+    .navbar-search-bar-wrapper-small-screens {
+        display: block;
     }
 }
 </style>
