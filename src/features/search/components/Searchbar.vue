@@ -47,7 +47,11 @@ const submitSearch = function () {
                 :placeholder="t('search.searchBar.placeholder')"
                 required
                 />
-                <button type="submit" class="search-button">
+                <button
+                    type="submit"
+                    class="search-button"
+                    :title="t('search.searchBar.submit')"
+                >
                     <Icon class="search-icon" name="magnifying-glass" size="1.1em" />
                 </button>
             </div>
