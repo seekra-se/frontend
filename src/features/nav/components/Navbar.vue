@@ -75,6 +75,7 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
 
 .navbar-search-bar-wrapper {
     width: 100%;
+    padding: 0 30px;
 }
 
 .navbar-search-bar-wrapper-small-screens-wrapper {
