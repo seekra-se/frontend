@@ -48,7 +48,7 @@ const submitSearch = function () {
                 required
                 />
                 <button type="submit" class="search-button">
-                    <Icon name="magnifying-glass" size="1.1em" />
+                    <Icon class="search-icon" name="magnifying-glass" size="1.1em" />
                 </button>
             </div>
         </form>
@@ -94,6 +94,10 @@ const submitSearch = function () {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.search-button .search-icon {
+    filter: invert(1);
 }
 
 .search-button:hover {
