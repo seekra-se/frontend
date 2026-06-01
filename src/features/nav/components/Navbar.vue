@@ -16,7 +16,6 @@ limitations under the License.
 
 <script setup>
 import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
-import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
 import logo from '@/assets/images/logo.svg';
 import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
 </script>
@@ -28,9 +27,6 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
         </RouterLink>
         <NavbarSearchBarWrapper class="navbar-search-bar-wrapper" />
         <ul class="right-links">
-            <li>
-                <LanguageSwitchButton />
-            </li>
             <li>
                 <ColorSchemeButton />
             </li>
