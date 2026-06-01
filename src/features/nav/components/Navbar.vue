@@ -15,25 +15,10 @@ limitations under the License.
 -->
 
 <script setup>
-import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
 import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
 import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
 import logo from '@/assets/images/logo.svg';
-import Searchbar from '@/features/search/components/Searchbar.vue';
-
-const route = useRoute();
-const searchQueryModel = defineModel();
-
-watch(() => route.name, name => {
-    searchQueryModel.value = name === 'searchResults' ? route.query.q || '' : '';
-});
-
-watch(() => route.query.q, q => {
-    if (route.name === 'searchResults') {
-        searchQueryModel.value = q || '';
-    }
-});
+import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
 </script>
 
 <template>
@@ -41,12 +26,7 @@ watch(() => route.query.q, q => {
         <RouterLink to="/" class="link button link">
             <img :src="logo" alt="Seekra" class="nav-logo" />
         </RouterLink>
-        <Searchbar
-            v-if="route.name === 'searchResults'"
-            class="search-bar"
-            v-model="searchQueryModel"
-            auto-submit
-        />
+        <NavbarSearchBarWrapper />
         <ul class="right-links">
             <li>
                 <LanguageSwitchButton />
@@ -88,8 +68,5 @@ watch(() => route.query.q, q => {
 .nav-logo {
     height: 24px;
     width: auto;
-}
-.search-bar {
-    width: 70%;
 }
 </style>
