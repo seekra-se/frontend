@@ -39,7 +39,7 @@ const submitSearch = function () {
 
 <template>
     <div>
-        <form @submit.prevent="submitSearch">
+        <form @submit.prevent="submitSearch" class="search-form">
             <div class="search-wrapper">
                 <input
                 v-model="searchQuery"
@@ -107,5 +107,9 @@ const submitSearch = function () {
 
 .search-button:hover {
     background: var(--primary-color-l-1);
+}
+
+.search-form {
+    width: 100%;
 }
 </style>
