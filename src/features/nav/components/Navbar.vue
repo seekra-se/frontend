@@ -26,7 +26,7 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
         <RouterLink to="/" class="link button link">
             <img :src="logo" alt="Seekra" class="nav-logo" />
         </RouterLink>
-        <NavbarSearchBarWrapper />
+        <NavbarSearchBarWrapper class="navbar-search-bar-wrapper" />
         <ul class="right-links">
             <li>
                 <LanguageSwitchButton />
@@ -68,5 +68,11 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
 .nav-logo {
     height: 24px;
     width: auto;
+}
+
+@media (max-width: 48rem) {
+    .navbar-search-bar-wrapper {
+        display: none;
+    }
 }
 </style>
