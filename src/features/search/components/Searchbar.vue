@@ -15,6 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
+import Icon from '@/features/icons/components/Icon.vue';
+
 const searchQuery = defineModel();
 
 import { useRouter } from 'vue-router';
@@ -45,7 +47,9 @@ const submitSearch = function () {
                 :placeholder="t('search.searchBar.placeholder')"
                 required
                 />
-                <button type="submit" class="search-button">{{ t('search.searchBar.submit') }}</button>
+                <button type="submit" class="search-button">
+                    <Icon name="magnifying-glass" size="1.1em" />
+                </button>
             </div>
         </form>
     </div>
