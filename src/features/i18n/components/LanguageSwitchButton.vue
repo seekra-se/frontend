@@ -88,6 +88,7 @@ const open = function () {
 
 <style scoped>
 .language-switch {
+    --trigger-padding-y: 4px;
     position: relative;
 }
 
@@ -98,7 +99,7 @@ const open = function () {
     background: none;
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 4px 10px;
+    padding: var(--trigger-padding-y) 10px;
     cursor: pointer;
     color: var(--dark);
 }
