@@ -49,6 +49,12 @@ watch(colorScheme, val => updateColorScheme(val))
     flex-grow: 1;
 }
 
+@media (max-width: 48rem) {
+    .main-content {
+        --main-content-padding-x: 15px;
+    }
+}
+
 #app-wrapper {
     min-height: 100vh;
     display: flex;
