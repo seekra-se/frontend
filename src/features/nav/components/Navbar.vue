@@ -73,6 +73,10 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
     width: auto;
 }
 
+.navbar-search-bar-wrapper {
+    width: 100%;
+}
+
 .navbar-search-bar-wrapper-small-screens-wrapper {
     padding: 0 15px 15px;
 }
