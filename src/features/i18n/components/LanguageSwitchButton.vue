@@ -71,7 +71,15 @@ const open = function () {
             </span>
         </button>
 
-        <ul v-if="isOpen" ref="languageDropdown" class="language-dropdown" role="listbox">
+        <ul
+            v-if="isOpen"
+            ref="languageDropdown"
+            class="language-dropdown"
+            role="listbox"
+            :style="{
+                bottom: 'calc(var(--offset) + 2 * var(--trigger-padding-y) + 1em)' // easier to add auto adaption to the available space
+            }"
+        >
             <li
                 v-for="lang in SUPPORTED_LANGUAGES"
                 :key="lang"
@@ -119,9 +127,9 @@ const open = function () {
 }
 
 .language-dropdown {
+    --offset: 6px;
     position: absolute;
     right: 0;
-    top: calc(100% + 6px);
     background-color: var(--light-bg);
     border: 1px solid var(--border);
     border-radius: 8px;
