@@ -51,6 +51,7 @@ const submitSearch = function () {
                     type="submit"
                     class="search-button"
                     :title="t('search.searchBar.submit')"
+                    :aria-label="t('search.searchBar.submit')"
                 >
                     <Icon class="search-icon" name="magnifying-glass" size="1.1em" />
                 </button>
