@@ -17,5 +17,8 @@ limitations under the License.
 import { test } from 'vitest';
 
 test.for([
+    ['en', 'en'],
+    ['de', 'de'],
+    ['fr', 'fr']
 ])('returns the language \'%s\'', ([locale, language]) => {
 });
