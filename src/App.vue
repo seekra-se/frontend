@@ -45,7 +45,7 @@ watch(colorScheme, val => updateColorScheme(val))
 .main-content {
     --main-content-padding-x: 30px;
     --main-content-padding-y: 40px;
-    --main-content-padding: var(--main-content-padding-y) var(--main-content-padding-x) 0;
+    --main-content-padding: var(--main-content-padding-y) var(--main-content-padding-x);
     flex-grow: 1;
 }
 
