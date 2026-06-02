@@ -53,9 +53,7 @@ const { t } = useI18n();
     --error-message-padding: 2em;
     display: flex;
     justify-content: center;
-    width: calc(100% - 2 * var(--main-content-padding-x));
-    position: absolute;
-    top: calc(50vh - 0.5 * var(--error-message-height) - var(--error-message-padding));
+    width: 100%;
 }
 
 .search-results-error-message {
