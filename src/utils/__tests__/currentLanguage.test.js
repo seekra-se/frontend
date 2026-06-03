@@ -41,13 +41,6 @@ const locales = [
     { navigatorLanguage: 'zh-Hant-TW-u-co-phonebk', expected: 'zh'}
 ];
 
-const localStorageLanguages = [
-    ['en', 'en'],
-    ['de', 'de'],
-    ['fr', 'fr'],
-    [null, null]
-];
-
 test.for(locales)('returns the language $expected for navigator language $navigatorLanguage', ({ navigatorLanguage, expected }) => {
     Object.defineProperty(navigator, 'language', {
         value: navigatorLanguage,
