@@ -19,6 +19,16 @@ import { test } from 'vitest';
 test.for([
     ['en', 'en'],
     ['de', 'de'],
-    ['fr', 'fr']
+    ['fr', 'fr'],
+
+    ['en-US', 'en'],
+    ['en-AU', 'en'],
+    ['de-DE', 'de'],
+    ['fr-FR', 'fr'],
+
+    ['en-us', 'en'],
+    ['en-au', 'en'],
+    ['de-de', 'de'],
+    ['fr-fr', 'fr']
 ])('returns the language \'%s\'', ([locale, language]) => {
 });
