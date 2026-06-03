@@ -47,5 +47,9 @@ test.for(locales)('returns the language $expected for navigator language $naviga
         configurable: true
     });
 
+    if (localStorageLanguage) {
+        localStorage.setItem('locale', localStorageLanguage);
+    };
+
     expect(getCurrentLanguage()).toBe(expected);
 });
