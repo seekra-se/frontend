@@ -14,7 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { test } from 'vitest';
+import { expect, test } from 'vitest';
+import getCurrentLanguage from '../currentLanguage';
 
 test.for([
     ['en', 'en'],
@@ -43,4 +44,6 @@ test.for([
         value: language,
         configurable: true
     });
+
+    expect(getCurrentLanguage()).toBe(language)
 });
