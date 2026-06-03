@@ -18,30 +18,30 @@ import { expect, test } from 'vitest';
 import getCurrentLanguage from '../currentLanguage';
 
 const locales = [
-    { navigatorLanguage: 'en',                      expected: 'en'},
-    { navigatorLanguage: 'de',                      expected: 'de'},
-    { navigatorLanguage: 'fr',                      expected: 'fr'},
+    { navigatorLanguage: 'en',                      localStorageLanguage: null, expected: 'en'},
+    { navigatorLanguage: 'de',                      localStorageLanguage: null, expected: 'de'},
+    { navigatorLanguage: 'fr',                      localStorageLanguage: null, expected: 'fr'},
 
-    { navigatorLanguage: 'en-US',                   expected: 'en'},
-    { navigatorLanguage: 'en-AU',                   expected: 'en'},
-    { navigatorLanguage: 'de-DE',                   expected: 'de'},
-    { navigatorLanguage: 'fr-FR',                   expected: 'fr'},
+    { navigatorLanguage: 'en-US',                   localStorageLanguage: null, expected: 'en'},
+    { navigatorLanguage: 'en-AU',                   localStorageLanguage: null, expected: 'en'},
+    { navigatorLanguage: 'de-DE',                   localStorageLanguage: null, expected: 'de'},
+    { navigatorLanguage: 'fr-FR',                   localStorageLanguage: null, expected: 'fr'},
 
-    { navigatorLanguage: 'en-us',                   expected: 'en'},
-    { navigatorLanguage: 'en-au',                   expected: 'en'},
-    { navigatorLanguage: 'de-de',                   expected: 'de'},
-    { navigatorLanguage: 'fr-fr',                   expected: 'fr'},
+    { navigatorLanguage: 'en-us',                   localStorageLanguage: null, expected: 'en'},
+    { navigatorLanguage: 'en-au',                   localStorageLanguage: null, expected: 'en'},
+    { navigatorLanguage: 'de-de',                   localStorageLanguage: null, expected: 'de'},
+    { navigatorLanguage: 'fr-fr',                   localStorageLanguage: null, expected: 'fr'},
 
-    { navigatorLanguage: 'zh-Hans-CN',              expected: 'zh'},
-    { navigatorLanguage: 'zh-Hant-TW',              expected: 'zh'},
-    { navigatorLanguage: 'uz-Latn-UZ',              expected: 'uz'},
+    { navigatorLanguage: 'zh-Hans-CN',              localStorageLanguage: null, expected: 'zh'},
+    { navigatorLanguage: 'zh-Hant-TW',              localStorageLanguage: null, expected: 'zh'},
+    { navigatorLanguage: 'uz-Latn-UZ',              localStorageLanguage: null, expected: 'uz'},
 
-    { navigatorLanguage: 'en-US-u-ca-gregory',      expected: 'en'},
-    { navigatorLanguage: 'de-DE-u-co-phonebk',      expected: 'de'},
-    { navigatorLanguage: 'zh-Hant-TW-u-co-phonebk', expected: 'zh'}
+    { navigatorLanguage: 'en-US-u-ca-gregory',      localStorageLanguage: null, expected: 'en'},
+    { navigatorLanguage: 'de-DE-u-co-phonebk',      localStorageLanguage: null, expected: 'de'},
+    { navigatorLanguage: 'zh-Hant-TW-u-co-phonebk', localStorageLanguage: null, expected: 'zh'}
 ];
 
-test.for(locales)('returns the language $expected for navigator language $navigatorLanguage', ({ navigatorLanguage, expected }) => {
+test.for(locales)('returns the language $expected for navigator language $navigatorLanguage and local storage language $localStorageLanguage', ({ navigatorLanguage, localStorageLanguage, expected }) => {
     Object.defineProperty(navigator, 'language', {
         value: navigatorLanguage,
         configurable: true
