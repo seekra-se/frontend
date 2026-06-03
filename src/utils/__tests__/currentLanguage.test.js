@@ -33,6 +33,10 @@ test.for([
 
     ['zh-Hans-CN', 'zh'],
     ['zh-Hant-TW', 'zh'],
-    ['uz-Latn-UZ', 'uz']
+    ['uz-Latn-UZ', 'uz'],
+
+    ['en-US-u-ca-gregory', 'en'],
+    ['de-DE-u-co-phonebk', 'de'],
+    ['zh-Hant-TW-u-co-phonebk', 'zh']
 ])('returns the language \'%s\'', ([locale, language]) => {
 });
