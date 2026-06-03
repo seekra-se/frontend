@@ -17,5 +17,5 @@ limitations under the License.
 import { test } from 'vitest';
 
 test.for([
-])('ensureUnit returns %expected with input $dimension', () => {
+])('ensureUnit returns $expected with input $dimension', ({ dimension, expected }) => {
 });
