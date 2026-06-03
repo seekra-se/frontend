@@ -41,6 +41,13 @@ const locales = [
     ['zh-Hant-TW-u-co-phonebk', 'zh']
 ];
 
+const localStorageLanguages = [
+    ['en', 'en'],
+    ['de', 'de'],
+    ['fr', 'fr'],
+    [null, null]
+];
+
 test.for(locales)('returns the language \'%s\' for locale only set via navigator.language', ([locale, language]) => {
     Object.defineProperty(navigator, 'language', {
         value: locale,
