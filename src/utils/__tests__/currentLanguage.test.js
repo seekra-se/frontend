@@ -17,7 +17,7 @@ limitations under the License.
 import { expect, test } from 'vitest';
 import getCurrentLanguage from '../currentLanguage';
 
-test.for([
+const locales = [
     ['en', 'en'],
     ['de', 'de'],
     ['fr', 'fr'],
@@ -39,7 +39,9 @@ test.for([
     ['en-US-u-ca-gregory', 'en'],
     ['de-DE-u-co-phonebk', 'de'],
     ['zh-Hant-TW-u-co-phonebk', 'zh']
-])('returns the language \'%s\' for locale only set via navigator.language', ([locale, language]) => {
+];
+
+test.for(locales)('returns the language \'%s\' for locale only set via navigator.language', ([locale, language]) => {
     Object.defineProperty(navigator, 'language', {
         value: locale,
         configurable: true
