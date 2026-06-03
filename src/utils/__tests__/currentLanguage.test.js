@@ -39,4 +39,8 @@ test.for([
     ['de-DE-u-co-phonebk', 'de'],
     ['zh-Hant-TW-u-co-phonebk', 'zh']
 ])('returns the language \'%s\'', ([locale, language]) => {
+    Object.defineProperty(navigator, 'language', {
+        value: language,
+        configurable: true
+    });
 });
