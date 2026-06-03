@@ -41,7 +41,7 @@ test.for([
     ['zh-Hant-TW-u-co-phonebk', 'zh']
 ])('returns the language \'%s\' for locale only set via navigator.language', ([locale, language]) => {
     Object.defineProperty(navigator, 'language', {
-        value: language,
+        value: locale,
         configurable: true
     });
 
