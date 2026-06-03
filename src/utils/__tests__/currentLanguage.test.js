@@ -38,7 +38,13 @@ const locales = [
 
     { navigatorLanguage: 'en-US-u-ca-gregory',      localStorageLanguage: null, expected: 'en'},
     { navigatorLanguage: 'de-DE-u-co-phonebk',      localStorageLanguage: null, expected: 'de'},
-    { navigatorLanguage: 'zh-Hant-TW-u-co-phonebk', localStorageLanguage: null, expected: 'zh'}
+    { navigatorLanguage: 'zh-Hant-TW-u-co-phonebk', localStorageLanguage: null, expected: 'zh'},
+
+    { navigatorLanguage: 'en',                      localStorageLanguage: 'de', expected: 'de'},
+    { navigatorLanguage: 'de-DE',                   localStorageLanguage: 'en', expected: 'en'},
+    { navigatorLanguage: 'de-de',                   localStorageLanguage: 'en', expected: 'en'},
+    { navigatorLanguage: 'zh-Hans-CN',              localStorageLanguage: 'fr', expected: 'fr'},
+    { navigatorLanguage: 'en-US-u-ca-gregory',      localStorageLanguage: 'zh', expected: 'zh'}
 ];
 
 test.for(locales)('returns the language $expected for navigator language $navigatorLanguage and local storage language $localStorageLanguage', ({ navigatorLanguage, localStorageLanguage, expected }) => {
