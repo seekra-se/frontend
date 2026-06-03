@@ -18,6 +18,8 @@ import { expect,  test } from 'vitest';
 import { ensureUnit } from '../cssDimensions';
 
 test.for([
+    { dimension: null,      expected: '0px' },
+    { dimension: undefined, expected: '0px' }
 ])('ensureUnit returns $expected with input $dimension', ({ dimension, expected }) => {
     expect(ensureUnit(dimension)).toBe(expected);
 });
