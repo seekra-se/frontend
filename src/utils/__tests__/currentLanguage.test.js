@@ -18,27 +18,27 @@ import { expect, test } from 'vitest';
 import getCurrentLanguage from '../currentLanguage';
 
 const locales = [
-    ['en', 'en'],
-    ['de', 'de'],
-    ['fr', 'fr'],
+    { navigatorLanguage: 'en',                      expected: 'en'},
+    { navigatorLanguage: 'de',                      expected: 'de'},
+    { navigatorLanguage: 'fr',                      expected: 'fr'},
 
-    ['en-US', 'en'],
-    ['en-AU', 'en'],
-    ['de-DE', 'de'],
-    ['fr-FR', 'fr'],
+    { navigatorLanguage: 'en-US',                   expected: 'en'},
+    { navigatorLanguage: 'en-AU',                   expected: 'en'},
+    { navigatorLanguage: 'de-DE',                   expected: 'de'},
+    { navigatorLanguage: 'fr-FR',                   expected: 'fr'},
 
-    ['en-us', 'en'],
-    ['en-au', 'en'],
-    ['de-de', 'de'],
-    ['fr-fr', 'fr'],
+    { navigatorLanguage: 'en-us',                   expected: 'en'},
+    { navigatorLanguage: 'en-au',                   expected: 'en'},
+    { navigatorLanguage: 'de-de',                   expected: 'de'},
+    { navigatorLanguage: 'fr-fr',                   expected: 'fr'},
 
-    ['zh-Hans-CN', 'zh'],
-    ['zh-Hant-TW', 'zh'],
-    ['uz-Latn-UZ', 'uz'],
+    { navigatorLanguage: 'zh-Hans-CN',              expected: 'zh'},
+    { navigatorLanguage: 'zh-Hant-TW',              expected: 'zh'},
+    { navigatorLanguage: 'uz-Latn-UZ',              expected: 'uz'},
 
-    ['en-US-u-ca-gregory', 'en'],
-    ['de-DE-u-co-phonebk', 'de'],
-    ['zh-Hant-TW-u-co-phonebk', 'zh']
+    { navigatorLanguage: 'en-US-u-ca-gregory',      expected: 'en'},
+    { navigatorLanguage: 'de-DE-u-co-phonebk',      expected: 'de'},
+    { navigatorLanguage: 'zh-Hant-TW-u-co-phonebk', expected: 'zh'}
 ];
 
 const localStorageLanguages = [
@@ -48,11 +48,11 @@ const localStorageLanguages = [
     [null, null]
 ];
 
-test.for(locales)('returns the language \'%s\' for locale only set via navigator.language', ([locale, language]) => {
+test.for(locales)('returns the language $expected for navigator language $navigatorLanguage', ({ navigatorLanguage, expected }) => {
     Object.defineProperty(navigator, 'language', {
-        value: locale,
+        value: navigatorLanguage,
         configurable: true
     });
 
-    expect(getCurrentLanguage()).toBe(language)
+    expect(getCurrentLanguage()).toBe(expected);
 });
