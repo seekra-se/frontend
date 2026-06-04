@@ -83,6 +83,4 @@ const submitSearch = function () {
         width: 100%;
     }
 }
-
-
 </style>
