@@ -30,10 +30,10 @@ export const assertType = function assertType (value, path) {
     }
 }
 
-function validateSelectionOptions(options, path) {
+export const validateSelectionOptions = function validateSelectionOptions (options, path) {
     if (!Array.isArray(options) || options.length === 0) {
         throw new Error(`[settings] "${path}.options" must be a non-empty array`);
-    }
+    };
     options.forEach((opt, i) => {
         assertString(opt.name, `${path}.options[${i}].name`);
         assertString(opt.i18n, `${path}.options[${i}].i18n`);

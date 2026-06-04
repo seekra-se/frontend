@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 import { describe, test, expect } from 'vitest';
-import { assertType, assertString } from '../settingsValidator';
+import { validateSelectionOptions, assertType, assertString } from '../settingsValidator';
 
 describe('validateSettingsConfig', () => {
 
@@ -26,7 +26,13 @@ describe('validateEntry', () => {
 });
 
 describe('validateSelectionOptions', () => {
-
+    test.for([
+        [[{ name: 'test', i18n: 'test.label' }]],
+        [[{ name: 'test', i18n: 'test.label' }, { name: 'test2', i18n: 'test2.label' }]],
+        [[{ name: 'test', i18n: 'test.label' }, { name: 'test', i18n: 'test2.label' }, { name: 'test3', i18n: 'test.label' }]]
+    ])('throws no error for the options %s', ([ options ]) => {
+        expect(() => validateSelectionOptions(options)).not.throws(Error);
+    });
 });
 
 describe('assertType', () => {
