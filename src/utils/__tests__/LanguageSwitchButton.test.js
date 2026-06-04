@@ -46,3 +46,21 @@ describe('LanguageSwitchButton.vue', () => {
         document.documentElement.lang = '';
         document.documentElement.dir = '';
     });
+
+test('renders correctly with initial state closed', () => {
+        const wrapper = mount(LanguageSwitchButton);
+        
+        expect(wrapper.find('.language-button').exists()).toBe(true);
+        expect(wrapper.find('.language-dropdown').exists()).toBe(false);
+        expect(wrapper.find('.language-button').attributes('aria-expanded')).toBe('false');
+    });
+
+    test('opens the dropdown when language button is clicked', async () => {
+        const wrapper = mount(LanguageSwitchButton);
+        const button = wrapper.find('.language-button');
+        
+        await button.trigger('click');
+        
+        expect(wrapper.find('.language-dropdown').exists()).toBe(true);
+        expect(button.attributes('aria-expanded')).toBe('true');
+    });
