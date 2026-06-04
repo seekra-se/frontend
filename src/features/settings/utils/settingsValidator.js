@@ -55,7 +55,13 @@ export const validateEntry = function validateEntry (entry, path) {
         );
         return;
     }
-
+    
+    if (entry.type === 'selection') {
+        validateSelectionOptions(entry.options, path);
+        if (typeof entry.allowMultiple !== 'boolean' && entry.allowMultiple) {
+            throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
+        }
+    };
     if (entry.default !== undefined) {
         if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
             throw new Error(`[settings] "${path}.default" must be a boolean`);
@@ -65,12 +71,6 @@ export const validateEntry = function validateEntry (entry, path) {
         }
         if (entry.type === 'string' && typeof entry.default !== 'string') {
             throw new Error(`[settings] "${path}.default" must be a string`);
-        }
-    }
-    if (entry.type === 'selection') {
-        validateSelectionOptions(entry.options, path);
-        if (typeof entry.allowMultiple !== 'boolean' && entry.allowMultiple) {
-            throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
         }
     }
 }
