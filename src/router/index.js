@@ -43,6 +43,12 @@ const routes = [
         path: '/settings',
         name: 'settings',
         component: SettingsView,
+        children: [
+            {
+                path: ':rest(.*)',
+                component: SettingsView
+            }
+        ],
         meta: {
             title: () => i18n.global.t('preferences.settings')
         }
