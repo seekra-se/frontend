@@ -33,6 +33,17 @@ describe('validateSelectionOptions', () => {
     ])('throws no error for the options %s', ([ options ]) => {
         expect(() => validateSelectionOptions(options)).not.throws(Error);
     });
+
+    test.for([
+        [[{ name: '', i18n: 'test.label' }]],
+        [[{ name: 'test', i18n: '' }]],
+        [[{ name: '', i18n: '' }]],
+        [[{ name: '', i18n: 'test.label' }, { name: 'test2', i18n: '' }]],
+        [[{ name: 'test', i18n: '' }, { name: '', i18n: 'test2.label' }, { name: '', i18n: '  ' }, { name: '42', i18n: '42.i18n' }]],
+        [[]]
+    ])('throws an error for the options %s', ([ options ]) => {
+        expect(() => validateSelectionOptions(options)).throws(Error);
+    });
 });
 
 describe('assertType', () => {
