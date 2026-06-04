@@ -90,5 +90,8 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
     .navbar-search-bar-wrapper-small-screens {
         display: block;
     }
+    .global-nav {
+        padding: 18px 16px;
+    }
 }
 </style>
