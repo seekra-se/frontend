@@ -61,7 +61,49 @@ test.for([
     { dimension: '-1.42',     expected: '-1.42px' },
     { dimension: '-42.42',    expected: '-42.42px' },
     { dimension: '1.42',      expected: '1.42px' },
-    { dimension: '42.42',     expected: '42.42px' }
+    { dimension: '42.42',     expected: '42.42px' },
+
+    { dimension: '0px',         expected: '0px' },
+    { dimension: '-0px',        expected: '-0px' },
+    { dimension: '-1px',        expected: '-1px' },
+    { dimension: '-42px',       expected: '-42px' },
+    { dimension: '1px',         expected: '1px' },
+    { dimension: '42px',        expected: '42px' },
+
+    { dimension: '0.0px',       expected: '0.0px' },
+    { dimension: '-0.0px',      expected: '-0.0px' },
+    { dimension: '-1.0px',      expected: '-1.0px' },
+    { dimension: '-42.0px',     expected: '-42.0px' },
+    { dimension: '1.0px',       expected: '1.0px' },
+    { dimension: '42.0px',      expected: '42.0px' },
+
+    { dimension: '0.42px',      expected: '0.42px' },
+    { dimension: '-0.42px',     expected: '-0.42px' },
+    { dimension: '-1.42px',     expected: '-1.42px' },
+    { dimension: '-42.42px',    expected: '-42.42px' },
+    { dimension: '1.42px',      expected: '1.42px' },
+    { dimension: '42.42px',     expected: '42.42px' },
+
+    { dimension: '0em',         expected: '0em' },
+    { dimension: '-0em',        expected: '-0em' },
+    { dimension: '-1em',        expected: '-1em' },
+    { dimension: '-42em',       expected: '-42em' },
+    { dimension: '1em',         expected: '1em' },
+    { dimension: '42em',        expected: '42em' },
+
+    { dimension: '0.0em',       expected: '0.0em' },
+    { dimension: '-0.0em',      expected: '-0.0em' },
+    { dimension: '-1.0em',      expected: '-1.0em' },
+    { dimension: '-42.0em',     expected: '-42.0em' },
+    { dimension: '1.0em',       expected: '1.0em' },
+    { dimension: '42.0em',      expected: '42.0em' },
+
+    { dimension: '0.42em',      expected: '0.42em' },
+    { dimension: '-0.42em',     expected: '-0.42em' },
+    { dimension: '-1.42em',     expected: '-1.42em' },
+    { dimension: '-42.42em',    expected: '-42.42em' },
+    { dimension: '1.42em',      expected: '1.42em' },
+    { dimension: '42.42em',     expected: '42.42em' }
 ])('ensureUnit returns $expected with input $dimension', ({ dimension, expected }) => {
     expect(ensureUnit(dimension)).toBe(expected);
 });
