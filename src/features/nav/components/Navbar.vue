@@ -42,7 +42,7 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 40px;
+    padding: 18px var(--main-content-padding-x);
     height: 42px;
 }
 
