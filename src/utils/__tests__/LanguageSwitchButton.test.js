@@ -38,3 +38,11 @@ vi.mock('@/features/icons/components/Icon.vue', () => ({
         template: '<span>Icon</span>'
     }
 }));
+
+describe('LanguageSwitchButton.vue', () => {
+    beforeEach(() => {
+        vi.clearAllMocks();
+        localStorage.clear();
+        document.documentElement.lang = '';
+        document.documentElement.dir = '';
+    });
