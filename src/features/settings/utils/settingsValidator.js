@@ -22,7 +22,7 @@ export const assertString = function assertString (value, path) {
     }
 }
 
-function assertType(value, path) {
+export const assertType = function assertType (value, path) {
     if (!VALID_TYPES.includes(value)) {
         throw new Error(
             `[settings] "${path}" has invalid type "${value}". Must be one of: ${VALID_TYPES.join(', ')}`
