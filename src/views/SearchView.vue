@@ -67,9 +67,10 @@ const submitSearch = function () {
     max-width: 100%;
 }
 
-.slogan{
-    margin: 0;
+.slogan {
+    margin-top: 1rem;
     font-size: small;
+    line-height: normal;
 }
 
 .search-container {
