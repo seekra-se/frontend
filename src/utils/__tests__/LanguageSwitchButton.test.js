@@ -64,3 +64,26 @@ test('renders correctly with initial state closed', () => {
         expect(wrapper.find('.language-dropdown').exists()).toBe(true);
         expect(button.attributes('aria-expanded')).toBe('true');
     });
+
+    const languageTestCases = [
+        { code: 'en', expectedDir: 'ltr' },
+        { code: 'de', expectedDir: 'ltr' },
+        { code: 'ar', expectedDir: 'rtl' }
+    ];
+
+    test.for(languageTestCases)('selectLanguage($code) sets localStorage, html attributes and changes layout direction to $expectedDir', async ({ code, expectedDir }) => {
+        const wrapper = mount(LanguageSwitchButton);
+        
+        await wrapper.find('.language-button').trigger('click');
+        
+        const options = wrapper.findAll('.language-dropdown li');
+        const optionToClick = options.find(opt => opt.text().includes(code));
+        
+        await optionToClick.trigger('click');
+
+        expect(loadLanguage).toHaveBeenCalledWith(code);
+        expect(localStorage.getItem('locale')).toBe(code);
+        expect(document.documentElement.lang).toBe(code);
+        expect(document.documentElement.dir).toBe(expectedDir);
+        expect(wrapper.find('.language-dropdown').exists()).toBe(false);
+    });
