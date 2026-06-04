@@ -42,9 +42,11 @@ export const validateSelectionOptions = function validateSelectionOptions (optio
 
 export const validateEntry = function validateEntry (entry, path) {
     assertType(entry.type, `${path}.type`);
+    
+    assertString(entry.name, `${path}.name`);
+    assertString(entry.i18n, `${path}.i18n`);
 
     if (entry.type === 'section') {
-        assertString(entry.name, `${path}.name`);
         if (!Array.isArray(entry.content)) {
             throw new Error(`[settings] "${path}.content" must be an array`);
         }
@@ -53,9 +55,6 @@ export const validateEntry = function validateEntry (entry, path) {
         );
         return;
     }
-
-    assertString(entry.name, `${path}.name`);
-    assertString(entry.i18n, `${path}.i18n`);
 
     if (entry.default !== undefined) {
         if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
