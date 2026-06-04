@@ -92,7 +92,7 @@ describe('assertString', () => {
         [' '],
         ['  '],
         ['     ']
-    ])('throws error for the value %s', ([ value ]) => {
+    ])('throws an error for the value %s', ([ value ]) => {
         expect(() => assertString(value)).throws(Error);
     });
 });
