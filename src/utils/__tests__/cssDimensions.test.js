@@ -19,7 +19,49 @@ import { ensureUnit } from '../cssDimensions';
 
 test.for([
     { dimension: null,      expected: '0px' },
-    { dimension: undefined, expected: '0px' }
+    { dimension: undefined, expected: '0px' },
+
+    { dimension: 0,         expected: '0px' },
+    { dimension: -0,        expected: '0px' },
+    { dimension: -1,        expected: '-1px' },
+    { dimension: -42,       expected: '-42px' },
+    { dimension: 1,         expected: '1px' },
+    { dimension: 42,        expected: '42px' },
+
+    { dimension: 0.0,       expected: '0px' },
+    { dimension: -0.0,      expected: '0px' },
+    { dimension: -1.0,      expected: '-1px' },
+    { dimension: -42.0,     expected: '-42px' },
+    { dimension: 1.0,       expected: '1px' },
+    { dimension: 42.0,      expected: '42px' },
+
+    { dimension: 0.42,      expected: '0.42px' },
+    { dimension: -0.42,     expected: '-0.42px' },
+    { dimension: -1.42,     expected: '-1.42px' },
+    { dimension: -42.42,    expected: '-42.42px' },
+    { dimension: 1.42,      expected: '1.42px' },
+    { dimension: 42.42,     expected: '42.42px' },
+
+    { dimension: '0',         expected: '0px' },
+    { dimension: '-0',        expected: '-0px' },
+    { dimension: '-1',        expected: '-1px' },
+    { dimension: '-42',       expected: '-42px' },
+    { dimension: '1',         expected: '1px' },
+    { dimension: '42',        expected: '42px' },
+
+    { dimension: '0.0',       expected: '0.0px' },
+    { dimension: '-0.0',      expected: '-0.0px' },
+    { dimension: '-1.0',      expected: '-1.0px' },
+    { dimension: '-42.0',     expected: '-42.0px' },
+    { dimension: '1.0',       expected: '1.0px' },
+    { dimension: '42.0',      expected: '42.0px' },
+
+    { dimension: '0.42',      expected: '0.42px' },
+    { dimension: '-0.42',     expected: '-0.42px' },
+    { dimension: '-1.42',     expected: '-1.42px' },
+    { dimension: '-42.42',    expected: '-42.42px' },
+    { dimension: '1.42',      expected: '1.42px' },
+    { dimension: '42.42',     expected: '42.42px' }
 ])('ensureUnit returns $expected with input $dimension', ({ dimension, expected }) => {
     expect(ensureUnit(dimension)).toBe(expected);
 });
