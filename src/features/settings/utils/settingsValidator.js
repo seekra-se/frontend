@@ -58,15 +58,15 @@ export const validateEntry = function validateEntry (entry, path) {
 
     if (entry.default !== undefined) {
         if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
-             throw new Error(`[settings] "${path}.default" must be a boolean`);
-         }
-         if (entry.type === 'number' && typeof entry.default !== 'number') {
-             throw new Error(`[settings] "${path}.default" must be a number`);
-         }
-         if (entry.type === 'string' && typeof entry.default !== 'string') {
-             throw new Error(`[settings] "${path}.default" must be a string`);
-         }
+            throw new Error(`[settings] "${path}.default" must be a boolean`);
         }
+        if (entry.type === 'number' && typeof entry.default !== 'number') {
+            throw new Error(`[settings] "${path}.default" must be a number`);
+        }
+        if (entry.type === 'string' && typeof entry.default !== 'string') {
+            throw new Error(`[settings] "${path}.default" must be a string`);
+        }
+    }
     if (entry.type === 'selection') {
         validateSelectionOptions(entry.options, path);
         if (typeof entry.allowMultiple !== 'boolean' && entry.allowMultiple) {
