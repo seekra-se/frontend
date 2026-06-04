@@ -72,6 +72,14 @@ export const validateEntry = function validateEntry (entry, path) {
         if (entry.type === 'string' && typeof entry.default !== 'string') {
             throw new Error(`[settings] "${path}.default" must be a string`);
         }
+        if (entry.type === 'selection') {
+            if (typeof entry.default !== 'string') {
+                throw new Error(`[settings] "${path}.default" must be a string`);
+            };
+            if (!entry.options.map((option) => option.name).includes(entry.default)) {
+                throw new Error(`[settings] option "${path}.default" does not exist`);
+            };
+        };
     }
 }
 
