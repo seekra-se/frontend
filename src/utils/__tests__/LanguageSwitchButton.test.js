@@ -18,3 +18,23 @@ import { expect, test, describe, vi, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
 import { loadLanguage } from '@/i18n';
+
+vi.mock('@/i18n', () => ({
+    loadLanguage: vi.fn(() => Promise.resolve()),
+    LANGUAGES_RTL: ['ar', 'he'],
+    SUPPORTED_LANGUAGES: ['en', 'de', 'ar']
+}));
+
+vi.mock('vue-i18n', () => ({
+    useI18n: () => ({
+        t: (key) => key,
+        locale: { value: 'de' }
+    })
+}));
+
+vi.mock('@/features/icons/components/Icon.vue', () => ({
+    default: {
+        name: 'Icon',
+        template: '<span>Icon</span>'
+    }
+}));
