@@ -13,3 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import { expect, test, describe, vi, beforeEach } from 'vitest';
+import { mount } from '@vue/test-utils';
+import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
+import { loadLanguage } from '@/i18n';
