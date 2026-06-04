@@ -73,7 +73,8 @@ const submitSearch = function () {
     border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
     padding: var(--padding);
     padding-left: var(--padding-left);
-    width: calc(100% - var(--padding-left));
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .search-wrapper input {
@@ -83,6 +84,7 @@ const submitSearch = function () {
     font-size: 1rem;
     background: transparent;
     height: calc(var(--content-height) + 2 * var(--submit-button-padding-y));
+    padding-left: 12px;
 }
 
 .search-button {
