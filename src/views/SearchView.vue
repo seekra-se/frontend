@@ -84,9 +84,5 @@ const submitSearch = function () {
     }
 }
 
-@media (max-width: 48rem) {
-    .slogan {
-        margin-top: 1rem;
-    }
-}
+
 </style>
