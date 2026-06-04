@@ -160,6 +160,11 @@ describe('validateSelectionOptions', () => {
     });
 
     test.for([
+        [[{}]],
+        [[{ i18n: '' }]],
+        [[{ i18n: 'a' }]],
+        [[{ name: 'a' }]],
+        [[{ name: '' }]],
         [[{ name: '', i18n: 'test.label' }]],
         [[{ name: 'test', i18n: '' }]],
         [[{ name: '', i18n: '' }]],
