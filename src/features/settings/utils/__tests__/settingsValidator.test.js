@@ -17,9 +17,9 @@ limitations under the License.
 import { describe, test, expect } from 'vitest';
 import { validateEntry, validateSelectionOptions, assertType, assertString } from '../settingsValidator';
 
-describe('validateSettingsConfig', () => {
+// describe('validateSettingsConfig', () => {
 
-});
+// });
 
 describe('validateEntry', () => {
     test.for([
@@ -65,6 +65,79 @@ describe('validateEntry', () => {
         ] }]
     ])('throws no error for the entry %s', ([ entry ]) => {
         expect(() => validateEntry(entry)).not.throws(Error);
+    });
+
+    test.for([
+        [{ name: 'enableFeature42', type: 'bool', i18n: '' }],
+        [{ name: 'enableFeature42', type: 'thisTypeDoesNotExistAndHasAVeryLongName', i18n: 'feature.42.enable' }],
+        [{ name: '', type: 'thisTypeDoesNotExistAndHasAVeryLongName', i18n: 'feature.42.enable' }],
+        [{ name: '', type: 'thisTypeDoesNotExistAndHasAVeryLongName', i18n: '' }],
+        [{ name: '', type: 'bool', i18n: '' }],
+        [{ name: '', type: 'bool', i18n: '' }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: 42 }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: '42' }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: 'Seekra' }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: 'true' }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: 'false' }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: 'undefined' }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: 'null' }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: [] }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: {} }],
+        [{ name: 'enableFeature42', type: '', i18n: 'feature.42.enable', default: {} }],
+    
+        [{ name: '', type: 'number', i18n: 'aNumber.label' }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: '42' }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: 'zero' }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: 'undefined' }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: 'false' }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: true }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: false }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: [] }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: {} }],
+        [{ name: 'aNumber', type: '', i18n: 'aNumber.label', default: {} }],
+        [{ name: 'aNumber', type: '', i18n: 'aNumber.label', default: 42 }],
+    
+        [{ name: 'aString', type: 'string', i18n: '' }],
+        [{ name: 'aString', type: 'string', i18n: 'aString.label', default: 42 }],
+        [{ name: 'aString', type: 'string', i18n: 'aString.label', default: true }],
+        [{ name: 'aString', type: 'string', i18n: 'aString.label', default: false }],
+        [{ name: 'aString', type: 'string', i18n: 'aString.label', default: [] }],
+        [{ name: 'aString', type: 'string', i18n: 'aString.label', default: {} }],
+        [{ name: 'aString', type: 'string', i18n: '', default: {} }],
+
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: '1', options: true }],
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', options: [] }],
+
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'no', options: [
+            { name: 'yes', i18n: '' },
+            { name: '', i18n: 'selectSomething.options.no' },
+            { name: 'maybe', i18n: 'selectSomething.options.maybe' },
+            { name: '', i18n: '' },
+            { name: 42, i18n: 43 },
+            { name: '' },
+            { i18n: '' },
+            {}
+        ] }],
+
+        [{ name: 'aSection', type: 'section', i18n: '', content: [] }],
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: '' }],
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: '[]' }],
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: 'a' }],
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: [
+            { name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: true },
+            { name: 'enableFeature43', type: 'bool', i18n: 'feature.42.enable', default: 0 },
+            { name: 'enableFeature44', type: 'bool' }
+        ] }],
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: [
+            { name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: true },
+            { name: 'enableFeature43', type: 'bool', i18n: 'feature.43.enable', default: true },
+            { name: 'aSecondSection', type: 'section', i18n: 'sections.aSecondSection.title', content: 'Hello' },
+            { name: 'aSecondSection', type: 'section', i18n: '', content: [] },
+            { name: 'aSecondSection', type: 'section', i18n: 'i18n', content: [] },
+            { name: 'aSecondSection', type: 'section', content: [] }
+        ] }]
+    ])('throws an error for the entry %s', ([ entry ]) => {
+        expect(() => validateEntry(entry)).throws(Error);
     });
 });
 
