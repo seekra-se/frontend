@@ -72,6 +72,7 @@ const submitSearch = function () {
     box-shadow: 0 0px 32px var(--blue-box-shadow);
     border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
     padding: var(--padding);
+    padding-left: var(--padding-left);
     width: 100%;
     box-sizing: border-box;
 }
