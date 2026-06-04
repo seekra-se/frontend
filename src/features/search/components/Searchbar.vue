@@ -83,6 +83,7 @@ const submitSearch = function () {
     font-size: 1rem;
     background: transparent;
     height: calc(var(--content-height) + 2 * var(--submit-button-padding-y));
+    padding-left: 12px;
 }
 
 .search-button {
