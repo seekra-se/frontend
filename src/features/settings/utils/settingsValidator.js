@@ -16,13 +16,13 @@ limitations under the License.
 
 const VALID_TYPES = ['bool', 'number', 'string', 'selection', 'section'];
 
-function assertString(value, path) {
+export const assertString = function assertString (value, path) {
     if (typeof value !== 'string' || value.trim() === '') {
         throw new Error(`[settings] "${path}" must be a non-empty string`);
     }
 }
 
-function assertType(value, path) {
+export const assertType = function assertType (value, path) {
     if (!VALID_TYPES.includes(value)) {
         throw new Error(
             `[settings] "${path}" has invalid type "${value}". Must be one of: ${VALID_TYPES.join(', ')}`
@@ -30,21 +30,23 @@ function assertType(value, path) {
     }
 }
 
-function validateSelectionOptions(options, path) {
+export const validateSelectionOptions = function validateSelectionOptions (options, path) {
     if (!Array.isArray(options) || options.length === 0) {
         throw new Error(`[settings] "${path}.options" must be a non-empty array`);
-    }
+    };
     options.forEach((opt, i) => {
         assertString(opt.name, `${path}.options[${i}].name`);
         assertString(opt.i18n, `${path}.options[${i}].i18n`);
     });
 }
 
-function validateEntry(entry, path) {
+export const validateEntry = function validateEntry (entry, path) {
     assertType(entry.type, `${path}.type`);
+    
+    assertString(entry.name, `${path}.name`);
+    assertString(entry.i18n, `${path}.i18n`);
 
     if (entry.type === 'section') {
-        assertString(entry.name, `${path}.name`);
         if (!Array.isArray(entry.content)) {
             throw new Error(`[settings] "${path}.content" must be an array`);
         }
@@ -53,26 +55,31 @@ function validateEntry(entry, path) {
         );
         return;
     }
-
-    assertString(entry.name, `${path}.name`);
-    assertString(entry.i18n, `${path}.i18n`);
-
+    
+    if (entry.type === 'selection') {
+        validateSelectionOptions(entry.options, path);
+        if (typeof entry.allowMultiple !== 'boolean' && entry.allowMultiple) {
+            throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
+        }
+    };
     if (entry.default !== undefined) {
         if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
-             throw new Error(`[settings] "${path}.default" must be a boolean`);
-         }
-         if (entry.type === 'number' && typeof entry.default !== 'number') {
-             throw new Error(`[settings] "${path}.default" must be a number`);
-         }
-         if (entry.type === 'string' && typeof entry.default !== 'string') {
-             throw new Error(`[settings] "${path}.default" must be a string`);
-         }
-         if (entry.type === 'selection') {
-             validateSelectionOptions(entry.options, path);
-             if (typeof entry.allowMultiple !== 'boolean') {
-                 throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
-             }
-         }
+            throw new Error(`[settings] "${path}.default" must be a boolean`);
+        }
+        if (entry.type === 'number' && typeof entry.default !== 'number') {
+            throw new Error(`[settings] "${path}.default" must be a number`);
+        }
+        if (entry.type === 'string' && typeof entry.default !== 'string') {
+            throw new Error(`[settings] "${path}.default" must be a string`);
+        }
+        if (entry.type === 'selection') {
+            if (typeof entry.default !== 'string') {
+                throw new Error(`[settings] "${path}.default" must be a string`);
+            };
+            if (!entry.options.map((option) => option.name).includes(entry.default)) {
+                throw new Error(`[settings] option "${path}.default" does not exist`);
+            };
+        };
     }
 }
 
