@@ -87,3 +87,28 @@ test('renders correctly with initial state closed', () => {
         expect(document.documentElement.dir).toBe(expectedDir);
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
     });
+
+    test('closes the dropdown when clicking outside the component', async () => {
+        const wrapper = mount(LanguageSwitchButton, {
+            attachTo: document.body
+        });
+
+        await wrapper.find('.language-button').trigger('click');
+        expect(wrapper.find('.language-dropdown').exists()).toBe(true);
+
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        const externalDiv = document.createElement('div');
+        document.body.appendChild(externalDiv);
+        
+        const clickEvent = new MouseEvent('click', { bubbles: true });
+        externalDiv.dispatchEvent(clickEvent);
+        
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find('.language-dropdown').exists()).toBe(false);
+
+        wrapper.unmount();
+        externalDiv.remove();
+    });
+});
