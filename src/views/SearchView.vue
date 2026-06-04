@@ -83,4 +83,10 @@ const submitSearch = function () {
         width: 100%;
     }
 }
+
+@media (max-width: 48rem) {
+    .slogan {
+        margin-top: 1rem;
+    }
+}
 </style>
