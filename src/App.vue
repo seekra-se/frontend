@@ -42,15 +42,18 @@ watch(colorScheme, val => updateColorScheme(val))
 </template>
 
 <style scoped>
-.main-content {
+#app-wrapper {
     --main-content-padding-x: 30px;
     --main-content-padding-y: 40px;
     --main-content-padding: var(--main-content-padding-y) var(--main-content-padding-x);
+}
+
+.main-content {
     flex-grow: 1;
 }
 
 @media (max-width: 48rem) {
-    .main-content {
+    #app-wrapper {
         --main-content-padding-x: 15px;
     }
 }
