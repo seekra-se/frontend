@@ -105,8 +105,17 @@ describe('validateEntry', () => {
         [{ name: 'aString', type: 'string', i18n: 'aString.label', default: {} }],
         [{ name: 'aString', type: 'string', i18n: '', default: {} }],
 
-        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: '1', options: true }],
-        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', options: [] }],
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'a', options: true }],
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'a', options: [] }],
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'c', options: [
+            { name: 'a', i18n: 'a' },
+            { name: 'b', i18n: 'b' }
+        ] }],
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'a', options: [
+            { name: 'a', i18n: 'a' },
+            { name: 'b', i18n: '' },
+            { name: 'c' }
+        ] }],
 
         [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'no', options: [
             { name: 'yes', i18n: '' },
