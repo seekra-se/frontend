@@ -40,7 +40,7 @@ export const validateSelectionOptions = function validateSelectionOptions (optio
     });
 }
 
-function validateEntry(entry, path) {
+export const validateEntry = function validateEntry (entry, path) {
     assertType(entry.type, `${path}.type`);
 
     if (entry.type === 'section') {

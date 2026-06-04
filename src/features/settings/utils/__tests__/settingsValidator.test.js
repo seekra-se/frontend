@@ -15,14 +15,57 @@ limitations under the License.
 */
 
 import { describe, test, expect } from 'vitest';
-import { validateSelectionOptions, assertType, assertString } from '../settingsValidator';
+import { validateEntry, validateSelectionOptions, assertType, assertString } from '../settingsValidator';
 
 describe('validateSettingsConfig', () => {
 
 });
 
 describe('validateEntry', () => {
+    test.for([
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable' }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: true }],
+        [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: false }],
+    
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label' }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: 42 }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: 0 }],
+        [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: -42.7 }],
+    
+        [{ name: 'aString', type: 'string', i18n: 'aString.label' }],
+        [{ name: 'aString', type: 'string', i18n: 'aString.label', default: '' }],
+        [{ name: 'aString', type: 'string', i18n: 'aString.label', default: 'Seekra is great!' }],
 
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', options: [
+            { name: 'yes', i18n: 'selectSomething.options.yes' },
+            { name: 'no', i18n: 'selectSomething.options.no' },
+            { name: 'maybe', i18n: 'selectSomething.options.maybe' }
+        ] }],
+
+        [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'no', options: [
+            { name: 'yes', i18n: 'selectSomething.options.yes' },
+            { name: 'no', i18n: 'selectSomething.options.no' },
+            { name: 'maybe', i18n: 'selectSomething.options.maybe' }
+        ] }],
+
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: [] }],
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: [
+            { name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: true }
+        ] }],
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: [
+            { name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: true },
+            { name: 'enableFeature43', type: 'bool', i18n: 'feature.43.enable', default: true }
+        ] }],
+        [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: [
+            { name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: true },
+            { name: 'enableFeature43', type: 'bool', i18n: 'feature.43.enable', default: true },
+            { name: 'aSecondSection', type: 'section', i18n: 'sections.aSecondSection.title', content: [
+                { name: 'enableFeature44', type: 'bool', i18n: 'feature.44.enable', default: true },
+            ] }
+        ] }]
+    ])('throws no error for the entry %s', ([ entry ]) => {
+        expect(() => validateEntry(entry)).not.throws(Error);
+    });
 });
 
 describe('validateSelectionOptions', () => {
