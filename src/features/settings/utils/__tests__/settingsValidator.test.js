@@ -14,7 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { describe } from 'vitest';
+import { describe, test, expect } from 'vitest';
+import { assertString } from '../settingsValidator';
 
 describe('validateSettingsConfig', () => {
 
@@ -33,5 +34,18 @@ describe('assertType', () => {
 });
 
 describe('assertString', () => {
+    test.for([
+        [0],
+        [1],
+        [42],
+        [-1],
+        [-42],
 
+        [''],
+        [' '],
+        ['  '],
+        ['     ']
+    ])('throws error for the value %s', ([ value ]) => {
+        expect(() => assertString(value)).throws(Error);
+    });
 });

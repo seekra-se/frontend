@@ -16,7 +16,7 @@ limitations under the License.
 
 const VALID_TYPES = ['bool', 'number', 'string', 'selection', 'section'];
 
-function assertString(value, path) {
+export const assertString = function assertString (value, path) {
     if (typeof value !== 'string' || value.trim() === '') {
         throw new Error(`[settings] "${path}" must be a non-empty string`);
     }
