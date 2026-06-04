@@ -43,7 +43,7 @@ const { t } = useI18n();
 .error-message{
     margin: 0;
     font-weight: 600;
-    font-size: 2vw;
+    font-size: 1.75rem;
 }
 #link {
     align-items: center;
