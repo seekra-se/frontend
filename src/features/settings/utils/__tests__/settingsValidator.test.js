@@ -35,6 +35,22 @@ describe('assertType', () => {
 
 describe('assertString', () => {
     test.for([
+        ['a'],
+        ['b'],
+        ['ab'],
+
+        ['0'],
+        ['42'],
+
+        ['null'],
+        ['undefined'],
+
+        ['()&%())']
+    ])('throws no error for the value %s', ([ value ]) => {
+        expect(() => assertString(value)).not.throw(Error);
+    });
+
+    test.for([
         [0],
         [1],
         [42],
