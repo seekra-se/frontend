@@ -37,3 +37,17 @@ input {
     padding: var(--main-content-padding);
     width: calc(100% - var(--main-content-padding-x) * 2);
 }
+
+.button {
+    background-color: var(--light-bg);
+    border: none;
+}
+
+.button:focus {
+    background-color: var(--light-hover);
+    outline: none;
+}
+
+.button:hover {
+    background-color: var(--light-hover);
+}
