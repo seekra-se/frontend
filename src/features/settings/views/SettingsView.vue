@@ -20,8 +20,10 @@ import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 import { loadSettingsConfig } from '../utils/settingsParser';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 
 const { t } = useI18n();
+const route = useRoute();
 
 const settingsLoaded = ref(false)
 const settings = ref([]);
@@ -30,6 +32,14 @@ onMounted(async () => {
     settings.value = (await loadSettingsConfig()).contents;
     settingsLoaded.value = true;
 });
+
+const getActiveSection = function getActiveSection () {
+    const segments = route.path
+        .split('/')
+        .filter(Boolean);
+
+    return segments[1];
+};
 </script>
 
 <template>
@@ -46,6 +56,7 @@ onMounted(async () => {
                         <RouterLink
                             :to="`/settings/${section.name}`"
                             class="button button-link link sidebar-section"
+                            :class="{ active: getActiveSection() === section.name }"
                         >
                             {{ t(section.i18n) }}
                         </RouterLink>
@@ -69,6 +80,10 @@ onMounted(async () => {
 .settings-page-wrapper {
     display: flex;
     flex-direction: column;
+}
+
+.active {
+    background-color: var(--light-hover);
 }
 
 .header {
