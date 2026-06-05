@@ -83,6 +83,19 @@ export const validateEntry = function validateEntry (entry, path) {
     }
 }
 
+export const validateFirstLevelSection = function validateFirstLevelSection (section, path) {
+    assertString(section.name);
+    assertString(section.i18n);
+
+    if (!Array.isArray(section.content)) {
+        throw new Error(`[settings] "${path}.content" must be an array`);
+    };
+
+    section.content.forEach((entry, i) =>
+        validateEntry(entry, `${path}.content[${i}]`)
+    );
+};
+
 /**
  * Validates a raw settings config object.
  * @param {unknown} raw
@@ -97,7 +110,7 @@ export function validateSettingsConfig(raw) {
             throw new Error('[settings] "contents" must be an array');
         }
         raw.contents.forEach((entry, i) =>
-            validateEntry(entry, `contents[${i}]`)
+            validateFirstLevelSection(entry, `contents[${i}]`)
         );
         return { valid: true, config: raw };
     } catch (e) {

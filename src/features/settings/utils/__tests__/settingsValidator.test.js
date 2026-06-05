@@ -33,7 +33,6 @@ describe('validateSettingsConfig', () => {
         { raw: {
             contents: [
                 {
-                    type: 'section',
                     name: 'general',
                     i18n: 'settings.settings.general',
                     content: [
@@ -49,7 +48,6 @@ describe('validateSettingsConfig', () => {
         { raw: {
             contents: [
                 {
-                    type: 'section',
                     name: 'general',
                     i18n: 'settings.settings.general',
                     content: [
@@ -61,7 +59,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'copyOfGeneral',
                     i18n: 'settings.settings.copyOfGeneral',
                     content: [
@@ -77,7 +74,6 @@ describe('validateSettingsConfig', () => {
         { raw: {
             contents: [
                 {
-                    type: 'section',
                     name: 'general',
                     i18n: 'settings.settings.general',
                     content: [
@@ -89,7 +85,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'copyOfGeneral',
                     i18n: 'settings.settings.copyOfGeneral',
                     content: [
@@ -102,7 +97,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'aSection',
                     i18n: 'settings.settings.aSection',
                     content: [
@@ -141,7 +135,6 @@ describe('validateSettingsConfig', () => {
         { raw: {
             contents: [
                 {
-                    type: 'section',
                     name: 'general',
                     i18n: 'settings.settings.general',
                     content: [
@@ -153,7 +146,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'copyOfGeneral',
                     i18n: 'settings.settings.copyOfGeneral',
                     content: [
@@ -166,7 +158,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'aSection',
                     i18n: 'settings.settings.aSection',
                     content: [
@@ -203,6 +194,74 @@ describe('validateSettingsConfig', () => {
                 },
             ]
         }, expected: true },
+        { raw: {
+            contents: [
+                {
+                    type: 'bool',
+                    name: 'aStandaloneBooleanSetting',
+                    i18n: 'settings.settings.aStandaloneBooleanSetting',
+                    default: true
+                },
+                {
+                    name: 'general',
+                    i18n: 'settings.settings.general',
+                    content: [
+                        {
+                            type: 'bool',
+                            name: 'Enable feature 42',
+                            i18n: 'settings.settings.general.enableFeature42'
+                        }
+                    ]
+                },
+                {
+                    name: 'copyOfGeneral',
+                    i18n: 'settings.settings.copyOfGeneral',
+                    content: [
+                        {
+                            type: 'bool',
+                            name: 'Enable feature 42',
+                            default: false,
+                            i18n: 'settings.settings.general.enableFeature42'
+                        }
+                    ]
+                },
+                {
+                    name: 'aSection',
+                    i18n: 'settings.settings.aSection',
+                    content: [
+                        {
+                            type: 'bool',
+                            name: 'Enable feature 43',
+                            i18n: 'settings.settings.aSection.enableFeature43'
+                        },
+                        {
+                            type: 'selection',
+                            name: 'language',
+                            i18n: 'settings.settings.aSection.language.label',
+                            default: 'en',
+                            allowMultiple: false,
+                            options: [
+                                { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
+                                { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
+                            ]
+                        },
+                        {
+                            type: 'section',
+                            name: 'section2',
+                            i18n: 'settings.settings.aSection.section2.label',
+                            content: [
+                                {
+                                    type: 'string',
+                                    name: 'string',
+                                    i18n: 'settings.settings.aSection.sections.string',
+                                    default: 'str'
+                                }
+                            ]
+                        },
+                    ]
+                },
+            ]
+        }, expected: false },
         { raw: {
             contents: [
                 {
