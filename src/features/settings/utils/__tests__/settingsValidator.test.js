@@ -33,7 +33,6 @@ describe('validateSettingsConfig', () => {
         { raw: {
             contents: [
                 {
-                    type: 'section',
                     name: 'general',
                     i18n: 'settings.settings.general',
                     content: [
@@ -49,7 +48,6 @@ describe('validateSettingsConfig', () => {
         { raw: {
             contents: [
                 {
-                    type: 'section',
                     name: 'general',
                     i18n: 'settings.settings.general',
                     content: [
@@ -61,7 +59,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'copyOfGeneral',
                     i18n: 'settings.settings.copyOfGeneral',
                     content: [
@@ -77,7 +74,6 @@ describe('validateSettingsConfig', () => {
         { raw: {
             contents: [
                 {
-                    type: 'section',
                     name: 'general',
                     i18n: 'settings.settings.general',
                     content: [
@@ -89,7 +85,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'copyOfGeneral',
                     i18n: 'settings.settings.copyOfGeneral',
                     content: [
@@ -102,7 +97,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'aSection',
                     i18n: 'settings.settings.aSection',
                     content: [
@@ -141,7 +135,6 @@ describe('validateSettingsConfig', () => {
         { raw: {
             contents: [
                 {
-                    type: 'section',
                     name: 'general',
                     i18n: 'settings.settings.general',
                     content: [
@@ -153,7 +146,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'copyOfGeneral',
                     i18n: 'settings.settings.copyOfGeneral',
                     content: [
@@ -166,7 +158,6 @@ describe('validateSettingsConfig', () => {
                     ]
                 },
                 {
-                    type: 'section',
                     name: 'aSection',
                     i18n: 'settings.settings.aSection',
                     content: [
