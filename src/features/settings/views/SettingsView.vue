@@ -18,7 +18,7 @@ limitations under the License.
 import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 
 import { loadSettingsConfig } from '../utils/settingsParser';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -28,12 +28,25 @@ const router = useRouter();
 
 const settingsLoaded = ref(false)
 const settings = ref([]);
+const activeSectionContent = ref([]);
+
+const updateSettings = function updateSettings () {
+    const activeSection = getActiveSection();
+    if (activeSection) {
+        activeSectionContent.value = settings.value.filter((section) => section.name === activeSection)[0].content;
+    } else {
+        activeSectionContent.value = [];
+    };
+};
 
 onMounted(async () => {
     settings.value = (await loadSettingsConfig()).contents;
     if (!settings.value.map((section) => section.name).includes(getActiveSection())) {
         router.push('/settings');
     };
+    watchEffect(() => {
+        updateSettings();
+    });
     settingsLoaded.value = true;
 });
 
