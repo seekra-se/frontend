@@ -17,9 +17,19 @@ limitations under the License.
 <script setup>
 import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 
+import { loadSettingsConfig } from '../utils/settingsParser';
+import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
+
+const settingsLoaded = ref(false)
+const settings = ref([]);
+
+onMounted(async () => {
+    settings.value = (await loadSettingsConfig()).contents;
+    settingsLoaded.value = true;
+});
 </script>
 
 <template>
@@ -32,6 +42,11 @@ const { t } = useI18n();
         <LeftSidebarLayout class="layout">
             <template #sidebar>
             </template>
+            <div>
+                <div v-if="!settingsLoaded">
+                    {{ t('loading') }}
+                </div>
+            </div>
         </LeftSidebarLayout>
     </div>
 </template>

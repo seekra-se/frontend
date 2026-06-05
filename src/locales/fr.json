@@ -1,4 +1,5 @@
 {
+    "loading": "Chargement ...",
     "search": {
         "searchBar": {
             "submit": "Rechercher",
