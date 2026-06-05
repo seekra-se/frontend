@@ -43,11 +43,12 @@ onMounted(async () => {
             <template #sidebar>
                 <ul class="sidebar-sections-list">
                     <li v-for="section in settings">
-                        <button class="sidebar-section button">
-                            <RouterLink :to="`/settings/${section.name}`" class="link button-link">
-                                {{ t(section.i18n) }}
-                            </RouterLink>
-                        </button>
+                        <RouterLink
+                            :to="`/settings/${section.name}`"
+                            class="button button-link link sidebar-section"
+                        >
+                            {{ t(section.i18n) }}
+                        </RouterLink>
                     </li>
                 </ul>
             </template>
@@ -89,8 +90,9 @@ onMounted(async () => {
     border-radius: var(--padding);
     padding: var(--padding);
     margin-bottom: 4px;
-    width: 100%;
+    width: calc(100% - 2 * var(--padding));
     text-align: start;
     font-size: 1rem;
+    display: block;
 }
 </style>
