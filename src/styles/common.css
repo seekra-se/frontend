@@ -25,7 +25,8 @@ body {
     text-decoration: none;
 }
 
-.link:hover:not(.button-link) {
+.link:hover:not(.button-link), .link:focus:not(.button-link) {
+    outline: none;
     text-decoration: underline;
 }
 
