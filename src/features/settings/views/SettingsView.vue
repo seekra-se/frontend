@@ -20,16 +20,20 @@ import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 import { loadSettingsConfig } from '../utils/settingsParser';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const { t } = useI18n();
 const route = useRoute();
+const router = useRouter();
 
 const settingsLoaded = ref(false)
 const settings = ref([]);
 
 onMounted(async () => {
     settings.value = (await loadSettingsConfig()).contents;
+    if (!settings.value.map((section) => section.name).includes(getActiveSection())) {
+        router.push('/settings');
+    };
     settingsLoaded.value = true;
 });
 
