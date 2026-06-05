@@ -30,6 +30,18 @@ body {
     text-decoration: underline;
 }
 
+.button-link {
+    color: var(--dark);
+}
+
+.button-link:hover {
+    color: var(--dark);
+}
+
+.button-link:visited {
+    color: var(--dark);
+}
+
 input {
     color: var(--dark);
 }
