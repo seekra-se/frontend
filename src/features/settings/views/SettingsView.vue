@@ -41,6 +41,15 @@ onMounted(async () => {
         </header>
         <LeftSidebarLayout class="layout">
             <template #sidebar>
+                <ul class="sidebar-sections-list">
+                    <li v-for="section in settings">
+                        <button class="sidebar-section button">
+                            <RouterLink :to="`/settings/${section.name}`" class="link button-link">
+                                {{ t(section.i18n) }}
+                            </RouterLink>
+                        </button>
+                    </li>
+                </ul>
             </template>
             <div>
                 <div v-if="!settingsLoaded">
@@ -67,5 +76,21 @@ onMounted(async () => {
 
 .header h1 {
     margin: 0;
+}
+
+.sidebar-sections-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-section {
+    --padding: 0.8em;
+    border-radius: var(--padding);
+    padding: var(--padding);
+    margin-bottom: 4px;
+    width: 100%;
+    text-align: start;
+    font-size: 1rem;
 }
 </style>
