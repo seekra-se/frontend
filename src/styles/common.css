@@ -54,6 +54,7 @@ input {
 .button {
     background-color: var(--light-bg);
     border: none;
+    cursor: pointer;
 }
 
 .button:focus {
