@@ -29,19 +29,27 @@ const router = useRouter();
 const settingsLoaded = ref(false)
 const settings = ref([]);
 const activeSectionContent = ref([]);
+const activeSection = ref(null);
+
+watchEffect(() => {
+    const segments = route.path
+        .split('/')
+        .filter(Boolean);
+
+    activeSection.value = segments[1];
+});
 
 const updateSettings = function updateSettings () {
-    const activeSection = getActiveSection();
-    if (activeSection) {
-        activeSectionContent.value = settings.value.filter((section) => section.name === activeSection)[0].content;
+    if (activeSection.value) {
+        activeSectionContent.value = settings.value.filter((section) => section.name === activeSection.value)[0];
     } else {
-        activeSectionContent.value = [];
+        activeSectionContent.value = { content: [] };
     };
 };
 
 onMounted(async () => {
     settings.value = (await loadSettingsConfig()).contents;
-    if (!settings.value.map((section) => section.name).includes(getActiveSection())) {
+    if (!settings.value.map((section) => section.name).includes(activeSection.value)) {
         router.push('/settings');
     };
     watchEffect(() => {
@@ -49,14 +57,6 @@ onMounted(async () => {
     });
     settingsLoaded.value = true;
 });
-
-const getActiveSection = function getActiveSection () {
-    const segments = route.path
-        .split('/')
-        .filter(Boolean);
-
-    return segments[1];
-};
 </script>
 
 <template>
@@ -73,7 +73,7 @@ const getActiveSection = function getActiveSection () {
                         <RouterLink
                             :to="`/settings/${section.name}`"
                             class="button button-link link sidebar-section"
-                            :class="{ active: getActiveSection() === section.name }"
+                            :class="{ active: activeSection === section.name }"
                         >
                             {{ t(section.i18n) }}
                         </RouterLink>
