@@ -55,11 +55,13 @@ const enabled = ref(false);
 .switch-wrapper {
     --point-size: 0.9em;
     --padding: 2px;
+    --transition-duration: 0.2s;
     background-color: var(--light-bg);
     outline: 1px solid var(--border);
     width: calc(2 * var(--point-size));
     padding: var(--padding);
     border-radius: calc(0.5 * var(--point-size) + var(--padding));
+    transition: background-color var(--transition-duration) ease;
 }
 
 .switch-point {
@@ -68,6 +70,7 @@ const enabled = ref(false);
     background-color: var(--border);
     border-radius: calc(0.5 * var(--point-size));
     margin-left: 0;
+    transition: margin-left var(--transition-duration) ease;
 }
 
 .switch-wrapper.enabled {
