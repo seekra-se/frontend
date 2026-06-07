@@ -14,9 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { createApp } from 'vue';
-import App from './App.vue';
-import { i18n, loadLanguage, fallbackLocale } from './i18n';
+import { createApp } from 'vue'
+import { createPinia } from 'pinia';
+import App from './App.vue'
+import { i18n, loadLanguage } from './i18n';
 import getCurrentLanguage from './utils/currentLanguage';
 import router from './router';
 
@@ -27,8 +28,11 @@ import './styles/variables/colors.css';
     await loadLanguage(fallbackLocale);
     await loadLanguage(getCurrentLanguage());
 
+    const pinia = createPinia();
+    
     createApp(App)
         .use(router)
         .use(i18n)
+        .use(pinia)
         .mount('#app');
 })();
