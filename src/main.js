@@ -23,13 +23,11 @@ import router from './router'
 import './styles/common.css'
 import './styles/variables/colors.css'
 
-async function bootstrap() {
-    await loadLanguage(getCurrentLanguage())
+(async () => {
+  await loadLanguage(getCurrentLanguage())
 
-    createApp(App)
-        .use(router)
-        .use(i18n)
-        .mount('#app')
-}
-
-bootstrap()
+  createApp(App)
+    .use(router)
+    .use(i18n)
+    .mount('#app')
+})()
