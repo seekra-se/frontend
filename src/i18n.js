@@ -28,8 +28,8 @@ export const SUPPORTED_LANGUAGES = [
     'de',
     'fr',
     'es',
-    'it',
-    'pt'
+    'pt',
+    'it'
 ];
 
 export const i18n = createI18n({
