@@ -135,4 +135,10 @@ onMounted(async () => {
 .settings-main-content {
     padding: 0 30%;
 }
+
+@media (max-width: 80em) {
+    .settings-main-content {
+        padding: 0;
+    }
+}
 </style>
