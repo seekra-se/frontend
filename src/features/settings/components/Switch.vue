@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import { ref } from 'vue';
+import { useSettingsStore } from '../stores/settingsStore';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -29,15 +29,19 @@ const props = defineProps({
     }
 });
 
-const enabled = ref(false);
+const store = useSettingsStore();
+
+const toggle = function toggle () {
+    store.set(props.path, !store.get(props.path));
+};
 </script>
 
 <template>
-    <div class="switch-container" @click="enabled = !enabled">
+    <div class="switch-container" @click="toggle">
         <div>
             {{ t(props.setting.i18n) }}
         </div>
-        <div class="switch-wrapper" :class="{ enabled: enabled }">
+        <div class="switch-wrapper" :class="{ enabled: store.get(props.path) }">
             <div class="switch-point"></div>
         </div>
     </div>
