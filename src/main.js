@@ -16,6 +16,7 @@ limitations under the License.
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import App from './App.vue'
 import { i18n, loadLanguage } from './i18n';
 import getCurrentLanguage from './utils/currentLanguage';
@@ -27,8 +28,9 @@ import './styles/variables/colors.css';
 (async () => {
     await loadLanguage(fallbackLocale);
     await loadLanguage(getCurrentLanguage());
-
+    
     const pinia = createPinia();
+    pinia.use(piniaPluginPersistedstate);
     
     createApp(App)
         .use(router)
