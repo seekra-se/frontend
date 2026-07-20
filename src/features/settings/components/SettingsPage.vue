@@ -15,6 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
+import Switch from './Switch.vue';
+
 import { useI18n } from 'vue-i18n';
 import { getSectionHeadingLevel } from '../utils/getSectionHeadingLevel.js';
 
@@ -44,6 +46,11 @@ const props = defineProps({
                 selection: setting.type === 'selection'
             }"
         >
+            <Switch
+                v-if="setting.type === 'bool'"
+                :setting="setting"
+                :path="`${props.path}.${setting.name}`"
+            />
         </div>
     </div>
 </template>
