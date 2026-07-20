@@ -16,6 +16,7 @@ limitations under the License.
 
 <script setup>
 import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
+import SettingsPage from '../components/SettingsPage.vue';
 
 import { loadSettingsConfig } from '../utils/settingsParser';
 import { onMounted, ref, watchEffect } from 'vue';
@@ -28,7 +29,7 @@ const router = useRouter();
 
 const settingsLoaded = ref(false)
 const settings = ref([]);
-const activeSectionContent = ref([]);
+const activeSectionContent = ref({});
 const activeSection = ref(null);
 
 watchEffect(() => {
@@ -80,9 +81,12 @@ onMounted(async () => {
                     </li>
                 </ul>
             </template>
-            <div>
+            <div class="settings-main-content">
                 <div v-if="!settingsLoaded">
                     {{ t('loading') }}
+                </div>
+                <div v-else>
+                    <SettingsPage :setting="activeSectionContent" :path="activeSection" />
                 </div>
             </div>
         </LeftSidebarLayout>
@@ -126,5 +130,9 @@ onMounted(async () => {
     text-align: start;
     font-size: 1rem;
     display: block;
+}
+
+.settings-main-content {
+    padding: 0 30%;
 }
 </style>
