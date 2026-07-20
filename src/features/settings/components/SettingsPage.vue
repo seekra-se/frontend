@@ -40,11 +40,6 @@ const props = defineProps({
         <div
             v-for="setting in props.setting.content"
             class="setting"
-            :class="{
-                switch: setting.type === 'bool',
-                input: setting.type === 'number' || setting.type === 'string',
-                selection: setting.type === 'selection'
-            }"
         >
             <Switch
                 v-if="setting.type === 'bool'"
