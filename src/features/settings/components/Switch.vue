@@ -57,7 +57,7 @@ const toggle = function toggle () {
     </div>
 </template>
 
-<style component>
+<style scoped>
 .switch-container {
     display: flex;
     justify-content: space-between;
