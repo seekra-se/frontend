@@ -93,13 +93,16 @@ const apply = function apply () {
 }
 
 .input-container {
+    position: relative;
     width: 50%;
     white-space: nowrap;
     --total-animation-duration: 0.3s;
 }
 
 .input {
-    width: calc(100% - 2 * var(--input-padding));
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(var(--input-height) + 2 * var(--input-padding-y));
     display: inline;
     vertical-align: middle;
     --input-height: 24px;
@@ -111,15 +114,18 @@ const apply = function apply () {
 }
 
 .input-container.done-button-shown .input {
-    width: calc(100% - 3.5 * var(--input-padding) - 26px - 0.75 * var(--input-height) + 1.5px);
+    width: calc(100% - 1.5 * var(--input-padding) - 26px - 0.75 * var(--input-height) + 1.5px);
 }
 
 .done-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
     border: 1px solid var(--border);
     min-height: var(--input-height);
     padding: var(--input-padding);
-    margin-left: calc(0.5 * var(--input-padding) + 0.25 * var(--input-height) + 0.5px);
-    transform: scale(0);
+    transform: translateY(-50%) scale(0);
+    transform-origin: center;
     vertical-align: middle;
     align-items: center;
     justify-content: center;
@@ -132,45 +138,45 @@ const apply = function apply () {
 .input-container.done-button-shown .done-button {
     animation: done-button-appear var(--total-animation-duration);
     display: inline-flex;
-    transform: scale(1);
+    transform: translateY(-50%) scale(1);
 }
 
 @keyframes done-button-appear {
     0% {
-        transform: scale(0);
+        transform: translateY(-50%) scale(0);
     }
     10% {
-        transform: scale(0);
+        transform: translateY(-50%) scale(0);
     }
     95% {
-        transform: scale(1.05);
+        transform: translateY(-50%) scale(1.05);
     }
     100% {
-        transform: scale(1);
+        transform: translateY(-50%) scale(1);
     }
 }
 
 @keyframes done-button-disappear {
     0% {
-        transform: scale(1);
+        transform: translateY(-50%) scale(1);
     }
     100% {
-        transform: scale(0);
+        transform: translateY(-50%) scale(0);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     @keyframes done-button-appear {
         0% {
-            transform: scale(1);
+            transform: translateY(-50%) scale(1);
             opacity: 0;
         }
         10% {
-            transform: scale(1);
+            transform: translateY(-50%) scale(1);
             opacity: 0;
         }
         100% {
-            transform: scale(1);
+            transform: translateY(-50%) scale(1);
             opacity: 1;
         }
     }
@@ -178,11 +184,11 @@ const apply = function apply () {
     @keyframes done-button-disappear {
         0% {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(-50%) scale(1);
         }
         100% {
             opacity: 0;
-            transform: scale(1);
+            transform: translateY(-50%) scale(1);
         }
     }
 }
