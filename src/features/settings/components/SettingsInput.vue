@@ -40,7 +40,7 @@ inputModel.value = store.get(props.path);
 const inputId = useId();
 const inputLabelId = useId();
 
-const inputClass = computed(() => ({
+const inputType = computed(() => ({
         number: 'number',
         string: 'text'
     }[props.setting.type]
@@ -66,7 +66,7 @@ const apply = function apply () {
             :class="{ 'done-button-shown': hasChanged }"
         >
             <input
-                :type="inputClass"
+                :type="inputType"
                 :id="inputId"
                 :aria-labelledby="inputLabelId"
                 v-model="inputModel"
