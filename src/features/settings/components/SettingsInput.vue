@@ -86,6 +86,7 @@ const apply = function apply () {
 .input-container {
     width: 50%;
     white-space: nowrap;
+    --total-animation-duration: 0.3s;
 }
 
 .input {
@@ -93,6 +94,11 @@ const apply = function apply () {
     display: inline;
     vertical-align: middle;
     --input-height: 24px;
+    transition: width calc(var(--total-animation-duration) / 3);
+}
+
+.input-container:not(.done-button-shown) .input {
+    transition-delay: calc((2 / 3) * var(--total-animation-duration));
 }
 
 .input-container.done-button-shown .input {
@@ -104,16 +110,71 @@ const apply = function apply () {
     min-height: var(--input-height);
     padding: var(--input-padding);
     margin-left: calc(0.5 * var(--input-padding) + 0.25 * var(--input-height) + 0.5px);
-    display: none;
+    transform: scale(0);
     vertical-align: middle;
     align-items: center;
     justify-content: center;
     border-radius: calc(var(--input-padding) + 13px);
     font-size: 1em;
     font-family: inherit;
+    animation: done-button-disappear var(--total-animation-duration);
 }
 
 .input-container.done-button-shown .done-button {
+    animation: done-button-appear var(--total-animation-duration);
     display: inline-flex;
+    transform: scale(1);
+}
+
+@keyframes done-button-appear {
+    0% {
+        transform: scale(0);
+    }
+    10% {
+        transform: scale(0);
+    }
+    95% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes done-button-disappear {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @keyframes done-button-appear {
+        0% {
+            transform: scale(1);
+            opacity: 0;
+        }
+        10% {
+            transform: scale(1);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes done-button-disappear {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(1);
+        }
+    }
 }
 </style>
