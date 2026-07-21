@@ -38,5 +38,13 @@
             }
         }
     },
-    "slogan": "Built to search."
+    "slogan": "Built to search.",
+    "settings": {
+        "input": {
+            "done": {
+                "title": "Save value",
+                "ariaLabel": "Saves the entered value"
+            }
+        }
+    }
 }

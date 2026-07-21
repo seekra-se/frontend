@@ -38,5 +38,13 @@
             }
         }
     },
-    "slogan": "Gebaut zum Suchen."
+    "slogan": "Gebaut zum Suchen.",
+    "settings": {
+        "input": {
+            "done": {
+                "title": "Wert speichern",
+                "ariaLabel": "Speichert den eingegebenen Wert"
+            }
+        }
+    }
 }

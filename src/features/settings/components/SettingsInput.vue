@@ -19,7 +19,7 @@ import Icon from '@/features/icons/components/Icon.vue';
 
 import { useSettingsStore } from '../stores/settingsStore';
 
-import { computed } from 'vue';
+import { computed, useId } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -37,6 +37,8 @@ const store = useSettingsStore();
 
 const inputModel = defineModel();
 inputModel.value = store.get(props.path);
+const inputId = useId();
+const inputLabelId = useId();
 
 const inputClass = computed(() => ({
         number: 'number',
@@ -55,9 +57,9 @@ const apply = function apply () {
 
 <template>
     <div class="input-setting-container">
-        <div>
+        <label :for="inputId" :id="inputLabelId">
             {{ t(props.setting.i18n) }}
-        </div>
+        </label>
         <form
             @submit.prevent="apply"
             class="input-container"
@@ -65,10 +67,17 @@ const apply = function apply () {
         >
             <input
                 :type="inputClass"
+                :id="inputId"
+                :aria-labelledby="inputLabelId"
                 v-model="inputModel"
                 class="input"
             />
-            <button class="done-button button" type="submit">
+            <button
+                class="done-button button"
+                type="submit"
+                :title="t('settings.input.done.title')"
+                :aria-label="t('settings.input.done.ariaLabel')"
+            >
                 <Icon name="check-mark" />
             </button>
         </form>
