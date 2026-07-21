@@ -16,7 +16,7 @@ limitations under the License.
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import { i18n, loadLanguage } from './i18n'
+import { i18n, loadLanguage, fallbackLocale } from './i18n'
 import getCurrentLanguage from './utils/currentLanguage'
 import router from './router'
 
@@ -24,7 +24,13 @@ import './styles/common.css'
 import './styles/variables/colors.css'
 
 (async () => {
-  await loadLanguage(getCurrentLanguage())
+  await loadLanguage(fallbackLocale)
+
+  const currentLanguage = getCurrentLanguage()
+
+  if (currentLanguage !== fallbackLocale) {
+    await loadLanguage(currentLanguage)
+  }
 
   createApp(App)
     .use(router)
