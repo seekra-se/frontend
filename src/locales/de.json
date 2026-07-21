@@ -45,6 +45,10 @@
                 "title": "Wert speichern",
                 "ariaLabel": "Speichert den eingegebenen Wert"
             }
+        },
+        "switch": {
+            "title": "Wert umschalten",
+            "ariaLabel": "Schaltet den Wert um"
         }
     }
 }

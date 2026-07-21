@@ -45,6 +45,10 @@
                 "title": "Save value",
                 "ariaLabel": "Saves the entered value"
             }
+        },
+        "switch": {
+            "title": "Toggle value",
+            "ariaLabel": "Toggles the value"
         }
     }
 }

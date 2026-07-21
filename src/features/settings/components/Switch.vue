@@ -16,6 +16,7 @@ limitations under the License.
 
 <script setup>
 import { useSettingsStore } from '../stores/settingsStore';
+import { useId } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -29,6 +30,9 @@ const props = defineProps({
     }
 });
 
+const labelId = useId();
+const switchId = useId();
+
 const store = useSettingsStore();
 
 const toggle = function toggle () {
@@ -38,10 +42,16 @@ const toggle = function toggle () {
 
 <template>
     <div class="switch-container" @click="toggle">
-        <div>
+        <label :for="switchId" :id="labelId">
             {{ t(props.setting.i18n) }}
-        </div>
-        <div class="switch-wrapper" :class="{ enabled: store.get(props.path) }">
+        </label>
+        <div
+            class="switch-wrapper"
+            :class="{ enabled: store.get(props.path) }"
+            :title="t('settings.switch.title')"
+            :aria-label="t('settings.switch.ariaLabel')"
+            :aria-labelledby="labelId"
+        >
             <div class="switch-point"></div>
         </div>
     </div>
