@@ -66,7 +66,7 @@ watch(selected, (newValue, oldValue) => {
         {{ t(props.setting.i18n) }}
         <ul class="options-list">
             <li v-for="option in props.setting.options" :key="option.name">
-                <label class="option">
+                <label class="settings-button">
                     <input
                         :type="optionType"
                         :name="props.path"
@@ -84,32 +84,13 @@ watch(selected, (newValue, oldValue) => {
     </div>
 </template>
 
+<style scoped src="./SettingsButton.css"></style>
 <style scoped>
 .options-list {
     list-style: none;
     padding: 0;
     margin: 0;
     margin-top: 0.5em;
-}
-
-.option {
-    --padding-x: 0.7em;
-    padding: 0.3em var(--padding-x);
-    margin-top: 0.2em;
-    width: calc(100% - 2 * var(--padding-x));
-    border-radius: 0.8em;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    cursor: pointer;
-    background-color: var(--light-bg);
-
-    user-select: none;
-    -moz-user-select: none;
-}
-
-.option:hover {
-    background-color: var(--light-hover);
 }
 
 .option-input {
