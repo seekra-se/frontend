@@ -42,7 +42,7 @@ const toggle = function toggle () {
 
 <template>
     <div class="switch-container" @click="toggle">
-        <label :for="switchId" :id="labelId">
+        <label :for="switchId" :id="labelId" class="switch-label">
             {{ t(props.setting.i18n) }}
         </label>
         <div
@@ -64,6 +64,10 @@ const toggle = function toggle () {
     width: 100%;
     align-items: center;
     cursor: pointer;
+}
+
+.switch-label {
+    cursor: inherit;
 }
 
 .switch-wrapper {
