@@ -17,6 +17,7 @@ limitations under the License.
 <script setup>
 import Switch from './Switch.vue';
 import SettingsInput from './SettingsInput.vue';
+import Selection from './Selection.vue';
 
 import { useI18n } from 'vue-i18n';
 import { getSectionHeadingLevel } from '../utils/getSectionHeadingLevel.js';
@@ -49,6 +50,11 @@ const props = defineProps({
             />
             <SettingsInput
                 v-if="setting.type === 'string' || setting.type === 'number'"
+                :setting="setting"
+                :path="`${props.path}.${setting.name}`"
+            />
+            <Selection
+                v-if="setting.type === 'selection'"
                 :setting="setting"
                 :path="`${props.path}.${setting.name}`"
             />

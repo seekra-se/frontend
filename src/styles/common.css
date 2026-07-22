@@ -73,6 +73,9 @@ input {
     background-color: var(--light-bg);
     border: none;
     cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
 }
 
 .button:focus {
