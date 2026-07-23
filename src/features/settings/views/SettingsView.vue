@@ -18,6 +18,7 @@ limitations under the License.
 import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 import SettingsPage from '../components/SettingsPage.vue';
 
+import { getSettingRecursively } from '../utils/getSetting.js';
 import { loadSettingsConfig } from '../utils/settingsParser';
 import { onMounted, ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -37,12 +38,17 @@ watchEffect(() => {
         .split('/')
         .filter(Boolean);
 
-    activeSection.value = segments[1];
+    activeSection.value = segments.slice(1, segments.length).join('.');
 });
 
 const updateSettings = function updateSettings () {
     if (activeSection.value) {
-        activeSectionContent.value = settings.value.filter((section) => section.name === activeSection.value)[0];
+        const setting = getSettingRecursively(activeSection.value, settings.value);
+        if (!setting.content) {
+            router.push('/settings');
+        } else {
+            activeSectionContent.value = setting;
+        };
     } else {
         activeSectionContent.value = { content: [] };
     };
@@ -50,9 +56,6 @@ const updateSettings = function updateSettings () {
 
 onMounted(async () => {
     settings.value = (await loadSettingsConfig()).contents;
-    if (!settings.value.map((section) => section.name).includes(activeSection.value)) {
-        router.push('/settings');
-    };
     watchEffect(() => {
         updateSettings();
     });

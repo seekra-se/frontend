@@ -20,7 +20,6 @@ import SettingsInput from './SettingsInput.vue';
 import Selection from './Selection.vue';
 
 import { useI18n } from 'vue-i18n';
-import { getSectionHeadingLevel } from '../utils/getSectionHeadingLevel.js';
 
 const { t } = useI18n();
 
@@ -36,9 +35,9 @@ const props = defineProps({
 
 <template>
     <div>
-        <div role="heading" :aria-level="getSectionHeadingLevel(props.path)" class="section-heading">
+        <h2 class="section-heading">
             {{ t(props.setting.i18n) }}
-        </div>
+        </h2>
         <div
             v-for="setting in props.setting.content"
             class="setting"
