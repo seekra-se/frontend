@@ -19,8 +19,9 @@
     "vue-router": "^5.0.6"
   },
   "devDependencies": {
-    "@vue/test-utils": "^2.4.6",
+    "@pinia/testing": "^1.0.3",
     "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/test-utils": "^2.4.6",
     "jsdom": "^29.1.1",
     "vite": "^8.0.10",
     "vite-plugin-html": "^3.2.2",
