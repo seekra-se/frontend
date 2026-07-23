@@ -40,6 +40,7 @@ const props = defineProps({
         </h2>
         <div
             v-for="setting in props.setting.content"
+            :key="setting"
             class="setting"
         >
             <Switch
