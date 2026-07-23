@@ -49,6 +49,11 @@
         "switch": {
             "title": "Wert umschalten",
             "ariaLabel": "Schaltet den Wert um"
+        },
+        "pages": {
+            "link": {
+                "ariaLabel": "Geht zur Einstellungsseite {page}"
+            }
         }
     }
 }

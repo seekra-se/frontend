@@ -18,6 +18,7 @@ limitations under the License.
 import Switch from './Switch.vue';
 import SettingsInput from './SettingsInput.vue';
 import Selection from './Selection.vue';
+import SettingsPageLink from './SettingsPageLink.vue';
 
 import { useI18n } from 'vue-i18n';
 
@@ -57,6 +58,11 @@ const props = defineProps({
                 v-if="setting.type === 'selection'"
                 :setting="setting"
                 :path="`${props.path}.${setting.name}`"
+            />
+            <SettingsPageLink
+                v-if="setting.type === 'section'"
+                :display-name="t(setting.i18n)"
+                :target="`${props.path}.${setting.name}`"
             />
         </div>
     </div>

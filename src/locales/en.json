@@ -49,6 +49,11 @@
         "switch": {
             "title": "Toggle value",
             "ariaLabel": "Toggles the value"
+        },
+        "pages": {
+            "link": {
+                "ariaLabel": "Goes to settings page {page}"
+            }
         }
     }
 }
