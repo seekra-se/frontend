@@ -19,7 +19,7 @@ import Icon from '@/features/icons/components/Icon.vue';
 
 import { useSettingsStore } from '../stores/settingsStore';
 
-import { computed, useId } from 'vue';
+import { computed, ref, useId, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -35,8 +35,9 @@ const props = defineProps({
 
 const store = useSettingsStore();
 
-const inputModel = defineModel();
-inputModel.value = store.get(props.path);
+const inputModel = ref(store.get(props.path));
+let oldInputValue = inputModel.value;
+
 const inputId = useId();
 const inputLabelId = useId();
 
@@ -49,6 +50,14 @@ const inputType = computed(() => ({
 const hasChanged = computed(() =>
     inputModel.value !== store.get(props.path)
 );
+
+watch(store, (newValue) => {
+    const newInputValue = newValue.get(props.path);
+    if (inputModel.value === oldInputValue) {
+        inputModel.value = newInputValue;
+        oldInputValue = newInputValue;
+    };
+});
 
 const apply = function apply () {
     store.set(props.path, inputModel.value);
