@@ -38,6 +38,8 @@ const store = useSettingsStore();
 const inputModel = ref(store.get(props.path));
 let oldInputValue = inputModel.value;
 
+const doneButtonInitial = ref(true);
+
 const inputId = useId();
 const inputLabelId = useId();
 
@@ -57,6 +59,10 @@ watch(store, (newValue) => {
         inputModel.value = newInputValue;
         oldInputValue = newInputValue;
     };
+});
+
+watch(inputModel, () => {
+    doneButtonInitial.value = false;
 });
 
 const apply = function apply () {
@@ -82,7 +88,9 @@ const apply = function apply () {
                 class="input"
             />
             <button
+                ref="doneButton"
                 class="done-button button"
+                :class="{ initial: doneButtonInitial }"
                 type="submit"
                 :title="t('settings.input.done.title')"
                 :aria-label="t('settings.input.done.ariaLabel')"
@@ -141,6 +149,9 @@ const apply = function apply () {
     border-radius: calc(var(--input-padding) + 13px);
     font-size: 1em;
     font-family: inherit;
+}
+
+.done-button:not(.initial) {
     animation: done-button-disappear var(--total-animation-duration);
 }
 
