@@ -21,6 +21,11 @@ import { createI18n } from 'vue-i18n';
 import { createMemoryHistory, createRouter } from 'vue-router';
 
 export const mountComponent = function mountComponent (component, options = {}, i18nMessages = {}, routes = [], piniaOptions = {}) {
+    const {
+        setupStores,
+        ...testingPiniaOptions
+    } = piniaOptions;
+
     const i18n = createI18n({
         legacy: false,
         locale: 'en',
@@ -34,16 +39,22 @@ export const mountComponent = function mountComponent (component, options = {}, 
         routes
     });
 
+    const testingPinia = createTestingPinia({
+        ...testingPiniaOptions,
+        stubActions: false,
+        createSpy: vi.fn
+    });
+
+    if (setupStores) {
+        setupStores();
+    }
+
     return mount(component, {
         global: {
             plugins: [
                 i18n,
                 router,
-                createTestingPinia({
-                    ...piniaOptions,
-                    stubActions: false,
-                    createSpy: vi.fn
-                })
+                testingPinia
             ],
         },
         ...options
