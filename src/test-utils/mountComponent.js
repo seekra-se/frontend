@@ -20,7 +20,7 @@ import { mount } from '@vue/test-utils';
 import { createI18n } from 'vue-i18n';
 import { createMemoryHistory, createRouter } from 'vue-router';
 
-export const mountComponent = function mountComponent (component, options = {}, i18nMessages = {}, routes = []) {
+export const mountComponent = function mountComponent (component, options = {}, i18nMessages = {}, routes = [], piniaOptions = {}) {
     const i18n = createI18n({
         legacy: false,
         locale: 'en',
@@ -40,6 +40,7 @@ export const mountComponent = function mountComponent (component, options = {}, 
                 i18n,
                 router,
                 createTestingPinia({
+                    ...piniaOptions,
                     stubActions: false,
                     createSpy: vi.fn
                 })
