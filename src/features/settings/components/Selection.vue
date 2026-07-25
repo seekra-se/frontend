@@ -79,7 +79,9 @@ watch(selected, (newValue, oldValue) => {
                     <div class="option-check-mark-wrapper">
                         <Icon class="option-check-mark" name="check-mark" size="1em" />
                     </div>
-                    {{ t(option.i18n) }}
+                    <div class="input-label">
+                        {{ t(option.i18n) }}
+                    </div>
                 </label>
             </li>
         </ul>
