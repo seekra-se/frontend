@@ -63,7 +63,9 @@ watch(selected, (newValue, oldValue) => {
 
 <template>
     <div>
-        {{ t(props.setting.i18n) }}
+        <div class="label">
+            {{ t(props.setting.i18n) }}
+        </div>
         <ul class="options-list">
             <li v-for="option in props.setting.options" :key="option.name">
                 <label class="settings-button">
