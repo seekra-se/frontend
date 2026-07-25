@@ -84,16 +84,16 @@ onMounted(async () => {
                     </li>
                 </ul>
             </template>
-            <div class="settings-main-content">
-                <div v-if="!settingsLoaded">
-                    {{ t('loading') }}
-                </div>
-                <div v-else-if="activeSection">
+            <div v-if="!settingsLoaded">
+                {{ t('loading') }}
+            </div>
+            <div v-else-if="activeSection">
+                <div class="settings-main-content">
                     <SettingsPage :setting="activeSectionContent" :path="activeSection" />
                 </div>
-                <div v-else>
-                    {{ t('settings.noSectionSelected') }}
-                </div>
+            </div>
+            <div v-else>
+                {{ t('settings.noSectionSelected') }}
             </div>
         </LeftSidebarLayout>
     </div>
