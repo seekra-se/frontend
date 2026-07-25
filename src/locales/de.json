@@ -54,6 +54,7 @@
             "link": {
                 "ariaLabel": "Geht zur Einstellungsseite {page}"
             }
-        }
+        },
+        "noSectionSelected": "Kein Einstellungsabschnitt ist ausgewählt."
     }
 }
