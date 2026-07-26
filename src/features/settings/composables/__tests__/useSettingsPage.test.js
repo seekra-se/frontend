@@ -26,10 +26,10 @@ vi.mock('vue-router', () => ({
 
 describe('useSettingsPage', () => {
     describe('goToSettingsPage', () => {
-        test('goes to correct route', () => {
+        test('goes to correct route', async () => {
             const { goToSettingsPage } = useSettingsPage();
 
-            goToSettingsPage('a.b.c');
+            await goToSettingsPage('a.b.c');
             expect(pushRoute).toHaveBeenCalledWith('/settings/a/b/c');
         });
     });

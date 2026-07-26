@@ -24,7 +24,7 @@ export const useSettingsPage = function useSettingsPage () {
     const router = useRouter();
 
     const goToSettingsPage = function goToSettingsPage (pagePath) {
-        router.push(`/settings/${normalizePagePath(pagePath)}`);
+        return router.push(`/settings/${normalizePagePath(pagePath)}`);
     };
 
     return { goToSettingsPage };
