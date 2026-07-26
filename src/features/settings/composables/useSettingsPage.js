@@ -20,7 +20,7 @@ const normalizePagePath = function normalizePagePath (path) {
     return path
         .replace(/\.+/g, '.')
         .replace(/^\.+|\.+$/g, '')
-        .replaceAll('.', '/');
+        .replace(/\./g, '/');
 };
 
 export const useSettingsPage = function useSettingsPage () {
