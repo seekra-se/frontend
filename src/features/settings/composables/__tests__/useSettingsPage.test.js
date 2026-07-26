@@ -26,11 +26,34 @@ vi.mock('vue-router', () => ({
 
 describe('useSettingsPage', () => {
     describe('goToSettingsPage', () => {
-        test('goes to correct route', async () => {
+        test.for([
+            { settingsPath: 'a.b.c', expectedRoute: '/settings/a/b/c' },
+            { settingsPath: 'a', expectedRoute: '/settings/a' },
+            { settingsPath: 'a.b', expectedRoute: '/settings/a/b' },
+            { settingsPath: 'a..b', expectedRoute: '/settings/a/b' },
+            { settingsPath: '.a.b', expectedRoute: '/settings/a/b' },
+            { settingsPath: '..a.b', expectedRoute: '/settings/a/b' },
+            { settingsPath: '.a.b.', expectedRoute: '/settings/a/b' },
+            { settingsPath: '..a.b..', expectedRoute: '/settings/a/b' },
+            { settingsPath: 'a.b.', expectedRoute: '/settings/a/b' },
+            { settingsPath: 'a.b..', expectedRoute: '/settings/a/b' },
+            { settingsPath: '.a.b..', expectedRoute: '/settings/a/b' },
+            { settingsPath: '..a.b.', expectedRoute: '/settings/a/b' },
+            { settingsPath: '.a..b', expectedRoute: '/settings/a/b' },
+            { settingsPath: '..a..b', expectedRoute: '/settings/a/b' },
+            { settingsPath: '.a..b.', expectedRoute: '/settings/a/b' },
+            { settingsPath: '..a..b..', expectedRoute: '/settings/a/b' },
+            { settingsPath: 'a..b.', expectedRoute: '/settings/a/b' },
+            { settingsPath: 'a..b..', expectedRoute: '/settings/a/b' },
+            { settingsPath: '.a..b..', expectedRoute: '/settings/a/b' },
+            { settingsPath: '..a..b.', expectedRoute: '/settings/a/b' },
+            { settingsPath: '..a.....b.c..d....', expectedRoute: '/settings/a/b/c/d' }
+        ])('goes to correct route', async ({ settingsPath, expectedRoute }) => {
             const { goToSettingsPage } = useSettingsPage();
 
-            await goToSettingsPage('a.b.c');
-            expect(pushRoute).toHaveBeenCalledWith('/settings/a/b/c');
+            await goToSettingsPage(settingsPath);
+            expect(pushRoute).toHaveBeenCalledWith(expectedRoute);
+            pushRoute.mockClear();
         });
     });
 });

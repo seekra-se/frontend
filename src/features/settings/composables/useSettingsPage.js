@@ -17,7 +17,10 @@ limitations under the License.
 import { useRouter } from 'vue-router';
 
 const normalizePagePath = function normalizePagePath (path) {
-    return path.replaceAll('.', '/');
+    return path
+        .replace(/\.+/g, '.')
+        .replace(/^\.+|\.+$/g, '')
+        .replaceAll('.', '/');
 };
 
 export const useSettingsPage = function useSettingsPage () {
