@@ -20,14 +20,19 @@ const normalizePagePath = function normalizePagePath (path) {
     return path
         .replace(/\.+/g, '.')
         .replace(/^\.+|\.+$/g, '')
-        .replace(/\./g, '/');
+        .split('.');
 };
 
 export const useSettingsPage = function useSettingsPage () {
     const router = useRouter();
 
     const goToSettingsPage = function goToSettingsPage (pagePath) {
-        return router.push(`/settings/${normalizePagePath(pagePath)}`);
+        return router.push({
+            name: 'settings',
+            params: {
+                rest: normalizePagePath(pagePath)
+            }
+        });
     };
 
     return { goToSettingsPage };

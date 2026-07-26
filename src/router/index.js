@@ -40,15 +40,9 @@ const routes = [
         }
     },
     {
-        path: '/settings',
+        path: '/settings/:rest(.*)*',
         name: 'settings',
         component: SettingsView,
-        children: [
-            {
-                path: ':rest(.*)',
-                component: SettingsView
-            }
-        ],
         meta: {
             title: () => i18n.global.t('preferences.settings')
         }
