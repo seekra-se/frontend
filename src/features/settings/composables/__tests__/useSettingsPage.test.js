@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { useSettingsPage } from '../useSettingsPage';
+import { normalizePagePath, useSettingsPage } from '../useSettingsPage.js';
 import { describe, expect, test, vi } from 'vitest';
 
 const pushRoute = vi.fn();
@@ -25,35 +25,46 @@ vi.mock('vue-router', () => ({
 }));
 
 describe('useSettingsPage', () => {
-    describe('goToSettingsPage', () => {
+    describe('normalizePagePath', () => {
         test.for([
-            { settingsPath: 'a.b.c', expectedRoute: '/settings/a/b/c' },
-            { settingsPath: 'a', expectedRoute: '/settings/a' },
-            { settingsPath: 'a.b', expectedRoute: '/settings/a/b' },
-            { settingsPath: 'a..b', expectedRoute: '/settings/a/b' },
-            { settingsPath: '.a.b', expectedRoute: '/settings/a/b' },
-            { settingsPath: '..a.b', expectedRoute: '/settings/a/b' },
-            { settingsPath: '.a.b.', expectedRoute: '/settings/a/b' },
-            { settingsPath: '..a.b..', expectedRoute: '/settings/a/b' },
-            { settingsPath: 'a.b.', expectedRoute: '/settings/a/b' },
-            { settingsPath: 'a.b..', expectedRoute: '/settings/a/b' },
-            { settingsPath: '.a.b..', expectedRoute: '/settings/a/b' },
-            { settingsPath: '..a.b.', expectedRoute: '/settings/a/b' },
-            { settingsPath: '.a..b', expectedRoute: '/settings/a/b' },
-            { settingsPath: '..a..b', expectedRoute: '/settings/a/b' },
-            { settingsPath: '.a..b.', expectedRoute: '/settings/a/b' },
-            { settingsPath: '..a..b..', expectedRoute: '/settings/a/b' },
-            { settingsPath: 'a..b.', expectedRoute: '/settings/a/b' },
-            { settingsPath: 'a..b..', expectedRoute: '/settings/a/b' },
-            { settingsPath: '.a..b..', expectedRoute: '/settings/a/b' },
-            { settingsPath: '..a..b.', expectedRoute: '/settings/a/b' },
-            { settingsPath: '..a.....b.c..d....', expectedRoute: '/settings/a/b/c/d' }
-        ])('goes to correct route', async ({ settingsPath, expectedRoute }) => {
-            const { goToSettingsPage } = useSettingsPage();
+            { path: 'a.b.c', expected: ['a', 'b', 'c'] },
+            { path: 'a', expected: ['a'] },
+            { path: 'a.b', expected: ['a', 'b'] },
+            { path: 'a..b', expected: ['a', 'b'] },
+            { path: '.a.b', expected: ['a', 'b'] },
+            { path: '..a.b', expected: ['a', 'b'] },
+            { path: '.a.b.', expected: ['a', 'b'] },
+            { path: '..a.b..', expected: ['a', 'b'] },
+            { path: 'a.b.', expected: ['a', 'b'] },
+            { path: 'a.b..', expected: ['a', 'b'] },
+            { path: '.a.b..', expected: ['a', 'b'] },
+            { path: '..a.b.', expected: ['a', 'b'] },
+            { path: '.a..b', expected: ['a', 'b'] },
+            { path: '..a..b', expected: ['a', 'b'] },
+            { path: '.a..b.', expected: ['a', 'b'] },
+            { path: '..a..b..', expected: ['a', 'b'] },
+            { path: 'a..b.', expected: ['a', 'b'] },
+            { path: 'a..b..', expected: ['a', 'b'] },
+            { path: '.a..b..', expected: ['a', 'b'] },
+            { path: '..a..b.', expected: ['a', 'b'] },
+            { path: '..a.....b.c..d....', expected: ['a', 'b', 'c', 'd'] }
+        ])('normalizes path correctly', async ({ path, expected }) => {
+            expect(normalizePagePath(path)).toStrictEqual(expected);
+        });
+    });
 
-            await goToSettingsPage(settingsPath);
-            expect(pushRoute).toHaveBeenCalledWith(expectedRoute);
-            pushRoute.mockClear();
+    describe('useSettingsPage', () => {
+        describe('goToSettingsPage', () => {
+            test('pushes correct route', async () => {
+                const { goToSettingsPage } = useSettingsPage();
+                await goToSettingsPage('..a.b...c.d..e......');
+                expect(pushRoute).toHaveBeenCalledWith({
+                    name: 'settings',
+                    params: {
+                        rest: ['a', 'b', 'c', 'd', 'e']
+                    }
+                });
+            });
         });
     });
 });

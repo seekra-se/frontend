@@ -16,7 +16,7 @@ limitations under the License.
 
 import { useRouter } from 'vue-router';
 
-const normalizePagePath = function normalizePagePath (path) {
+export const normalizePagePath = function normalizePagePath (path) {
     return path
         .replace(/\.+/g, '.')
         .replace(/^\.+|\.+$/g, '')
