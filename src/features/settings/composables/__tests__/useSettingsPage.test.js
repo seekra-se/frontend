@@ -47,7 +47,15 @@ describe('useSettingsPage', () => {
             { path: 'a..b..', expected: ['a', 'b'] },
             { path: '.a..b..', expected: ['a', 'b'] },
             { path: '..a..b.', expected: ['a', 'b'] },
-            { path: '..a.....b.c..d....', expected: ['a', 'b', 'c', 'd'] }
+            { path: '..a.....b.c..d....', expected: ['a', 'b', 'c', 'd'] },
+            { path: 'a.b.c/', expected: ['a', 'b', 'c'] },
+            { path: 'a.#b.c', expected: ['a', 'b', 'c'] },
+            { path: 'a.#b.c/', expected: ['a', 'b', 'c'] },
+            { path: 'a1.#b.c/', expected: ['a1', 'b', 'c'] },
+            { path: 'a-1.#b.c/', expected: ['a-1', 'b', 'c'] },
+            { path: 'a-1.b@.c', expected: ['a-1', 'b', 'c'] },
+            { path: '....@a/#...)!&§[b.#§c..d....', expected: ['a', 'b', 'c', 'd'] },
+            { path: '....@a/#...)!&§[b.#§c..dä....', expected: ['a', 'b', 'c', 'd'] }
         ])('normalizes path correctly', async ({ path, expected }) => {
             expect(normalizePagePath(path)).toStrictEqual(expected);
         });
