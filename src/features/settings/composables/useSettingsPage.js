@@ -18,12 +18,12 @@ import { useRouter } from 'vue-router';
 
 export const normalizePagePath = function normalizePagePath (path) {
     return path
-        .replace(/\.+/g, '.')
         .replace(/^\.+|\.+$/g, '')
         .split('.')
         .map(
             (segment) => segment.replace(/[^a-zA-Z0-9-]/g, '')
-        );
+        )
+        .filter(Boolean);
 };
 
 export const useSettingsPage = function useSettingsPage () {

@@ -55,7 +55,9 @@ describe('useSettingsPage', () => {
             { path: 'a-1.#b.c/', expected: ['a-1', 'b', 'c'] },
             { path: 'a-1.b@.c', expected: ['a-1', 'b', 'c'] },
             { path: '....@a/#...)!&§[b.#§c..d....', expected: ['a', 'b', 'c', 'd'] },
-            { path: '....@a/#...)!&§[b.#§c..dä....', expected: ['a', 'b', 'c', 'd'] }
+            { path: '....@a/#...)!&§[b.#§c..dä....', expected: ['a', 'b', 'c', 'd'] },
+            { path: '..,...~..@a/#.+..)!&§[b.#§c..dä..)..', expected: ['a', 'b', 'c', 'd'] },
+            { path: 'a.@.b', expected: ['a', 'b'] }
         ])('normalizes path correctly', async ({ path, expected }) => {
             expect(normalizePagePath(path)).toStrictEqual(expected);
         });
