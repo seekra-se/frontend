@@ -14,18 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { getSettingsPagePathSegments } from '../utils/settingsPage';
 import { useRouter } from 'vue-router';
-
-export const normalizePagePath = function normalizePagePath (path) {
-    if (typeof path !== 'string') return [];
-    return path
-        .replace(/^\.+|\.+$/g, '')
-        .split('.')
-        .map(
-            (segment) => segment.replace(/[^a-zA-Z0-9-]/g, '')
-        )
-        .filter(Boolean);
-};
 
 export const useSettingsPage = function useSettingsPage () {
     const router = useRouter();
@@ -34,7 +24,7 @@ export const useSettingsPage = function useSettingsPage () {
         return router.push({
             name: 'settings',
             params: {
-                rest: normalizePagePath(pagePath)
+                rest: getSettingsPagePathSegments(pagePath)
             }
         });
     };

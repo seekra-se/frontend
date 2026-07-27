@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { normalizePagePath, useSettingsPage } from '../useSettingsPage.js';
+import { useSettingsPage } from '../useSettingsPage.js';
 import { describe, expect, test, vi } from 'vitest';
 
 const pushRoute = vi.fn();
@@ -25,60 +25,15 @@ vi.mock('vue-router', () => ({
 }));
 
 describe('useSettingsPage', () => {
-    describe('normalizePagePath', () => {
-        test.for([
-            { path: 'a.b.c', expected: ['a', 'b', 'c'] },
-            { path: 'a', expected: ['a'] },
-            { path: 'a.b', expected: ['a', 'b'] },
-            { path: 'a..b', expected: ['a', 'b'] },
-            { path: '.a.b', expected: ['a', 'b'] },
-            { path: '..a.b', expected: ['a', 'b'] },
-            { path: '.a.b.', expected: ['a', 'b'] },
-            { path: '..a.b..', expected: ['a', 'b'] },
-            { path: 'a.b.', expected: ['a', 'b'] },
-            { path: 'a.b..', expected: ['a', 'b'] },
-            { path: '.a.b..', expected: ['a', 'b'] },
-            { path: '..a.b.', expected: ['a', 'b'] },
-            { path: '.a..b', expected: ['a', 'b'] },
-            { path: '..a..b', expected: ['a', 'b'] },
-            { path: '.a..b.', expected: ['a', 'b'] },
-            { path: '..a..b..', expected: ['a', 'b'] },
-            { path: 'a..b.', expected: ['a', 'b'] },
-            { path: 'a..b..', expected: ['a', 'b'] },
-            { path: '.a..b..', expected: ['a', 'b'] },
-            { path: '..a..b.', expected: ['a', 'b'] },
-            { path: '..a.....b.c..d....', expected: ['a', 'b', 'c', 'd'] },
-            { path: 'a.b.c/', expected: ['a', 'b', 'c'] },
-            { path: 'a.#b.c', expected: ['a', 'b', 'c'] },
-            { path: 'a.#b.c/', expected: ['a', 'b', 'c'] },
-            { path: 'a1.#b.c/', expected: ['a1', 'b', 'c'] },
-            { path: 'a-1.#b.c/', expected: ['a-1', 'b', 'c'] },
-            { path: 'a-1.b@.c', expected: ['a-1', 'b', 'c'] },
-            { path: '....@a/#...)!&§[b.#§c..d....', expected: ['a', 'b', 'c', 'd'] },
-            { path: '....@a/#...)!&§[b.#§c..dä....', expected: ['a', 'b', 'c', 'd'] },
-            { path: '..,...~..@a/#.+..)!&§[b.#§c..dä..)..', expected: ['a', 'b', 'c', 'd'] },
-            { path: 'a.@.b', expected: ['a', 'b'] },
-            { path: 1, expected: [] },
-            { path: false, expected: [] },
-            { path: true, expected: [] },
-            { path: null, expected: [] },
-            { path: undefined, expected: [] }
-        ])('normalizes path correctly', async ({ path, expected }) => {
-            expect(normalizePagePath(path)).toStrictEqual(expected);
-        });
-    });
-
-    describe('useSettingsPage', () => {
-        describe('goToSettingsPage', () => {
-            test('pushes correct route', async () => {
-                const { goToSettingsPage } = useSettingsPage();
-                await goToSettingsPage('..a.b...c.d..e......');
-                expect(pushRoute).toHaveBeenCalledWith({
-                    name: 'settings',
-                    params: {
-                        rest: ['a', 'b', 'c', 'd', 'e']
-                    }
-                });
+    describe('goToSettingsPage', () => {
+        test('pushes correct route', async () => {
+            const { goToSettingsPage } = useSettingsPage();
+            await goToSettingsPage('..a.b...c.d..e......');
+            expect(pushRoute).toHaveBeenCalledWith({
+                name: 'settings',
+                params: {
+                    rest: ['a', 'b', 'c', 'd', 'e']
+                }
             });
         });
     });
