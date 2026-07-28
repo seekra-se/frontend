@@ -59,18 +59,17 @@ const router = createRouter({
     routes
 });
 
-// set page title
-router.afterEach(to => {
+export const updatePageTitle = function updatePageTitle (route) {
     const title =
-        typeof to.meta.title === 'function'
-        ? to.meta.title(to)
-        : to.meta.title;
+        typeof route.meta.title === 'function'
+        ? route.meta.title(route)
+        : route.meta.title;
 
     if (title) {
         document.title = `${title} - Seekra`;
     } else {
         document.title = 'Seekra';
     };
-});
+};
 
 export default router;
