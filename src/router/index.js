@@ -40,7 +40,7 @@ const routes = [
         }
     },
     {
-        path: '/settings/:rest(.*)*',
+        path: '/settings',
         name: 'settings',
         component: SettingsView,
         meta: {
