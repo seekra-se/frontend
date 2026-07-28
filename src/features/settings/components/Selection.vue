@@ -17,7 +17,7 @@ limitations under the License.
 <script setup>
 import Icon from '@/features/icons/components/Icon.vue';
 import { useSettingsStore } from '../stores/settingsStore';
-import { computed, ref, watch } from 'vue';
+import { computed, ref, useId, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -59,14 +59,16 @@ const selected = ref(normalizeSelectedValue(store.get(props.path) ?? props.setti
 watch(selected, (newValue) => {
     store.set(props.path, newValue);
 });
+
+const labelId = useId();
 </script>
 
 <template>
     <div>
-        <div class="label">
+        <div class="label" :id="labelId">
             {{ t(props.setting.i18n) }}
         </div>
-        <ul class="options-list">
+        <ul class="options-list" :aria-labelledby="labelId">
             <li v-for="option in props.setting.options" :key="option.name">
                 <label class="settings-button">
                     <input
