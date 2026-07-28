@@ -24,15 +24,28 @@ import { ref, provide, watch } from 'vue';
 const { getColorScheme, updateColorScheme } = useColorScheme();
 const colorScheme = ref(getColorScheme());
 provide('colorScheme', colorScheme);
-watch(colorScheme, val => updateColorScheme(val))
+watch(colorScheme, (newValue) => {
+    updateColorScheme(newValue);
+    document.body.style.setProperty(colorScheme, {
+        auto: 'normal',
+        dark: 'dark',
+        light: 'light'
+    });
+    if (newValue === 'dark') {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+    if (newValue === 'auto') {
+        document.body.classList.add('color-scheme-auto');
+    } else {
+        document.body.classList.remove('color-scheme-auto');
+    }
+});
 </script>
 
 <template>
-    <div
-        :style="{ colorScheme: colorScheme === 'auto' ? 'normal' : (colorScheme === 'dark' ? 'dark' : 'light')}"
-        :class="{ dark: colorScheme === 'dark', 'color-scheme-auto': colorScheme === 'auto' }"
-        id="app-wrapper"
-    >
+    <div id="app-wrapper">
         <Navbar />
 
         <router-view class="main-content" />

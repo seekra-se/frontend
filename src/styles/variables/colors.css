@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#app-wrapper {
+body {
     --primary-color-l-8:  oklch(0.897 0.202 260);
     --primary-color-l-7:  oklch(0.847 0.202 260);
     --primary-color-l-6:  oklch(0.797 0.202 260);
@@ -87,7 +87,7 @@ limitations under the License.
 }
 
 @media (prefers-color-scheme: dark) {
-    #app-wrapper.color-scheme-auto {
+    body.color-scheme-auto {
         --dark-l-8:             var(--white-d-8);
         --dark-l-7:             var(--white-d-7);
         --dark-l-6:             var(--white-d-6);
@@ -121,7 +121,7 @@ limitations under the License.
     }
 }
 
-#app-wrapper.dark {
+body.dark {
     --dark-l-8:             var(--white-d-8);
     --dark-l-7:             var(--white-d-7);
     --dark-l-6:             var(--white-d-6);
