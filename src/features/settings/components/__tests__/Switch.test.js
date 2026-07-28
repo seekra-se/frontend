@@ -20,18 +20,22 @@ import { useSettingsStore } from '../../stores/settingsStore.js';
 import { expect, describe, test } from 'vitest';
 import { nextTick } from 'vue';
 
+const getWrapper = function getWrapper ({ i18n = 'switch1', translations = {} } = {}) {
+    return mountComponent(Switch, {
+        attrs: {
+            setting: {
+                type: 'bool',
+                name: 'switch',
+                i18n
+            },
+            path: 'switch'
+        }
+    }, translations);
+};
+
 describe('Switch', () => {
     test('shows value from store', async () => {
-        const wrapper = mountComponent(Switch, {
-            attrs: {
-                setting: {
-                    name: 'switch',
-                    i18n: 'switch1',
-                    type: 'bool'
-                },
-                path: 'switch'
-            }
-        });
+        const wrapper = getWrapper();
 
         const store = useSettingsStore();
         store.set('switch', true);
@@ -50,16 +54,7 @@ describe('Switch', () => {
     });
 
     test('toggles value in store', async () => {
-        const wrapper = mountComponent(Switch, {
-            attrs: {
-                setting: {
-                    name: 'switch',
-                    i18n: 'switch1',
-                    type: 'bool'
-                },
-                path: 'switch'
-            }
-        });
+        const wrapper = getWrapper();
         
         const switchElement = wrapper.find('.switch-wrapper');
         
@@ -78,18 +73,9 @@ describe('Switch', () => {
     test('shows correct translation', () => {
         const translation = 'Switch';
 
-        const wrapper = mountComponent(Switch, {
-            attrs: {
-                setting: {
-                    name: 'switch',
-                    i18n: 'switch1',
-                    type: 'bool'
-                },
-                path: 'switch'
-            }
-        }, {
-            switch1: translation
-        });
+        const wrapper = getWrapper({
+            translations: { switch1: translation }
+        })
 
         const label = wrapper.find('label');
         expect(label.text()).toBe(translation);
