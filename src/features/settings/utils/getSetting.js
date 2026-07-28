@@ -38,5 +38,5 @@ export const getSettingRecursively = function getSettingRecursively (sectionPath
             return;
         };
     };
-    return oneSettingsLevel(sectionPath.split('.'), { content: settings });
+    return oneSettingsLevel(sectionPath, { content: settings });
 };

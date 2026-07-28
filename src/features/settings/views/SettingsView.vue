@@ -43,7 +43,7 @@ watchEffect(() => {
 
 const updateSettings = function updateSettings () {
     if (activeSection.value) {
-        const setting = getSettingRecursively(activeSection.value, settings.value);
+        const setting = getSettingRecursively(activeSection.value.split('.'), settings.value);
         if (!setting) {
             router.push('/settings');
         } else {

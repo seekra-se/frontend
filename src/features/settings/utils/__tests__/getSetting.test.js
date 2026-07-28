@@ -116,14 +116,14 @@ const veryNestedSettingsList = [
 ];
 
 test.for([
-    ({ settings: [], path: 'a', expected: undefined }),
+    ({ settings: [], path: ['a'], expected: undefined }),
     ({ settings: [
         {
             type: 'bool',
             name: '1a',
             i18n: '1a'
         }
-    ], path: '1a', expected: {
+    ], path: ['1a'], expected: {
         type: 'bool',
         name: '1a',
         i18n: '1a'
@@ -146,7 +146,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1a', expected: {
+    ], path: ['1a'], expected: {
         type: 'bool',
         name: '1a',
         i18n: '1a'
@@ -169,7 +169,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1b.2a', expected: {
+    ], path: ['1b', '2a'], expected: {
         type: 'bool',
         name: '2a',
         i18n: '2a'
@@ -198,7 +198,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1b.2b', expected: {
+    ], path: ['1b', '2b'], expected: {
         type: 'number',
         name: '2b',
         i18n: '2b',
@@ -234,7 +234,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1b.2b.3a', expected: {
+    ], path: ['1b', '2b', '3a'], expected: {
         type: 'string',
         name: '3a',
         i18n: '3a'
@@ -269,7 +269,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1b', expected: {
+    ], path: ['1b'], expected: {
         type: 'section',
         name: '1b',
         i18n: '1b',
@@ -323,7 +323,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1b.2b', expected: {
+    ], path: ['1b', '2b'], expected: {
         type: 'section',
         name: '2b',
         i18n: '2b',
@@ -366,7 +366,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1b.2b.3b', expected: undefined }),
+    ], path: ['1b', '2b', '3b'], expected: undefined }),
     ({ settings: [
         {
             type: 'bool',
@@ -397,7 +397,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1b.2a.3a', expected: undefined }),
+    ], path: ['1b', '2a', '3a'], expected: undefined }),
     ({ settings: [
         {
             type: 'bool',
@@ -428,7 +428,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1b.2c.3a', expected: undefined }),
+    ], path: ['1b', '2c', '3a'], expected: undefined }),
     ({ settings: [
         {
             type: 'bool',
@@ -459,7 +459,7 @@ test.for([
                 }
             ]
         }
-    ], path: '1a.2b.3a', expected: undefined }),
+    ], path: ['1a', '2b', '3a'], expected: undefined }),
     ({ settings: [
         {
             type: 'bool',
@@ -490,13 +490,13 @@ test.for([
                 }
             ]
         }
-    ], path: '1c.2b.3a', expected: undefined }),
-    ({ settings: veryNestedSettingsList, path: '1b.2b.3b.4b.5b.6b.7a', expected: {
+    ], path: ['1c', '2b', '3a'], expected: undefined }),
+    ({ settings: veryNestedSettingsList, path: ['1b', '2b', '3b', '4b', '5b', '6b', '7a'], expected: {
         type: 'bool',
         name: '7a',
         i18n: '7a'
     } }),
-    ({ settings: veryNestedSettingsList, path: '1b.2b.3b.4b.5b', expected: {
+    ({ settings: veryNestedSettingsList, path: ['1b', '2b', '3b', '4b', '5b'], expected: {
         type: 'section',
         name: '5b',
         i18n: '5b',
@@ -520,7 +520,7 @@ test.for([
             }
         ]
     } }),
-    ({ settings: veryNestedSettingsList, path: '1b.2b.3b.4ba.5b.6b.7a', expected: undefined })
+    ({ settings: veryNestedSettingsList, path: ['1b', '2b', '3b', '4ba', '5b', '6b', '7a'], expected: undefined })
 ])('returns $expected', ({ settings, path, expected }) => {
     expect(getSettingRecursively(path, settings)).toStrictEqual(expected);
 });
