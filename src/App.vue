@@ -46,6 +46,8 @@ watch(colorScheme, (newValue) => {
         document.body.classList.remove('color-scheme-auto');
     }
 });
+
+watchEffect(() => updatePageTitle(route));
 </script>
 
 <template>
