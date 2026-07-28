@@ -20,7 +20,7 @@ import { useSettingsStore } from '../../stores/settingsStore.js';
 import { describe, expect, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper(type = 'string', i18n = 'input', piniaOptions = {}) {
+const getWrapper = function getWrapper({ type = 'string', i18n = 'input', piniaOptions = {} } = {}) {
     return mountComponent(SettingsInput, {
         attrs: {
             setting: {
@@ -40,7 +40,7 @@ describe('SettingsInput', () => {
         const stringInputElement = stringSettingWrapper.find('input');
         expect(stringInputElement.attributes('type')).toBe('text');
 
-        const numberSettingWrapper = getWrapper('number');
+        const numberSettingWrapper = getWrapper({ type: 'number' });
 
         const numberInputElement = numberSettingWrapper.find('input');
         expect(numberInputElement.attributes('type')).toBe('number');
@@ -55,10 +55,14 @@ describe('SettingsInput', () => {
 
     test('shows value from store', () => {
         const value = 'example value';
-        const stringSettingWrapper = getWrapper('string', 'input', {
-            setupStores: () => {
-                const store = useSettingsStore();
-                store.settings.input = value;
+        const stringSettingWrapper = getWrapper({
+            type: 'string',
+            i18n: 'input',
+            piniaOptions: {
+                setupStores: () => {
+                    const store = useSettingsStore();
+                    store.settings.input = value;
+                }
             }
         });
         const inputElement = stringSettingWrapper.find('input');
