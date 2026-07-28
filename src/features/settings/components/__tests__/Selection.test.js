@@ -20,20 +20,27 @@ import { useSettingsStore } from '../../stores/settingsStore.js';
 import { expect, describe, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper (options = {}) {
+const getWrapper = function getWrapper ({
+    i18n = 'selection',
+    options = [],
+    allowMultiple = false,
+    defaultValue = undefined,
+    translations = {},
+    piniaOptions = {}
+} = {}) {
     return mountComponent(Selection, {
         attrs: {
             setting: {
                 name: 'selection',
                 type: 'selection',
-                i18n: options.i18n ?? 'selection',
-                options: options.options ?? [],
-                allowMultiple: options.allowMultiple ?? false,
-                default: options.default ?? null
+                i18n,
+                options,
+                allowMultiple,
+                default: defaultValue
             },
             path: 'selection'
         }
-    }, options.translations ?? {}, [], options.piniaOptions ?? {});
+    }, translations, [], piniaOptions);
 };
 
 const getChecked = function getChecked (inputs) {
@@ -108,7 +115,7 @@ describe('Selection', () => {
     test('shows default value', () => {
         const wrapper = getWrapper({
             options: exampleOptions,
-            default: 'o2'
+            defaultValue: 'o2'
         });
 
         const inputs = wrapper.findAll('input');
@@ -119,7 +126,7 @@ describe('Selection', () => {
     test('shows multiple default values', () => {
         const wrapper = getWrapper({
             options: exampleOptions,
-            default: ['o0', 'o1'],
+            defaultValue: ['o0', 'o1'],
             allowMultiple: true
         });
 
