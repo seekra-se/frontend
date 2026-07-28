@@ -14,11 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { createApp } from 'vue';
-import App from './App.vue';
+import { createApp } from 'vue'
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import App from './App.vue'
 import { i18n, loadLanguage, fallbackLocale } from './i18n';
 import getCurrentLanguage from './utils/currentLanguage';
-import router from './router';
+import router from './router'
+import './styles/common.css'
+import './styles/variables/colors.css'
+import './styles/variables/dimensions.css';
 
 import './styles/common.css';
 import './styles/variables/colors.css';
@@ -26,9 +31,13 @@ import './styles/variables/colors.css';
 (async () => {
     await loadLanguage(fallbackLocale);
     await loadLanguage(getCurrentLanguage());
-
+    
+    const pinia = createPinia();
+    pinia.use(piniaPluginPersistedstate);
+    
     createApp(App)
         .use(router)
         .use(i18n)
+        .use(pinia)
         .mount('#app');
 })();

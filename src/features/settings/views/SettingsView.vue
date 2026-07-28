@@ -16,10 +16,51 @@ limitations under the License.
 
 <script setup>
 import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
+import SettingsPage from '../components/SettingsPage.vue';
 
+import { getSettingRecursively } from '../utils/getSetting.js';
+import { loadSettingsConfig } from '../utils/settingsParser';
+import { onMounted, ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRoute, useRouter } from 'vue-router';
 
 const { t } = useI18n();
+const route = useRoute();
+const router = useRouter();
+
+const settingsLoaded = ref(false)
+const settings = ref([]);
+const activeSectionContent = ref({});
+const activeSection = ref(null);
+
+watchEffect(() => {
+    const segments = route.path
+        .split('/')
+        .filter(Boolean);
+
+    activeSection.value = segments.slice(1, segments.length).join('.');
+});
+
+const updateSettings = function updateSettings () {
+    if (activeSection.value) {
+        const setting = getSettingRecursively(activeSection.value.split('.'), settings.value);
+        if (!setting) {
+            router.push('/settings');
+        } else {
+            activeSectionContent.value = setting;
+        };
+    } else {
+        activeSectionContent.value = { content: [] };
+    };
+};
+
+onMounted(async () => {
+    settings.value = (await loadSettingsConfig()).contents;
+    watchEffect(() => {
+        updateSettings();
+    });
+    settingsLoaded.value = true;
+});
 </script>
 
 <template>
@@ -31,7 +72,29 @@ const { t } = useI18n();
         </header>
         <LeftSidebarLayout class="layout">
             <template #sidebar>
+                <ul class="sidebar-sections-list">
+                    <li v-for="section in settings">
+                        <RouterLink
+                            :to="`/settings/${section.name}`"
+                            class="button button-link link sidebar-section"
+                            :class="{ active: activeSection === section.name }"
+                        >
+                            {{ t(section.i18n) }}
+                        </RouterLink>
+                    </li>
+                </ul>
             </template>
+            <div v-if="!settingsLoaded" class="main-content--loading">
+                {{ t('loading') }}
+            </div>
+            <div v-else-if="activeSection" class="main-content--loaded">
+                <div class="settings-main-content">
+                    <SettingsPage :setting="activeSectionContent" :path="activeSection" />
+                </div>
+            </div>
+            <div v-else class="main-content--no-section">
+                {{ t('settings.noSectionSelected') }}
+            </div>
         </LeftSidebarLayout>
     </div>
 </template>
@@ -46,11 +109,42 @@ const { t } = useI18n();
     flex-direction: column;
 }
 
+.active {
+    background-color: var(--light-hover);
+}
+
 .header {
     padding: var(--main-content-padding-y) var(--main-content-padding-x);
 }
 
 .header h1 {
     margin: 0;
+}
+
+.sidebar-sections-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-section {
+    --padding: 0.8em;
+    border-radius: var(--padding);
+    padding: var(--padding);
+    margin-bottom: 4px;
+    width: calc(100% - 2 * var(--padding));
+    text-align: start;
+    font-size: 1rem;
+    display: block;
+}
+
+.settings-main-content {
+    padding: 0 30%;
+}
+
+@media (max-width: 80em) {
+    .settings-main-content {
+        padding: 0;
+    }
 }
 </style>

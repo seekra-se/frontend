@@ -1,4 +1,5 @@
 {
+    "loading": "Cargando ...",
     "search": {
         "searchBar": {
             "submit": "Buscar",

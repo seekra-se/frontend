@@ -1,0 +1,19 @@
+.settings-button {
+    --padding-x: 0.7em;
+    padding: 0.3em var(--padding-x);
+    margin-top: 0.2em;
+    width: calc(100% - 2 * var(--padding-x));
+    border-radius: 0.8em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+    background-color: var(--light-bg);
+
+    user-select: none;
+    -moz-user-select: none;
+}
+
+.settings-button:hover {
+    background-color: var(--light-hover);
+}

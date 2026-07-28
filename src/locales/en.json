@@ -1,4 +1,5 @@
 {
+    "loading": "Loading ...",
     "search": {
         "searchBar": {
             "submit": "Search",
@@ -37,5 +38,28 @@
             }
         }
     },
-    "slogan": "Built to search."
+    "slogan": "Built to search.",
+    "settings": {
+        "input": {
+            "done": {
+                "title": "Save value",
+                "ariaLabel": "Saves the entered value"
+            }
+        },
+        "switch": {
+            "title": "Toggle value",
+            "ariaLabel": "Toggles the value"
+        },
+        "pages": {
+            "link": {
+                "ariaLabel": "Goes to settings page {page}"
+            }
+        },
+        "noSectionSelected": "No settings section is selected.",
+        "selection": {
+            "option": {
+                "ariaLabel": "Selects option {option}"
+            }
+        }
+    }
 }

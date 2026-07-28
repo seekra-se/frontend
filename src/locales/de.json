@@ -1,4 +1,5 @@
 {
+    "loading": "Laden ...",
     "search": {
         "searchBar": {
             "submit": "Suchen",
@@ -37,5 +38,28 @@
             }
         }
     },
-    "slogan": "Gebaut zum Suchen."
+    "slogan": "Gebaut zum Suchen.",
+    "settings": {
+        "input": {
+            "done": {
+                "title": "Wert speichern",
+                "ariaLabel": "Speichert den eingegebenen Wert"
+            }
+        },
+        "switch": {
+            "title": "Wert umschalten",
+            "ariaLabel": "Schaltet den Wert um"
+        },
+        "pages": {
+            "link": {
+                "ariaLabel": "Geht zur Einstellungsseite {page}"
+            }
+        },
+        "noSectionSelected": "Kein Einstellungsabschnitt ist ausgewählt.",
+        "selection": {
+            "option": {
+                "ariaLabel": "Wählt die Option {option} aus"
+            }
+        }
+    }
 }

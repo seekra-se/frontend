@@ -25,15 +25,64 @@ body {
     text-decoration: none;
 }
 
-.link:hover:not(.button-link) {
+.link:hover:not(.button-link), .link:focus:not(.button-link) {
+    outline: none;
     text-decoration: underline;
+}
+
+.button-link {
+    color: var(--dark);
+}
+
+.button-link:hover {
+    color: var(--dark);
+}
+
+.button-link:visited {
+    color: var(--dark);
 }
 
 input {
     color: var(--dark);
 }
 
+.input {
+    padding: var(--input-padding);
+    display: block;
+    border-radius: calc(var(--input-padding) + 0.5 * var(--input-height) + 1px);
+    height: var(--input-height);
+    border: 1px solid var(--border);
+    background: none;
+    transition: border-color 0.2s ease;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.input:focus-visible {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
 .main-content-padding {
     padding: var(--main-content-padding);
     width: calc(100% - var(--main-content-padding-x) * 2);
+}
+
+.button {
+    background-color: var(--light-bg);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+.button:focus {
+    background-color: var(--light-hover);
+    outline: none;
+}
+
+.button:hover {
+    background-color: var(--light-hover);
 }
