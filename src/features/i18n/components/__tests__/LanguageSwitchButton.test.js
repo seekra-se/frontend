@@ -39,7 +39,7 @@ vi.mock('@/features/icons/components/Icon.vue', () => ({
     }
 }));
 
-describe('LanguageSwitchButton.vue', () => {
+describe('LanguageSwitchButton', () => {
     beforeEach(() => {
         vi.clearAllMocks();
         localStorage.clear();
