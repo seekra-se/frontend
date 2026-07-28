@@ -55,18 +55,13 @@ const exampleOptions = [
 
 describe('Selection', () => {
     test('displays options correctly', () => {
-        const options = [
-            { name: 'o0', i18n: 'o0' },
-            { name: 'o1', i18n: 'o1' },
-            { name: 'o2', i18n: 'o2' }
-        ];
-        const wrapper = getWrapper({ options: options });
+        const wrapper = getWrapper({ options: exampleOptions });
 
         const listItems = wrapper.findAll('li');
         expect(listItems.length).toBe(3);
 
         for (let i = 0; i <= 2; i++) {
-            const option = options[i];
+            const option = exampleOptions[i];
             const listItem = listItems[i];
 
             expect(listItem.find('.input-label').text()).toBe(option.i18n);
