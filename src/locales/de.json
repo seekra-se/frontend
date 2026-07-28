@@ -55,6 +55,11 @@
                 "ariaLabel": "Geht zur Einstellungsseite {page}"
             }
         },
-        "noSectionSelected": "Kein Einstellungsabschnitt ist ausgewählt."
+        "noSectionSelected": "Kein Einstellungsabschnitt ist ausgewählt.",
+        "selection": {
+            "option": {
+                "ariaLabel": "Wählt die Option {option} aus"
+            }
+        }
     }
 }

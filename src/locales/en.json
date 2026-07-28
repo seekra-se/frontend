@@ -55,6 +55,11 @@
                 "ariaLabel": "Goes to settings page {page}"
             }
         },
-        "noSectionSelected": "No settings section is selected."
+        "noSectionSelected": "No settings section is selected.",
+        "selection": {
+            "option": {
+                "ariaLabel": "Selects option {option}"
+            }
+        }
     }
 }
