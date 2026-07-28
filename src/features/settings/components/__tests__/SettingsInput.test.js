@@ -20,11 +20,12 @@ import { useSettingsStore } from '../../stores/settingsStore.js';
 import { describe, expect, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper({ type = 'string', i18n = 'input', piniaOptions = {} } = {}) {
+const getWrapper = function getWrapper({ type = 'string', i18n = 'input', defaultValue = undefined, piniaOptions = {} } = {}) {
     return mountComponent(SettingsInput, {
         attrs: {
             setting: {
                 name: 'input',
+                default: defaultValue,
                 i18n,
                 type
             },
@@ -68,6 +69,37 @@ describe('SettingsInput', () => {
         const inputElement = stringSettingWrapper.find('input');
 
         expect(inputElement.element.value).toBe(value);
+    });
+
+    test('shows default value', () => {
+        const value = 'example value';
+        const wrapper = getWrapper({
+            type: 'string',
+            i18n: 'input',
+            defaultValue: value
+        });
+        const inputElement = wrapper.find('input');
+
+        expect(inputElement.element.value).toBe(value);
+    });
+
+    test('store value instead of default value', () => {
+        const storeValue = 'store value';
+        const defaultValue = 'default value';
+        const wrapper = getWrapper({
+            type: 'string',
+            i18n: 'input',
+            defaultValue: defaultValue,
+            piniaOptions: {
+                setupStores: () => {
+                    const store = useSettingsStore();
+                    store.settings.input = storeValue;
+                }
+            }
+        });
+        const inputElement = wrapper.find('input');
+
+        expect(inputElement.element.value).toBe(storeValue);
     });
 
     test('stores value', async () => {

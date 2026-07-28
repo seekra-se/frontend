@@ -35,7 +35,7 @@ const props = defineProps({
 
 const store = useSettingsStore();
 
-const inputModel = ref(store.get(props.path));
+const inputModel = ref(store.get(props.path) ?? props.setting.default);
 let oldInputValue = inputModel.value;
 
 const doneButtonInitial = ref(true);
