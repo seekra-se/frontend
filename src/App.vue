@@ -46,6 +46,11 @@ watch(colorScheme, val => updateColorScheme(val))
     --main-content-padding-x: 30px;
     --main-content-padding-y: 40px;
     --main-content-padding: var(--main-content-padding-y) var(--main-content-padding-x);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-bg);
+    color: var(--dark);
 }
 
 .main-content {
@@ -56,13 +61,5 @@ watch(colorScheme, val => updateColorScheme(val))
     #app-wrapper {
         --main-content-padding-x: 15px;
     }
-}
-
-#app-wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--light-bg);
-    color: var(--dark);
 }
 </style>
