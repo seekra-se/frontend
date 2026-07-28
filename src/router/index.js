@@ -40,7 +40,7 @@ const routes = [
         }
     },
     {
-        path: '/settings',
+        path: '/settings/:rest(.*)*',
         name: 'settings',
         component: SettingsView,
         meta: {
@@ -71,5 +71,17 @@ export const updatePageTitle = function updatePageTitle (route) {
         document.title = 'Seekra';
     };
 };
+
+// remove trailing slash(es)
+router.beforeEach((route) => {
+    if (route.path !== '/' && route.path.endsWith('/')) {
+        return {
+            path: route.path.replace(/\/+$/, ''),
+            query: route.query,
+            hash: route.hash,
+            replace: true
+        };
+    };
+});
 
 export default router;
