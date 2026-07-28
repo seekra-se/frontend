@@ -70,7 +70,7 @@ const labelId = useId();
         </div>
         <ul class="options-list" :aria-labelledby="labelId">
             <li v-for="option in props.setting.options" :key="option.name">
-                <label class="settings-button">
+                <label class="settings-button" :title="t(option.i18n)">
                     <input
                         :type="optionType"
                         :name="props.path"
