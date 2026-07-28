@@ -21,9 +21,7 @@ export const getSetting = function getSetting (name, settings) {
 export const getSettingRecursively = function getSettingRecursively (sectionPath, settings) {
     const oneSettingsLevel = function oneSettingsLevel (cursor, acc) {
         const setting = getSetting(cursor[0], acc.content);
-        if (!setting) {
-            return;
-        };
+        if (!setting) return;
 
         if (setting.type === undefined) setting.type = 'section';
         if (setting.type === 'section') {
