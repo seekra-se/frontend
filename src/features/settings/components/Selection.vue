@@ -56,7 +56,7 @@ const store = useSettingsStore();
 const optionType = computed(() => props.setting.allowMultiple ? 'checkbox' : 'radio');
 const selected = ref(normalizeSelectedValue(store.get(props.path) ?? props.setting.default));
 
-watch(selected, (newValue, oldValue) => {
+watch(selected, (newValue) => {
     store.set(props.path, newValue);
 });
 </script>
