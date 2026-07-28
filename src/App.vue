@@ -18,8 +18,12 @@ limitations under the License.
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
 
+import { updatePageTitle } from './router';
 import { useColorScheme } from './features/colorScheme/composables/useColorScheme';
-import { ref, provide, watch } from 'vue';
+import { ref, provide, watch, watchEffect } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const { getColorScheme, updateColorScheme } = useColorScheme();
 const colorScheme = ref(getColorScheme());
