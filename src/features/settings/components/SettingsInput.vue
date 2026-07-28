@@ -30,7 +30,7 @@ const props = defineProps({
     },
     path: {
         required: true
-    },
+    }
 });
 
 const store = useSettingsStore();
