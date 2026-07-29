@@ -25,7 +25,7 @@ body {
     text-decoration: none;
 }
 
-.link:hover:not(.button-link), .link:focus:not(.button-link) {
+.link:hover:not(.button-link), .link:focus-visible:not(.button-link) {
     outline: none;
     text-decoration: underline;
 }
@@ -78,7 +78,7 @@ input {
     color: inherit;
 }
 
-.button:focus {
+.button:focus-visible {
     background-color: var(--light-hover);
     outline: none;
 }
