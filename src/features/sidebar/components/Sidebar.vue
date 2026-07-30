@@ -16,14 +16,27 @@ limitations under the License.
 
 <script setup>
 import SidebarExpandButton from './SidebarExpandButton.vue';
+
+const props = defineProps({
+    'expanded': {
+        default: false,
+        required: false,
+        type: Boolean
+    }
+});
+const emit = defineEmits(['toggleExpanded']);
+
+const toggleSidebar = function toggleSidebar () {
+    emit('toggleExpanded');
+};
 </script>
 
 <template>
     <nav class="sidebar">
         <div class="sidebar-controls">
-            <SidebarExpandButton />
+            <SidebarExpandButton @click="toggleSidebar" />
         </div>
-        <div class="sidebar-content">
+        <div class="sidebar-content" v-if="props.expanded">
             <slot />
         </div>
     </nav>

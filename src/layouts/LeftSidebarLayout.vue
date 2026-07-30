@@ -16,11 +16,26 @@ limitations under the License.
 
 <script setup>
 import Sidebar from '@/features/sidebar/components/Sidebar.vue';
+import { ref } from 'vue';
+
+const props = defineProps({
+    'expanded': {
+        default: false,
+        required: false,
+        type: Boolean
+    }
+});
+
+const expanded = ref(props.expanded);
+
+const toggleExpanded = function toggleExpanded () {
+    expanded.value = !expanded.value;
+};
 </script>
 
 <template>
-    <div class="layout-container">
-        <Sidebar>
+    <div class="layout-container" :class="{ expanded }">
+        <Sidebar @toggle-expanded="toggleExpanded" :expanded="expanded">
             <slot name="sidebar" />
         </Sidebar>
         <main class="main-content">
@@ -32,8 +47,22 @@ import Sidebar from '@/features/sidebar/components/Sidebar.vue';
 <style scoped>
 .layout-container {
     display: grid;
-    grid-template-columns: min(24%, 280px) 1fr;
+    grid-template-columns: 72px 1fr;
     border-top: 1px solid var(--border);
+}
+
+.layout-container.expanded {
+    grid-template-columns: min(24%, 280px) 1fr;
+}
+
+@media (max-width: 48rem) {
+    .layout-container {
+        grid-template-columns: 0 1fr;
+    }
+
+    .layout-container.expanded {
+        grid-template-columns: 1fr 0;
+    }
 }
 
 .main-content {
