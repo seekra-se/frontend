@@ -40,26 +40,26 @@
     },
     "slogan": "Feito para pesquisar.",
     "settings": {
-  "input": {
-    "done": {
-      "title": "Guardar valor",
-      "ariaLabel": "Guarda o valor introduzido"
-    }
-  },
-  "switch": {
-    "title": "Alternar valor",
-    "ariaLabel": "Alterna o valor"
-  },
-  "pages": {
-    "link": {
-      "ariaLabel": "Ir para a página de definições {page}"
-    }
-  },
-  "noSectionSelected": "Nenhuma secção de definições está selecionada.",
-  "selection": {
-    "option": {
-      "ariaLabel": "Seleciona a opção {option}"
-    }
-  }
+        "input": {
+            "done": {
+            "title": "Guardar valor",
+                "ariaLabel": "Guarda o valor introduzido"
+            }
+        },
+        "switch": {
+            "title": "Alternar valor",
+            "ariaLabel": "Alterna o valor"
+        },
+        "pages": {
+            "link": {
+                "ariaLabel": "Ir para a página de definições {page}"
+            }
+        },
+        "noSectionSelected": "Nenhuma secção de definições está selecionada.",
+        "selection": {
+            "option": {
+                "ariaLabel": "Seleciona a opção {option}"
+            }
+        }
     }
 }
