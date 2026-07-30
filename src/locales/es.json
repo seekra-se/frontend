@@ -40,26 +40,26 @@
     },
     "slogan": "Hecho para buscar.",
     "settings": {
-    "input": {
-        "done": {
-            "title": "Guardar valor",
-            "ariaLabel": "Guarda el valor introducido"
+        "input": {
+            "done": {
+                "title": "Guardar valor",
+                "ariaLabel": "Guarda el valor introducido"
+            }
+        },
+        "switch": {
+            "title": "Cambiar valor",
+            "ariaLabel": "Cambia el valor"
+        },
+        "pages": {
+            "link": {
+                "ariaLabel": "Va a la página de configuración {page}"
+            }
+        },
+        "noSectionSelected": "No se ha seleccionado ninguna sección de configuración.",
+        "selection": {
+            "option": {
+                "ariaLabel": "Selecciona la opción {option}"
+            }
         }
-    },
-    "switch": {
-        "title": "Cambiar valor",
-        "ariaLabel": "Cambia el valor"
-    },
-    "pages": {
-        "link": {
-            "ariaLabel": "Va a la página de configuración {page}"
-        }
-    },
-    "noSectionSelected": "No se ha seleccionado ninguna sección de configuración.",
-    "selection": {
-        "option": {
-            "ariaLabel": "Selecciona la opción {option}"
-        }
-    }
     }
 }
