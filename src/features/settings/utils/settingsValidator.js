@@ -73,12 +73,27 @@ export const validateEntry = function validateEntry (entry, path) {
             throw new Error(`[settings] "${path}.default" must be a string`);
         }
         if (entry.type === 'selection') {
-            if (typeof entry.default !== 'string') {
-                throw new Error(`[settings] "${path}.default" must be a string`);
-            };
-            if (!entry.options.map((option) => option.name).includes(entry.default)) {
-                throw new Error(`[settings] option "${path}.default" does not exist`);
-            };
+            if (entry.allowMultiple) {
+                if (!Array.isArray(entry.default)) {
+                    throw new Error(`[settings] "${path}.default" must be an array`);
+                }
+                const allOptions = entry.options.map((option) => option.name);
+                entry.default.forEach((defaultValue, index) => {
+                    if (typeof defaultValue !== 'string') {
+                        throw new Error(`[settings] "${path}.default[${index}]" must be a string`);
+                    }
+                    if (!allOptions.includes(defaultValue)) {
+                        throw new Error(`[settings] option "${path}.default[${index}]" does not exist`);
+                    }
+                });
+            } else {
+                if (typeof entry.default !== 'string') {
+                    throw new Error(`[settings] "${path}.default" must be a string`);
+                };
+                if (!entry.options.map((option) => option.name).includes(entry.default)) {
+                    throw new Error(`[settings] option "${path}.default" does not exist`);
+                };
+            }
         };
     }
 }
