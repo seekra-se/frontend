@@ -40,26 +40,26 @@
     },
     "slogan": "Conçu pour chercher.",
     "settings": {
-  "input": {
-    "done": {
-      "title": "Enregistrer la valeur",
-      "ariaLabel": "Enregistre la valeur saisie"
-    }
-  },
-  "switch": {
-    "title": "Basculer la valeur",
-    "ariaLabel": "Bascule la valeur"
-  },
-  "pages": {
-    "link": {
-      "ariaLabel": "Accéder à la page de paramètres {page}"
-    }
-  },
-  "noSectionSelected": "Aucune section des paramètres n'est sélectionnée.",
-  "selection": {
-    "option": {
-      "ariaLabel": "Sélectionne l'option {option}"
-    }
-  }
+        "input": {
+            "done": {
+                "title": "Enregistrer la valeur",
+                "ariaLabel": "Enregistre la valeur saisie"
+            }
+        },
+        "switch": {
+            "title": "Basculer la valeur",
+            "ariaLabel": "Bascule la valeur"
+        },
+        "pages": {
+            "link": {
+                "ariaLabel": "Accéder à la page de paramètres {page}"
+            }
+        },
+        "noSectionSelected": "Aucune section des paramètres n'est sélectionnée.",
+        "selection": {
+            "option": {
+                "ariaLabel": "Sélectionne l'option {option}"
+            }
+        }
     }
 }
