@@ -14,15 +14,37 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+<script setup>
+import SidebarExpandButton from './SidebarExpandButton.vue';
+</script>
+
 <template>
     <nav class="sidebar">
-        <slot />
+        <div class="sidebar-controls">
+            <SidebarExpandButton />
+        </div>
+        <div class="sidebar-content">
+            <slot />
+        </div>
     </nav>
 </template>
 
 <style scoped>
 .sidebar {
     border-right: 1px solid var(--border);
+}
+
+.sidebar-controls {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 1em 20px;
+    padding-bottom: 0;
+    margin-bottom: 8px;
+}
+
+.sidebar-content {
     padding: 20px;
+    padding-top: 0;
 }
 </style>
