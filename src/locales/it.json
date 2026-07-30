@@ -40,26 +40,26 @@
     },
     "slogan": "Costruito per cercare.",
     "settings": {
-  "input": {
-    "done": {
-      "title": "Salva valore",
-      "ariaLabel": "Salva il valore inserito"
-    }
-  },
-  "switch": {
-    "title": "Attiva/disattiva valore",
-    "ariaLabel": "Attiva o disattiva il valore"
-  },
-  "pages": {
-    "link": {
-      "ariaLabel": "Vai alla pagina delle impostazioni {page}"
-    }
-  },
-  "noSectionSelected": "Nessuna sezione delle impostazioni è selezionata.",
-  "selection": {
-    "option": {
-      "ariaLabel": "Seleziona l'opzione {option}"
-    }
-  }
+        "input": {
+            "done": {
+            "title": "Salva valore",
+                "ariaLabel": "Salva il valore inserito"
+            }
+        },
+        "switch": {
+            "title": "Attiva/disattiva valore",
+            "ariaLabel": "Attiva o disattiva il valore"
+        },
+        "pages": {
+            "link": {
+                "ariaLabel": "Vai alla pagina delle impostazioni {page}"
+            }
+        },
+        "noSectionSelected": "Nessuna sezione delle impostazioni è selezionata.",
+        "selection": {
+            "option": {
+                "ariaLabel": "Seleziona l'opzione {option}"
+            }
+        }
     }
 }
