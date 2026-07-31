@@ -557,6 +557,30 @@ describe('settingsValidator', () => {
                 { name: 'maybe', i18n: 'selectSomething.options.maybe' }
             ] }],
 
+            [{ name: 'selectMultiple', type: 'selection', i18n: 'selectMultiple.title', default: ['1', '2', '3'], allowMultiple: true, options: [
+                { name: '1', i18n: 'selectMultiple.options.1' },
+                { name: '2', i18n: 'selectMultiple.options.2' },
+                { name: '3', i18n: 'selectMultiple.options.3' }
+            ] }],
+
+            [{ name: 'selectMultiple', type: 'selection', i18n: 'selectMultiple.title', default: ['2', '3'], allowMultiple: true, options: [
+                { name: '1', i18n: 'selectMultiple.options.1' },
+                { name: '2', i18n: 'selectMultiple.options.2' },
+                { name: '3', i18n: 'selectMultiple.options.3' }
+            ] }],
+
+            [{ name: 'selectMultiple', type: 'selection', i18n: 'selectMultiple.title', default: ['2'], allowMultiple: true, options: [
+                { name: '1', i18n: 'selectMultiple.options.1' },
+                { name: '2', i18n: 'selectMultiple.options.2' },
+                { name: '3', i18n: 'selectMultiple.options.3' }
+            ] }],
+
+            [{ name: 'selectMultiple', type: 'selection', i18n: 'selectMultiple.title', default: [], allowMultiple: true, options: [
+                { name: '1', i18n: 'selectMultiple.options.1' },
+                { name: '2', i18n: 'selectMultiple.options.2' },
+                { name: '3', i18n: 'selectMultiple.options.3' }
+            ] }],
+
             [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: [] }],
             [{ name: 'aSection', type: 'section', i18n: 'sections.aSection.title', content: [
                 { name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: true }
@@ -616,6 +640,34 @@ describe('settingsValidator', () => {
 
             [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'a', options: true }],
             [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'a', options: [] }],
+            [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: ['a'], options: [
+                { name: 'a', i18n: 'a' },
+                { name: 'b', i18n: 'b' }
+            ] }],
+            [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: ['a', 'b'], options: [
+                { name: 'a', i18n: 'a' },
+                { name: 'b', i18n: 'b' }
+            ] }],
+            [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', allowMultiple: true, default: 'a', options: [
+                { name: 'a', i18n: 'a' },
+                { name: 'b', i18n: 'b' }
+            ] }],
+            [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', allowMultiple: true, default: 'a', options: [
+                { name: 'a', i18n: 'a' },
+                { name: 'b', i18n: 'b' }
+            ] }],
+            [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', allowMultiple: true, default: ['c'], options: [
+                { name: 'a', i18n: 'a' },
+                { name: 'b', i18n: 'b' }
+            ] }],
+            [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', allowMultiple: true, default: [1], options: [
+                { name: 'a', i18n: 'a' },
+                { name: 'b', i18n: 'b' }
+            ] }],
+            [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', allowMultiple: true, default: ['a', 1], options: [
+                { name: 'a', i18n: 'a' },
+                { name: 'b', i18n: 'b' }
+            ] }],
             [{ name: 'selectSomething', type: 'selection', i18n: 'selectSomething.title', default: 'c', options: [
                 { name: 'a', i18n: 'a' },
                 { name: 'b', i18n: 'b' }
