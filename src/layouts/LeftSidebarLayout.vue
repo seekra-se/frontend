@@ -16,6 +16,7 @@ limitations under the License.
 
 <script setup>
 import Sidebar from '@/features/sidebar/components/Sidebar.vue';
+import SidebarExpandButton from '@/features/sidebar/components/SidebarExpandButton.vue';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -35,7 +36,10 @@ const toggleExpanded = function toggleExpanded () {
 
 <template>
     <div class="layout-container" :class="{ expanded }">
-        <Sidebar @toggle-expanded="toggleExpanded" :expanded="expanded">
+        <div class="sidebar-expand-button-container">
+            <SidebarExpandButton class="sidebar-expand-button" @click="toggleExpanded" />
+        </div>
+        <Sidebar @toggle-expanded="toggleExpanded" :expanded="expanded" class="sidebar">
             <slot name="sidebar" />
         </Sidebar>
         <main class="main-content">
@@ -48,11 +52,24 @@ const toggleExpanded = function toggleExpanded () {
 .layout-container {
     display: grid;
     grid-template-columns: 72px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "sidebar-expand sidebar-expand"
+        "sidebar main-content";
     border-top: 1px solid var(--border);
 }
 
 .layout-container.expanded {
     grid-template-columns: min(24%, 280px) 1fr;
+}
+
+.sidebar-expand-button-container {
+    grid-area: sidebar-expand;
+    display: none;
+}
+
+.sidebar {
+    grid-area: sidebar;
 }
 
 @media (max-width: 48rem) {
@@ -63,9 +80,20 @@ const toggleExpanded = function toggleExpanded () {
     .layout-container.expanded {
         grid-template-columns: 1fr 0;
     }
+    
+    .layout-container:not(.expanded) .sidebar-expand-button-container {
+        justify-content: end;
+        display: block;
+        padding: 20px;
+    }
+
+    .layout-container:not(.expanded) .main-content {
+        padding-top: 0;
+    }
 }
 
 .main-content {
+    grid-area: main-content;
     padding: 20px;
 }
 </style>
