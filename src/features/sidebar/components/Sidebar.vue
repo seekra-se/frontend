@@ -56,6 +56,10 @@ const toggleSidebar = function toggleSidebar () {
     margin-bottom: 8px;
 }
 
+.sidebar:not(.expanded) .sidebar-controls {
+    padding: 1em;
+}
+
 @media (max-width: 48rem) {
     .sidebar:not(.expanded) .sidebar-expand-button {
         display: none;

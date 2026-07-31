@@ -51,7 +51,7 @@ const toggleExpanded = function toggleExpanded () {
 <style scoped>
 .layout-container {
     display: grid;
-    grid-template-columns: 72px 1fr;
+    grid-template-columns: calc(32px + 2em) 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
         "sidebar-expand sidebar-expand"
