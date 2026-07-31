@@ -90,6 +90,10 @@ const toggleExpanded = function toggleExpanded () {
     .layout-container:not(.expanded) .main-content {
         padding-top: 0;
     }
+
+    .layout-container.expanded .main-content {
+        display: none;
+    }
 }
 
 .main-content {
