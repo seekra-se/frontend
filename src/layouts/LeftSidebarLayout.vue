@@ -16,11 +16,30 @@ limitations under the License.
 
 <script setup>
 import Sidebar from '@/features/sidebar/components/Sidebar.vue';
+import SidebarExpandButton from '@/features/sidebar/components/SidebarExpandButton.vue';
+import { ref } from 'vue';
+
+const props = defineProps({
+    'expanded': {
+        default: false,
+        required: false,
+        type: Boolean
+    }
+});
+
+const expanded = ref(props.expanded);
+
+const toggleExpanded = function toggleExpanded () {
+    expanded.value = !expanded.value;
+};
 </script>
 
 <template>
-    <div class="layout-container">
-        <Sidebar>
+    <div class="layout-container" :class="{ expanded }">
+        <div class="sidebar-expand-button-container">
+            <SidebarExpandButton class="sidebar-expand-button" @click="toggleExpanded" />
+        </div>
+        <Sidebar @toggle-expanded="toggleExpanded" :expanded="expanded" class="sidebar">
             <slot name="sidebar" />
         </Sidebar>
         <main class="main-content">
@@ -32,11 +51,53 @@ import Sidebar from '@/features/sidebar/components/Sidebar.vue';
 <style scoped>
 .layout-container {
     display: grid;
-    grid-template-columns: min(24%, 280px) 1fr;
+    grid-template-columns: calc(32px + 2em) 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "sidebar-expand sidebar-expand"
+        "sidebar main-content";
     border-top: 1px solid var(--border);
 }
 
+.layout-container.expanded {
+    grid-template-columns: min(24%, 280px) 1fr;
+}
+
+.sidebar-expand-button-container {
+    grid-area: sidebar-expand;
+    display: none;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+@media (max-width: 48rem) {
+    .layout-container {
+        grid-template-columns: 0 1fr;
+    }
+
+    .layout-container.expanded {
+        grid-template-columns: 1fr 0;
+    }
+    
+    .layout-container:not(.expanded) .sidebar-expand-button-container {
+        justify-content: end;
+        display: block;
+        padding: 20px;
+    }
+
+    .layout-container:not(.expanded) .main-content {
+        padding-top: 0;
+    }
+
+    .layout-container.expanded .main-content {
+        display: none;
+    }
+}
+
 .main-content {
+    grid-area: main-content;
     padding: 20px;
 }
 </style>
