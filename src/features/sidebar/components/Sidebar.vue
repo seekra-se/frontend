@@ -32,9 +32,9 @@ const toggleSidebar = function toggleSidebar () {
 </script>
 
 <template>
-    <nav class="sidebar">
+    <nav class="sidebar" :class="{ expanded }">
         <div class="sidebar-controls">
-            <SidebarExpandButton @click="toggleSidebar" />
+            <SidebarExpandButton @click="toggleSidebar" class="sidebar-expand-button" />
         </div>
         <div class="sidebar-content" v-if="props.expanded">
             <slot />
@@ -54,6 +54,12 @@ const toggleSidebar = function toggleSidebar () {
     padding: 1em 20px;
     padding-bottom: 0;
     margin-bottom: 8px;
+}
+
+@media (max-width: 48rem) {
+    .sidebar:not(.expanded) .sidebar-expand-button {
+        display: none;
+    }
 }
 
 .sidebar-content {
