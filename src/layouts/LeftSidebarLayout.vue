@@ -40,10 +40,10 @@ const toggleSidebar = function toggleSidebar () {
             <SidebarExpandButton class="sidebar-expand-button" @click="toggleSidebar" />
         </div>
         <Sidebar @toggle-expanded="toggleSidebar" :expanded="expanded" class="sidebar">
-            <slot name="sidebar" />
+            <slot name="sidebar" :toggleSidebar="toggleSidebar" />
         </Sidebar>
         <main class="main-content">
-            <slot />
+            <slot :toggleSidebar="toggleSidebar" />
         </main>
     </div>
 </template>
