@@ -29,7 +29,7 @@ const props = defineProps({
 
 const expanded = ref(props.expanded);
 
-const toggleExpanded = function toggleExpanded () {
+const toggleSidebar = function toggleSidebar () {
     expanded.value = !expanded.value;
 };
 </script>
@@ -37,13 +37,13 @@ const toggleExpanded = function toggleExpanded () {
 <template>
     <div class="layout-container" :class="{ expanded }">
         <div class="sidebar-expand-button-container">
-            <SidebarExpandButton class="sidebar-expand-button" @click="toggleExpanded" />
+            <SidebarExpandButton class="sidebar-expand-button" @click="toggleSidebar" />
         </div>
-        <Sidebar @toggle-expanded="toggleExpanded" :expanded="expanded" class="sidebar">
-            <slot name="sidebar" />
+        <Sidebar @toggle-expanded="toggleSidebar" :expanded="expanded" class="sidebar">
+            <slot name="sidebar" :toggleSidebar="toggleSidebar" />
         </Sidebar>
         <main class="main-content">
-            <slot />
+            <slot :toggleSidebar="toggleSidebar" />
         </main>
     </div>
 </template>

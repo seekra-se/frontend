@@ -61,6 +61,10 @@ onMounted(async () => {
     });
     settingsLoaded.value = true;
 });
+
+const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen (toggleSidebarFunction) {
+    if (matchMedia('(max-width: 48rem)').matches) toggleSidebarFunction();
+};
 </script>
 
 <template>
@@ -71,13 +75,14 @@ onMounted(async () => {
             </h1>
         </header>
         <LeftSidebarLayout class="layout">
-            <template #sidebar>
+            <template #sidebar="{ toggleSidebar }">
                 <ul class="sidebar-sections-list">
                     <li v-for="section in settings">
                         <RouterLink
                             :to="`/settings/${section.name}`"
                             class="button button-link link sidebar-section"
                             :class="{ active: activeSection === section.name }"
+                            @click="toggleSidebarIfSmallScreen(toggleSidebar)"
                         >
                             {{ t(section.i18n) }}
                         </RouterLink>
