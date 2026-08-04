@@ -86,3 +86,8 @@ input {
 .button:hover {
     background-color: var(--light-hover);
 }
+
+/* Temporary until a custom tap highlight is implemented. */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
