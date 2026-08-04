@@ -54,6 +54,11 @@ describe('useSettings', () => {
             settings.set(settingPath, value);
             expect(getSetting(settingPath)).toBe(value);
         });
+
+        test('returns undefined if there is no value', () => {
+            const { getSetting } = useSettings();
+            expect(getSetting(['test', 'bool'])).toBeUndefined();
+        });
     });
 });
 
@@ -76,6 +81,11 @@ beforeEach(() => {
                         i18n: '',
                         name: 'number',
                         default: settingDefaultValue
+                    },
+                    {
+                        type: 'bool',
+                        i18n: '',
+                        name: 'bool'
                     }
                 ]
             }
