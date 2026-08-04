@@ -1,0 +1,32 @@
+[
+    {
+        "family": "Inter",
+        "weight": "100 900",
+        "style": "normal",
+        "source": [
+            {
+                "url": "fonts/Inter/Inter-Variable.woff2",
+                "format": "woff2"
+            },
+            {
+                "url": "fonts/Inter/Inter-Variable.ttf",
+                "format": "truetype"
+            }
+        ]
+    },
+    {
+        "family": "Inter",
+        "weight": "100 900",
+        "style": "italic",
+        "source": [
+            {
+                "url": "fonts/Inter/Inter-Italic-Variable.woff2",
+                "format": "woff2"
+            },
+            {
+                "url": "fonts/Inter/Inter-Italic-Variable.ttf",
+                "format": "truetype"
+            }
+        ]
+    }
+]
