@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { useSettingsConfigCacheStore } from '../stores/settingsConfigCacheStore';
 import { useSettingsStore } from '../stores/settingsStore';
 import { getSettingRecursively } from '../utils/getSetting';
 import { loadSettingsConfig } from '../utils/settingsParser';
@@ -27,10 +28,10 @@ export const useSettings = function useSettings () {
      * @param {string[]} key - The settings key.
      * @return The value of the setting.
      */
-    const getSetting = async function getSetting (key) {
+    const getSetting = function getSetting (key) {
         const settingsStore = useSettingsStore();
 
-        const settings = await loadSettingsConfig();
+        const settings = useSettingsConfigCacheStore().get();
         return (
             settingsStore.get(key) ??
             getSettingRecursively(

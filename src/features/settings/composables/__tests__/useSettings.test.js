@@ -14,17 +14,58 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { useSettingsConfigCacheStore } from '../../stores/settingsConfigCacheStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useSettings } from '../useSettings';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
-const settingDefaultValue = vi.hoisted(() => 42);
-const settingPath = vi.hoisted(() => ['test', 'number']);
+const settingDefaultValue = 42;
+const settingPath = ['test', 'number'];
 
-vi.mock('../../utils/settingsParser', () => ({
-    loadSettingsConfig: vi.fn().mockResolvedValue({
+describe('useSettings', () => {
+    describe('getSetting', () => {
+        test('returns stored value', () => {
+            const { getSetting } = useSettings();
+            const settings = useSettingsStore();
+
+            const key = 'setting';
+            const value = 42;
+
+            settings.set(key, value);
+
+            expect(getSetting(key)).toBe(value);
+        });
+
+        test('returns default value', () => {
+            const { getSetting } = useSettings();
+            expect(getSetting(settingPath)).toBe(settingDefaultValue);
+        });
+
+        test('returns stored value instead of default value', () => {
+            const { getSetting } = useSettings();
+            const settings = useSettingsStore();
+
+            const value = 43;
+
+            expect(getSetting(settingPath)).toBe(settingDefaultValue);
+
+            settings.set(settingPath, value);
+            expect(getSetting(settingPath)).toBe(value);
+        });
+    });
+});
+
+beforeEach(() => {
+    setActivePinia(
+        createTestingPinia({
+            createSpy: vi.fn,
+            stubActions: false
+        })
+    );
+    const settingsConfigCache = useSettingsConfigCacheStore();
+    settingsConfigCache.set({
         contents: [
             {
                 name: 'test',
@@ -39,47 +80,5 @@ vi.mock('../../utils/settingsParser', () => ({
                 ]
             }
         ]
-    })
-}));
-
-describe('useSettings', () => {
-    describe('getSetting', () => {
-        test('returns stored value', async () => {
-            const { getSetting } = useSettings();
-            const settings = useSettingsStore();
-
-            const key = 'setting';
-            const value = 42;
-
-            settings.set(key, value);
-
-            expect(await getSetting(key)).toBe(value);
-        });
-
-        test('returns default value', async () => {
-            const { getSetting } = useSettings();
-            expect(await getSetting(settingPath)).toBe(settingDefaultValue);
-        });
-
-        test('returns stored value instead of default value', async () => {
-            const { getSetting } = useSettings();
-            const settings = useSettingsStore();
-
-            const value = 43;
-
-            expect(await getSetting(settingPath)).toBe(settingDefaultValue);
-
-            settings.set(settingPath, value);
-            expect(await getSetting(settingPath)).toBe(value);
-        });
     });
-});
-
-beforeEach(() => {
-    setActivePinia(
-        createTestingPinia({
-            createSpy: vi.fn,
-            stubActions: false
-        })
-    );
 });
