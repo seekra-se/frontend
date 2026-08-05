@@ -16,7 +16,7 @@ limitations under the License.
 
 <script setup>
 import { useSettingsStore } from '../stores/settingsStore';
-import { useId } from 'vue';
+import { ref, useId, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -35,8 +35,16 @@ const switchId = useId();
 
 const store = useSettingsStore();
 
+const enabled = ref(null);
+watch(store, (newStore) => {
+    enabled.value = newStore.get(props.path);
+});
+// set value after registering watcher to avoid immediate value change
+enabled.value = store.get(props.path) ?? props.setting.default;
+
 const toggle = function toggle () {
-    store.set(props.path, !store.get(props.path));
+    enabled.value = !enabled.value;
+    store.set(props.path, enabled.value);
 };
 </script>
 
@@ -47,7 +55,7 @@ const toggle = function toggle () {
         </label>
         <div
             class="switch-wrapper"
-            :class="{ enabled: store.get(props.path) }"
+            :class="{ enabled }"
             :title="t('settings.switch.title')"
             :aria-label="t('settings.switch.ariaLabel')"
             :aria-labelledby="labelId"
