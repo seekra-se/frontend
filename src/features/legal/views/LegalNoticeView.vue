@@ -21,6 +21,7 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
+const loading = ref(true);
 const legalNoticeError = ref(null);
 const legalNoticeHtml = ref(null);
 onMounted(async () => {
@@ -28,6 +29,8 @@ onMounted(async () => {
         legalNoticeHtml.value = await getLegalNotice();
     } catch {
         legalNoticeError.value = 'legal.notice.loadError';
+    } finally {
+        loading.value = false;
     }
 });
 </script>
@@ -40,7 +43,10 @@ onMounted(async () => {
             </h1>
         </header>
         <main>
-            <div class="error" v-if="legalNoticeError">
+            <div v-if="loading">
+                {{ t('loading') }}
+            </div>
+            <div class="error" v-else-if="legalNoticeError">
                 {{ t(legalNoticeError) }}
             </div>
             <div class="legal-notice" v-html="legalNoticeHtml" v-else></div>
