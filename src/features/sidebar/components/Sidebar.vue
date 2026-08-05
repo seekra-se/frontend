@@ -61,6 +61,10 @@ const toggleSidebar = function toggleSidebar () {
 }
 
 @media (max-width: 48rem) {
+    .sidebar {
+        border: none;
+    }
+
     .sidebar:not(.expanded) .sidebar-expand-button {
         display: none;
     }
