@@ -43,7 +43,7 @@ onMounted(async () => {
             </h1>
         </header>
         <main>
-            <div v-if="loading">
+            <div class="legal-notice-loading" v-if="loading">
                 {{ t('loading') }}
             </div>
             <div class="error" v-else-if="legalNoticeError">
