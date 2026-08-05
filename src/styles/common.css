@@ -24,6 +24,7 @@ body {
 
 .link {
     text-decoration: none;
+    color: var(--dark);
 }
 
 .link:hover:not(.button-link), .link:focus-visible:not(.button-link) {
