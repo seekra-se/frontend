@@ -76,5 +76,10 @@
                 }
             }
         }
+    },
+    "legal": {
+        "notice": {
+            "title": "Impressum"
+        }
     }
 }

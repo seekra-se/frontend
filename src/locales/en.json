@@ -76,5 +76,10 @@
                 }
             }
         }
+    },
+    "legal": {
+        "notice": {
+            "title": "Legal Notice"
+        }
     }
 }

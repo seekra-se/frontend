@@ -18,6 +18,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { i18n } from '@/i18n';
 
 import SearchView from '../views/SearchView.vue';
+import LegalNoticeView from '@/features/legal/views/LegalNoticeView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
 import SettingsView from '@/features/settings/views/SettingsView.vue';
 import NotFound from '../views/NotFound.vue';
@@ -37,6 +38,14 @@ const routes = [
         }),
         meta: {
             title: (route) => route.query.q
+        }
+    },
+    {
+        path: '/legal/notice',
+        name: 'legalNotice',
+        component: LegalNoticeView,
+        meta: {
+            title: () => i18n.global.t('legal.notice.title')
         }
     },
     {
