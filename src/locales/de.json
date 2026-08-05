@@ -79,7 +79,8 @@
     },
     "legal": {
         "notice": {
-            "title": "Impressum"
+            "title": "Impressum",
+            "loadError": "Das Impressum konnte nicht geladen werden."
         }
     }
 }

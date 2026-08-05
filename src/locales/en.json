@@ -79,7 +79,8 @@
     },
     "legal": {
         "notice": {
-            "title": "Legal Notice"
+            "title": "Legal Notice",
+            "loadError": "The legal notice could not be loaded."
         }
     }
 }
