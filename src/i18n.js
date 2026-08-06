@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 import { createI18n } from 'vue-i18n';
-import getCurrentLanguage from './utils/currentLanguage';
 
 export const fallbackLocale = 'en';
 
@@ -34,7 +33,7 @@ export const SUPPORTED_LANGUAGES = [
 
 export const i18n = createI18n({
     legacy: false,
-    locale: getCurrentLanguage(),
+    locale: fallbackLocale,
     fallbackLocale: fallbackLocale,
     messages: {}
 });

@@ -20,7 +20,6 @@ import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import App from './App.vue'
 import { i18n, loadLanguage, fallbackLocale } from './i18n';
-import getCurrentLanguage from './utils/currentLanguage';
 import router from './router'
 import './styles/common.css'
 import './styles/variables/colors.css'
@@ -53,8 +52,7 @@ import { validateSettingsConfig } from './features/settings/utils/settingsValida
     fonts.forEach((font) => document.fonts.add(font));
 
     await loadLanguage(fallbackLocale);
-    await loadLanguage(getCurrentLanguage());
-    
+
     const pinia = createPinia();
     pinia.use(piniaPluginPersistedstate);
 
