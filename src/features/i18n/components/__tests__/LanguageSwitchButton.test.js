@@ -14,41 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { expect, test, describe, vi, beforeEach } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { LANGUAGE_PATH } from '@/config/featureSettings.js';
+import { useSettings } from '@/features/settings/composables/useSettings.js';
+import { mountComponent } from '@/test-utils/mountComponent.js';
+import { expect, test, describe } from 'vitest';
 import LanguageSwitchButton from '../LanguageSwitchButton.vue';
-import { loadLanguage } from '@/i18n';
 
-vi.mock('@/i18n', () => ({
-    loadLanguage: vi.fn(() => Promise.resolve()),
-    LANGUAGES_RTL: ['ar', 'he'],
-    SUPPORTED_LANGUAGES: ['en', 'de', 'ar']
-}));
-
-vi.mock('vue-i18n', () => ({
-    useI18n: () => ({
-        t: (key) => key,
-        locale: { value: 'de' }
-    })
-}));
-
-vi.mock('@/features/icons/components/Icon.vue', () => ({
-    default: {
-        name: 'Icon',
-        template: '<span>Icon</span>'
-    }
-}));
+const getWrapper = function getWrapper () {
+    return mountComponent(LanguageSwitchButton);
+};
 
 describe('LanguageSwitchButton', () => {
-    beforeEach(() => {
-        vi.clearAllMocks();
-        localStorage.clear();
-        document.documentElement.lang = '';
-        document.documentElement.dir = '';
-    });
-
     test('renders correctly with initial state closed', () => {
-        const wrapper = mount(LanguageSwitchButton);
+        const wrapper = getWrapper();
         
         expect(wrapper.find('.language-button').exists()).toBe(true);
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
@@ -56,7 +34,7 @@ describe('LanguageSwitchButton', () => {
     });
 
     test('opens the dropdown when language button is clicked', async () => {
-        const wrapper = mount(LanguageSwitchButton);
+        const wrapper = getWrapper();
         const button = wrapper.find('.language-button');
         
         await button.trigger('click');
@@ -65,33 +43,28 @@ describe('LanguageSwitchButton', () => {
         expect(button.attributes('aria-expanded')).toBe('true');
     });
 
-    const languageTestCases = [
-        { code: 'en', expectedDir: 'ltr' },
-        { code: 'de', expectedDir: 'ltr' },
-        { code: 'ar', expectedDir: 'rtl' }
-    ];
+    test('sets the language when clicking it', async () => {
+        const { getSetting } = useSettings();
 
-    test.for(languageTestCases)('selectLanguage($code) sets localStorage, html attributes and changes layout direction to $expectedDir', async ({ code, expectedDir }) => {
-        const wrapper = mount(LanguageSwitchButton);
+        const wrapper = getWrapper();
         
         await wrapper.find('.language-button').trigger('click');
         
         const options = wrapper.findAll('.language-dropdown li');
-        const optionToClick = options.find(opt => opt.text().includes(code));
-        
-        await optionToClick.trigger('click');
 
-        expect(loadLanguage).toHaveBeenCalledWith(code);
-        expect(localStorage.getItem('locale')).toBe(code);
-        expect(document.documentElement.lang).toBe(code);
-        expect(document.documentElement.dir).toBe(expectedDir);
+        const enOption = options.find(opt => opt.text().includes('en'));
+        await enOption.trigger('click');
+        expect(getSetting(LANGUAGE_PATH)).toBe('en');
+        expect(wrapper.find('.language-dropdown').exists()).toBe(false);
+
+        const deOption = options.find(opt => opt.text().includes('de'));
+        await deOption.trigger('click');
+        expect(getSetting(LANGUAGE_PATH)).toBe('de');
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
     });
 
     test('closes the dropdown when clicking outside the component', async () => {
-        const wrapper = mount(LanguageSwitchButton, {
-            attachTo: document.body
-        });
+        const wrapper = getWrapper();
 
         await wrapper.find('.language-button').trigger('click');
         expect(wrapper.find('.language-dropdown').exists()).toBe(true);

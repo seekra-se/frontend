@@ -18,8 +18,10 @@ limitations under the License.
 import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
 
+import { LANGUAGE_PATH } from './config/featureSettings.js';
 import { updatePageTitle } from './router';
 import { useSettings } from './features/settings/composables/useSettings.js';
+import { setLocale } from './i18n';
 import { computed, watch, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -51,6 +53,8 @@ watch(colorScheme, (newColorScheme) => {
 updateColorScheme(colorScheme.value);
 
 watchEffect(() => updatePageTitle(route));
+
+watch(() => getSetting(LANGUAGE_PATH), setLocale);
 </script>
 
 <template>

@@ -17,20 +17,20 @@ limitations under the License.
 <script setup>
 import Icon from '@/features/icons/components/Icon.vue';
 
+import { LANGUAGE_PATH } from '@/config/featureSettings';
+import { useSettings } from '@/features/settings/composables/useSettings';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { loadLanguage, LANGUAGES_RTL, SUPPORTED_LANGUAGES } from '@/i18n';
+import { SUPPORTED_LANGUAGES } from '@/i18n';
 
 const { t, locale } = useI18n();
+const { setSetting } = useSettings();
 
 const isOpen = ref(false);
 const languageDropdown = ref(null);
 
-async function selectLanguage(code) {
-    await loadLanguage(code);
-    localStorage.setItem('locale', code);
-    document.documentElement.lang = code;
-    document.documentElement.dir = LANGUAGES_RTL.includes(code) ? 'rtl' : 'ltr';
+const selectLanguage = function selectLanguage (code) {
+    setSetting(LANGUAGE_PATH, code);
     close();
 };
 

@@ -58,3 +58,9 @@ export async function loadLanguage (locale) {
 
     loadedLanguages.add(locale);
 };
+
+export const setLocale = async function setLocale (locale) {
+    await loadLanguage(locale);
+    document.documentElement.lang = locale;
+    document.documentElement.dir = LANGUAGES_RTL.includes(locale) ? 'rtl' : 'ltr';
+};
