@@ -54,10 +54,9 @@ const props = defineProps({
 const store = useSettingsStore();
 
 const optionType = computed(() => props.setting.allowMultiple ? 'checkbox' : 'radio');
-const selected = ref(normalizeSelectedValue(store.get(props.path) ?? props.setting.default));
-
-watch(selected, (newValue) => {
-    store.set(props.path, newValue);
+const selected = computed({
+    get: () => normalizeSelectedValue(store.get(props.path) ?? props.setting.default),
+    set: (value) => store.set(props.path, value)
 });
 
 const labelId = useId();
