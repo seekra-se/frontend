@@ -20,17 +20,23 @@ import { useSettingsStore } from '../../stores/settingsStore.js';
 import { expect, describe, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper ({ i18n = 'switch1', translations = {} } = {}) {
+const getWrapper = function getWrapper ({
+    i18n = 'switch1',
+    defaultValue = undefined,
+    translations = {},
+    piniaOptions = {}
+} = {}) {
     return mountComponent(Switch, {
         attrs: {
             setting: {
                 type: 'bool',
                 name: 'switch',
-                i18n
+                i18n,
+                default: defaultValue
             },
             path: 'switch'
         }
-    }, translations);
+    }, translations, [], piniaOptions);
 };
 
 describe('Switch', () => {
@@ -51,6 +57,42 @@ describe('Switch', () => {
 
         const switchElementClasses2 = switchElement.classes();
         expect(switchElementClasses2).not.toContain('enabled');
+    });
+
+    test('shows default value', () => {
+        const wrapper = getWrapper({
+            defaultValue: true
+        });
+
+        const switchElement = wrapper.find('.switch-wrapper');
+        expect(switchElement.classes('enabled')).toBeTruthy();
+    });
+
+    test('shows stored value instead of default value', () => {
+        const wrapper = getWrapper({
+            defaultValue: true,
+            piniaOptions: {
+                setupStores: () => {
+                    const store = useSettingsStore();
+                    store.set('switch', false);
+                }
+            }
+        });
+
+        const switchElement = wrapper.find('.switch-wrapper');
+        expect(switchElement.classes('enabled')).toBeFalsy();
+    });
+
+    test('reacts on store change', async () => {
+        const wrapper = getWrapper();
+        const store = useSettingsStore();
+
+        const switchElement = wrapper.find('.switch-wrapper');
+        expect(switchElement.classes('enabled')).toBeFalsy();
+        
+        store.set('switch', true);
+        await nextTick();
+        expect(switchElement.classes('enabled')).toBeTruthy();
     });
 
     test('toggles value in store', async () => {
