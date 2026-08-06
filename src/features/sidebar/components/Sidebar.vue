@@ -36,7 +36,7 @@ const toggleSidebar = function toggleSidebar () {
         <div class="sidebar-controls">
             <SidebarExpandButton @click="toggleSidebar" class="sidebar-expand-button" />
         </div>
-        <div class="sidebar-content" v-if="props.expanded">
+        <div class="sidebar-content" v-show="props.expanded">
             <slot />
         </div>
     </nav>
