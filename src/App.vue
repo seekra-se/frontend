@@ -54,8 +54,6 @@ updateColorScheme(colorScheme.value);
 
 watchEffect(() => updatePageTitle(route));
 
-watch(() => getSetting(LANGUAGE_PATH), setLocale);
-
 onMounted(() => {
     setLocale(getSetting(LANGUAGE_PATH));
 });

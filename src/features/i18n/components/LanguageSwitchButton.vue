@@ -19,12 +19,12 @@ import Icon from '@/features/icons/components/Icon.vue';
 
 import { LANGUAGE_PATH } from '@/config/featureSettings';
 import { useSettings } from '@/features/settings/composables/useSettings';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { SUPPORTED_LANGUAGES } from '@/i18n';
+import { setLocale, SUPPORTED_LANGUAGES } from '@/i18n';
 
 const { t, locale } = useI18n();
-const { setSetting } = useSettings();
+const { setSetting, getSetting } = useSettings();
 
 const isOpen = ref(false);
 const languageDropdown = ref(null);
@@ -33,6 +33,8 @@ const selectLanguage = function selectLanguage (code) {
     setSetting(LANGUAGE_PATH, code);
     close();
 };
+
+watch(() => getSetting(LANGUAGE_PATH), setLocale);
 
 const close = function () {
     document.removeEventListener('click', closeWrapperOnClickOutsite);
