@@ -15,7 +15,17 @@ limitations under the License.
 */
 
 import { getNavigatorLanguage } from '../i18n/utils/navigatorLanguage';
-import { SUPPORTED_LANGUAGES } from '@/i18n';
+import { fallbackLocale, SUPPORTED_LANGUAGES } from '@/i18n';
+
+let defaultLanguage;
+{
+    const navigatorLanguage = getNavigatorLanguage();
+    if (SUPPORTED_LANGUAGES.includes(navigatorLanguage)) {
+        defaultLanguage = navigatorLanguage;
+    } else {
+        defaultLanguage = fallbackLocale;
+    }
+}
 
 export default {
     contents: [
@@ -27,7 +37,7 @@ export default {
                     name: 'language',
                     type: 'selection',
                     i18n: 'settings.settings.general.settings.language.title',
-                    default: getNavigatorLanguage(),
+                    default: defaultLanguage,
                     options: SUPPORTED_LANGUAGES.map((language) => ({
                         name: language,
                         i18n: `preferences.locale.languages.${language}`
