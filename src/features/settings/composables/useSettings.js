@@ -40,5 +40,15 @@ export const useSettings = function useSettings () {
         );
     };
 
-    return { getSetting };
+    /**
+     * Sets the value of a specific setting.
+     * @param {string[]} key - The setting key.
+     * @param value - The new value for the setting.
+     */
+    const setSetting = function setSetting (key, value) {
+        const settingsStore = useSettingsStore();
+        settingsStore.set(key.join('.'), value);
+    };
+
+    return { getSetting, setSetting };
 };
