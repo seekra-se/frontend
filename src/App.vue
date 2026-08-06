@@ -26,7 +26,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 const { getColorScheme, updateColorScheme } = useColorScheme();
-const colorScheme = ref(getColorScheme());
+const colorScheme = ref('auto');
 provide('colorScheme', colorScheme);
 watch(colorScheme, (newValue) => {
     updateColorScheme(newValue);
@@ -46,6 +46,7 @@ watch(colorScheme, (newValue) => {
         document.body.classList.remove('color-scheme-auto');
     }
 });
+colorScheme.value = getColorScheme();
 
 watchEffect(() => updatePageTitle(route));
 </script>
