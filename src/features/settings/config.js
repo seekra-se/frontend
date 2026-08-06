@@ -14,7 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { fallbackLocale, SUPPORTED_LANGUAGES } from '@/i18n';
+import { getNavigatorLanguage } from '../i18n/utils/navigatorLanguage';
+import { SUPPORTED_LANGUAGES } from '@/i18n';
 
 export default {
     contents: [
@@ -26,7 +27,7 @@ export default {
                     name: 'language',
                     type: 'selection',
                     i18n: 'settings.settings.general.settings.language.title',
-                    default: fallbackLocale,
+                    default: getNavigatorLanguage(),
                     options: SUPPORTED_LANGUAGES.map((language) => ({
                         name: language,
                         i18n: `preferences.locale.languages.${language}`
