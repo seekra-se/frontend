@@ -14,15 +14,38 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { useSettingsConfigCacheStore } from '../../stores/settingsConfigCacheStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useSettings } from '../useSettings';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
-const settingDefaultValue = 42;
+const settingDefaultValue = vi.hoisted(() => 42);
 const settingPath = ['test', 'number'];
+
+vi.mock('../../settings.json', () => ({
+    default: {
+        contents: [
+            {
+                name: 'test',
+                i18n: '',
+                content: [
+                    {
+                        type: 'number',
+                        i18n: '',
+                        name: 'number',
+                        default: settingDefaultValue
+                    },
+                    {
+                        type: 'bool',
+                        i18n: '',
+                        name: 'bool'
+                    }
+                ]
+            }
+        ]
+    }
+}));
 
 describe('useSettings', () => {
     describe('getSetting', () => {
@@ -69,26 +92,4 @@ beforeEach(() => {
             stubActions: false
         })
     );
-    const settingsConfigCache = useSettingsConfigCacheStore();
-    settingsConfigCache.set({
-        contents: [
-            {
-                name: 'test',
-                i18n: '',
-                content: [
-                    {
-                        type: 'number',
-                        i18n: '',
-                        name: 'number',
-                        default: settingDefaultValue
-                    },
-                    {
-                        type: 'bool',
-                        i18n: '',
-                        name: 'bool'
-                    }
-                ]
-            }
-        ]
-    });
 });

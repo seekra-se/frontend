@@ -30,6 +30,9 @@ import rawFonts from './styles/fonts.json';
 import './styles/common.css';
 import './styles/variables/colors.css';
 
+import settings from './features/settings/settings.json';
+import { validateSettingsConfig } from './features/settings/utils/settingsValidator';
+
 (async () => {
     const fonts = rawFonts.map((font) => new FontFace(
         font.family ?? '',
@@ -54,6 +57,8 @@ import './styles/variables/colors.css';
     
     const pinia = createPinia();
     pinia.use(piniaPluginPersistedstate);
+
+    validateSettingsConfig(settings);
     
     createApp(App)
         .use(router)

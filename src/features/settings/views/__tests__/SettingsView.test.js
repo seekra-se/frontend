@@ -16,8 +16,8 @@ limitations under the License.
 
 import SettingsView from '../SettingsView.vue';
 import { mountComponent } from '@/test-utils/mountComponent.js';
-import { flushPromises } from '@vue/test-utils';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { nextTick } from 'vue';
 
 const settingsHoisted = vi.hoisted(() => [
     {
@@ -197,10 +197,8 @@ const settings = settingsHoisted.values();
 const originalCurrentSection = 's0';
 let currentSection = originalCurrentSection;
 
-vi.mock('../../utils/settingsParser', () => ({
-    loadSettingsConfig: vi.fn().mockResolvedValue({
-        contents: settingsHoisted
-    })
+vi.mock('../../settings.json', () => ({
+    default: { contents: settingsHoisted }
 }));
 
 vi.mock('vue-router', async (importOriginal) => {
@@ -235,9 +233,7 @@ describe('SettingsView', () => {
     describe('sidebar', () => {
         test('shows all top-level sections', async () => {
             const wrapper = getWrapper();
-
-            await flushPromises();
-            await wrapper.vm.$nextTick();
+            await nextTick();
 
             const sidebarItems = wrapper.findAll('.sidebar-sections-list > li');
             settings.forEach((setting, index) => {
@@ -254,47 +250,27 @@ describe('SettingsView', () => {
 
     describe('main', () => {
         describe('correct element', () => {
-            test('shows that it is loading', () => {
-                const wrapper = getWrapper();
-
-                const mainContentLoading = wrapper.find('.main-content--loading');
-                const mainContentLoaded = wrapper.find('.main-content--loaded');
-                const mainContentNoSection = wrapper.find('.main-content--no-section');
-
-                expect(mainContentLoading.exists()).toBe(true);
-                expect(mainContentLoaded.exists()).toBe(false);
-                expect(mainContentNoSection.exists()).toBe(false);
-            });
-
             test('shows that no section is selected', async () => {
                 currentSection = '';
 
                 const wrapper = getWrapper();
+                await nextTick();
 
-                await flushPromises();
-                await wrapper.vm.$nextTick();
-
-                const mainContentLoading = wrapper.find('.main-content--loading');
-                const mainContentLoaded = wrapper.find('.main-content--loaded');
+                const mainContent = wrapper.find('.settings-main-content');
                 const mainContentNoSection = wrapper.find('.main-content--no-section');
 
-                expect(mainContentLoading.exists()).toBe(false);
-                expect(mainContentLoaded.exists()).toBe(false);
+                expect(mainContent.exists()).toBe(false);
                 expect(mainContentNoSection.exists()).toBe(true);
             });
 
             test('shows main content', async () => {
                 const wrapper = getWrapper();
+                await nextTick();
 
-                await flushPromises();
-                await wrapper.vm.$nextTick();
-
-                const mainContentLoading = wrapper.find('.main-content--loading');
-                const mainContentLoaded = wrapper.find('.main-content--loaded');
+                const mainContent = wrapper.find('.settings-main-content');
                 const mainContentNoSection = wrapper.find('.main-content--no-section');
 
-                expect(mainContentLoading.exists()).toBe(false);
-                expect(mainContentLoaded.exists()).toBe(true);
+                expect(mainContent.exists()).toBe(true);
                 expect(mainContentNoSection.exists()).toBe(false);
             });
         });

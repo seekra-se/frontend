@@ -18,9 +18,9 @@ limitations under the License.
 import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 import SettingsPage from '../components/SettingsPage.vue';
 
+import settingsConfiguration from '../settings.json';
 import { getSettingRecursively } from '../utils/getSetting.js';
-import { loadSettingsConfig } from '../utils/settingsParser';
-import { onMounted, ref, watchEffect } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -28,39 +28,27 @@ const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 
-const settingsLoaded = ref(false)
-const settings = ref([]);
-const activeSectionContent = ref({});
-const activeSection = ref(null);
+const settings = settingsConfiguration.contents;
 
-watchEffect(() => {
+const activePath = computed(() => {
     const segments = route.path
         .split('/')
         .filter(Boolean);
 
-    activeSection.value = segments.slice(1, segments.length).join('.');
+    return segments.slice(1, segments.length);
 });
 
-const updateSettings = function updateSettings () {
-    if (activeSection.value) {
-        const setting = getSettingRecursively(activeSection.value.split('.'), settings.value);
-        if (!setting) {
-            router.push('/settings');
-        } else {
-            activeSectionContent.value = setting;
-        };
+const activeSection = ref(null);
+const updateSettings = async function updateSettings () {
+    const setting = getSettingRecursively(activePath.value, settings);
+    if (setting) {
+        activeSection.value = setting;
     } else {
-        activeSectionContent.value = { content: [] };
-    };
+        await router.push('/settings');
+    }
 };
-
-onMounted(async () => {
-    settings.value = (await loadSettingsConfig()).contents;
-    watchEffect(() => {
-        updateSettings();
-    });
-    settingsLoaded.value = true;
-});
+watch(route, (newRoute) => updateSettings(newRoute));
+onMounted(updateSettings);
 
 const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen (toggleSidebarFunction) {
     if (matchMedia('(max-width: 48rem)').matches) toggleSidebarFunction();
@@ -81,7 +69,7 @@ const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen (toggleSi
                         <RouterLink
                             :to="`/settings/${section.name}`"
                             class="button button-link link sidebar-section"
-                            :class="{ active: activeSection === section.name }"
+                            :class="{ active: activeSection && activeSection.name === section.name }"
                             @click="toggleSidebarIfSmallScreen(toggleSidebar)"
                         >
                             {{ t(section.i18n) }}
@@ -89,12 +77,9 @@ const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen (toggleSi
                     </li>
                 </ul>
             </template>
-            <div v-if="!settingsLoaded" class="main-content--loading">
-                {{ t('loading') }}
-            </div>
-            <div v-else-if="activeSection" class="main-content--loaded">
+            <div v-if="activeSection">
                 <div class="settings-main-content">
-                    <SettingsPage :setting="activeSectionContent" :path="activeSection" />
+                    <SettingsPage :setting="activeSection" :path="activePath" />
                 </div>
             </div>
             <div v-else class="main-content--no-section">
