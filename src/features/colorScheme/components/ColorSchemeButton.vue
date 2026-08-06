@@ -17,12 +17,14 @@ limitations under the License.
 <script setup>
 import Icon from '@/features/icons/components/Icon.vue';
 
-import { inject } from 'vue';
+import { useSettings } from '@/features/settings/composables/useSettings';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
+const { getSetting, setSetting } = useSettings();
 
-const colorScheme = inject('colorScheme');
+const colorScheme = computed(() => getSetting(['appearance', 'colorScheme']));
 
 const colorSchemeNextMapper = {
     'light': 'dark',
@@ -39,11 +41,15 @@ const colorSchemeIconMapper = {
 const getTooltipTranslation = function (colorScheme) {
     return t(`preferences.colorScheme.switch.${colorSchemeNextMapper[colorScheme]}`);
 };
+
+const setColorScheme = function setColorScheme (newColorScheme) {
+    setSetting(['appearance', 'colorScheme'], newColorScheme);
+};
 </script>
 
 <template>
     <button class="color-scheme-button"
-        @click="colorScheme = colorSchemeNextMapper[colorScheme]"
+        @click="setColorScheme(colorSchemeNextMapper[colorScheme])"
         :aria-label="getTooltipTranslation(colorScheme)"
         :title="getTooltipTranslation(colorScheme)"
     >
