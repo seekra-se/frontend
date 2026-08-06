@@ -60,6 +60,21 @@
             "option": {
                 "ariaLabel": "Selects option {option}"
             }
+        },
+        "settings": {
+            "appearance": {
+                "title": "Appearance",
+                "contents": {
+                    "colorScheme": {
+                        "title": "Color Scheme",
+                        "options": {
+                            "auto": "Adapt to system color scheme",
+                            "light": "Light",
+                            "dark": "Dark"
+                        }
+                    }
+                }
+            }
         }
     }
 }
