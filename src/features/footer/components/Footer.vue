@@ -54,6 +54,7 @@ const copyrightPeriod =
 .footer-segment {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 32px;
     padding: var(--padding-y);
     background-color: var(--light-bg);
