@@ -22,7 +22,7 @@ import { LANGUAGE_PATH } from './config/featureSettings.js';
 import { updatePageTitle } from './router';
 import { useSettings } from './features/settings/composables/useSettings.js';
 import { setLocale } from './i18n';
-import { computed, watch, watchEffect } from 'vue';
+import { computed, onMounted, watch, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -55,6 +55,10 @@ updateColorScheme(colorScheme.value);
 watchEffect(() => updatePageTitle(route));
 
 watch(() => getSetting(LANGUAGE_PATH), setLocale);
+
+onMounted(() => {
+    setLocale(getSetting(LANGUAGE_PATH));
+});
 </script>
 
 <template>
