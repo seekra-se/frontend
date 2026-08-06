@@ -19,34 +19,36 @@ import Navbar from './features/nav/components/Navbar.vue';
 import Footer from './features/footer/components/Footer.vue';
 
 import { updatePageTitle } from './router';
-import { useColorScheme } from './features/colorScheme/composables/useColorScheme';
-import { ref, provide, watch, watchEffect } from 'vue';
+import { useSettings } from './features/settings/composables/useSettings.js';
+import { computed, watch, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
-const { getColorScheme, updateColorScheme } = useColorScheme();
-const colorScheme = ref(null);
-provide('colorScheme', colorScheme);
-watch(colorScheme, (newValue) => {
-    updateColorScheme(newValue);
+const { getSetting } = useSettings();
+const colorScheme = computed(() => getSetting(['appearance', 'colorScheme']));
+
+const updateColorScheme = function updateColorScheme (newColorScheme) {
     document.body.style.setProperty(colorScheme, {
         auto: 'normal',
         dark: 'dark',
         light: 'light'
     });
-    if (newValue === 'dark') {
+    if (newColorScheme === 'dark') {
         document.body.classList.add('dark');
     } else {
         document.body.classList.remove('dark');
     }
-    if (newValue === 'auto') {
+    if (newColorScheme === 'auto') {
         document.body.classList.add('color-scheme-auto');
     } else {
         document.body.classList.remove('color-scheme-auto');
     }
+}
+watch(colorScheme, (newColorScheme) => {
+    updateColorScheme(newColorScheme);
 });
-colorScheme.value = getColorScheme();
+updateColorScheme(colorScheme.value);
 
 watchEffect(() => updatePageTitle(route));
 </script>

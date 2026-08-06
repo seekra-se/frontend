@@ -14,63 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { useSettingsConfigCacheStore } from '../../stores/settingsConfigCacheStore';
-import { useSettingsStore } from '../../stores/settingsStore';
 import { useSettings } from '../useSettings';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
-const settingDefaultValue = 42;
+const settingDefaultValue = vi.hoisted(() => 42);
 const settingPath = ['test', 'number'];
 
-describe('useSettings', () => {
-    describe('getSetting', () => {
-        test('returns stored value', () => {
-            const { getSetting } = useSettings();
-            const settings = useSettingsStore();
-
-            const key = 'setting';
-            const value = 42;
-
-            settings.set(key, value);
-
-            expect(getSetting(key)).toBe(value);
-        });
-
-        test('returns default value', () => {
-            const { getSetting } = useSettings();
-            expect(getSetting(settingPath)).toBe(settingDefaultValue);
-        });
-
-        test('returns stored value instead of default value', () => {
-            const { getSetting } = useSettings();
-            const settings = useSettingsStore();
-
-            const value = 43;
-
-            expect(getSetting(settingPath)).toBe(settingDefaultValue);
-
-            settings.set(settingPath, value);
-            expect(getSetting(settingPath)).toBe(value);
-        });
-
-        test('returns undefined if there is no value', () => {
-            const { getSetting } = useSettings();
-            expect(getSetting(['test', 'bool'])).toBeUndefined();
-        });
-    });
-});
-
-beforeEach(() => {
-    setActivePinia(
-        createTestingPinia({
-            createSpy: vi.fn,
-            stubActions: false
-        })
-    );
-    const settingsConfigCache = useSettingsConfigCacheStore();
-    settingsConfigCache.set({
+vi.mock('../../settings.json', () => ({
+    default: {
         contents: [
             {
                 name: 'test',
@@ -90,5 +43,49 @@ beforeEach(() => {
                 ]
             }
         ]
+    }
+}));
+
+describe('useSettings', () => {
+    describe('getSetting', () => {
+        test('returns stored value', () => {
+            const { getSetting, setSetting } = useSettings();
+
+            const key = ['setting'];
+            const value = 42;
+
+            setSetting(key, value);
+            expect(getSetting(key)).toBe(value);
+        });
+
+        test('returns default value', () => {
+            const { getSetting, setSetting } = useSettings();
+            expect(getSetting(settingPath)).toBe(settingDefaultValue);
+        });
+
+        test('returns stored value instead of default value', () => {
+            const { getSetting, setSetting } = useSettings();
+
+            const value = 43;
+
+            expect(getSetting(settingPath)).toBe(settingDefaultValue);
+
+            setSetting(settingPath, value);
+            expect(getSetting(settingPath)).toBe(value);
+        });
+
+        test('returns undefined if there is no value', () => {
+            const { getSetting } = useSettings();
+            expect(getSetting(['test', 'bool'])).toBeUndefined();
+        });
     });
+});
+
+beforeEach(() => {
+    setActivePinia(
+        createTestingPinia({
+            createSpy: vi.fn,
+            stubActions: false
+        })
+    );
 });

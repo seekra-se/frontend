@@ -117,18 +117,13 @@ export const validateFirstLevelSection = function validateFirstLevelSection (sec
  * @returns {{ valid: true, config: import('../types/settingsConfig').SettingsConfig } | { valid: false, error: string }}
  */
 export function validateSettingsConfig(raw) {
-    try {
-        if (!raw || typeof raw !== 'object') {
-            throw new Error('[settings] Config must be an object');
-        }
-        if (!Array.isArray(raw.contents)) {
-            throw new Error('[settings] "contents" must be an array');
-        }
-        raw.contents.forEach((entry, i) =>
-            validateFirstLevelSection(entry, `contents[${i}]`)
-        );
-        return { valid: true, config: raw };
-    } catch (e) {
-        return { valid: false, error: e.message };
+    if (!raw || typeof raw !== 'object') {
+        throw new Error('[settings] Config must be an object');
     }
+    if (!Array.isArray(raw.contents)) {
+        throw new Error('[settings] "contents" must be an array');
+    }
+    raw.contents.forEach((entry, i) =>
+        validateFirstLevelSection(entry, `contents[${i}]`)
+    );
 }

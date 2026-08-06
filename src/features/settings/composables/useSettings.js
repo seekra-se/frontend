@@ -14,10 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { useSettingsConfigCacheStore } from '../stores/settingsConfigCacheStore';
+import settings from '../settings.json';
 import { useSettingsStore } from '../stores/settingsStore';
 import { getSettingRecursively } from '../utils/getSetting';
-import { loadSettingsConfig } from '../utils/settingsParser';
 
 /**
  * Provides access to the stored settings.
@@ -31,9 +30,8 @@ export const useSettings = function useSettings () {
     const getSetting = function getSetting (key) {
         const settingsStore = useSettingsStore();
 
-        const settings = useSettingsConfigCacheStore().get();
         return (
-            settingsStore.get(key) ??
+            settingsStore.get(key.join('.')) ??
             getSettingRecursively(
                 key, settings.contents ?? []
             )?.default

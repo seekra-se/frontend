@@ -60,6 +60,21 @@
             "option": {
                 "ariaLabel": "Wählt die Option {option} aus"
             }
+        },
+        "settings": {
+            "appearance": {
+                "title": "Erscheinungsbild",
+                "contents": {
+                    "colorScheme": {
+                        "title": "Farbschema",
+                        "options": {
+                            "auto": "An Systemfarbschema anpassen",
+                            "light": "Hell",
+                            "dark": "Dunkel"
+                        }
+                    }
+                }
+            }
         }
     }
 }

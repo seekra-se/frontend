@@ -20,18 +20,10 @@ import { validateSettingsConfig, validateEntry, validateSelectionOptions, assert
 describe('settingsValidator', () => {
     describe('validateSettingsConfig', () => {
         test.for([
-            { raw: false, expected: false },
-            { raw: true, expected: false },
-            { raw: 0, expected: false },
-            { raw: 42, expected: false },
-            { raw: '', expected: false },
-            { raw: ' ', expected: false },
-            { raw: 'a', expected: false },
-            { raw: {}, expected: false },
-            { raw: {
+            { settings: {
                 contents: []
-            }, expected: true },
-            { raw: {
+            } },
+            { settings: {
                 contents: [
                     {
                         name: 'general',
@@ -45,8 +37,8 @@ describe('settingsValidator', () => {
                         ]
                     }
                 ]
-            }, expected: true },
-            { raw: {
+            } },
+            { settings: {
                 contents: [
                     {
                         name: 'general',
@@ -71,8 +63,8 @@ describe('settingsValidator', () => {
                         ]
                     },
                 ]
-            }, expected: true },
-            { raw: {
+            } },
+            { settings: {
                 contents: [
                     {
                         name: 'general',
@@ -128,12 +120,12 @@ describe('settingsValidator', () => {
                                         default: 'str'
                                     }
                                 ]
-                            },
+                            }
                         ]
-                    },
+                    }
                 ]
-            }, expected: true },
-            { raw: {
+            } },
+            { settings: {
                 contents: [
                     {
                         name: 'general',
@@ -190,12 +182,283 @@ describe('settingsValidator', () => {
                                         default: 'str'
                                     }
                                 ]
-                            },
+                            }
+                        ]
+                    }
+                ]
+            } }
+        ])('does not throw an error and returns input', ({ settings }) => {
+            validateSettingsConfig(settings);
+        });
+
+        test.for([
+            { settings: false },
+            { settings: true },
+            { settings: 0 },
+            { settings: 42 },
+            { settings: '' },
+            { settings: ' ' },
+            { settings: 'a' },
+            { settings: {} },
+            { settings: {
+                content: [
+                    {
+                        type: 'sectio',
+                        name: 'general',
+                        i18n: 'settings.settings.general',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 42',
+                                i18n: 'settings.settings.general.enableFeature42'
+                            }
                         ]
                     },
+                    {
+                        type: 'section',
+                        name: 'copyOfGeneral',
+                        i18n: 'settings.settings.copyOfGeneral',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 42',
+                                default: false,
+                                i18n: 'settings.settings.general.enableFeature42'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        name: 'aSection',
+                        i18n: 'settings.settings.aSection',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 43',
+                                i18n: 'settings.settings.aSection.enableFeature43'
+                            },
+                            {
+                                type: 'selection',
+                                name: 'language',
+                                i18n: 'settings.settings.aSection.language.label',
+                                default: 'en',
+                                allowMultiple: 'false',
+                                options: [
+                                    { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
+                                    { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
+                                ]
+                            },
+                            {
+                                type: 'section',
+                                name: 'section2',
+                                i18n: 'settings.settings.aSection.section2.label',
+                                content: [
+                                    {
+                                        type: 'string',
+                                        name: 'string',
+                                        i18n: 'settings.settings.aSection.sections.string',
+                                        default: 'str'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 ]
-            }, expected: true },
-            { raw: {
+            } },
+            { settings: {
+                content: [
+                    {
+                        type: 'sectio',
+                        name: 'general',
+                        i18n: 'settings.settings.general',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 42',
+                                i18n: 'settings.settings.general.enableFeature42'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        name: 'copyOfGeneral',
+                        i18n: 'settings.settings.copyOfGeneral',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 42',
+                                default: false,
+                                i18n: 'settings.settings.general.enableFeature42'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        name: 'aSection',
+                        i18n: 'settings.settings.aSection',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 43',
+                                i18n: 'settings.settings.aSection.enableFeature43'
+                            },
+                            {
+                                type: 'selection',
+                                name: 'language',
+                                i18n: 'settings.settings.aSection.language.label',
+                                default: 'en',
+                                options: [
+                                    { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
+                                    { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
+                                ]
+                            },
+                            {
+                                type: 'section',
+                                name: 'section2',
+                                i18n: 'settings.settings.aSection.section2.label',
+                                content: [
+                                    {
+                                        type: 'string',
+                                        name: 'string',
+                                        i18n: 'settings.settings.aSection.sections.string',
+                                        default: 'str'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            } },
+            { settings: {
+                content: [
+                    {
+                        type: 'section',
+                        name: 'general',
+                        i18n: 'settings.settings.general',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 42',
+                                i18n: 'settings.settings.general.enableFeature42'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        name: 'copyOfGeneral',
+                        i18n: 'settings.settings.copyOfGeneral',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 42',
+                                default: false,
+                                i18n: 'settings.settings.general.enableFeature42'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        name: 'aSection',
+                        i18n: 'settings.settings.aSection',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 43',
+                                i18n: 'settings.settings.aSection.enableFeature43'
+                            },
+                            {
+                                type: 'selection',
+                                name: 'language',
+                                i18n: 'settings.settings.aSection.language.label',
+                                default: 'en',
+                                options: [
+                                    { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
+                                    { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
+                                ]
+                            },
+                            {
+                                type: 'section',
+                                name: 'section2',
+                                i18n: 'settings.settings.aSection.section2.label',
+                                content: [
+                                    {
+                                        type: 'string',
+                                        name: 'string',
+                                        i18n: 'settings.settings.aSection.sections.string',
+                                        default: 'str'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            } },
+            { settings: {
+                contents: [
+                    {
+                        type: 'section',
+                        name: 'general',
+                        i18n: 'settings.settings.general',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 42',
+                                i18n: 'settings.settings.general.enableFeature42'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        name: 'copyOfGeneral',
+                        i18n: 'settings.settings.copyOfGeneral',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 42',
+                                default: false,
+                                i18n: 'settings.settings.general.enableFeature42'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        name: 'aSection',
+                        i18n: 'settings.settings.aSection',
+                        content: [
+                            {
+                                type: 'bool',
+                                name: 'Enable feature 43',
+                                i18n: 'settings.settings.aSection.enableFeature43',
+                                default: 'true'
+                            },
+                            {
+                                type: 'selection',
+                                name: 'language',
+                                i18n: 'settings.settings.aSection.language.label',
+                                default: 'en',
+                                options: [
+                                    { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
+                                    { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
+                                ]
+                            },
+                            {
+                                type: 'section',
+                                name: 'section2',
+                                i18n: 'settings.settings.aSection.section2.label',
+                                content: [
+                                    {
+                                        type: 'string',
+                                        name: 'string',
+                                        i18n: 'settings.settings.aSection.sections.string',
+                                        default: 42
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            } },
+            { settings: {
                 contents: [
                     {
                         type: 'bool',
@@ -258,276 +521,14 @@ describe('settingsValidator', () => {
                                         default: 'str'
                                     }
                                 ]
-                            },
+                            }
                         ]
-                    },
+                    }
                 ]
-            }, expected: false },
-            { raw: {
-                contents: [
-                    {
-                        type: 'section',
-                        name: 'general',
-                        i18n: 'settings.settings.general',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 42',
-                                i18n: 'settings.settings.general.enableFeature42'
-                            }
-                        ]
-                    },
-                    {
-                        type: 'section',
-                        name: 'copyOfGeneral',
-                        i18n: 'settings.settings.copyOfGeneral',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 42',
-                                default: false,
-                                i18n: 'settings.settings.general.enableFeature42'
-                            }
-                        ]
-                    },
-                    {
-                        type: 'section',
-                        name: 'aSection',
-                        i18n: 'settings.settings.aSection',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 43',
-                                i18n: 'settings.settings.aSection.enableFeature43',
-                                default: 'true'
-                            },
-                            {
-                                type: 'selection',
-                                name: 'language',
-                                i18n: 'settings.settings.aSection.language.label',
-                                default: 'en',
-                                options: [
-                                    { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
-                                    { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
-                                ]
-                            },
-                            {
-                                type: 'section',
-                                name: 'section2',
-                                i18n: 'settings.settings.aSection.section2.label',
-                                content: [
-                                    {
-                                        type: 'string',
-                                        name: 'string',
-                                        i18n: 'settings.settings.aSection.sections.string',
-                                        default: 42
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                ]
-            }, expected: false },
-            { raw: {
-                content: [
-                    {
-                        type: 'section',
-                        name: 'general',
-                        i18n: 'settings.settings.general',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 42',
-                                i18n: 'settings.settings.general.enableFeature42'
-                            }
-                        ]
-                    },
-                    {
-                        type: 'section',
-                        name: 'copyOfGeneral',
-                        i18n: 'settings.settings.copyOfGeneral',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 42',
-                                default: false,
-                                i18n: 'settings.settings.general.enableFeature42'
-                            }
-                        ]
-                    },
-                    {
-                        type: 'section',
-                        name: 'aSection',
-                        i18n: 'settings.settings.aSection',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 43',
-                                i18n: 'settings.settings.aSection.enableFeature43'
-                            },
-                            {
-                                type: 'selection',
-                                name: 'language',
-                                i18n: 'settings.settings.aSection.language.label',
-                                default: 'en',
-                                options: [
-                                    { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
-                                    { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
-                                ]
-                            },
-                            {
-                                type: 'section',
-                                name: 'section2',
-                                i18n: 'settings.settings.aSection.section2.label',
-                                content: [
-                                    {
-                                        type: 'string',
-                                        name: 'string',
-                                        i18n: 'settings.settings.aSection.sections.string',
-                                        default: 'str'
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                ]
-            }, expected: false },
-            { raw: {
-                content: [
-                    {
-                        type: 'sectio',
-                        name: 'general',
-                        i18n: 'settings.settings.general',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 42',
-                                i18n: 'settings.settings.general.enableFeature42'
-                            }
-                        ]
-                    },
-                    {
-                        type: 'section',
-                        name: 'copyOfGeneral',
-                        i18n: 'settings.settings.copyOfGeneral',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 42',
-                                default: false,
-                                i18n: 'settings.settings.general.enableFeature42'
-                            }
-                        ]
-                    },
-                    {
-                        type: 'section',
-                        name: 'aSection',
-                        i18n: 'settings.settings.aSection',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 43',
-                                i18n: 'settings.settings.aSection.enableFeature43'
-                            },
-                            {
-                                type: 'selection',
-                                name: 'language',
-                                i18n: 'settings.settings.aSection.language.label',
-                                default: 'en',
-                                options: [
-                                    { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
-                                    { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
-                                ]
-                            },
-                            {
-                                type: 'section',
-                                name: 'section2',
-                                i18n: 'settings.settings.aSection.section2.label',
-                                content: [
-                                    {
-                                        type: 'string',
-                                        name: 'string',
-                                        i18n: 'settings.settings.aSection.sections.string',
-                                        default: 'str'
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                ]
-            }, expected: false },
-            { raw: {
-                content: [
-                    {
-                        type: 'sectio',
-                        name: 'general',
-                        i18n: 'settings.settings.general',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 42',
-                                i18n: 'settings.settings.general.enableFeature42'
-                            }
-                        ]
-                    },
-                    {
-                        type: 'section',
-                        name: 'copyOfGeneral',
-                        i18n: 'settings.settings.copyOfGeneral',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 42',
-                                default: false,
-                                i18n: 'settings.settings.general.enableFeature42'
-                            }
-                        ]
-                    },
-                    {
-                        type: 'section',
-                        name: 'aSection',
-                        i18n: 'settings.settings.aSection',
-                        content: [
-                            {
-                                type: 'bool',
-                                name: 'Enable feature 43',
-                                i18n: 'settings.settings.aSection.enableFeature43'
-                            },
-                            {
-                                type: 'selection',
-                                name: 'language',
-                                i18n: 'settings.settings.aSection.language.label',
-                                default: 'en',
-                                allowMultiple: 'false',
-                                options: [
-                                    { name: 'en', i18n: 'settings.settings.aSection.language.options.en' },
-                                    { name: 'de', i18n: 'settings.settings.aSection.language.options.de' },
-                                ]
-                            },
-                            {
-                                type: 'section',
-                                name: 'section2',
-                                i18n: 'settings.settings.aSection.section2.label',
-                                content: [
-                                    {
-                                        type: 'string',
-                                        name: 'string',
-                                        i18n: 'settings.settings.aSection.sections.string',
-                                        default: 'str'
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                ]
-            }, expected: false }
-        ])('returns valid: $expected', ({ raw, expected }) => {
-            const result = validateSettingsConfig(raw);
-            if (!result.valid) {
-                console.error('Error message:', result.error);
-            };
-            expect(result.valid).toBe(expected);
-        });
+            } }
+        ])('throws error', ({ settings }) => {
+            expect(() => validateSettingsConfig(settings)).toThrow(Error)
+        })
     });
 
     describe('validateEntry', () => {
