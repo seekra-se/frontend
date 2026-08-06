@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { useSettingsConfigCacheStore } from '../stores/settingsConfigCacheStore';
 import { validateSettingsConfig } from './settingsValidator.js';
 
 /**
@@ -21,10 +22,12 @@ import { validateSettingsConfig } from './settingsValidator.js';
  * @returns {Promise<import('../types/settingsConfig').SettingsConfig>}
  */
 export async function loadSettingsConfig() {
+    const settingsConfigCache = useSettingsConfigCacheStore();
     let raw;
 
     try {
         raw = (await import('../settings.json')).default;
+        settingsConfigCache.set(raw);
     } catch (e) {
         throw new Error(`[settings] Failed to load settings.json: ${e.message}`);
     }
