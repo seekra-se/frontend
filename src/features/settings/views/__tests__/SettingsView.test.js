@@ -197,7 +197,7 @@ const settings = settingsHoisted.values();
 const originalCurrentSection = 's0';
 let currentSection = originalCurrentSection;
 
-vi.mock('../../settings.json', () => ({
+vi.mock('../../config.js', () => ({
     default: { contents: settingsHoisted }
 }));
 

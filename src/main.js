@@ -30,7 +30,7 @@ import rawFonts from './styles/fonts.json';
 import './styles/common.css';
 import './styles/variables/colors.css';
 
-import settings from './features/settings/settings.json';
+import settings from './features/settings/config.js';
 import { validateSettingsConfig } from './features/settings/utils/settingsValidator';
 
 (async () => {

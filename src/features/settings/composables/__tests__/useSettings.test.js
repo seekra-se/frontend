@@ -22,7 +22,7 @@ import { beforeEach, describe, expect, test, vi } from 'vitest';
 const settingDefaultValue = vi.hoisted(() => 42);
 const settingPath = ['test', 'number'];
 
-vi.mock('../../settings.json', () => ({
+vi.mock('../../config.js', () => ({
     default: {
         contents: [
             {
