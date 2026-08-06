@@ -26,7 +26,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 const { getColorScheme, updateColorScheme } = useColorScheme();
-const colorScheme = ref('auto');
+const colorScheme = ref(null);
 provide('colorScheme', colorScheme);
 watch(colorScheme, (newValue) => {
     updateColorScheme(newValue);
