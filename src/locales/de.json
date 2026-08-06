@@ -76,5 +76,11 @@
                 }
             }
         }
+    },
+    "legal": {
+        "notice": {
+            "title": "Impressum",
+            "loadError": "Das Impressum konnte nicht geladen werden."
+        }
     }
 }

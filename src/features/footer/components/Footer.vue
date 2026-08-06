@@ -40,8 +40,20 @@ const copyrightPeriod =
             </RouterLink>
             <LanguageSwitchButton />
         </div>
-        <div class="footer-segment">
-            &copy; {{ copyrightPeriod }} Seekra
+        <div class="footer-segment legal-segment">
+            <div></div>
+            <div class="copyright-notice">
+                &copy; {{ copyrightPeriod }} Seekra
+            </div>
+            <div class="legal-links">
+                <RouterLink
+                    :to="{ name: 'legalNotice' }"
+                    class="link"
+                    :title="t('legal.notice.title')"
+                >
+                    {{ t('legal.notice.title') }}
+                </RouterLink>
+            </div>
         </div>
     </footer>
 </template>
@@ -63,5 +75,32 @@ const copyrightPeriod =
 
 .global-footer a {
     color: var(--dark);
+}
+
+.legal-segment {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    text-align: center;
+}
+
+.copyright-notice {
+    justify-self: center;
+}
+
+.legal-links {
+    justify-self: end;
+}
+
+@media (max-width: 48rem) {
+    .legal-segment {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .legal-links {
+        margin-top: 0.8em;
+    }
 }
 </style>
