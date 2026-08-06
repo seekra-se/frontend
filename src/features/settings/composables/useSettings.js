@@ -31,7 +31,7 @@ export const useSettings = function useSettings () {
         const settingsStore = useSettingsStore();
 
         return (
-            settingsStore.get(key) ??
+            settingsStore.get(key.join('.')) ??
             getSettingRecursively(
                 key, settings.contents ?? []
             )?.default
