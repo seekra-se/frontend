@@ -90,6 +90,32 @@ describe('Selection', () => {
         expect(inputsChecked).toStrictEqual([false, true, false]);
     });
 
+    test('reacts on store change', async () => {
+        const wrapper = getWrapper({
+            options: exampleOptions,
+            piniaOptions: {
+                setupStores: () => {
+                    const store = useSettingsStore();
+                    store.set('selection', 'o1');
+                }
+            }
+        });
+        const settings = useSettingsStore();
+
+        {
+            const inputs = wrapper.findAll('input');
+            const inputsChecked = getChecked(inputs);
+            expect(inputsChecked).toStrictEqual([false, true, false]);
+        }
+        {
+            settings.set('selection', 'o2');
+            await nextTick();
+            const inputs = wrapper.findAll('input');
+            const inputsChecked = getChecked(inputs);
+            expect(inputsChecked).toStrictEqual([false, false, true]);
+        }
+    });
+
     test('shows multiple values from store', () => {
         const wrapper = getWrapper({
             options: exampleOptions,
