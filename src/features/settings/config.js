@@ -14,8 +14,26 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { fallbackLocale, SUPPORTED_LANGUAGES } from '@/i18n';
+
 export default {
     contents: [
+        {
+            name: 'general',
+            i18n: 'settings.settings.general.title',
+            content: [
+                {
+                    name: 'language',
+                    type: 'selection',
+                    i18n: 'settings.settings.general.settings.language.title',
+                    default: fallbackLocale,
+                    options: SUPPORTED_LANGUAGES.map((language) => ({
+                        name: language,
+                        i18n: `preferences.locale.languages.${language}`
+                    }))
+                }
+            ]
+        },
         {
             name: 'appearance',
             i18n: 'settings.settings.appearance.title',

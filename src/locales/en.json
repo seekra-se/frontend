@@ -74,6 +74,14 @@
                         }
                     }
                 }
+            },
+            "general": {
+                "title": "General",
+                "settings": {
+                    "language": {
+                        "title": "Language"
+                    }
+                }
             }
         }
     },
