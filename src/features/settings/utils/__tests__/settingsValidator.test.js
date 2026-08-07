@@ -527,8 +527,8 @@ describe('settingsValidator', () => {
                 ]
             } }
         ])('throws error', ({ settings }) => {
-            expect(() => validateSettingsConfig(settings)).toThrow(Error)
-        })
+            expect(() => validateSettingsConfig(settings)).toThrow(Error);
+        });
     });
 
     describe('validateEntry', () => {

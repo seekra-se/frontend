@@ -46,7 +46,7 @@ const updateColorScheme = function updateColorScheme (newColorScheme) {
     } else {
         document.body.classList.remove('color-scheme-auto');
     }
-}
+};
 watch(colorScheme, (newColorScheme) => {
     updateColorScheme(newColorScheme);
 });

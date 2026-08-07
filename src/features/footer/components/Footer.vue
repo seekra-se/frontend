@@ -21,13 +21,13 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const startYear = 2026
-const currentYear = new Date().getFullYear()
+const startYear = 2026;
+const currentYear = new Date().getFullYear();
 
 const copyrightPeriod =
     startYear === currentYear
         ? `${currentYear}`
-        : `${startYear}-${currentYear}`
+        : `${startYear}-${currentYear}`;
 
 
 </script>

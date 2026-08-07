@@ -237,7 +237,7 @@ describe('Selection', () => {
         const inputO2 = inputs[2];
 
         await check(inputO0);
-        expectSelectionValue(['o0'])
+        expectSelectionValue(['o0']);
 
         await uncheck(inputO0);
         expectSelectionValue([]);

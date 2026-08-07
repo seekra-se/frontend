@@ -21,7 +21,7 @@ import { describe, expect, test } from 'vitest';
 
 const { getSetting } = useSettings();
 
-const colorSchemeSettingPath = ['appearance', 'colorScheme']
+const colorSchemeSettingPath = ['appearance', 'colorScheme'];
 
 const getWrapper = function getWrapper () {
     return mountComponent(ColorSchemeButton);

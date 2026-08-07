@@ -27,16 +27,16 @@ const props = defineProps({
         type: [Number, String],
         default: 24
     }
-})
+});
 
 const icons = import.meta.glob('@/assets/icons/*.svg', {
     eager: true,
     import: 'default'
-})
+});
 
-const Icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`])
+const Icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`]);
 
-const size = computed(() => ensureUnit(props.size))
+const size = computed(() => ensureUnit(props.size));
 </script>
 
 <template>

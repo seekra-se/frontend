@@ -24,8 +24,8 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const router = useRouter()
-const props = defineProps(['autoSubmit'])
+const router = useRouter();
+const props = defineProps(['autoSubmit']);
 
 const submitSearch = function () {
     if (props.autoSubmit !== undefined) {
@@ -34,7 +34,7 @@ const submitSearch = function () {
             query: { q: searchQuery.value }
         });
     };
-}
+};
 </script>
 
 <template>

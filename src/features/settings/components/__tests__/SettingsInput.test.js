@@ -32,7 +32,7 @@ const getWrapper = function getWrapper({ type = 'string', i18n = 'input', defaul
             path: 'input'
         }
     }, {}, [], piniaOptions);
-}
+};
 
 describe('SettingsInput', () => {
     test('uses correct input type', () => {

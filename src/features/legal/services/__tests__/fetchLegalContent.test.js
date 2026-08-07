@@ -97,7 +97,7 @@ describe('fetchLegalContent', () => {
             test('throws FetchError on HTTP error', async () => {
                 fetchSpy.mockResolvedValue(
                     new Response(null, { status: 404 })
-                )
+                );
                 await expect(getLegalNotice()).rejects.toThrow(FetchError);
             });
 

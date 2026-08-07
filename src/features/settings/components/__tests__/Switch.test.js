@@ -117,7 +117,7 @@ describe('Switch', () => {
 
         const wrapper = getWrapper({
             translations: { switch1: translation }
-        })
+        });
 
         const label = wrapper.find('label');
         expect(label.text()).toBe(translation);

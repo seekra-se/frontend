@@ -15,14 +15,14 @@ limitations under the License.
 */
 
 import { getAssetsUrl } from './config/env';
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
-import App from './App.vue'
+import App from './App.vue';
 import { i18n, loadLanguage, fallbackLocale } from './i18n';
-import router from './router'
-import './styles/common.css'
-import './styles/variables/colors.css'
+import router from './router';
+import './styles/common.css';
+import './styles/variables/colors.css';
 import './styles/variables/dimensions.css';
 
 import rawFonts from './styles/fonts.json';

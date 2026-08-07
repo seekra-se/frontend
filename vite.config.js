@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import { createHtmlPlugin } from 'vite-plugin-html';
 
@@ -39,4 +39,4 @@ export default defineConfig({
     globals: false,
     environment: 'jsdom'
   }
-})
+});

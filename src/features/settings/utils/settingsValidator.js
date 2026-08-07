@@ -20,7 +20,7 @@ export const assertString = function assertString (value, path) {
     if (typeof value !== 'string' || value.trim() === '') {
         throw new Error(`[settings] "${path}" must be a non-empty string`);
     }
-}
+};
 
 export const assertType = function assertType (value, path) {
     if (!VALID_TYPES.includes(value)) {
@@ -28,7 +28,7 @@ export const assertType = function assertType (value, path) {
             `[settings] "${path}" has invalid type "${value}". Must be one of: ${VALID_TYPES.join(', ')}`
         );
     }
-}
+};
 
 export const validateSelectionOptions = function validateSelectionOptions (options, path) {
     if (!Array.isArray(options) || options.length === 0) {
@@ -38,7 +38,7 @@ export const validateSelectionOptions = function validateSelectionOptions (optio
         assertString(opt.name, `${path}.options[${i}].name`);
         assertString(opt.i18n, `${path}.options[${i}].i18n`);
     });
-}
+};
 
 export const validateEntry = function validateEntry (entry, path) {
     assertType(entry.type, `${path}.type`);
@@ -96,7 +96,7 @@ export const validateEntry = function validateEntry (entry, path) {
             }
         };
     }
-}
+};
 
 export const validateFirstLevelSection = function validateFirstLevelSection (section, path) {
     assertString(section.name);
@@ -126,4 +126,4 @@ export function validateSettingsConfig(raw) {
     raw.contents.forEach((entry, i) =>
         validateFirstLevelSection(entry, `contents[${i}]`)
     );
-}
+};
