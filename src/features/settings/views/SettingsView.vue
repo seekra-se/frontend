@@ -18,7 +18,7 @@ limitations under the License.
 import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 import SettingsPage from '../components/SettingsPage.vue';
 
-import settingsConfiguration from '../settings.json';
+import settingsConfiguration from '../config.js';
 import { getSettingRecursively } from '../utils/getSetting.js';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';

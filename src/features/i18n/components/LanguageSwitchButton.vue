@@ -17,22 +17,24 @@ limitations under the License.
 <script setup>
 import Icon from '@/features/icons/components/Icon.vue';
 
-import { ref } from 'vue';
+import { LANGUAGE_PATH } from '@/config/featureSettings';
+import { useSettings } from '@/features/settings/composables/useSettings';
+import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { loadLanguage, LANGUAGES_RTL, SUPPORTED_LANGUAGES } from '@/i18n';
+import { setLocale, SUPPORTED_LANGUAGES } from '@/i18n';
 
 const { t, locale } = useI18n();
+const { setSetting, getSetting } = useSettings();
 
 const isOpen = ref(false);
 const languageDropdown = ref(null);
 
-async function selectLanguage(code) {
-    await loadLanguage(code);
-    localStorage.setItem('locale', code);
-    document.documentElement.lang = code;
-    document.documentElement.dir = LANGUAGES_RTL.includes(code) ? 'rtl' : 'ltr';
+const selectLanguage = function selectLanguage (code) {
+    setSetting(LANGUAGE_PATH, code);
     close();
 };
+
+watch(() => getSetting(LANGUAGE_PATH), setLocale);
 
 const close = function () {
     document.removeEventListener('click', closeWrapperOnClickOutsite);
