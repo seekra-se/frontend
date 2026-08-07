@@ -536,12 +536,12 @@ describe('settingsValidator', () => {
             [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable' }],
             [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: true }],
             [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: false }],
-        
+
             [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label' }],
             [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: 42 }],
             [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: 0 }],
             [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: -42.7 }],
-        
+
             [{ name: 'aString', type: 'string', i18n: 'aString.label' }],
             [{ name: 'aString', type: 'string', i18n: 'aString.label', default: '' }],
             [{ name: 'aString', type: 'string', i18n: 'aString.label', default: 'Seekra is great!' }],
@@ -618,7 +618,7 @@ describe('settingsValidator', () => {
             [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: [] }],
             [{ name: 'enableFeature42', type: 'bool', i18n: 'feature.42.enable', default: {} }],
             [{ name: 'enableFeature42', type: '', i18n: 'feature.42.enable', default: {} }],
-        
+
             [{ name: '', type: 'number', i18n: 'aNumber.label' }],
             [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: '42' }],
             [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: 'zero' }],
@@ -630,7 +630,7 @@ describe('settingsValidator', () => {
             [{ name: 'aNumber', type: 'number', i18n: 'aNumber.label', default: {} }],
             [{ name: 'aNumber', type: '', i18n: 'aNumber.label', default: {} }],
             [{ name: 'aNumber', type: '', i18n: 'aNumber.label', default: 42 }],
-        
+
             [{ name: 'aString', type: 'string', i18n: '' }],
             [{ name: 'aString', type: 'string', i18n: 'aString.label', default: 42 }],
             [{ name: 'aString', type: 'string', i18n: 'aString.label', default: true }],

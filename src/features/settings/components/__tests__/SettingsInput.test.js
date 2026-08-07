@@ -173,15 +173,15 @@ describe('SettingsInput', () => {
 
         await form.trigger('submit');
         expect(form.classes('done-button-shown')).toBeFalsy();
-        
+
         await inputElement.setValue('a');
         expect(form.classes('done-button-shown')).toBeTruthy();
-        
+
         const store = useSettingsStore();
         store.set('input', 'a');
         await nextTick();
         expect(form.classes('done-button-shown')).toBeFalsy();
-        
+
         await inputElement.setValue('');
         store.set('input', '');
         await nextTick();

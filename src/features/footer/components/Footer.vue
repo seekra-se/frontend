@@ -28,8 +28,6 @@ const copyrightPeriod =
     startYear === currentYear
         ? `${currentYear}`
         : `${startYear}-${currentYear}`;
-
-
 </script>
 
 <template>

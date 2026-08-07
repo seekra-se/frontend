@@ -32,7 +32,7 @@ describe('ColorSchemeButton', () => {
         const wrapper = getWrapper();
 
         expect(getSetting(colorSchemeSettingPath)).toBe('auto');
-        
+
         const colorSchemeButton = wrapper.find('button');
 
         await colorSchemeButton.trigger('click');

@@ -89,7 +89,7 @@ describe('Switch', () => {
 
         const switchElement = wrapper.find('.switch-wrapper');
         expect(switchElement.classes('enabled')).toBeFalsy();
-        
+
         store.set('switch', true);
         await nextTick();
         expect(switchElement.classes('enabled')).toBeTruthy();
@@ -97,21 +97,21 @@ describe('Switch', () => {
 
     test('toggles value in store', async () => {
         const wrapper = getWrapper();
-        
+
         const switchElement = wrapper.find('.switch-wrapper');
-        
+
         const store = useSettingsStore();
         expect(store.get('switch')).toBeUndefined();
-        
+
         switchElement.trigger('click');
         await nextTick();
         expect(store.get('switch')).toBe(true);
-        
+
         switchElement.trigger('click');
         await nextTick();
         expect(store.get('switch')).toBe(false);
     });
-    
+
     test('shows correct translation', () => {
         const translation = 'Switch';
 

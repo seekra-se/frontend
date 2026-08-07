@@ -200,7 +200,7 @@ const apply = function apply () {
             opacity: 1;
         }
     }
-    
+
     @keyframes done-button-disappear {
         0% {
             opacity: 1;

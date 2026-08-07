@@ -80,7 +80,7 @@ const toggleSidebar = function toggleSidebar () {
     .layout-container.expanded {
         grid-template-columns: 1fr 0;
     }
-    
+
     .layout-container:not(.expanded) .sidebar-expand-button-container {
         justify-content: end;
         display: block;

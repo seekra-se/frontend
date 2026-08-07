@@ -42,7 +42,7 @@ export const validateSelectionOptions = function validateSelectionOptions (optio
 
 export const validateEntry = function validateEntry (entry, path) {
     assertType(entry.type, `${path}.type`);
-    
+
     assertString(entry.name, `${path}.name`);
     assertString(entry.i18n, `${path}.i18n`);
 
@@ -55,7 +55,7 @@ export const validateEntry = function validateEntry (entry, path) {
         );
         return;
     }
-    
+
     if (entry.type === 'selection') {
         validateSelectionOptions(entry.options, path);
         if (typeof entry.allowMultiple !== 'boolean' && entry.allowMultiple) {

@@ -39,7 +39,7 @@ const submitSearch = function () {
             {{ t('slogan') }}
         </span>
     </header>
-    
+
         <div class="search-container">
             <Searchbar v-model="searchQuery" ref="searchbar" class="search-bar" auto-submit />
         </div>

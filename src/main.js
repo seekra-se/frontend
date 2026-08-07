@@ -57,7 +57,7 @@ import { validateSettingsConfig } from './features/settings/utils/settingsValida
     pinia.use(piniaPluginPersistedstate);
 
     validateSettingsConfig(settings);
-    
+
     createApp(App)
         .use(router)
         .use(i18n)

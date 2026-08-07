@@ -27,7 +27,7 @@ const getWrapper = function getWrapper () {
 describe('LanguageSwitchButton', () => {
     test('renders correctly with initial state closed', () => {
         const wrapper = getWrapper();
-        
+
         expect(wrapper.find('.language-button').exists()).toBe(true);
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
         expect(wrapper.find('.language-button').attributes('aria-expanded')).toBe('false');
@@ -36,9 +36,9 @@ describe('LanguageSwitchButton', () => {
     test('opens the dropdown when language button is clicked', async () => {
         const wrapper = getWrapper();
         const button = wrapper.find('.language-button');
-        
+
         await button.trigger('click');
-        
+
         expect(wrapper.find('.language-dropdown').exists()).toBe(true);
         expect(button.attributes('aria-expanded')).toBe('true');
     });
@@ -47,9 +47,9 @@ describe('LanguageSwitchButton', () => {
         const { getSetting } = useSettings();
 
         const wrapper = getWrapper();
-        
+
         await wrapper.find('.language-button').trigger('click');
-        
+
         const options = wrapper.findAll('.language-dropdown li');
 
         const enOption = options.find(opt => opt.text().includes('en'));
@@ -73,10 +73,10 @@ describe('LanguageSwitchButton', () => {
 
         const externalDiv = document.createElement('div');
         document.body.appendChild(externalDiv);
-        
+
         const clickEvent = new MouseEvent('click', { bubbles: true });
         externalDiv.dispatchEvent(clickEvent);
-        
+
         await wrapper.vm.$nextTick();
 
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
