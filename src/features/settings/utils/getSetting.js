@@ -31,12 +31,12 @@ export const getSettingRecursively = function getSettingRecursively (sectionPath
                 return oneSettingsLevel(cursor.slice(1, cursor.length), setting);
             } else {
                 return setting;
-            };
+            }
         } else if (cursor.length <= 1) {
             return setting;
         } else {
             return;
-        };
+        }
     };
     return oneSettingsLevel(sectionPath, { content: settings });
 };

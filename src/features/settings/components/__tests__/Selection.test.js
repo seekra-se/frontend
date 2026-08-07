@@ -71,7 +71,7 @@ describe('Selection', () => {
             expect(input.attributes('name')).toBe('selection');
 
             expect(input.element.matches(':checked')).toBe(false);
-        };
+        }
     });
 
     test('shows value from store', () => {

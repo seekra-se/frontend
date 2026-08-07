@@ -33,7 +33,7 @@ const submitSearch = function () {
             name: 'searchResults',
             query: { q: searchQuery.value }
         });
-    };
+    }
 };
 </script>
 

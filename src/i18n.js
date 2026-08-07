@@ -48,7 +48,7 @@ export async function loadLanguage (locale) {
     if (loadedLanguages.has(locale)) {
         i18n.global.locale.value = locale;
         return;
-    };
+    }
 
     const messages = (await import(`./locales/${locale}.json`)).default;
 

@@ -25,7 +25,7 @@ export const ensureUnit = function (d) {
     // if it ends with a number
     if (/\d$/.test(d)) {
         d += 'px';
-    };
+    }
 
     return d;
 };

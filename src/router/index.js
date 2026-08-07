@@ -78,7 +78,7 @@ export const updatePageTitle = function updatePageTitle (route) {
         document.title = `${title} - Seekra`;
     } else {
         document.title = 'Seekra';
-    };
+    }
 };
 
 // remove trailing slash(es)
@@ -90,7 +90,7 @@ router.beforeEach((route) => {
             hash: route.hash,
             replace: true
         };
-    };
+    }
 });
 
 export default router;

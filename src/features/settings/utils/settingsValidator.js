@@ -33,7 +33,7 @@ export const assertType = function assertType (value, path) {
 export const validateSelectionOptions = function validateSelectionOptions (options, path) {
     if (!Array.isArray(options) || options.length === 0) {
         throw new Error(`[settings] "${path}.options" must be a non-empty array`);
-    };
+    }
     options.forEach((opt, i) => {
         assertString(opt.name, `${path}.options[${i}].name`);
         assertString(opt.i18n, `${path}.options[${i}].i18n`);
@@ -61,7 +61,7 @@ export const validateEntry = function validateEntry (entry, path) {
         if (typeof entry.allowMultiple !== 'boolean' && entry.allowMultiple) {
             throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
         }
-    };
+    }
     if (entry.default !== undefined) {
         if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
             throw new Error(`[settings] "${path}.default" must be a boolean`);
@@ -89,12 +89,12 @@ export const validateEntry = function validateEntry (entry, path) {
             } else {
                 if (typeof entry.default !== 'string') {
                     throw new Error(`[settings] "${path}.default" must be a string`);
-                };
+                }
                 if (!entry.options.map((option) => option.name).includes(entry.default)) {
                     throw new Error(`[settings] option "${path}.default" does not exist`);
-                };
+                }
             }
-        };
+        }
     }
 };
 
@@ -104,7 +104,7 @@ export const validateFirstLevelSection = function validateFirstLevelSection (sec
 
     if (!Array.isArray(section.content)) {
         throw new Error(`[settings] "${path}.content" must be an array`);
-    };
+    }
 
     section.content.forEach((entry, i) =>
         validateEntry(entry, `${path}.content[${i}]`)
