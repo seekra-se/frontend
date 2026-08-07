@@ -37,11 +37,11 @@ const selectLanguage = function selectLanguage (code) {
 watch(() => getSetting(LANGUAGE_PATH), setLocale);
 
 const close = function () {
-    document.removeEventListener('click', closeWrapperOnClickOutsite);
+    document.removeEventListener('click', closeWrapperOnClickOutside);
     isOpen.value = false;
 };
 
-const closeWrapperOnClickOutsite = function (e) {
+const closeWrapperOnClickOutside = function (e) {
     if (languageDropdown.value) {
         if (!languageDropdown.value.contains(e.target)) {
             close();
@@ -53,7 +53,7 @@ const open = function () {
     if (!isOpen.value) {
         isOpen.value = true;
         setTimeout(() => {
-            document.addEventListener('click', closeWrapperOnClickOutsite);
+            document.addEventListener('click', closeWrapperOnClickOutside);
         }, 0);
     };
 };
