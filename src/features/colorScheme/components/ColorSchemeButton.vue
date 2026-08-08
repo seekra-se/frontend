@@ -38,7 +38,7 @@ const colorSchemeIconMapper = {
     'auto': 'circle-black-white'
 };
 
-const getTooltipTranslation = function(colorScheme) {
+const getTooltipTranslation = function getTooltipTranslation(colorScheme) {
     return t(`preferences.colorScheme.switch.${colorSchemeNextMapper[colorScheme]}`);
 };
 

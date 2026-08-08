@@ -36,12 +36,12 @@ const selectLanguage = function selectLanguage(code) {
 
 watch(() => getSetting(LANGUAGE_PATH), setLocale);
 
-const close = function() {
+const close = function close() {
     document.removeEventListener('click', closeWrapperOnClickOutside);
     isOpen.value = false;
 };
 
-const closeWrapperOnClickOutside = function(e) {
+const closeWrapperOnClickOutside = function closeWrapperOnClickOutside(e) {
     if (languageDropdown.value) {
         if (!languageDropdown.value.contains(e.target)) {
             close();
@@ -49,7 +49,7 @@ const closeWrapperOnClickOutside = function(e) {
     };
 };
 
-const open = function() {
+const open = function open() {
     if (!isOpen.value) {
         isOpen.value = true;
         setTimeout(() => {
