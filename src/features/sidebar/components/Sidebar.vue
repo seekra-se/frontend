@@ -26,7 +26,7 @@ const props = defineProps({
 });
 const emit = defineEmits(['toggleExpanded']);
 
-const toggleSidebar = function toggleSidebar () {
+const toggleSidebar = function toggleSidebar() {
     emit('toggleExpanded');
 };
 </script>

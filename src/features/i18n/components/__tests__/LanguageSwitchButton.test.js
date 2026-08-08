@@ -20,7 +20,7 @@ import { mountComponent } from '@/test-utils/mountComponent.js';
 import { expect, test, describe } from 'vitest';
 import LanguageSwitchButton from '../LanguageSwitchButton.vue';
 
-const getWrapper = function getWrapper () {
+const getWrapper = function getWrapper() {
     return mountComponent(LanguageSwitchButton);
 };
 

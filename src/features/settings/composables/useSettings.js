@@ -21,13 +21,13 @@ import { getSettingRecursively } from '../utils/getSetting';
 /**
  * Provides access to the stored settings.
  */
-export const useSettings = function useSettings () {
+export const useSettings = function useSettings() {
     /**
      * Returns the value of a specific setting.
      * @param {string[]} key - The settings key.
      * @return The value of the setting.
      */
-    const getSetting = function getSetting (key) {
+    const getSetting = function getSetting(key) {
         const settingsStore = useSettingsStore();
 
         return (
@@ -43,7 +43,7 @@ export const useSettings = function useSettings () {
      * @param {string[]} key - The setting key.
      * @param value - The new value for the setting.
      */
-    const setSetting = function setSetting (key, value) {
+    const setSetting = function setSetting(key, value) {
         const settingsStore = useSettingsStore();
         settingsStore.set(key.join('.'), value);
     };

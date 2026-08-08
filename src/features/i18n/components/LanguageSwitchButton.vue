@@ -29,19 +29,19 @@ const { setSetting, getSetting } = useSettings();
 const isOpen = ref(false);
 const languageDropdown = ref(null);
 
-const selectLanguage = function selectLanguage (code) {
+const selectLanguage = function selectLanguage(code) {
     setSetting(LANGUAGE_PATH, code);
     close();
 };
 
 watch(() => getSetting(LANGUAGE_PATH), setLocale);
 
-const close = function () {
+const close = function() {
     document.removeEventListener('click', closeWrapperOnClickOutside);
     isOpen.value = false;
 };
 
-const closeWrapperOnClickOutside = function (e) {
+const closeWrapperOnClickOutside = function(e) {
     if (languageDropdown.value) {
         if (!languageDropdown.value.contains(e.target)) {
             close();
@@ -49,7 +49,7 @@ const closeWrapperOnClickOutside = function (e) {
     };
 };
 
-const open = function () {
+const open = function() {
     if (!isOpen.value) {
         isOpen.value = true;
         setTimeout(() => {

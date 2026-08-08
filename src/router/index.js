@@ -68,7 +68,7 @@ const router = createRouter({
     routes
 });
 
-export const updatePageTitle = function updatePageTitle (route) {
+export const updatePageTitle = function updatePageTitle(route) {
     const title =
         typeof route.meta.title === 'function'
         ? route.meta.title(route)

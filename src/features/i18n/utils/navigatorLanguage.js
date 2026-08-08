@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-export const getNavigatorLanguage = function getNavigatorLanguage () {
+export const getNavigatorLanguage = function getNavigatorLanguage() {
     const locale = new Intl.Locale(navigator.language);
     return locale.language;
 };

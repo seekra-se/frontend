@@ -22,7 +22,7 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const normalizeSelectedValue = function normalizeSelectedValue (value) {
+const normalizeSelectedValue = function normalizeSelectedValue(value) {
     if (props.setting.allowMultiple) {
         if (Array.isArray(value)) {
             return value;

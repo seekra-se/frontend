@@ -17,10 +17,10 @@ limitations under the License.
 import { getSettingsPagePathSegments } from '../utils/settingsPage';
 import { useRouter } from 'vue-router';
 
-export const useSettingsPage = function useSettingsPage () {
+export const useSettingsPage = function useSettingsPage() {
     const router = useRouter();
 
-    const goToSettingsPage = function goToSettingsPage (pagePath) {
+    const goToSettingsPage = function goToSettingsPage(pagePath) {
         return router.push({
             name: 'settings',
             params: {

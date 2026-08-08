@@ -20,7 +20,7 @@ import { useSettingsStore } from '../../stores/settingsStore.js';
 import { expect, describe, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper ({
+const getWrapper = function getWrapper({
     i18n = 'selection',
     options = [],
     allowMultiple = false,
@@ -43,7 +43,7 @@ const getWrapper = function getWrapper ({
     }, translations, [], piniaOptions);
 };
 
-const getChecked = function getChecked (inputs) {
+const getChecked = function getChecked(inputs) {
     return inputs.map((input) => input.element.matches(':checked'));
 };
 
@@ -199,20 +199,20 @@ describe('Selection', () => {
     });
 
     test('stores multiple values', async () => {
-        const setValue = async function setValue (input, value) {
+        const setValue = async function setValue(input, value) {
             input.setValue(value);
             await nextTick();
         };
 
-        const check = function check (input) {
+        const check = function check(input) {
             return setValue(input, true);
         };
 
-        const uncheck = function uncheck (input) {
+        const uncheck = function uncheck(input) {
             return setValue(input, false);
         };
 
-        const expectSelectionValue = function expectSelectionValue (value, options = exampleOptions) {
+        const expectSelectionValue = function expectSelectionValue(value, options = exampleOptions) {
             value.sort();
             expect(store.get('selection').sort()).toStrictEqual(value);
             const checkedInputs = getChecked(inputs);

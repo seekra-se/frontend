@@ -65,7 +65,7 @@ watch(inputModel, () => {
     doneButtonInitial.value = false;
 });
 
-const apply = function apply () {
+const apply = function apply() {
     store.set(props.path, inputModel.value);
 };
 </script>

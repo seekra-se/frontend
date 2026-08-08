@@ -20,7 +20,7 @@ import { mount } from '@vue/test-utils';
 import { createI18n } from 'vue-i18n';
 import { createMemoryHistory, createRouter } from 'vue-router';
 
-export const mountComponent = function mountComponent (component, options = {}, i18nMessages = {}, routes = [], piniaOptions = {}) {
+export const mountComponent = function mountComponent(component, options = {}, i18nMessages = {}, routes = [], piniaOptions = {}) {
     const {
         setupStores,
         ...testingPiniaOptions

@@ -29,7 +29,7 @@ const props = defineProps({
 
 const expanded = ref(props.expanded);
 
-const toggleSidebar = function toggleSidebar () {
+const toggleSidebar = function toggleSidebar() {
     expanded.value = !expanded.value;
 };
 </script>

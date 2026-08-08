@@ -23,7 +23,7 @@ const { getSetting } = useSettings();
 
 const colorSchemeSettingPath = ['appearance', 'colorScheme'];
 
-const getWrapper = function getWrapper () {
+const getWrapper = function getWrapper() {
     return mountComponent(ColorSchemeButton);
 };
 

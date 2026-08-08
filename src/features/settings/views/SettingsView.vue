@@ -39,7 +39,7 @@ const activePath = computed(() => {
 });
 
 const activeSection = ref(null);
-const updateSettings = async function updateSettings () {
+const updateSettings = async function updateSettings() {
     const setting = getSettingRecursively(activePath.value, settings);
     if (setting) {
         activeSection.value = setting;
@@ -50,7 +50,7 @@ const updateSettings = async function updateSettings () {
 watch(route, (newRoute) => updateSettings(newRoute));
 onMounted(updateSettings);
 
-const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen (toggleSidebarFunction) {
+const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen(toggleSidebarFunction) {
     if (matchMedia('(max-width: 48rem)').matches) toggleSidebarFunction();
 };
 </script>

@@ -20,7 +20,7 @@ import { useSettingsStore } from '../../stores/settingsStore.js';
 import { expect, describe, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper ({
+const getWrapper = function getWrapper({
     i18n = 'switch1',
     defaultValue = undefined,
     translations = {},

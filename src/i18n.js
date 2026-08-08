@@ -40,7 +40,7 @@ export const i18n = createI18n({
 
 const loadedLanguages = new Set();
 
-export async function loadLanguage (locale) {
+export async function loadLanguage(locale) {
     if (!SUPPORTED_LANGUAGES.includes(locale)) {
         locale = fallbackLocale;
     }
@@ -58,7 +58,7 @@ export async function loadLanguage (locale) {
     loadedLanguages.add(locale);
 };
 
-export const setLocale = async function setLocale (locale) {
+export const setLocale = async function setLocale(locale) {
     await loadLanguage(locale);
     document.documentElement.lang = locale;
     document.documentElement.dir = LANGUAGES_RTL.includes(locale) ? 'rtl' : 'ltr';

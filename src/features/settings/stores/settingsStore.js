@@ -20,19 +20,19 @@ import { reactive } from 'vue';
 export const useSettingsStore = defineStore('settings', () => {
     const settings = reactive({});
 
-    const set = function set (key, value) {
+    const set = function set(key, value) {
         settings[key] = value;
     };
 
-    const get = function get (key) {
+    const get = function get(key) {
         return settings[key];
     };
 
-    const remove = function remove (key) {
+    const remove = function remove(key) {
         delete settings[key];
     };
 
-    const clear = function clear () {
+    const clear = function clear() {
         Object.keys(settings).forEach(key => delete settings[key]);
     };
 

@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-export const getSetting = function getSetting (name, settings) {
+export const getSetting = function getSetting(name, settings) {
     return settings.filter((setting) => setting.name === name)[0];
 };
 
-export const getSettingRecursively = function getSettingRecursively (sectionPath, settings) {
-    const oneSettingsLevel = function oneSettingsLevel (cursor, acc) {
+export const getSettingRecursively = function getSettingRecursively(sectionPath, settings) {
+    const oneSettingsLevel = function oneSettingsLevel(cursor, acc) {
         const setting = getSetting(cursor[0], acc.content);
         if (!setting) return;
 

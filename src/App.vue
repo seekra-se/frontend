@@ -30,7 +30,7 @@ const route = useRoute();
 const { getSetting } = useSettings();
 const colorScheme = computed(() => getSetting(['appearance', 'colorScheme']));
 
-const updateColorScheme = function updateColorScheme (newColorScheme) {
+const updateColorScheme = function updateColorScheme(newColorScheme) {
     document.body.style.setProperty(colorScheme, {
         auto: 'normal',
         dark: 'dark',

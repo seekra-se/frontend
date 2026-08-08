@@ -26,7 +26,7 @@ const router = useRouter();
 
 const searchQuery = ref('');
 
-const submitSearch = function () {
+const submitSearch = function() {
 
 };
 </script>

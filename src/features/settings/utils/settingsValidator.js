@@ -16,13 +16,13 @@ limitations under the License.
 
 const VALID_TYPES = ['bool', 'number', 'string', 'selection', 'section'];
 
-export const assertString = function assertString (value, path) {
+export const assertString = function assertString(value, path) {
     if (typeof value !== 'string' || value.trim() === '') {
         throw new Error(`[settings] "${path}" must be a non-empty string`);
     }
 };
 
-export const assertType = function assertType (value, path) {
+export const assertType = function assertType(value, path) {
     if (!VALID_TYPES.includes(value)) {
         throw new Error(
             `[settings] "${path}" has invalid type "${value}". Must be one of: ${VALID_TYPES.join(', ')}`
@@ -30,7 +30,7 @@ export const assertType = function assertType (value, path) {
     }
 };
 
-export const validateSelectionOptions = function validateSelectionOptions (options, path) {
+export const validateSelectionOptions = function validateSelectionOptions(options, path) {
     if (!Array.isArray(options) || options.length === 0) {
         throw new Error(`[settings] "${path}.options" must be a non-empty array`);
     }
@@ -40,7 +40,7 @@ export const validateSelectionOptions = function validateSelectionOptions (optio
     });
 };
 
-export const validateEntry = function validateEntry (entry, path) {
+export const validateEntry = function validateEntry(entry, path) {
     assertType(entry.type, `${path}.type`);
 
     assertString(entry.name, `${path}.name`);
@@ -98,7 +98,7 @@ export const validateEntry = function validateEntry (entry, path) {
     }
 };
 
-export const validateFirstLevelSection = function validateFirstLevelSection (section, path) {
+export const validateFirstLevelSection = function validateFirstLevelSection(section, path) {
     assertString(section.name);
     assertString(section.i18n);
 

@@ -27,7 +27,7 @@ const { t } = useI18n();
 const router = useRouter();
 const props = defineProps(['autoSubmit']);
 
-const submitSearch = function () {
+const submitSearch = function() {
     if (props.autoSubmit !== undefined) {
         router.push({
             name: 'searchResults',

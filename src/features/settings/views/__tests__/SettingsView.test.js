@@ -211,7 +211,7 @@ vi.mock('vue-router', async (importOriginal) => {
     };
 });
 
-const getWrapper = function getWrapper ({ translations = {} } = {}) {
+const getWrapper = function getWrapper({ translations = {} } = {}) {
     return mountComponent(SettingsView, {}, translations, [], {});
 };
 

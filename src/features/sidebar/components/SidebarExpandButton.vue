@@ -19,7 +19,7 @@ import Icon from '@/features/icons/components/Icon.vue';
 
 const emit = defineEmits(['click']);
 
-const click = function click (event) {
+const click = function click(event) {
     emit('click', event);
 };
 </script>

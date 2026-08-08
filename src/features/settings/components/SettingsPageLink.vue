@@ -33,7 +33,7 @@ const props = defineProps({
     }
 });
 
-const followLink = function followLink () {
+const followLink = function followLink() {
     goToSettingsPage(props.target);
 };
 </script>
