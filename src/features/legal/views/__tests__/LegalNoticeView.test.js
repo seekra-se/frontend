@@ -29,7 +29,7 @@ vi.mock('../../services/fetchLegalContent', async (importOriginal) => {
     };
 });
 
-afterEach(() => getLegalNotice.mockRestore());
+afterEach(getLegalNotice.mockRestore);
 
 describe('LegalNoticeView', () => {
     test('shows loading indicator', () => {
