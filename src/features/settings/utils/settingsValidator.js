@@ -116,7 +116,7 @@ export const validateFirstLevelSection = function validateFirstLevelSection(sect
  * @param {unknown} raw
  * @returns {{ valid: true, config: import('../types/settingsConfig').SettingsConfig } | { valid: false, error: string }}
  */
-export function validateSettingsConfig(raw) {
+export const validateSettingsConfig = function validateSettingsConfig(raw) {
     if (!raw || typeof raw !== 'object') {
         throw new Error('[settings] Config must be an object');
     }

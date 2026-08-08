@@ -40,7 +40,7 @@ export const i18n = createI18n({
 
 const loadedLanguages = new Set();
 
-export async function loadLanguage(locale) {
+export const loadLanguage = async function loadLanguage(locale) {
     if (!SUPPORTED_LANGUAGES.includes(locale)) {
         locale = fallbackLocale;
     }
