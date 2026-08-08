@@ -34,14 +34,14 @@ const icons = import.meta.glob('@/assets/icons/*.svg', {
     import: 'default'
 });
 
-const Icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`]);
+const icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`]);
 
 const size = computed(() => ensureUnit(props.size));
 </script>
 
 <template>
     <div class="icon-container">
-        <img :src="Icon" :style="{ height: `${size}`, width: `${size}` }" />
+        <img :src="icon" :style="{ height: `${size}`, width: `${size}` }" />
     </div>
 </template>
 
