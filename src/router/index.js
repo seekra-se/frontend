@@ -16,9 +16,9 @@ limitations under the License.
 
 import LegalNoticeView from '@/features/legal/views/LegalNoticeView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
+import SearchView from '@/features/search/views/SearchView.vue';
 import SettingsView from '@/features/settings/views/SettingsView.vue';
 import NotFound from '@/views/NotFound.vue';
-import SearchView from '@/views/SearchView.vue';
 
 import { i18n } from '@/i18n';
 import { createRouter, createWebHistory } from 'vue-router';
