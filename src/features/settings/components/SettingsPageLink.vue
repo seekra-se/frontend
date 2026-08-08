@@ -16,7 +16,7 @@ limitations under the License.
 
 <script setup>
 import { useSettingsPage } from '../composables/useSettingsPage';
-import Icon from '@/features/icons/components/Icon.vue';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -46,7 +46,7 @@ const followLink = function followLink() {
         @click="followLink"
     >
         {{ props.displayName }}
-        <Icon name="chevron-right" size="1em" />
+        <UIIcon name="chevron-right" size="1em" />
     </button>
 </template>
 

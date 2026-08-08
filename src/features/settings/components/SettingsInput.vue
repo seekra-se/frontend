@@ -16,7 +16,7 @@ limitations under the License.
 
 <script setup>
 import { useSettingsStore } from '../stores/settingsStore';
-import Icon from '@/features/icons/components/Icon.vue';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { computed, ref, useId, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -93,7 +93,7 @@ const apply = function apply() {
                 :title="t('settings.input.done.title')"
                 :aria-label="t('settings.input.done.ariaLabel')"
             >
-                <Icon name="check-mark" />
+                <UIIcon name="check-mark" />
             </button>
         </form>
     </div>

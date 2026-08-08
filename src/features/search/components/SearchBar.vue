@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
@@ -52,7 +52,7 @@ const submitSearch = function submitSearch() {
                     :title="t('search.searchBar.submit')"
                     :aria-label="t('search.searchBar.submit')"
                 >
-                    <Icon class="search-icon" name="magnifying-glass" size="1.1em" />
+                    <UIIcon class="search-icon" name="magnifying-glass" size="1.1em" />
                 </button>
             </div>
         </form>

@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { useSettings } from '@/features/settings/composables/useSettings';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -52,7 +52,7 @@ const setColorScheme = function setColorScheme(newColorScheme) {
         :aria-label="getTooltipTranslation(colorScheme)"
         :title="getTooltipTranslation(colorScheme)"
     >
-        <Icon
+        <UIIcon
             :name="colorSchemeIconMapper[colorSchemeNextMapper[colorScheme]]"
             size="16"
         />

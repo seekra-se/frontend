@@ -16,7 +16,7 @@ limitations under the License.
 
 <script setup>
 import { useSettingsStore } from '../stores/settingsStore';
-import Icon from '@/features/icons/components/Icon.vue';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { computed, useId } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -82,7 +82,7 @@ const labelId = useId();
                         v-model="selected"
                     >
                     <div class="option-check-mark-wrapper">
-                        <Icon class="option-check-mark" name="check-mark" size="1em" />
+                        <UIIcon class="option-check-mark" name="check-mark" size="1em" />
                     </div>
                     <div class="input-label">
                         {{ t(option.i18n) }}

@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 
 const emit = defineEmits(['click']);
 
@@ -26,7 +26,7 @@ const click = function click(event) {
 
 <template>
     <button class="button sidebar-expand-button">
-        <Icon name="sidebar-expand" @click="click" />
+        <UIIcon name="sidebar-expand" @click="click" />
     </button>
 </template>
 

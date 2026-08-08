@@ -16,7 +16,7 @@ limitations under the License.
 
 <script setup>
 import { LANGUAGE_PATH } from '@/config/featureSettings';
-import Icon from '@/features/icons/components/Icon.vue';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { useSettings } from '@/features/settings/composables/useSettings';
 import { setLocale, SUPPORTED_LANGUAGES } from '@/i18n';
 import { ref, watch } from 'vue';
@@ -68,7 +68,7 @@ const open = function open() {
         >
             <span class="lang-code">{{ t(`preferences.locale.languages.${locale}`) }}</span>
             <span class="chevron" :class="{ open: isOpen }">
-                <Icon name="chevron-down" size="1em" />
+                <UIIcon name="chevron-down" size="1em" />
             </span>
         </button>
 
