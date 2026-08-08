@@ -56,7 +56,7 @@ describe('settingsPage', () => {
             { path: true, expected: [] },
             { path: null, expected: [] },
             { path: undefined, expected: [] }
-        ])('returns $expected', async ({ path, expected }) => {
+        ])('returns $expected', ({ path, expected }) => {
             expect(getSettingsPagePathSegments(path)).toStrictEqual(expected);
         });
     });
