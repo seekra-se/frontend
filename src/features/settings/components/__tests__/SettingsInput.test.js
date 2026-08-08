@@ -89,7 +89,7 @@ describe('SettingsInput', () => {
         const wrapper = getWrapper({
             type: 'string',
             i18n: 'input',
-            defaultValue: defaultValue,
+            defaultValue,
             piniaOptions: {
                 setupStores: () => {
                     const store = useSettingsStore();

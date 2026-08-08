@@ -34,7 +34,7 @@ export const SUPPORTED_LANGUAGES = [
 export const i18n = createI18n({
     legacy: false,
     locale: fallbackLocale,
-    fallbackLocale: fallbackLocale,
+    fallbackLocale,
     messages: {}
 });
 

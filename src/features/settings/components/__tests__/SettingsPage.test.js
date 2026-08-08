@@ -30,7 +30,7 @@ const getWrapper = function getWrapper({ content = [], translations = {}, piniaO
                 name: 'section',
                 type: 'section',
                 i18n: 'section',
-                content: content
+                content
             },
             path: 'section'
         }
