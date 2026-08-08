@@ -17,7 +17,7 @@ limitations under the License.
 <script setup>
 import { LANGUAGE_PATH } from './config/featureSettings.js';
 import Footer from './features/footer/components/Footer.vue';
-import Navbar from './features/nav/components/Navbar.vue';
+import AppNavbar from './features/nav/components/AppNavbar.vue';
 import { useSettings } from './features/settings/composables/useSettings.js';
 import { setLocale } from './i18n';
 import { updatePageTitle } from './router';
@@ -60,7 +60,7 @@ onMounted(() => {
 
 <template>
     <div id="app-wrapper">
-        <Navbar />
+        <AppNavbar />
 
         <router-view class="main-content" />
 
