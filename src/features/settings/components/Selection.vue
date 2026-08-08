@@ -17,7 +17,7 @@ limitations under the License.
 <script setup>
 import { useSettingsStore } from '../stores/settingsStore';
 import Icon from '@/features/icons/components/Icon.vue';
-import { computed, ref, useId, watch } from 'vue';
+import { computed, useId } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();

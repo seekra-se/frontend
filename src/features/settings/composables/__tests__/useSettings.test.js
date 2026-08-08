@@ -59,7 +59,7 @@ describe('useSettings', () => {
         });
 
         test('returns default value', () => {
-            const { getSetting, setSetting } = useSettings();
+            const { getSetting } = useSettings();
             expect(getSetting(settingPath)).toBe(settingDefaultValue);
         });
 

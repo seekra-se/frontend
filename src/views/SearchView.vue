@@ -19,16 +19,10 @@ import Searchbar from '../features/search/components/Searchbar.vue';
 import logo from '@/assets/images/logo.svg';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRouter } from 'vue-router';
 
 const { t } = useI18n();
-const router = useRouter();
 
 const searchQuery = ref('');
-
-const submitSearch = function ensureUnit() {
-
-};
 </script>
 
 <template>

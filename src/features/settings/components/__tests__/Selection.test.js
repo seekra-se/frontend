@@ -219,7 +219,7 @@ describe('Selection', () => {
             expect(
                 options
                 .map((option) => option.name)
-                .filter((entry, i) => checkedInputs[i])
+                .filter((_, i) => checkedInputs[i])
             ).toStrictEqual(value);
         };
 
