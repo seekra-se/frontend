@@ -16,10 +16,10 @@ limitations under the License.
 
 <script setup>
 import Searchbar from '../features/search/components/Searchbar.vue';
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useI18n } from 'vue-i18n';
 import logo from '@/assets/images/logo.svg';
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
 const { t } = useI18n();
 const router = useRouter();

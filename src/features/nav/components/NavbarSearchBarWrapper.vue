@@ -16,7 +16,6 @@ limitations under the License.
 
 <script setup>
 import Searchbar from '@/features/search/components/Searchbar.vue';
-
 import { watch } from 'vue';
 import { useRoute } from 'vue-router';
 

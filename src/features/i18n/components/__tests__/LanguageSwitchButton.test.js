@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import LanguageSwitchButton from '../LanguageSwitchButton.vue';
 import { LANGUAGE_PATH } from '@/config/featureSettings.js';
 import { useSettings } from '@/features/settings/composables/useSettings.js';
 import { mountComponent } from '@/test-utils/mountComponent.js';
-import { expect, test, describe } from 'vitest';
-import LanguageSwitchButton from '../LanguageSwitchButton.vue';
+import { describe, expect, test } from 'vitest';
 
 const getWrapper = function getWrapper() {
     return mountComponent(LanguageSwitchButton);

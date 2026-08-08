@@ -14,10 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { useSettingsStore } from '../../stores/settingsStore.js';
 import Switch from '../Switch.vue';
 import { mountComponent } from '@/test-utils/mountComponent.js';
-import { useSettingsStore } from '../../stores/settingsStore.js';
-import { expect, describe, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { nextTick } from 'vue';
 
 const getWrapper = function getWrapper({

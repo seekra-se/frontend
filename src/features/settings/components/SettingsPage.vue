@@ -15,11 +15,10 @@ limitations under the License.
 -->
 
 <script setup>
-import Switch from './Switch.vue';
-import SettingsInput from './SettingsInput.vue';
 import Selection from './Selection.vue';
+import SettingsInput from './SettingsInput.vue';
 import SettingsPageLink from './SettingsPageLink.vue';
-
+import Switch from './Switch.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();

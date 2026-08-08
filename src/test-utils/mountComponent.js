@@ -15,8 +15,8 @@ limitations under the License.
 */
 
 import { createTestingPinia } from '@pinia/testing';
-import { vi } from 'vitest';
 import { mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 import { createI18n } from 'vue-i18n';
 import { createMemoryHistory, createRouter } from 'vue-router';
 

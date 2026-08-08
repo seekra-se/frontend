@@ -16,7 +16,6 @@ limitations under the License.
 
 <script setup>
 import LanguageSwitchButton from '@/features/i18n/components/LanguageSwitchButton.vue';
-
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();

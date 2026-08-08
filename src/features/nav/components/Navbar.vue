@@ -15,9 +15,9 @@ limitations under the License.
 -->
 
 <script setup>
-import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
-import logo from '@/assets/images/logo.svg';
 import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
+import logo from '@/assets/images/logo.svg';
+import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
 </script>
 
 <template>

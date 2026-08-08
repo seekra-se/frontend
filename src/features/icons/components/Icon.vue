@@ -15,8 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
-import { computed } from 'vue';
 import { ensureUnit } from '@/utils/cssDimensions';
+import { computed } from 'vue';
 
 const props = defineProps({
     name: {

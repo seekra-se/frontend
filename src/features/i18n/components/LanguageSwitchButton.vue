@@ -15,13 +15,12 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
-
 import { LANGUAGE_PATH } from '@/config/featureSettings';
+import Icon from '@/features/icons/components/Icon.vue';
 import { useSettings } from '@/features/settings/composables/useSettings';
+import { setLocale, SUPPORTED_LANGUAGES } from '@/i18n';
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { setLocale, SUPPORTED_LANGUAGES } from '@/i18n';
 
 const { t, locale } = useI18n();
 const { setSetting, getSetting } = useSettings();

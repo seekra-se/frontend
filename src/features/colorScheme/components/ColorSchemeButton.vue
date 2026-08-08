@@ -16,7 +16,6 @@ limitations under the License.
 
 <script setup>
 import Icon from '@/features/icons/components/Icon.vue';
-
 import { useSettings } from '@/features/settings/composables/useSettings';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

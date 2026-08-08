@@ -15,11 +15,11 @@ limitations under the License.
 -->
 
 <script setup>
-import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
-import SettingsPage from '../components/SettingsPage.vue';
 
+import SettingsPage from '../components/SettingsPage.vue';
 import settingsConfiguration from '../config.js';
 import { getSettingRecursively } from '../utils/getSetting.js';
+import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';

@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { useSettingsStore } from '../../stores/settingsStore.js';
 import SettingsInput from '../SettingsInput.vue';
 import { mountComponent } from '@/test-utils/mountComponent';
-import { useSettingsStore } from '../../stores/settingsStore.js';
 import { describe, expect, test } from 'vitest';
 import { nextTick } from 'vue';
 

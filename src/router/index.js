@@ -14,14 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { createRouter, createWebHistory } from 'vue-router';
-import { i18n } from '@/i18n';
-
-import SearchView from '../views/SearchView.vue';
 import LegalNoticeView from '@/features/legal/views/LegalNoticeView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
 import SettingsView from '@/features/settings/views/SettingsView.vue';
-import NotFound from '../views/NotFound.vue';
+import NotFound from '@/views/NotFound.vue';
+import SearchView from '@/views/SearchView.vue';
+
+import { i18n } from '@/i18n';
+import { createRouter, createWebHistory } from 'vue-router';
+
 
 const routes = [
     {
