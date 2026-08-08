@@ -14,22 +14,22 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { getAssetsUrl } from './config/env';
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
-import App from './App.vue';
 import { i18n, loadLanguage, fallbackLocale } from './i18n';
 import router from './router';
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import { createApp } from 'vue';
+
+import App from './App.vue';
+
 import './styles/common.css';
+import rawFonts from './styles/fonts.json';
 import './styles/variables/colors.css';
 import './styles/variables/dimensions.css';
 
-import rawFonts from './styles/fonts.json';
-import './styles/common.css';
-import './styles/variables/colors.css';
-
 import settings from './features/settings/config.js';
+
+import { getAssetsUrl } from './config/env';
 import { validateSettingsConfig } from './features/settings/utils/settingsValidator';
 
 (async () => {
