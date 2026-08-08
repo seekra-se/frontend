@@ -16,7 +16,7 @@ limitations under the License.
 
 <script setup>
 import { LANGUAGE_PATH } from './config/featureSettings.js';
-import Footer from './features/footer/components/Footer.vue';
+import AppFooter from './features/footer/components/AppFooter.vue';
 import AppNavbar from './features/nav/components/AppNavbar.vue';
 import { useSettings } from './features/settings/composables/useSettings.js';
 import { setLocale } from './i18n';
@@ -64,7 +64,7 @@ onMounted(() => {
 
         <router-view class="main-content" />
 
-        <Footer />
+        <AppFooter />
     </div>
 </template>
 
