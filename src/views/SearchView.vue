@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import Searchbar from '../features/search/components/Searchbar.vue';
+import SearchBar from '../features/search/components/SearchBar.vue';
 import logo from '@/assets/images/logo.svg';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -35,7 +35,7 @@ const searchQuery = ref('');
     </header>
 
         <div class="search-container">
-            <Searchbar v-model="searchQuery" ref="searchbar" class="search-bar" auto-submit />
+            <SearchBar v-model="searchQuery" ref="searchbar" class="search-bar" auto-submit />
         </div>
     </div>
 </template>
