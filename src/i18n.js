@@ -18,24 +18,14 @@ import { createI18n } from 'vue-i18n';
 
 export const fallbackLocale = 'en';
 
-
-export const LANGUAGES_RTL = [
-    'ar'
-];
-export const SUPPORTED_LANGUAGES = [
-    'en',
-    'de',
-    'fr',
-    'es',
-    'pt',
-    'it'
-];
+export const LANGUAGES_RTL = ['ar'];
+export const SUPPORTED_LANGUAGES = ['en', 'de', 'fr', 'es', 'pt', 'it'];
 
 export const i18n = createI18n({
     legacy: false,
     locale: fallbackLocale,
     fallbackLocale,
-    messages: {}
+    messages: {},
 });
 
 const loadedLanguages = new Set();
@@ -61,5 +51,7 @@ export const loadLanguage = async function loadLanguage(locale) {
 export const setLocale = async function setLocale(locale) {
     await loadLanguage(locale);
     document.documentElement.lang = locale;
-    document.documentElement.dir = LANGUAGES_RTL.includes(locale) ? 'rtl' : 'ltr';
+    document.documentElement.dir = LANGUAGES_RTL.includes(locale)
+        ? 'rtl'
+        : 'ltr';
 };

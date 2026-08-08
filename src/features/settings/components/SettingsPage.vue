@@ -25,11 +25,11 @@ const { t } = useI18n();
 
 const props = defineProps({
     setting: {
-        required: true
+        required: true,
     },
     path: {
-        required: true
-    }
+        required: true,
+    },
 });
 </script>
 
@@ -78,15 +78,15 @@ const props = defineProps({
     margin-bottom: calc(var(--size) - 0.2em);
 }
 
-.section-heading[aria-level="2"] {
+.section-heading[aria-level='2'] {
     --size: 1.8em;
 }
 
-.section-heading[aria-level="3"] {
+.section-heading[aria-level='3'] {
     --size: 1.6em;
 }
 
-.section-heading[aria-level="4"] {
+.section-heading[aria-level='4'] {
     --size: 1.4em;
 }
 </style>

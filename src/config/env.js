@@ -17,6 +17,6 @@ limitations under the License.
 export const getAssetsUrl = function getAssetsUrl() {
     return new URL(
         `${import.meta.env.VITE_ASSETS_BUILD_ID}/`,
-        import.meta.env.VITE_ASSETS_BASE_URL
+        import.meta.env.VITE_ASSETS_BASE_URL,
     ).href;
 };

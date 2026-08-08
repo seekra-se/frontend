@@ -44,8 +44,8 @@ const closeWrapperOnClickOutside = function closeWrapperOnClickOutside(e) {
     if (languageDropdown.value) {
         if (!languageDropdown.value.contains(e.target)) {
             close();
-        };
-    };
+        }
+    }
 };
 
 const open = function open() {
@@ -54,7 +54,7 @@ const open = function open() {
         setTimeout(() => {
             document.addEventListener('click', closeWrapperOnClickOutside);
         }, 0);
-    };
+    }
 };
 </script>
 
@@ -66,7 +66,9 @@ const open = function open() {
             :aria-expanded="isOpen"
             aria-haspopup="listbox"
         >
-            <span class="lang-code">{{ t(`preferences.locale.languages.${locale}`) }}</span>
+            <span class="lang-code">{{
+                t(`preferences.locale.languages.${locale}`)
+            }}</span>
             <span class="chevron" :class="{ open: isOpen }">
                 <UIIcon name="chevron-down" size="1em" />
             </span>
@@ -78,7 +80,7 @@ const open = function open() {
             class="language-dropdown"
             role="listbox"
             :style="{
-                bottom: 'calc(var(--offset) + 2 * var(--trigger-padding-y) + 1em)' // easier to add auto adaption to the available space
+                bottom: 'calc(var(--offset) + 2 * var(--trigger-padding-y) + 1em)', // easier to add auto adaption to the available space
             }"
         >
             <li
@@ -89,7 +91,9 @@ const open = function open() {
                 :class="{ active: lang === locale }"
                 @click="selectLanguage(lang)"
             >
-                <span class="lang-label">{{ t(`preferences.locale.languages.${lang}`) }}</span>
+                <span class="lang-label">{{
+                    t(`preferences.locale.languages.${lang}`)
+                }}</span>
             </li>
         </ul>
     </div>

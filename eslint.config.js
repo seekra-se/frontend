@@ -11,8 +11,8 @@ export default defineConfig([
         languageOptions: {
             globals: {
                 ...globals.browser,
-                ...globals.node
-            }
+                ...globals.node,
+            },
         },
         rules: {
             'eqeqeq': 'error',
@@ -44,8 +44,7 @@ export default defineConfig([
             'object-shorthand': 'error',
 
             'prefer-template': 'error',
-
-        }
+        },
     },
     pluginVue.configs['flat/essential'],
 ]);

@@ -32,9 +32,7 @@ export const useSettings = function useSettings() {
 
         return (
             settingsStore.get(key.join('.')) ??
-            getSettingRecursively(
-                key, settings.contents ?? []
-            )?.default
+            getSettingRecursively(key, settings.contents ?? [])?.default
         );
     };
 

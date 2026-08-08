@@ -18,7 +18,10 @@ export const getSetting = function getSetting(name, settings) {
     return settings.filter((setting) => setting.name === name)[0];
 };
 
-export const getSettingRecursively = function getSettingRecursively(sectionPath, settings) {
+export const getSettingRecursively = function getSettingRecursively(
+    sectionPath,
+    settings,
+) {
     const oneSettingsLevel = function oneSettingsLevel(cursor, acc) {
         const setting = getSetting(cursor[0], acc.content);
         if (!setting) return;
@@ -28,7 +31,10 @@ export const getSettingRecursively = function getSettingRecursively(sectionPath,
             const newCursor = cursor.slice(1, cursor.length);
 
             if (newCursor.length !== 0) {
-                return oneSettingsLevel(cursor.slice(1, cursor.length), setting);
+                return oneSettingsLevel(
+                    cursor.slice(1, cursor.length),
+                    setting,
+                );
             } else {
                 return setting;
             }

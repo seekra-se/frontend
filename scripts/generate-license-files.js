@@ -22,21 +22,16 @@ import { generateLicenseFile } from 'generate-license-file';
 const packageJson = './package.json';
 const packageJsonBackup = `${packageJson}~`;
 
-await generateLicenseFile(
-    packageJson,
-    'THIRD_PARTY_LICENSES'
-);
+await generateLicenseFile(packageJson, 'THIRD_PARTY_LICENSES');
 
-const pkg = JSON.parse(
-    await fs.readFile(packageJson, 'utf-8')
-);
+const pkg = JSON.parse(await fs.readFile(packageJson, 'utf-8'));
 
 await fs.rename(packageJson, packageJsonBackup);
 
 const devPackage = {
     ...pkg,
     dependencies: pkg.devDependencies ?? {},
-    devDependencies: {}
+    devDependencies: {},
 };
 
 /*
@@ -45,14 +40,8 @@ const devPackage = {
 
     https://github.com/TobyAndToby/generate-license-file/issues/752
 */
-await fs.writeFile(
-    packageJson,
-    JSON.stringify(devPackage)
-);
+await fs.writeFile(packageJson, JSON.stringify(devPackage));
 
-await generateLicenseFile(
-    packageJson,
-    './THIRD_PARTY_LICENSES_DEV'
-);
+await generateLicenseFile(packageJson, './THIRD_PARTY_LICENSES_DEV');
 
 await fs.rename(packageJsonBackup, packageJson);

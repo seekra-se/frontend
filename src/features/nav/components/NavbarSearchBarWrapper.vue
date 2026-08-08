@@ -22,15 +22,22 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const searchQueryModel = defineModel();
 
-watch(() => route.name, name => {
-    searchQueryModel.value = name === 'searchResults' ? route.query.q || '' : '';
-});
+watch(
+    () => route.name,
+    (name) => {
+        searchQueryModel.value =
+            name === 'searchResults' ? route.query.q || '' : '';
+    },
+);
 
-watch(() => route.query.q, q => {
-    if (route.name === 'searchResults') {
-        searchQueryModel.value = q || '';
-    }
-});
+watch(
+    () => route.query.q,
+    (q) => {
+        if (route.name === 'searchResults') {
+            searchQueryModel.value = q || '';
+        }
+    },
+);
 </script>
 
 <template>

@@ -20,8 +20,8 @@ import { describe, expect, test, vi } from 'vitest';
 const pushRoute = vi.fn();
 vi.mock('vue-router', () => ({
     useRouter: () => ({
-        push: pushRoute
-    })
+        push: pushRoute,
+    }),
 }));
 
 describe('useSettingsPage', () => {
@@ -32,8 +32,8 @@ describe('useSettingsPage', () => {
             expect(pushRoute).toHaveBeenCalledWith({
                 name: 'settings',
                 params: {
-                    rest: ['a', 'b', 'c', 'd', 'e']
-                }
+                    rest: ['a', 'b', 'c', 'd', 'e'],
+                },
             });
         });
     });

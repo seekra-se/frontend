@@ -21,17 +21,17 @@ import { computed } from 'vue';
 const props = defineProps({
     name: {
         required: true,
-        type: String
+        type: String,
     },
     size: {
         type: [Number, String],
-        default: 24
-    }
+        default: 24,
+    },
 });
 
 const icons = import.meta.glob('@/assets/icons/*.svg', {
     eager: true,
-    import: 'default'
+    import: 'default',
 });
 
 const icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`]);

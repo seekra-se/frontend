@@ -19,33 +19,36 @@ import { describe, expect, test } from 'vitest';
 
 describe('navigatorLanguage', () => {
     test.for([
-        { navigatorLanguage: 'en',                      expected: 'en'},
-        { navigatorLanguage: 'de',                      expected: 'de'},
-        { navigatorLanguage: 'fr',                      expected: 'fr'},
+        { navigatorLanguage: 'en', expected: 'en' },
+        { navigatorLanguage: 'de', expected: 'de' },
+        { navigatorLanguage: 'fr', expected: 'fr' },
 
-        { navigatorLanguage: 'en-US',                   expected: 'en'},
-        { navigatorLanguage: 'en-AU',                   expected: 'en'},
-        { navigatorLanguage: 'de-DE',                   expected: 'de'},
-        { navigatorLanguage: 'fr-FR',                   expected: 'fr'},
+        { navigatorLanguage: 'en-US', expected: 'en' },
+        { navigatorLanguage: 'en-AU', expected: 'en' },
+        { navigatorLanguage: 'de-DE', expected: 'de' },
+        { navigatorLanguage: 'fr-FR', expected: 'fr' },
 
-        { navigatorLanguage: 'en-us',                   expected: 'en'},
-        { navigatorLanguage: 'en-au',                   expected: 'en'},
-        { navigatorLanguage: 'de-de',                   expected: 'de'},
-        { navigatorLanguage: 'fr-fr',                   expected: 'fr'},
+        { navigatorLanguage: 'en-us', expected: 'en' },
+        { navigatorLanguage: 'en-au', expected: 'en' },
+        { navigatorLanguage: 'de-de', expected: 'de' },
+        { navigatorLanguage: 'fr-fr', expected: 'fr' },
 
-        { navigatorLanguage: 'zh-Hans-CN',              expected: 'zh'},
-        { navigatorLanguage: 'zh-Hant-TW',              expected: 'zh'},
-        { navigatorLanguage: 'uz-Latn-UZ',              expected: 'uz'},
+        { navigatorLanguage: 'zh-Hans-CN', expected: 'zh' },
+        { navigatorLanguage: 'zh-Hant-TW', expected: 'zh' },
+        { navigatorLanguage: 'uz-Latn-UZ', expected: 'uz' },
 
-        { navigatorLanguage: 'en-US-u-ca-gregory',      expected: 'en'},
-        { navigatorLanguage: 'de-DE-u-co-phonebk',      expected: 'de'},
-        { navigatorLanguage: 'zh-Hant-TW-u-co-phonebk', expected: 'zh'}
-    ])('returns language $expected with navigator language $navigatorLanguage', ({ navigatorLanguage, expected }) => {
-        Object.defineProperty(navigator, 'language', {
-            value: navigatorLanguage,
-            configurable: true
-        });
+        { navigatorLanguage: 'en-US-u-ca-gregory', expected: 'en' },
+        { navigatorLanguage: 'de-DE-u-co-phonebk', expected: 'de' },
+        { navigatorLanguage: 'zh-Hant-TW-u-co-phonebk', expected: 'zh' },
+    ])(
+        'returns language $expected with navigator language $navigatorLanguage',
+        ({ navigatorLanguage, expected }) => {
+            Object.defineProperty(navigator, 'language', {
+                value: navigatorLanguage,
+                configurable: true,
+            });
 
-        expect(getNavigatorLanguage()).toBe(expected);
-    });
+            expect(getNavigatorLanguage()).toBe(expected);
+        },
+    );
 });

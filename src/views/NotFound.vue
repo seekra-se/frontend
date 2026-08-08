@@ -22,7 +22,7 @@ const { t } = useI18n();
 
 <template>
     <div class="not-found main-content-padding">
-       <span class="error-message">
+        <span class="error-message">
             {{ t('error.pageNotFound') }}
         </span>
         <RouterLink to="/" id="link">
@@ -40,7 +40,7 @@ const { t } = useI18n();
     align-items: center;
     gap: 12px;
 }
-.error-message{
+.error-message {
     margin: 0;
     font-weight: 600;
     font-size: 1.75rem;

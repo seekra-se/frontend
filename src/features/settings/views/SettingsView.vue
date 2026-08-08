@@ -15,7 +15,6 @@ limitations under the License.
 -->
 
 <script setup>
-
 import SettingsPage from '../components/SettingsPage.vue';
 import settingsConfiguration from '../config.js';
 import { getSettingRecursively } from '../utils/getSetting.js';
@@ -31,9 +30,7 @@ const router = useRouter();
 const settings = settingsConfiguration.contents;
 
 const activePath = computed(() => {
-    const segments = route.path
-        .split('/')
-        .filter(Boolean);
+    const segments = route.path.split('/').filter(Boolean);
 
     return segments.slice(1, segments.length);
 });
@@ -50,7 +47,9 @@ const updateSettings = async function updateSettings() {
 watch(route, (newRoute) => updateSettings(newRoute));
 onMounted(updateSettings);
 
-const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen(toggleSidebarFunction) {
+const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen(
+    toggleSidebarFunction,
+) {
     if (matchMedia('(max-width: 48rem)').matches) toggleSidebarFunction();
 };
 </script>
@@ -69,7 +68,11 @@ const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen(toggleSid
                         <RouterLink
                             :to="`/settings/${section.name}`"
                             class="button button-link link sidebar-section"
-                            :class="{ active: activeSection && activeSection.name === section.name }"
+                            :class="{
+                                active:
+                                    activeSection &&
+                                    activeSection.name === section.name,
+                            }"
                             @click="toggleSidebarIfSmallScreen(toggleSidebar)"
                         >
                             {{ t(section.i18n) }}

@@ -33,7 +33,9 @@ import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButt
         </ul>
     </nav>
     <div class="navbar-search-bar-wrapper-small-screens-wrapper">
-        <NavbarSearchBarWrapper class="navbar-search-bar-wrapper-small-screens" />
+        <NavbarSearchBarWrapper
+            class="navbar-search-bar-wrapper-small-screens"
+        />
     </div>
 </template>
 
@@ -60,7 +62,7 @@ import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButt
     color: var(--dark);
 }
 
-.global-nav .right-links a:hover{
+.global-nav .right-links a:hover {
     text-decoration: underline;
 }
 

@@ -20,18 +20,29 @@ import { mountComponent } from '@/test-utils/mountComponent';
 import { describe, expect, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper({ type = 'string', i18n = 'input', defaultValue = undefined, piniaOptions = {} } = {}) {
-    return mountComponent(SettingsInput, {
-        attrs: {
-            setting: {
-                name: 'input',
-                default: defaultValue,
-                i18n,
-                type
+const getWrapper = function getWrapper({
+    type = 'string',
+    i18n = 'input',
+    defaultValue = undefined,
+    piniaOptions = {},
+} = {}) {
+    return mountComponent(
+        SettingsInput,
+        {
+            attrs: {
+                setting: {
+                    name: 'input',
+                    default: defaultValue,
+                    i18n,
+                    type,
+                },
+                path: 'input',
             },
-            path: 'input'
-        }
-    }, {}, [], piniaOptions);
+        },
+        {},
+        [],
+        piniaOptions,
+    );
 };
 
 describe('SettingsInput', () => {
@@ -63,8 +74,8 @@ describe('SettingsInput', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.settings.input = value;
-                }
-            }
+                },
+            },
         });
         const inputElement = stringSettingWrapper.find('input');
 
@@ -76,7 +87,7 @@ describe('SettingsInput', () => {
         const wrapper = getWrapper({
             type: 'string',
             i18n: 'input',
-            defaultValue: value
+            defaultValue: value,
         });
         const inputElement = wrapper.find('input');
 
@@ -94,8 +105,8 @@ describe('SettingsInput', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.settings.input = storeValue;
-                }
-            }
+                },
+            },
         });
         const inputElement = wrapper.find('input');
 
@@ -191,18 +202,22 @@ describe('SettingsInput', () => {
     test('shows correct translation', () => {
         const translation = 'Text input';
 
-        const wrapper = mountComponent(SettingsInput, {
-            attrs: {
-                setting: {
-                    name: 'input',
-                    i18n: 'input',
-                    type: 'string',
+        const wrapper = mountComponent(
+            SettingsInput,
+            {
+                attrs: {
+                    setting: {
+                        name: 'input',
+                        i18n: 'input',
+                        type: 'string',
+                    },
+                    path: 'input',
                 },
-                path: 'input'
-            }
-        }, {
-            input: translation
-        });
+            },
+            {
+                input: translation,
+            },
+        );
 
         const label = wrapper.find('label');
         expect(label.text()).toBe(translation);

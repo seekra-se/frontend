@@ -24,8 +24,8 @@ export const useSettingsPage = function useSettingsPage() {
         return router.push({
             name: 'settings',
             params: {
-                rest: getSettingsPagePathSegments(pagePath)
-            }
+                rest: getSettingsPagePathSegments(pagePath),
+            },
         });
     };
 

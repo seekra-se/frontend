@@ -25,12 +25,12 @@ const { goToSettingsPage } = useSettingsPage();
 const props = defineProps({
     target: {
         required: true,
-        type: String
+        type: String,
     },
     displayName: {
         required: true,
-        type: String
-    }
+        type: String,
+    },
 });
 
 const followLink = function followLink() {
@@ -42,7 +42,9 @@ const followLink = function followLink() {
     <button
         class="settings-button button settings-page-link"
         :title="props.displayName"
-        :aria-label="t('settings.pages.link.ariaLabel', { page: props.displayName })"
+        :aria-label="
+            t('settings.pages.link.ariaLabel', { page: props.displayName })
+        "
         @click="followLink"
     >
         {{ props.displayName }}

@@ -21,22 +21,22 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 
 // https://vite.dev/config/
 export default defineConfig({
-  build: {
-    target: 'es2020'
-  },
-  plugins: [
-    vue(),
-    createHtmlPlugin({
-      minify: true
-    })
-  ],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src')
-    }
-  },
-  test: {
-    globals: false,
-    environment: 'jsdom'
-  }
+    build: {
+        target: 'es2020',
+    },
+    plugins: [
+        vue(),
+        createHtmlPlugin({
+            minify: true,
+        }),
+    ],
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, './src'),
+        },
+    },
+    test: {
+        globals: false,
+        environment: 'jsdom',
+    },
 });

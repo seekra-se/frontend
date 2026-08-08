@@ -22,21 +22,19 @@ import { createI18n } from 'vue-i18n';
 const goToSettingsPage = vi.fn();
 vi.mock('../../composables/useSettingsPage.js', () => ({
     useSettingsPage: () => ({
-        goToSettingsPage
-    })
+        goToSettingsPage,
+    }),
 }));
 
 const getWrapper = function getWrapper({ target, displayName }) {
     return mount(SettingsPageLink, {
         attrs: {
             target,
-            displayName
+            displayName,
         },
         global: {
-            plugins: [
-                createI18n()
-            ]
-        }
+            plugins: [createI18n()],
+        },
     });
 };
 

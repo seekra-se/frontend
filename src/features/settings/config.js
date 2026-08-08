@@ -40,10 +40,10 @@ export default {
                     default: defaultLanguage,
                     options: SUPPORTED_LANGUAGES.map((language) => ({
                         name: language,
-                        i18n: `preferences.locale.languages.${language}`
-                    }))
-                }
-            ]
+                        i18n: `preferences.locale.languages.${language}`,
+                    })),
+                },
+            ],
         },
         {
             name: 'appearance',
@@ -57,19 +57,19 @@ export default {
                     options: [
                         {
                             name: 'auto',
-                            i18n: 'settings.settings.appearance.contents.colorScheme.options.auto'
+                            i18n: 'settings.settings.appearance.contents.colorScheme.options.auto',
                         },
                         {
                             name: 'light',
-                            i18n: 'settings.settings.appearance.contents.colorScheme.options.light'
+                            i18n: 'settings.settings.appearance.contents.colorScheme.options.light',
                         },
                         {
                             name: 'dark',
-                            i18n: 'settings.settings.appearance.contents.colorScheme.options.dark'
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+                            i18n: 'settings.settings.appearance.contents.colorScheme.options.dark',
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
 };

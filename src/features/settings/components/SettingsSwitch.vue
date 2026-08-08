@@ -23,11 +23,11 @@ const { t } = useI18n();
 
 const props = defineProps({
     setting: {
-        required: true
+        required: true,
     },
     path: {
-        required: true
-    }
+        required: true,
+    },
 });
 
 const labelId = useId();

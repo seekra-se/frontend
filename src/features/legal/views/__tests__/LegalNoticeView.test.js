@@ -20,12 +20,14 @@ import { mountComponent } from '@/test-utils/mountComponent';
 import { flushPromises } from '@vue/test-utils';
 import { afterEach, describe, expect, test, vi } from 'vitest';
 
-const getLegalNotice = vi.hoisted(() => vi.fn().mockResolvedValue('legal notice'));
+const getLegalNotice = vi.hoisted(() =>
+    vi.fn().mockResolvedValue('legal notice'),
+);
 vi.mock('../../services/fetchLegalContent', async (importOriginal) => {
     const actual = await importOriginal();
     return {
         ...actual,
-        getLegalNotice
+        getLegalNotice,
     };
 });
 

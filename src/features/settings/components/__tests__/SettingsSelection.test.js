@@ -26,21 +26,27 @@ const getWrapper = function getWrapper({
     allowMultiple = false,
     defaultValue = undefined,
     translations = {},
-    piniaOptions = {}
+    piniaOptions = {},
 } = {}) {
-    return mountComponent(SettingsSelection, {
-        attrs: {
-            setting: {
-                name: 'selection',
-                type: 'selection',
-                i18n,
-                options,
-                allowMultiple,
-                default: defaultValue
+    return mountComponent(
+        SettingsSelection,
+        {
+            attrs: {
+                setting: {
+                    name: 'selection',
+                    type: 'selection',
+                    i18n,
+                    options,
+                    allowMultiple,
+                    default: defaultValue,
+                },
+                path: 'selection',
             },
-            path: 'selection'
-        }
-    }, translations, [], piniaOptions);
+        },
+        translations,
+        [],
+        piniaOptions,
+    );
 };
 
 const getChecked = function getChecked(inputs) {
@@ -50,7 +56,7 @@ const getChecked = function getChecked(inputs) {
 const exampleOptions = [
     { name: 'o0', i18n: 'o0' },
     { name: 'o1', i18n: 'o1' },
-    { name: 'o2', i18n: 'o2' }
+    { name: 'o2', i18n: 'o2' },
 ];
 
 describe('SettingsSelection', () => {
@@ -81,8 +87,8 @@ describe('SettingsSelection', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('selection', 'o1');
-                }
-            }
+                },
+            },
         });
 
         const inputs = wrapper.findAll('input');
@@ -97,8 +103,8 @@ describe('SettingsSelection', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('selection', 'o1');
-                }
-            }
+                },
+            },
         });
         const settings = useSettingsStore();
 
@@ -123,9 +129,9 @@ describe('SettingsSelection', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('selection', ['o1', 'o2']);
-                }
+                },
             },
-            allowMultiple: true
+            allowMultiple: true,
         });
 
         const inputs = wrapper.findAll('input');
@@ -136,7 +142,7 @@ describe('SettingsSelection', () => {
     test('shows default value', () => {
         const wrapper = getWrapper({
             options: exampleOptions,
-            defaultValue: 'o2'
+            defaultValue: 'o2',
         });
 
         const inputs = wrapper.findAll('input');
@@ -148,7 +154,7 @@ describe('SettingsSelection', () => {
         const wrapper = getWrapper({
             options: exampleOptions,
             defaultValue: ['o0', 'o1'],
-            allowMultiple: true
+            allowMultiple: true,
         });
 
         const inputs = wrapper.findAll('input');
@@ -164,8 +170,8 @@ describe('SettingsSelection', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('selection', 'o1');
-                }
-            }
+                },
+            },
         });
 
         const inputs = wrapper.findAll('input');
@@ -212,20 +218,23 @@ describe('SettingsSelection', () => {
             return setValue(input, false);
         };
 
-        const expectSelectionValue = function expectSelectionValue(value, options = exampleOptions) {
+        const expectSelectionValue = function expectSelectionValue(
+            value,
+            options = exampleOptions,
+        ) {
             value.sort();
             expect(store.get('selection').sort()).toStrictEqual(value);
             const checkedInputs = getChecked(inputs);
             expect(
                 options
-                .map((option) => option.name)
-                .filter((_, i) => checkedInputs[i])
+                    .map((option) => option.name)
+                    .filter((_, i) => checkedInputs[i]),
             ).toStrictEqual(value);
         };
 
         const wrapper = getWrapper({
             options: exampleOptions,
-            allowMultiple: true
+            allowMultiple: true,
         });
 
         const store = useSettingsStore();
@@ -283,8 +292,8 @@ describe('SettingsSelection', () => {
         const translation = 'Selection setting';
         const wrapper = getWrapper({
             translations: {
-                selection: translation
-            }
+                selection: translation,
+            },
         });
 
         const label = wrapper.find('.label');

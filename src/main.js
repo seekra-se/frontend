@@ -33,21 +33,29 @@ import { getAssetsUrl } from './config/env';
 import { validateSettingsConfig } from './features/settings/utils/settingsValidator';
 
 (async () => {
-    const fonts = rawFonts.map((font) => new FontFace(
-        font.family ?? '',
-        Array.isArray(font.source)
-            ? font.source.map(
-                (source) => `url('${source.url
-                    ? new URL(source.url, getAssetsUrl()).href
-                    : ''
-                }') format('${source.format ?? ''}')`
-            ).join(',')
-            : '',
-        {
-            weight: font.weight ?? undefined,
-            style: font.style ?? undefined
-        }
-    ));
+    const fonts = rawFonts.map(
+        (font) =>
+            new FontFace(
+                font.family ?? '',
+                Array.isArray(font.source)
+                    ? font.source
+                          .map(
+                              (source) =>
+                                  `url('${
+                                      source.url
+                                          ? new URL(source.url, getAssetsUrl())
+                                                .href
+                                          : ''
+                                  }') format('${source.format ?? ''}')`,
+                          )
+                          .join(',')
+                    : '',
+                {
+                    weight: font.weight ?? undefined,
+                    style: font.style ?? undefined,
+                },
+            ),
+    );
     await Promise.all(fonts.map((font) => font.load()));
     fonts.forEach((font) => document.fonts.add(font));
 
@@ -58,9 +66,5 @@ import { validateSettingsConfig } from './features/settings/utils/settingsValida
 
     validateSettingsConfig(settings);
 
-    createApp(App)
-        .use(router)
-        .use(i18n)
-        .use(pinia)
-        .mount('#app');
+    createApp(App).use(router).use(i18n).use(pinia).mount('#app');
 })();

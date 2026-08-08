@@ -24,19 +24,25 @@ const getWrapper = function getWrapper({
     i18n = 'switch1',
     defaultValue = undefined,
     translations = {},
-    piniaOptions = {}
+    piniaOptions = {},
 } = {}) {
-    return mountComponent(SettingsSwitch, {
-        attrs: {
-            setting: {
-                type: 'bool',
-                name: 'switch',
-                i18n,
-                default: defaultValue
+    return mountComponent(
+        SettingsSwitch,
+        {
+            attrs: {
+                setting: {
+                    type: 'bool',
+                    name: 'switch',
+                    i18n,
+                    default: defaultValue,
+                },
+                path: 'switch',
             },
-            path: 'switch'
-        }
-    }, translations, [], piniaOptions);
+        },
+        translations,
+        [],
+        piniaOptions,
+    );
 };
 
 describe('SettingsSwitch', () => {
@@ -61,7 +67,7 @@ describe('SettingsSwitch', () => {
 
     test('shows default value', () => {
         const wrapper = getWrapper({
-            defaultValue: true
+            defaultValue: true,
         });
 
         const switchElement = wrapper.find('.switch-wrapper');
@@ -75,8 +81,8 @@ describe('SettingsSwitch', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('switch', false);
-                }
-            }
+                },
+            },
         });
 
         const switchElement = wrapper.find('.switch-wrapper');
@@ -116,7 +122,7 @@ describe('SettingsSwitch', () => {
         const translation = 'Switch';
 
         const wrapper = getWrapper({
-            translations: { switch1: translation }
+            translations: { switch1: translation },
         });
 
         const label = wrapper.find('label');

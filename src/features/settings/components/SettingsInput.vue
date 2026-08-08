@@ -24,11 +24,11 @@ const { t } = useI18n();
 
 const props = defineProps({
     setting: {
-        required: true
+        required: true,
     },
     path: {
-        required: true
-    }
+        required: true,
+    },
 });
 
 const store = useSettingsStore();
@@ -41,22 +41,22 @@ const doneButtonInitial = ref(true);
 const inputId = useId();
 const inputLabelId = useId();
 
-const inputType = computed(() => ({
-        number: 'number',
-        string: 'text'
-    }[props.setting.type]
-));
-
-const hasChanged = computed(() =>
-    inputModel.value !== store.get(props.path)
+const inputType = computed(
+    () =>
+        ({
+            number: 'number',
+            string: 'text',
+        })[props.setting.type],
 );
+
+const hasChanged = computed(() => inputModel.value !== store.get(props.path));
 
 watch(store, (newValue) => {
     const newInputValue = newValue.get(props.path);
     if (inputModel.value === oldInputValue) {
         inputModel.value = newInputValue;
         oldInputValue = newInputValue;
-    };
+    }
 });
 
 watch(inputModel, () => {
@@ -129,7 +129,10 @@ const apply = function apply() {
 }
 
 .input-container.done-button-shown .input {
-    width: calc(100% - 1.5 * var(--input-padding) - 26px - 0.75 * var(--input-height) + 1.5px);
+    width: calc(
+        100% - 1.5 * var(--input-padding) - 26px - 0.75 * var(--input-height) +
+            1.5px
+    );
 }
 
 .done-button {

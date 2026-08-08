@@ -30,7 +30,7 @@ const submitSearch = function submitSearch() {
     if (props.autoSubmit !== undefined) {
         router.push({
             name: 'searchResults',
-            query: { q: searchQuery.value }
+            query: { q: searchQuery.value },
         });
     }
 };
@@ -41,10 +41,10 @@ const submitSearch = function submitSearch() {
         <form @submit.prevent="submitSearch" class="search-form">
             <div class="search-wrapper">
                 <input
-                v-model="searchQuery"
-                type="search"
-                :placeholder="t('search.searchBar.placeholder')"
-                required
+                    v-model="searchQuery"
+                    type="search"
+                    :placeholder="t('search.searchBar.placeholder')"
+                    required
                 />
                 <button
                     type="submit"
@@ -52,7 +52,11 @@ const submitSearch = function submitSearch() {
                     :title="t('search.searchBar.submit')"
                     :aria-label="t('search.searchBar.submit')"
                 >
-                    <UIIcon class="search-icon" name="magnifying-glass" size="1.1em" />
+                    <UIIcon
+                        class="search-icon"
+                        name="magnifying-glass"
+                        size="1.1em"
+                    />
                 </button>
             </div>
         </form>
@@ -69,7 +73,10 @@ const submitSearch = function submitSearch() {
     align-items: center;
     border: 1.5px solid var(--border);
     box-shadow: 0 0px 32px var(--blue-box-shadow);
-    border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y) + var(--padding));
+    border-radius: calc(
+        var(--content-height) * 0.5 + var(--submit-button-padding-y) +
+            var(--padding)
+    );
     padding: var(--padding);
     padding-left: var(--padding-left);
     width: 100%;
@@ -90,7 +97,9 @@ const submitSearch = function submitSearch() {
     font-size: 1rem;
     height: calc(var(--content-height) + 2 * var(--submit-button-padding-y));
     width: calc(var(--content-height) + 2 * var(--submit-button-padding-y));
-    border-radius: calc(var(--content-height) * 0.5 + var(--submit-button-padding-y));
+    border-radius: calc(
+        var(--content-height) * 0.5 + var(--submit-button-padding-y)
+    );
     border: none;
     padding: var(--submit-button-padding-y) 20px;
     background: var(--primary-color);

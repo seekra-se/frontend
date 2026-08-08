@@ -27,15 +27,20 @@ const searchQuery = ref('');
 
 <template>
     <div class="search-content main-content-padding">
-    <header class="global-header">
-        <img :src="logo" alt="Seekra" class="header-logo" />
-        <span class="slogan">
-            {{ t('slogan') }}
-        </span>
-    </header>
+        <header class="global-header">
+            <img :src="logo" alt="Seekra" class="header-logo" />
+            <span class="slogan">
+                {{ t('slogan') }}
+            </span>
+        </header>
 
         <div class="search-container">
-            <SearchBar v-model="searchQuery" ref="searchbar" class="search-bar" auto-submit />
+            <SearchBar
+                v-model="searchQuery"
+                ref="searchbar"
+                class="search-bar"
+                auto-submit
+            />
         </div>
     </div>
 </template>

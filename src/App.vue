@@ -33,7 +33,7 @@ const updateColorScheme = function updateColorScheme(newColorScheme) {
     document.body.style.setProperty(colorScheme, {
         auto: 'normal',
         dark: 'dark',
-        light: 'light'
+        light: 'light',
     });
     if (newColorScheme === 'dark') {
         document.body.classList.add('dark');
@@ -72,7 +72,8 @@ onMounted(() => {
 #app-wrapper {
     --main-content-padding-x: 30px;
     --main-content-padding-y: 40px;
-    --main-content-padding: var(--main-content-padding-y) var(--main-content-padding-x);
+    --main-content-padding: var(--main-content-padding-y)
+        var(--main-content-padding-x);
     min-height: 100vh;
     display: flex;
     flex-direction: column;

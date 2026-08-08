@@ -26,19 +26,21 @@ const { getSetting, setSetting } = useSettings();
 const colorScheme = computed(() => getSetting(['appearance', 'colorScheme']));
 
 const colorSchemeNextMapper = {
-    'light': 'dark',
-    'dark': 'auto',
-    'auto': 'light'
+    light: 'dark',
+    dark: 'auto',
+    auto: 'light',
 };
 
 const colorSchemeIconMapper = {
-    'dark': 'crescent-moon',
-    'light': 'sun',
-    'auto': 'circle-black-white'
+    dark: 'crescent-moon',
+    light: 'sun',
+    auto: 'circle-black-white',
 };
 
 const getTooltipTranslation = function getTooltipTranslation(colorScheme) {
-    return t(`preferences.colorScheme.switch.${colorSchemeNextMapper[colorScheme]}`);
+    return t(
+        `preferences.colorScheme.switch.${colorSchemeNextMapper[colorScheme]}`,
+    );
 };
 
 const setColorScheme = function setColorScheme(newColorScheme) {
@@ -47,7 +49,8 @@ const setColorScheme = function setColorScheme(newColorScheme) {
 </script>
 
 <template>
-    <button class="color-scheme-button"
+    <button
+        class="color-scheme-button"
         @click="setColorScheme(colorSchemeNextMapper[colorScheme])"
         :aria-label="getTooltipTranslation(colorScheme)"
         :title="getTooltipTranslation(colorScheme)"

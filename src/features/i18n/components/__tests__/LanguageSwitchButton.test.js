@@ -30,7 +30,9 @@ describe('LanguageSwitchButton', () => {
 
         expect(wrapper.find('.language-button').exists()).toBe(true);
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
-        expect(wrapper.find('.language-button').attributes('aria-expanded')).toBe('false');
+        expect(
+            wrapper.find('.language-button').attributes('aria-expanded'),
+        ).toBe('false');
     });
 
     test('opens the dropdown when language button is clicked', async () => {
@@ -52,12 +54,12 @@ describe('LanguageSwitchButton', () => {
 
         const options = wrapper.findAll('.language-dropdown li');
 
-        const enOption = options.find(opt => opt.text().includes('en'));
+        const enOption = options.find((opt) => opt.text().includes('en'));
         await enOption.trigger('click');
         expect(getSetting(LANGUAGE_PATH)).toBe('en');
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
 
-        const deOption = options.find(opt => opt.text().includes('de'));
+        const deOption = options.find((opt) => opt.text().includes('de'));
         await deOption.trigger('click');
         expect(getSetting(LANGUAGE_PATH)).toBe('de');
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
@@ -69,7 +71,7 @@ describe('LanguageSwitchButton', () => {
         await wrapper.find('.language-button').trigger('click');
         expect(wrapper.find('.language-dropdown').exists()).toBe(true);
 
-        await new Promise(resolve => setTimeout(resolve, 0));
+        await new Promise((resolve) => setTimeout(resolve, 0));
 
         const externalDiv = document.createElement('div');
         document.body.appendChild(externalDiv);

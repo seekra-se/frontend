@@ -23,7 +23,7 @@ const settingsHoisted = vi.hoisted(() => [
     {
         name: 's0',
         i18n: 'settings.s0',
-        content: []
+        content: [],
     },
     {
         name: 's1',
@@ -32,17 +32,17 @@ const settingsHoisted = vi.hoisted(() => [
             {
                 type: 'bool',
                 name: 'b0',
-                i18n: 'settings.s1.b0'
+                i18n: 'settings.s1.b0',
             },
             {
                 type: 'number',
                 name: 'n0',
-                i18n: 'settings.s1.n0'
+                i18n: 'settings.s1.n0',
             },
             {
                 type: 'string',
                 name: 'st0',
-                i18n: 'settings.s1.st0'
+                i18n: 'settings.s1.st0',
             },
             {
                 type: 'selection',
@@ -52,14 +52,14 @@ const settingsHoisted = vi.hoisted(() => [
                     { name: 'o0', i18n: 'settings.s1.se0.o0' },
                     { name: 'o1', i18n: 'settings.s1.se0.o1' },
                     { name: 'o2', i18n: 'settings.s1.se0.o2' },
-                    { name: 'o3', i18n: 'settings.s1.se0.o3' }
-                ]
+                    { name: 'o3', i18n: 'settings.s1.se0.o3' },
+                ],
             },
             {
                 type: 'section',
                 name: 's0',
                 i18n: 'settings.s1.s0',
-                content: []
+                content: [],
             },
             {
                 type: 'section',
@@ -70,11 +70,11 @@ const settingsHoisted = vi.hoisted(() => [
                         type: 'bool',
                         name: 'b0',
                         i18n: 'settings.s1.s1.b0',
-                        default: true
-                    }
-                ]
-            }
-        ]
+                        default: true,
+                    },
+                ],
+            },
+        ],
     },
     {
         name: 's2',
@@ -89,11 +89,11 @@ const settingsHoisted = vi.hoisted(() => [
                         type: 'bool',
                         name: 'b0',
                         i18n: 'settings.s2.s0.b0',
-                        default: true
-                    }
-                ]
-            }
-        ]
+                        default: true,
+                    },
+                ],
+            },
+        ],
     },
     {
         name: 's3',
@@ -103,9 +103,9 @@ const settingsHoisted = vi.hoisted(() => [
                 type: 'section',
                 name: 's0',
                 i18n: 'settings.s3.s0',
-                content: []
-            }
-        ]
+                content: [],
+            },
+        ],
     },
     {
         name: 's4',
@@ -119,10 +119,10 @@ const settingsHoisted = vi.hoisted(() => [
                     { name: 'o0', i18n: 'settings.s4.se0.o0' },
                     { name: 'o1', i18n: 'settings.s4.se0.o1' },
                     { name: 'o2', i18n: 'settings.s4.se0.o2' },
-                    { name: 'o3', i18n: 'settings.s4.se0.o3' }
-                ]
-            }
-        ]
+                    { name: 'o3', i18n: 'settings.s4.se0.o3' },
+                ],
+            },
+        ],
     },
     {
         name: 's5',
@@ -131,9 +131,9 @@ const settingsHoisted = vi.hoisted(() => [
             {
                 type: 'string',
                 name: 'st0',
-                i18n: 'settings.s5.st0'
-            }
-        ]
+                i18n: 'settings.s5.st0',
+            },
+        ],
     },
     {
         name: 's6',
@@ -142,9 +142,9 @@ const settingsHoisted = vi.hoisted(() => [
             {
                 type: 'number',
                 name: 'n0',
-                i18n: 'settings.s6.n0'
-            }
-        ]
+                i18n: 'settings.s6.n0',
+            },
+        ],
     },
     {
         name: 's7',
@@ -153,9 +153,9 @@ const settingsHoisted = vi.hoisted(() => [
             {
                 type: 'bool',
                 name: 'b0',
-                i18n: 'settings.s7.b0'
-            }
-        ]
+                i18n: 'settings.s7.b0',
+            },
+        ],
     },
     {
         name: 's8',
@@ -181,16 +181,16 @@ const settingsHoisted = vi.hoisted(() => [
                                         name: 'se0',
                                         i18n: 'settings.s8.s0.s0.s0.se0',
                                         allowMultiple: true,
-                                        options: []
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
+                                        options: [],
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
 ]);
 const settings = settingsHoisted.values();
 
@@ -198,7 +198,7 @@ const originalCurrentSection = 's0';
 let currentSection = originalCurrentSection;
 
 vi.mock('../../config.js', () => ({
-    default: { contents: settingsHoisted }
+    default: { contents: settingsHoisted },
 }));
 
 vi.mock('vue-router', async (importOriginal) => {
@@ -206,8 +206,8 @@ vi.mock('vue-router', async (importOriginal) => {
     return {
         ...actual,
         useRoute: () => ({
-            path: `/settings/${currentSection}`
-        })
+            path: `/settings/${currentSection}`,
+        }),
     };
 });
 
@@ -221,8 +221,8 @@ describe('SettingsView', () => {
             const translation = 'Settings';
             const wrapper = getWrapper({
                 translations: {
-                    'preferences.settings': translation
-                }
+                    'preferences.settings': translation,
+                },
             });
 
             const header = wrapper.find('header');
@@ -242,8 +242,12 @@ describe('SettingsView', () => {
                 expect(sidebarItem.text()).toBe(setting.i18n);
 
                 const link = sidebarItem.find('*');
-                expect(link.attributes('href')).toBe(`/settings/${setting.name}`);
-                expect(link.classes('active')).toBe(setting.name === currentSection);
+                expect(link.attributes('href')).toBe(
+                    `/settings/${setting.name}`,
+                );
+                expect(link.classes('active')).toBe(
+                    setting.name === currentSection,
+                );
             });
         });
     });
@@ -257,7 +261,9 @@ describe('SettingsView', () => {
                 await nextTick();
 
                 const mainContent = wrapper.find('.settings-main-content');
-                const mainContentNoSection = wrapper.find('.main-content--no-section');
+                const mainContentNoSection = wrapper.find(
+                    '.main-content--no-section',
+                );
 
                 expect(mainContent.exists()).toBe(false);
                 expect(mainContentNoSection.exists()).toBe(true);
@@ -268,7 +274,9 @@ describe('SettingsView', () => {
                 await nextTick();
 
                 const mainContent = wrapper.find('.settings-main-content');
-                const mainContentNoSection = wrapper.find('.main-content--no-section');
+                const mainContentNoSection = wrapper.find(
+                    '.main-content--no-section',
+                );
 
                 expect(mainContent.exists()).toBe(true);
                 expect(mainContentNoSection.exists()).toBe(false);

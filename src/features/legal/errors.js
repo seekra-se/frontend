@@ -15,8 +15,8 @@ limitations under the License.
 */
 
 export class FetchError extends Error {
-    constructor (message) {
+    constructor(message) {
         super(message);
         this.name = 'FetchError';
     }
-};
+}
