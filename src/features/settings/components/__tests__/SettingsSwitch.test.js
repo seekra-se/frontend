@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 import { useSettingsStore } from '../../stores/settingsStore.js';
-import Switch from '../Switch.vue';
+import SettingsSwitch from '../SettingsSwitch.vue';
 import { mountComponent } from '@/test-utils/mountComponent.js';
 import { describe, expect, test } from 'vitest';
 import { nextTick } from 'vue';
@@ -26,7 +26,7 @@ const getWrapper = function getWrapper({
     translations = {},
     piniaOptions = {}
 } = {}) {
-    return mountComponent(Switch, {
+    return mountComponent(SettingsSwitch, {
         attrs: {
             setting: {
                 type: 'bool',
@@ -39,7 +39,7 @@ const getWrapper = function getWrapper({
     }, translations, [], piniaOptions);
 };
 
-describe('Switch', () => {
+describe('SettingsSwitch', () => {
     test('shows value from store', async () => {
         const wrapper = getWrapper();
 

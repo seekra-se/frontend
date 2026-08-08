@@ -18,7 +18,7 @@ import Selection from '../Selection.vue';
 import SettingsInput from '../SettingsInput.vue';
 import SettingsPage from '../SettingsPage.vue';
 import SettingsPageLink from '../SettingsPageLink.vue';
-import Switch from '../Switch.vue';
+import SettingsSwitch from '../SettingsSwitch.vue';
 import { mountComponent } from '@/test-utils/mountComponent.js';
 import { describe, expect, test } from 'vitest';
 
@@ -108,7 +108,7 @@ describe('SettingsPage', () => {
         exampleSettings.forEach((expectedSetting, index) => {
             const settingWrapper = settingsWrappers[index];
 
-            const switchSetting = settingWrapper.findComponent(Switch);
+            const switchSetting = settingWrapper.findComponent(SettingsSwitch);
             const inputSetting = settingWrapper.findComponent(SettingsInput);
             const selectionSetting = settingWrapper.findComponent(Selection);
             const settingsPageLink = settingWrapper.findComponent(SettingsPageLink);

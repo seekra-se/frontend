@@ -18,7 +18,7 @@ limitations under the License.
 import Selection from './Selection.vue';
 import SettingsInput from './SettingsInput.vue';
 import SettingsPageLink from './SettingsPageLink.vue';
-import Switch from './Switch.vue';
+import SettingsSwitch from './SettingsSwitch.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -43,7 +43,7 @@ const props = defineProps({
             :key="setting"
             class="setting"
         >
-            <Switch
+            <SettingsSwitch
                 v-if="setting.type === 'bool'"
                 :setting="setting"
                 :path="`${props.path}.${setting.name}`"
