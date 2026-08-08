@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import Sidebar from '@/features/sidebar/components/Sidebar.vue';
+import AppSidebar from '@/features/sidebar/components/AppSidebar.vue';
 import SidebarExpandButton from '@/features/sidebar/components/SidebarExpandButton.vue';
 import { ref } from 'vue';
 
@@ -39,9 +39,9 @@ const toggleSidebar = function toggleSidebar() {
         <div class="sidebar-expand-button-container">
             <SidebarExpandButton class="sidebar-expand-button" @click="toggleSidebar" />
         </div>
-        <Sidebar @toggle-expanded="toggleSidebar" :expanded="expanded" class="sidebar">
+        <AppSidebar @toggle-expanded="toggleSidebar" :expanded="expanded" class="sidebar">
             <slot name="sidebar" :toggleSidebar="toggleSidebar" />
-        </Sidebar>
+        </AppSidebar>
         <main class="main-content">
             <slot :toggleSidebar="toggleSidebar" />
         </main>
