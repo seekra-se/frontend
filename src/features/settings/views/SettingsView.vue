@@ -65,7 +65,7 @@ const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen(toggleSid
         <LeftSidebarLayout class="layout">
             <template #sidebar="{ toggleSidebar }">
                 <ul class="sidebar-sections-list">
-                    <li v-for="section in settings">
+                    <li v-for="section in settings" :key="section">
                         <RouterLink
                             :to="`/settings/${section.name}`"
                             class="button button-link link sidebar-section"
