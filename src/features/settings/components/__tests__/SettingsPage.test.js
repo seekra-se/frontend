@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import Selection from '../Selection.vue';
+import SettingsSelection from '../SettingsSelection.vue';
 import SettingsInput from '../SettingsInput.vue';
 import SettingsPage from '../SettingsPage.vue';
 import SettingsPageLink from '../SettingsPageLink.vue';
@@ -110,7 +110,7 @@ describe('SettingsPage', () => {
 
             const switchSetting = settingWrapper.findComponent(SettingsSwitch);
             const inputSetting = settingWrapper.findComponent(SettingsInput);
-            const selectionSetting = settingWrapper.findComponent(Selection);
+            const selectionSetting = settingWrapper.findComponent(SettingsSelection);
             const settingsPageLink = settingWrapper.findComponent(SettingsPageLink);
 
             let setting;

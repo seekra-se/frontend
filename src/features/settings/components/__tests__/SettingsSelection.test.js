@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 import { useSettingsStore } from '../../stores/settingsStore.js';
-import Selection from '../Selection.vue';
+import SettingsSelection from '../SettingsSelection.vue';
 import { mountComponent } from '@/test-utils/mountComponent.js';
 import { expect, describe, test } from 'vitest';
 import { nextTick } from 'vue';
@@ -28,7 +28,7 @@ const getWrapper = function getWrapper({
     translations = {},
     piniaOptions = {}
 } = {}) {
-    return mountComponent(Selection, {
+    return mountComponent(SettingsSelection, {
         attrs: {
             setting: {
                 name: 'selection',
@@ -53,7 +53,7 @@ const exampleOptions = [
     { name: 'o2', i18n: 'o2' }
 ];
 
-describe('Selection', () => {
+describe('SettingsSelection', () => {
     test('displays options correctly', () => {
         const wrapper = getWrapper({ options: exampleOptions });
 

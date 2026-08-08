@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import Selection from './Selection.vue';
+import SettingsSelection from './SettingsSelection.vue';
 import SettingsInput from './SettingsInput.vue';
 import SettingsPageLink from './SettingsPageLink.vue';
 import SettingsSwitch from './SettingsSwitch.vue';
@@ -53,7 +53,7 @@ const props = defineProps({
                 :setting="setting"
                 :path="`${props.path}.${setting.name}`"
             />
-            <Selection
+            <SettingsSelection
                 v-if="setting.type === 'selection'"
                 :setting="setting"
                 :path="`${props.path}.${setting.name}`"
