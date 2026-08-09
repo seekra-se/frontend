@@ -18,9 +18,6 @@ limitations under the License.
 import logo from '@/assets/images/logo.svg';
 import SearchBar from '@/features/search/components/SearchBar.vue';
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-
-const { t } = useI18n();
 
 const searchQuery = ref('');
 </script>
@@ -29,9 +26,6 @@ const searchQuery = ref('');
     <div class="search-content main-content-padding">
         <header class="global-header">
             <img :src="logo" alt="Seekra" class="header-logo" />
-            <span class="slogan">
-                {{ t('slogan') }}
-            </span>
         </header>
 
         <div class="search-container">
@@ -64,12 +58,6 @@ const searchQuery = ref('');
 .header-logo {
     width: 320px;
     max-width: 100%;
-}
-
-.slogan {
-    margin-top: 1rem;
-    font-size: small;
-    line-height: normal;
 }
 
 .search-container {
