@@ -8,7 +8,7 @@
 - Settings page
 - Footer
 - Navbar
-- Searchbar
+- Search bar
 - Icons
 - Internationalization and some major languages
 - Color scheme
