@@ -14,46 +14,52 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import Selection from '../Selection.vue';
-import { mountComponent } from '@/test-utils/mountComponent.js';
 import { useSettingsStore } from '../../stores/settingsStore.js';
+import SettingsSelection from '../SettingsSelection.vue';
+import { mountComponent } from '@/test-utils/mountComponent.js';
 import { expect, describe, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper ({
+const getWrapper = function getWrapper({
     i18n = 'selection',
     options = [],
     allowMultiple = false,
     defaultValue = undefined,
     translations = {},
-    piniaOptions = {}
+    piniaOptions = {},
 } = {}) {
-    return mountComponent(Selection, {
-        attrs: {
-            setting: {
-                name: 'selection',
-                type: 'selection',
-                i18n,
-                options,
-                allowMultiple,
-                default: defaultValue
+    return mountComponent(
+        SettingsSelection,
+        {
+            attrs: {
+                setting: {
+                    name: 'selection',
+                    type: 'selection',
+                    i18n,
+                    options,
+                    allowMultiple,
+                    default: defaultValue,
+                },
+                path: 'selection',
             },
-            path: 'selection'
-        }
-    }, translations, [], piniaOptions);
+        },
+        translations,
+        [],
+        piniaOptions,
+    );
 };
 
-const getChecked = function getChecked (inputs) {
+const getChecked = function getChecked(inputs) {
     return inputs.map((input) => input.element.matches(':checked'));
 };
 
 const exampleOptions = [
     { name: 'o0', i18n: 'o0' },
     { name: 'o1', i18n: 'o1' },
-    { name: 'o2', i18n: 'o2' }
+    { name: 'o2', i18n: 'o2' },
 ];
 
-describe('Selection', () => {
+describe('SettingsSelection', () => {
     test('displays options correctly', () => {
         const wrapper = getWrapper({ options: exampleOptions });
 
@@ -71,7 +77,7 @@ describe('Selection', () => {
             expect(input.attributes('name')).toBe('selection');
 
             expect(input.element.matches(':checked')).toBe(false);
-        };
+        }
     });
 
     test('shows value from store', () => {
@@ -81,8 +87,8 @@ describe('Selection', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('selection', 'o1');
-                }
-            }
+                },
+            },
         });
 
         const inputs = wrapper.findAll('input');
@@ -97,8 +103,8 @@ describe('Selection', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('selection', 'o1');
-                }
-            }
+                },
+            },
         });
         const settings = useSettingsStore();
 
@@ -123,9 +129,9 @@ describe('Selection', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('selection', ['o1', 'o2']);
-                }
+                },
             },
-            allowMultiple: true
+            allowMultiple: true,
         });
 
         const inputs = wrapper.findAll('input');
@@ -136,7 +142,7 @@ describe('Selection', () => {
     test('shows default value', () => {
         const wrapper = getWrapper({
             options: exampleOptions,
-            defaultValue: 'o2'
+            defaultValue: 'o2',
         });
 
         const inputs = wrapper.findAll('input');
@@ -148,7 +154,7 @@ describe('Selection', () => {
         const wrapper = getWrapper({
             options: exampleOptions,
             defaultValue: ['o0', 'o1'],
-            allowMultiple: true
+            allowMultiple: true,
         });
 
         const inputs = wrapper.findAll('input');
@@ -164,8 +170,8 @@ describe('Selection', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('selection', 'o1');
-                }
-            }
+                },
+            },
         });
 
         const inputs = wrapper.findAll('input');
@@ -199,33 +205,36 @@ describe('Selection', () => {
     });
 
     test('stores multiple values', async () => {
-        const setValue = async function setValue (input, value) {
+        const setValue = async function setValue(input, value) {
             input.setValue(value);
             await nextTick();
         };
 
-        const check = function check (input) {
+        const check = function check(input) {
             return setValue(input, true);
         };
 
-        const uncheck = function uncheck (input) {
+        const uncheck = function uncheck(input) {
             return setValue(input, false);
         };
 
-        const expectSelectionValue = function expectSelectionValue (value, options = exampleOptions) {
+        const expectSelectionValue = function expectSelectionValue(
+            value,
+            options = exampleOptions,
+        ) {
             value.sort();
             expect(store.get('selection').sort()).toStrictEqual(value);
             const checkedInputs = getChecked(inputs);
             expect(
                 options
-                .map((option) => option.name)
-                .filter((entry, i) => checkedInputs[i])
+                    .map((option) => option.name)
+                    .filter((_, i) => checkedInputs[i]),
             ).toStrictEqual(value);
         };
 
         const wrapper = getWrapper({
             options: exampleOptions,
-            allowMultiple: true
+            allowMultiple: true,
         });
 
         const store = useSettingsStore();
@@ -237,7 +246,7 @@ describe('Selection', () => {
         const inputO2 = inputs[2];
 
         await check(inputO0);
-        expectSelectionValue(['o0'])
+        expectSelectionValue(['o0']);
 
         await uncheck(inputO0);
         expectSelectionValue([]);
@@ -283,8 +292,8 @@ describe('Selection', () => {
         const translation = 'Selection setting';
         const wrapper = getWrapper({
             translations: {
-                selection: translation
-            }
+                selection: translation,
+            },
         });
 
         const label = wrapper.find('.label');

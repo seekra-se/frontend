@@ -15,22 +15,21 @@ limitations under the License.
 -->
 
 <script setup>
-import Switch from './Switch.vue';
+import SettingsSelection from './SettingsSelection.vue';
 import SettingsInput from './SettingsInput.vue';
-import Selection from './Selection.vue';
 import SettingsPageLink from './SettingsPageLink.vue';
-
+import SettingsSwitch from './SettingsSwitch.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
 const props = defineProps({
     setting: {
-        required: true
+        required: true,
     },
     path: {
-        required: true
-    }
+        required: true,
+    },
 });
 </script>
 
@@ -44,7 +43,7 @@ const props = defineProps({
             :key="setting"
             class="setting"
         >
-            <Switch
+            <SettingsSwitch
                 v-if="setting.type === 'bool'"
                 :setting="setting"
                 :path="`${props.path}.${setting.name}`"
@@ -54,7 +53,7 @@ const props = defineProps({
                 :setting="setting"
                 :path="`${props.path}.${setting.name}`"
             />
-            <Selection
+            <SettingsSelection
                 v-if="setting.type === 'selection'"
                 :setting="setting"
                 :path="`${props.path}.${setting.name}`"
@@ -79,15 +78,15 @@ const props = defineProps({
     margin-bottom: calc(var(--size) - 0.2em);
 }
 
-.section-heading[aria-level="2"] {
+.section-heading[aria-level='2'] {
     --size: 1.8em;
 }
 
-.section-heading[aria-level="3"] {
+.section-heading[aria-level='3'] {
     --size: 1.6em;
 }
 
-.section-heading[aria-level="4"] {
+.section-heading[aria-level='4'] {
     --size: 1.4em;
 }
 </style>

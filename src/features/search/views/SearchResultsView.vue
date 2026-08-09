@@ -28,8 +28,7 @@ const { t } = useI18n();
                 <p>{{ t('error.tryAgainToAnotherTime') }}</p>
             </div>
         </div>
-        <div class="search-results-container">
-        </div>
+        <div class="search-results-container"></div>
     </div>
 </template>
 

@@ -15,13 +15,12 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
-
 import { LANGUAGE_PATH } from '@/config/featureSettings';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { useSettings } from '@/features/settings/composables/useSettings';
+import { setLocale, SUPPORTED_LANGUAGES } from '@/i18n';
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { setLocale, SUPPORTED_LANGUAGES } from '@/i18n';
 
 const { t, locale } = useI18n();
 const { setSetting, getSetting } = useSettings();
@@ -29,33 +28,33 @@ const { setSetting, getSetting } = useSettings();
 const isOpen = ref(false);
 const languageDropdown = ref(null);
 
-const selectLanguage = function selectLanguage (code) {
+const selectLanguage = function selectLanguage(code) {
     setSetting(LANGUAGE_PATH, code);
     close();
 };
 
 watch(() => getSetting(LANGUAGE_PATH), setLocale);
 
-const close = function () {
-    document.removeEventListener('click', closeWrapperOnClickOutsite);
+const close = function close() {
+    document.removeEventListener('click', closeWrapperOnClickOutside);
     isOpen.value = false;
 };
 
-const closeWrapperOnClickOutsite = function (e) {
+const closeWrapperOnClickOutside = function closeWrapperOnClickOutside(e) {
     if (languageDropdown.value) {
         if (!languageDropdown.value.contains(e.target)) {
             close();
-        };
-    };
+        }
+    }
 };
 
-const open = function () {
+const open = function open() {
     if (!isOpen.value) {
         isOpen.value = true;
         setTimeout(() => {
-            document.addEventListener('click', closeWrapperOnClickOutsite);
+            document.addEventListener('click', closeWrapperOnClickOutside);
         }, 0);
-    };
+    }
 };
 </script>
 
@@ -67,9 +66,11 @@ const open = function () {
             :aria-expanded="isOpen"
             aria-haspopup="listbox"
         >
-            <span class="lang-code">{{ t(`preferences.locale.languages.${locale}`) }}</span>
+            <span class="lang-code">{{
+                t(`preferences.locale.languages.${locale}`)
+            }}</span>
             <span class="chevron" :class="{ open: isOpen }">
-                <Icon name="chevron-down" size="1em" />
+                <UIIcon name="chevron-down" size="1em" />
             </span>
         </button>
 
@@ -79,7 +80,7 @@ const open = function () {
             class="language-dropdown"
             role="listbox"
             :style="{
-                bottom: 'calc(var(--offset) + 2 * var(--trigger-padding-y) + 1em)' // easier to add auto adaption to the available space
+                bottom: 'calc(var(--offset) + 2 * var(--trigger-padding-y) + 1em)', // easier to add auto adaption to the available space
             }"
         >
             <li
@@ -90,7 +91,9 @@ const open = function () {
                 :class="{ active: lang === locale }"
                 @click="selectLanguage(lang)"
             >
-                <span class="lang-label">{{ t(`preferences.locale.languages.${lang}`) }}</span>
+                <span class="lang-label">{{
+                    t(`preferences.locale.languages.${lang}`)
+                }}</span>
             </li>
         </ul>
     </div>

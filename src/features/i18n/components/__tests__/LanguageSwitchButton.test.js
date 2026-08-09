@@ -14,31 +14,33 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import LanguageSwitchButton from '../LanguageSwitchButton.vue';
 import { LANGUAGE_PATH } from '@/config/featureSettings.js';
 import { useSettings } from '@/features/settings/composables/useSettings.js';
 import { mountComponent } from '@/test-utils/mountComponent.js';
-import { expect, test, describe } from 'vitest';
-import LanguageSwitchButton from '../LanguageSwitchButton.vue';
+import { describe, expect, test } from 'vitest';
 
-const getWrapper = function getWrapper () {
+const getWrapper = function getWrapper() {
     return mountComponent(LanguageSwitchButton);
 };
 
 describe('LanguageSwitchButton', () => {
     test('renders correctly with initial state closed', () => {
         const wrapper = getWrapper();
-        
+
         expect(wrapper.find('.language-button').exists()).toBe(true);
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
-        expect(wrapper.find('.language-button').attributes('aria-expanded')).toBe('false');
+        expect(
+            wrapper.find('.language-button').attributes('aria-expanded'),
+        ).toBe('false');
     });
 
     test('opens the dropdown when language button is clicked', async () => {
         const wrapper = getWrapper();
         const button = wrapper.find('.language-button');
-        
+
         await button.trigger('click');
-        
+
         expect(wrapper.find('.language-dropdown').exists()).toBe(true);
         expect(button.attributes('aria-expanded')).toBe('true');
     });
@@ -47,17 +49,17 @@ describe('LanguageSwitchButton', () => {
         const { getSetting } = useSettings();
 
         const wrapper = getWrapper();
-        
+
         await wrapper.find('.language-button').trigger('click');
-        
+
         const options = wrapper.findAll('.language-dropdown li');
 
-        const enOption = options.find(opt => opt.text().includes('en'));
+        const enOption = options.find((opt) => opt.text().includes('en'));
         await enOption.trigger('click');
         expect(getSetting(LANGUAGE_PATH)).toBe('en');
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
 
-        const deOption = options.find(opt => opt.text().includes('de'));
+        const deOption = options.find((opt) => opt.text().includes('de'));
         await deOption.trigger('click');
         expect(getSetting(LANGUAGE_PATH)).toBe('de');
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);
@@ -69,14 +71,14 @@ describe('LanguageSwitchButton', () => {
         await wrapper.find('.language-button').trigger('click');
         expect(wrapper.find('.language-dropdown').exists()).toBe(true);
 
-        await new Promise(resolve => setTimeout(resolve, 0));
+        await new Promise((resolve) => setTimeout(resolve, 0));
 
         const externalDiv = document.createElement('div');
         document.body.appendChild(externalDiv);
-        
+
         const clickEvent = new MouseEvent('click', { bubbles: true });
         externalDiv.dispatchEvent(clickEvent);
-        
+
         await wrapper.vm.$nextTick();
 
         expect(wrapper.find('.language-dropdown').exists()).toBe(false);

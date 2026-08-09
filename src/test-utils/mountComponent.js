@@ -15,34 +15,37 @@ limitations under the License.
 */
 
 import { createTestingPinia } from '@pinia/testing';
-import { vi } from 'vitest';
 import { mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 import { createI18n } from 'vue-i18n';
 import { createMemoryHistory, createRouter } from 'vue-router';
 
-export const mountComponent = function mountComponent (component, options = {}, i18nMessages = {}, routes = [], piniaOptions = {}) {
-    const {
-        setupStores,
-        ...testingPiniaOptions
-    } = piniaOptions;
+export const mountComponent = function mountComponent(
+    component,
+    options = {},
+    i18nMessages = {},
+    routes = [],
+    piniaOptions = {},
+) {
+    const { setupStores, ...testingPiniaOptions } = piniaOptions;
 
     const i18n = createI18n({
         legacy: false,
         locale: 'en',
         messages: {
-            en: i18nMessages
-        }
+            en: i18nMessages,
+        },
     });
 
     const router = createRouter({
         history: createMemoryHistory(),
-        routes
+        routes,
     });
 
     const testingPinia = createTestingPinia({
         ...testingPiniaOptions,
         stubActions: false,
-        createSpy: vi.fn
+        createSpy: vi.fn,
     });
 
     if (setupStores) {
@@ -51,12 +54,8 @@ export const mountComponent = function mountComponent (component, options = {}, 
 
     return mount(component, {
         global: {
-            plugins: [
-                i18n,
-                router,
-                testingPinia
-            ],
+            plugins: [i18n, router, testingPinia],
         },
-        ...options
+        ...options,
     });
 };

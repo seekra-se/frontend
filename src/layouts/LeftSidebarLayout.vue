@@ -15,21 +15,21 @@ limitations under the License.
 -->
 
 <script setup>
-import Sidebar from '@/features/sidebar/components/Sidebar.vue';
+import AppSidebar from '@/features/sidebar/components/AppSidebar.vue';
 import SidebarExpandButton from '@/features/sidebar/components/SidebarExpandButton.vue';
 import { ref } from 'vue';
 
 const props = defineProps({
-    'expanded': {
+    expanded: {
         default: false,
         required: false,
-        type: Boolean
-    }
+        type: Boolean,
+    },
 });
 
 const expanded = ref(props.expanded);
 
-const toggleSidebar = function toggleSidebar () {
+const toggleSidebar = function toggleSidebar() {
     expanded.value = !expanded.value;
 };
 </script>
@@ -37,11 +37,18 @@ const toggleSidebar = function toggleSidebar () {
 <template>
     <div class="layout-container" :class="{ expanded }">
         <div class="sidebar-expand-button-container">
-            <SidebarExpandButton class="sidebar-expand-button" @click="toggleSidebar" />
+            <SidebarExpandButton
+                class="sidebar-expand-button"
+                @click="toggleSidebar"
+            />
         </div>
-        <Sidebar @toggle-expanded="toggleSidebar" :expanded="expanded" class="sidebar">
+        <AppSidebar
+            @toggle-expanded="toggleSidebar"
+            :expanded="expanded"
+            class="sidebar"
+        >
             <slot name="sidebar" :toggleSidebar="toggleSidebar" />
-        </Sidebar>
+        </AppSidebar>
         <main class="main-content">
             <slot :toggleSidebar="toggleSidebar" />
         </main>
@@ -54,8 +61,8 @@ const toggleSidebar = function toggleSidebar () {
     grid-template-columns: calc(32px + 2em) 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-        "sidebar-expand sidebar-expand"
-        "sidebar main-content";
+        'sidebar-expand sidebar-expand'
+        'sidebar main-content';
     border-top: 1px solid var(--border);
 }
 
@@ -80,7 +87,7 @@ const toggleSidebar = function toggleSidebar () {
     .layout-container.expanded {
         grid-template-columns: 1fr 0;
     }
-    
+
     .layout-container:not(.expanded) .sidebar-expand-button-container {
         justify-content: end;
         display: block;

@@ -15,8 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
 import { useSettingsPage } from '../composables/useSettingsPage';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -25,15 +25,15 @@ const { goToSettingsPage } = useSettingsPage();
 const props = defineProps({
     target: {
         required: true,
-        type: String
+        type: String,
     },
     displayName: {
         required: true,
-        type: String
-    }
+        type: String,
+    },
 });
 
-const followLink = function followLink () {
+const followLink = function followLink() {
     goToSettingsPage(props.target);
 };
 </script>
@@ -42,11 +42,13 @@ const followLink = function followLink () {
     <button
         class="settings-button button settings-page-link"
         :title="props.displayName"
-        :aria-label="t('settings.pages.link.ariaLabel', { page: props.displayName })"
+        :aria-label="
+            t('settings.pages.link.ariaLabel', { page: props.displayName })
+        "
         @click="followLink"
     >
         {{ props.displayName }}
-        <Icon name="chevron-right" size="1em" />
+        <UIIcon name="chevron-right" size="1em" />
     </button>
 </template>
 

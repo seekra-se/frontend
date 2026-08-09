@@ -14,40 +14,48 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { getAssetsUrl } from './config/env';
-import { createApp } from 'vue'
+import { i18n, loadLanguage, fallbackLocale } from './i18n';
+import router from './router';
 import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
-import App from './App.vue'
-import { i18n, loadLanguage, fallbackLocale } from './i18n';
-import router from './router'
-import './styles/common.css'
-import './styles/variables/colors.css'
+import { createApp } from 'vue';
+
+import App from './App.vue';
+
+import './styles/common.css';
+import rawFonts from './styles/fonts.json';
+import './styles/variables/colors.css';
 import './styles/variables/dimensions.css';
 
-import rawFonts from './styles/fonts.json';
-import './styles/common.css';
-import './styles/variables/colors.css';
-
 import settings from './features/settings/config.js';
+
+import { getAssetsUrl } from './config/env';
 import { validateSettingsConfig } from './features/settings/utils/settingsValidator';
 
 (async () => {
-    const fonts = rawFonts.map((font) => new FontFace(
-        font.family ?? '',
-        Array.isArray(font.source)
-            ? font.source.map(
-                (source) => `url('${source.url
-                    ? new URL(source.url, getAssetsUrl()).href
-                    : ''
-                }') format('${source.format ?? ''}')`
-            ).join(',')
-            : '',
-        {
-            weight: font.weight ?? undefined,
-            style: font.style ?? undefined
-        }
-    ));
+    const fonts = rawFonts.map(
+        (font) =>
+            new FontFace(
+                font.family ?? '',
+                Array.isArray(font.source)
+                    ? font.source
+                          .map(
+                              (source) =>
+                                  `url('${
+                                      source.url
+                                          ? new URL(source.url, getAssetsUrl())
+                                                .href
+                                          : ''
+                                  }') format('${source.format ?? ''}')`,
+                          )
+                          .join(',')
+                    : '',
+                {
+                    weight: font.weight ?? undefined,
+                    style: font.style ?? undefined,
+                },
+            ),
+    );
     await Promise.all(fonts.map((font) => font.load()));
     fonts.forEach((font) => document.fonts.add(font));
 
@@ -57,10 +65,6 @@ import { validateSettingsConfig } from './features/settings/utils/settingsValida
     pinia.use(piniaPluginPersistedstate);
 
     validateSettingsConfig(settings);
-    
-    createApp(App)
-        .use(router)
-        .use(i18n)
-        .use(pinia)
-        .mount('#app');
+
+    createApp(App).use(router).use(i18n).use(pinia).mount('#app');
 })();

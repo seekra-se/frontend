@@ -15,33 +15,33 @@ limitations under the License.
 -->
 
 <script setup>
-import { computed } from 'vue';
 import { ensureUnit } from '@/utils/cssDimensions';
+import { computed } from 'vue';
 
 const props = defineProps({
     name: {
         required: true,
-        type: String
+        type: String,
     },
     size: {
         type: [Number, String],
-        default: 24
-    }
-})
+        default: 24,
+    },
+});
 
 const icons = import.meta.glob('@/assets/icons/*.svg', {
     eager: true,
-    import: 'default'
-})
+    import: 'default',
+});
 
-const Icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`])
+const icon = computed(() => icons[`/src/assets/icons/${props.name}.svg`]);
 
-const size = computed(() => ensureUnit(props.size))
+const size = computed(() => ensureUnit(props.size));
 </script>
 
 <template>
     <div class="icon-container">
-        <img :src="Icon" :style="{ height: `${size}`, width: `${size}` }" />
+        <img :src="icon" :style="{ height: `${size}`, width: `${size}` }" />
     </div>
 </template>
 

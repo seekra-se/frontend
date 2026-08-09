@@ -15,9 +15,9 @@ limitations under the License.
 -->
 
 <script setup>
-import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
-import logo from '@/assets/images/logo.svg';
 import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
+import logo from '@/assets/images/logo.svg';
+import ColorSchemeButton from '@/features/colorScheme/components/ColorSchemeButton.vue';
 </script>
 
 <template>
@@ -33,7 +33,9 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
         </ul>
     </nav>
     <div class="navbar-search-bar-wrapper-small-screens-wrapper">
-        <NavbarSearchBarWrapper class="navbar-search-bar-wrapper-small-screens" />
+        <NavbarSearchBarWrapper
+            class="navbar-search-bar-wrapper-small-screens"
+        />
     </div>
 </template>
 
@@ -60,7 +62,7 @@ import NavbarSearchBarWrapper from './NavbarSearchBarWrapper.vue';
     color: var(--dark);
 }
 
-.global-nav .right-links a:hover{
+.global-nav .right-links a:hover {
     text-decoration: underline;
 }
 

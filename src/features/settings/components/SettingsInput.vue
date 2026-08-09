@@ -15,10 +15,8 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
-
 import { useSettingsStore } from '../stores/settingsStore';
-
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { computed, ref, useId, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -26,11 +24,11 @@ const { t } = useI18n();
 
 const props = defineProps({
     setting: {
-        required: true
+        required: true,
     },
     path: {
-        required: true
-    }
+        required: true,
+    },
 });
 
 const store = useSettingsStore();
@@ -43,29 +41,29 @@ const doneButtonInitial = ref(true);
 const inputId = useId();
 const inputLabelId = useId();
 
-const inputType = computed(() => ({
-        number: 'number',
-        string: 'text'
-    }[props.setting.type]
-));
-
-const hasChanged = computed(() =>
-    inputModel.value !== store.get(props.path)
+const inputType = computed(
+    () =>
+        ({
+            number: 'number',
+            string: 'text',
+        })[props.setting.type],
 );
+
+const hasChanged = computed(() => inputModel.value !== store.get(props.path));
 
 watch(store, (newValue) => {
     const newInputValue = newValue.get(props.path);
     if (inputModel.value === oldInputValue) {
         inputModel.value = newInputValue;
         oldInputValue = newInputValue;
-    };
+    }
 });
 
 watch(inputModel, () => {
     doneButtonInitial.value = false;
 });
 
-const apply = function apply () {
+const apply = function apply() {
     store.set(props.path, inputModel.value);
 };
 </script>
@@ -95,7 +93,7 @@ const apply = function apply () {
                 :title="t('settings.input.done.title')"
                 :aria-label="t('settings.input.done.ariaLabel')"
             >
-                <Icon name="check-mark" />
+                <UIIcon name="check-mark" />
             </button>
         </form>
     </div>
@@ -131,7 +129,10 @@ const apply = function apply () {
 }
 
 .input-container.done-button-shown .input {
-    width: calc(100% - 1.5 * var(--input-padding) - 26px - 0.75 * var(--input-height) + 1.5px);
+    width: calc(
+        100% - 1.5 * var(--input-padding) - 26px - 0.75 * var(--input-height) +
+            1.5px
+    );
 }
 
 .done-button {
@@ -200,7 +201,7 @@ const apply = function apply () {
             opacity: 1;
         }
     }
-    
+
     @keyframes done-button-disappear {
         0% {
             opacity: 1;

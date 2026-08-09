@@ -15,144 +15,144 @@ limitations under the License.
 */
 
 body {
-    --primary-color-l-8:  oklch(0.897 0.202 260);
-    --primary-color-l-7:  oklch(0.847 0.202 260);
-    --primary-color-l-6:  oklch(0.797 0.202 260);
-    --primary-color-l-6:  oklch(0.747 0.202 260);
-    --primary-color-l-4:  oklch(0.697 0.202 260);
-    --primary-color-l-3:  oklch(0.647 0.202 260);
-    --primary-color-l-2:  oklch(0.597 0.202 260);
-    --primary-color-l-1:  oklch(0.547 0.202 260);
-    --primary-color:      oklch(0.497 0.202 260);
-    --primary-color-d-1:  oklch(0.447 0.202 260);
-    --primary-color-d-2:  oklch(0.397 0.202 260);
-    --primary-color-d-3:  oklch(0.347 0.202 260);
-    --primary-color-d-4:  oklch(0.297 0.202 260);
-    --primary-color-d-5:  oklch(0.247 0.202 260);
-    --primary-color-d-6:  oklch(0.197 0.202 260);
-    --primary-color-d-7:  oklch(0.147 0.202 260);
-    --primary-color-d-8:  oklch(0.097 0.202 260);
+    --primary-color-l-8: oklch(0.897 0.202 260);
+    --primary-color-l-7: oklch(0.847 0.202 260);
+    --primary-color-l-6: oklch(0.797 0.202 260);
+    --primary-color-l-6: oklch(0.747 0.202 260);
+    --primary-color-l-4: oklch(0.697 0.202 260);
+    --primary-color-l-3: oklch(0.647 0.202 260);
+    --primary-color-l-2: oklch(0.597 0.202 260);
+    --primary-color-l-1: oklch(0.547 0.202 260);
+    --primary-color: oklch(0.497 0.202 260);
+    --primary-color-d-1: oklch(0.447 0.202 260);
+    --primary-color-d-2: oklch(0.397 0.202 260);
+    --primary-color-d-3: oklch(0.347 0.202 260);
+    --primary-color-d-4: oklch(0.297 0.202 260);
+    --primary-color-d-5: oklch(0.247 0.202 260);
+    --primary-color-d-6: oklch(0.197 0.202 260);
+    --primary-color-d-7: oklch(0.147 0.202 260);
+    --primary-color-d-8: oklch(0.097 0.202 260);
 
-    --black-l-8:          oklch(0.4 0 0);
-    --black-l-7:          oklch(0.35 0 0);
-    --black-l-6:          oklch(0.3 0 0);
-    --black-l-5:          oklch(0.25 0 0);
-    --black-l-4:          oklch(0.2 0 0);
-    --black-l-3:          oklch(0.15 0 0);
-    --black-l-2:          oklch(0.1 0 0);
-    --black-l-1:          oklch(0.05 0 0);
-    --black:              oklch(0 0 0);
+    --black-l-8: oklch(0.4 0 0);
+    --black-l-7: oklch(0.35 0 0);
+    --black-l-6: oklch(0.3 0 0);
+    --black-l-5: oklch(0.25 0 0);
+    --black-l-4: oklch(0.2 0 0);
+    --black-l-3: oklch(0.15 0 0);
+    --black-l-2: oklch(0.1 0 0);
+    --black-l-1: oklch(0.05 0 0);
+    --black: oklch(0 0 0);
 
-    --white:              oklch(1 0 0);
-    --white-d-1:          oklch(0.95 0 0);
-    --white-d-2:          oklch(0.9 0 0);
-    --white-d-3:          oklch(0.85 0 0);
-    --white-d-4:          oklch(0.8 0 0);
-    --white-d-5:          oklch(0.75 0 0);
-    --white-d-6:          oklch(0.7 0 0);
-    --white-d-7:          oklch(0.65 0 0);
-    --white-d-8:          oklch(0.6 0 0);
+    --white: oklch(1 0 0);
+    --white-d-1: oklch(0.95 0 0);
+    --white-d-2: oklch(0.9 0 0);
+    --white-d-3: oklch(0.85 0 0);
+    --white-d-4: oklch(0.8 0 0);
+    --white-d-5: oklch(0.75 0 0);
+    --white-d-6: oklch(0.7 0 0);
+    --white-d-7: oklch(0.65 0 0);
+    --white-d-8: oklch(0.6 0 0);
 
-    --dark-l-8:             var(--black-l-8);
-    --dark-l-7:             var(--black-l-7);
-    --dark-l-6:             var(--black-l-6);
-    --dark-l-5:             var(--black-l-5);
-    --dark-l-4:             var(--black-l-4);
-    --dark-l-3:             var(--black-l-3);
-    --dark-l-2:             var(--black-l-2);
-    --dark-l-1:             var(--black-l-1);
-    --dark:                 var(--black);
+    --dark-l-8: var(--black-l-8);
+    --dark-l-7: var(--black-l-7);
+    --dark-l-6: var(--black-l-6);
+    --dark-l-5: var(--black-l-5);
+    --dark-l-4: var(--black-l-4);
+    --dark-l-3: var(--black-l-3);
+    --dark-l-2: var(--black-l-2);
+    --dark-l-1: var(--black-l-1);
+    --dark: var(--black);
 
-    --light:                var(--white);
-    --light-d-1:            var(--white-d-1);
-    --light-d-2:            var(--white-d-2);
-    --light-d-3:            var(--white-d-3);
-    --light-d-4:            var(--white-d-4);
-    --light-d-5:            var(--white-d-5);
-    --light-d-6:            var(--white-d-6);
-    --light-d-7:            var(--white-d-7);
-    --light-d-8:            var(--white-d-8);
+    --light: var(--white);
+    --light-d-1: var(--white-d-1);
+    --light-d-2: var(--white-d-2);
+    --light-d-3: var(--white-d-3);
+    --light-d-4: var(--white-d-4);
+    --light-d-5: var(--white-d-5);
+    --light-d-6: var(--white-d-6);
+    --light-d-7: var(--white-d-7);
+    --light-d-8: var(--white-d-8);
 
-    --dark-bg:              var(--black-l-2);
-    --light-bg:             var(--white);
+    --dark-bg: var(--black-l-2);
+    --light-bg: var(--white);
 
-    --border:               var(--white-d-3);
+    --border: var(--white-d-3);
 
-    --gray-box-shadow:    oklch(0.8 0.0001 271 / 0.7);
-    --blue-box-shadow:    oklch(0.52 0.15 268 / 0.25);
+    --gray-box-shadow: oklch(0.8 0.0001 271 / 0.7);
+    --blue-box-shadow: oklch(0.52 0.15 268 / 0.25);
 
-    --light-hover:          var(--light-d-2);
+    --light-hover: var(--light-d-2);
 
     --invert: invert(0);
 
-    --color-negative-bg:     oklch(59% 0.22706 29.244);
+    --color-negative-bg: oklch(59% 0.22706 29.244);
     --color-negative-border: oklch(51% 0.22706 29.244);
 }
 
 @media (prefers-color-scheme: dark) {
     body.color-scheme-auto {
-        --dark-l-8:             var(--white-d-8);
-        --dark-l-7:             var(--white-d-7);
-        --dark-l-6:             var(--white-d-6);
-        --dark-l-5:             var(--white-d-5);
-        --dark-l-4:             var(--white-d-4);
-        --dark-l-3:             var(--white-d-3);
-        --dark-l-2:             var(--white-d-2);
-        --dark-l-1:             var(--white-d-1);
-        --dark:                 var(--white);
+        --dark-l-8: var(--white-d-8);
+        --dark-l-7: var(--white-d-7);
+        --dark-l-6: var(--white-d-6);
+        --dark-l-5: var(--white-d-5);
+        --dark-l-4: var(--white-d-4);
+        --dark-l-3: var(--white-d-3);
+        --dark-l-2: var(--white-d-2);
+        --dark-l-1: var(--white-d-1);
+        --dark: var(--white);
 
-        --light:                var(--black);
-        --light-d-1:            oklch(0.10 0 0);
-        --light-d-2:            var(--black-l-2);
-        --light-d-3:            var(--black-l-3);
-        --light-d-4:            var(--black-l-4);
-        --light-d-5:            var(--black-l-5);
-        --light-d-6:            var(--black-l-6);
-        --light-d-7:            var(--black-l-7);
-        --light-d-8:            var(--black-l-8);
+        --light: var(--black);
+        --light-d-1: oklch(0.1 0 0);
+        --light-d-2: var(--black-l-2);
+        --light-d-3: var(--black-l-3);
+        --light-d-4: var(--black-l-4);
+        --light-d-5: var(--black-l-5);
+        --light-d-6: var(--black-l-6);
+        --light-d-7: var(--black-l-7);
+        --light-d-8: var(--black-l-8);
 
-        --dark-bg:              var(--white);
-        --light-bg:             oklch(0.18 0 0);
+        --dark-bg: var(--white);
+        --light-bg: oklch(0.18 0 0);
 
-        --border:               var(--black-l-6);
+        --border: var(--black-l-6);
 
-        --gray-box-shadow:    oklch(0.25 0.0001 271 / 0.7);
+        --gray-box-shadow: oklch(0.25 0.0001 271 / 0.7);
 
-        --light-hover:          var(--light-d-5);
+        --light-hover: var(--light-d-5);
 
         --invert: invert(1);
     }
 }
 
 body.dark {
-    --dark-l-8:             var(--white-d-8);
-    --dark-l-7:             var(--white-d-7);
-    --dark-l-6:             var(--white-d-6);
-    --dark-l-5:             var(--white-d-5);
-    --dark-l-4:             var(--white-d-4);
-    --dark-l-3:             var(--white-d-3);
-    --dark-l-2:             var(--white-d-2);
-    --dark-l-1:             var(--white-d-1);
-    --dark:                 var(--white);
+    --dark-l-8: var(--white-d-8);
+    --dark-l-7: var(--white-d-7);
+    --dark-l-6: var(--white-d-6);
+    --dark-l-5: var(--white-d-5);
+    --dark-l-4: var(--white-d-4);
+    --dark-l-3: var(--white-d-3);
+    --dark-l-2: var(--white-d-2);
+    --dark-l-1: var(--white-d-1);
+    --dark: var(--white);
 
-    --light:                var(--black);
-    --light-d-1:            oklch(0.10 0 0);
-    --light-d-2:            var(--black-l-2);
-    --light-d-3:            var(--black-l-3);
-    --light-d-4:            var(--black-l-4);
-    --light-d-5:            var(--black-l-5);
-    --light-d-6:            var(--black-l-6);
-    --light-d-7:            var(--black-l-7);
-    --light-d-8:            var(--black-l-8);
+    --light: var(--black);
+    --light-d-1: oklch(0.1 0 0);
+    --light-d-2: var(--black-l-2);
+    --light-d-3: var(--black-l-3);
+    --light-d-4: var(--black-l-4);
+    --light-d-5: var(--black-l-5);
+    --light-d-6: var(--black-l-6);
+    --light-d-7: var(--black-l-7);
+    --light-d-8: var(--black-l-8);
 
-    --dark-bg:              var(--white);
-    --light-bg:             oklch(0.18 0 0);
+    --dark-bg: var(--white);
+    --light-bg: oklch(0.18 0 0);
 
-    --border:               var(--black-l-6);
+    --border: var(--black-l-6);
 
-    --gray-box-shadow:    oklch(0.25 0.0001 271 / 0.7);
+    --gray-box-shadow: oklch(0.25 0.0001 271 / 0.7);
 
-    --light-hover:          var(--light-d-5);
+    --light-hover: var(--light-d-5);
 
     --invert: invert(1);
 }

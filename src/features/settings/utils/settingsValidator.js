@@ -16,33 +16,38 @@ limitations under the License.
 
 const VALID_TYPES = ['bool', 'number', 'string', 'selection', 'section'];
 
-export const assertString = function assertString (value, path) {
+export const assertString = function assertString(value, path) {
     if (typeof value !== 'string' || value.trim() === '') {
         throw new Error(`[settings] "${path}" must be a non-empty string`);
     }
-}
+};
 
-export const assertType = function assertType (value, path) {
+export const assertType = function assertType(value, path) {
     if (!VALID_TYPES.includes(value)) {
         throw new Error(
-            `[settings] "${path}" has invalid type "${value}". Must be one of: ${VALID_TYPES.join(', ')}`
+            `[settings] "${path}" has invalid type "${value}". Must be one of: ${VALID_TYPES.join(', ')}`,
         );
     }
-}
+};
 
-export const validateSelectionOptions = function validateSelectionOptions (options, path) {
+export const validateSelectionOptions = function validateSelectionOptions(
+    options,
+    path,
+) {
     if (!Array.isArray(options) || options.length === 0) {
-        throw new Error(`[settings] "${path}.options" must be a non-empty array`);
-    };
+        throw new Error(
+            `[settings] "${path}.options" must be a non-empty array`,
+        );
+    }
     options.forEach((opt, i) => {
         assertString(opt.name, `${path}.options[${i}].name`);
         assertString(opt.i18n, `${path}.options[${i}].i18n`);
     });
-}
+};
 
-export const validateEntry = function validateEntry (entry, path) {
+export const validateEntry = function validateEntry(entry, path) {
     assertType(entry.type, `${path}.type`);
-    
+
     assertString(entry.name, `${path}.name`);
     assertString(entry.i18n, `${path}.i18n`);
 
@@ -51,17 +56,19 @@ export const validateEntry = function validateEntry (entry, path) {
             throw new Error(`[settings] "${path}.content" must be an array`);
         }
         entry.content.forEach((child, i) =>
-            validateEntry(child, `${path}.content[${i}]`)
+            validateEntry(child, `${path}.content[${i}]`),
         );
         return;
     }
-    
+
     if (entry.type === 'selection') {
         validateSelectionOptions(entry.options, path);
         if (typeof entry.allowMultiple !== 'boolean' && entry.allowMultiple) {
-            throw new Error(`[settings] "${path}.allowMultiple" must be a boolean`);
+            throw new Error(
+                `[settings] "${path}.allowMultiple" must be a boolean`,
+            );
         }
-    };
+    }
     if (entry.default !== undefined) {
         if (entry.type === 'bool' && typeof entry.default !== 'boolean') {
             throw new Error(`[settings] "${path}.default" must be a boolean`);
@@ -75,39 +82,56 @@ export const validateEntry = function validateEntry (entry, path) {
         if (entry.type === 'selection') {
             if (entry.allowMultiple) {
                 if (!Array.isArray(entry.default)) {
-                    throw new Error(`[settings] "${path}.default" must be an array`);
+                    throw new Error(
+                        `[settings] "${path}.default" must be an array`,
+                    );
                 }
                 const allOptions = entry.options.map((option) => option.name);
                 entry.default.forEach((defaultValue, index) => {
                     if (typeof defaultValue !== 'string') {
-                        throw new Error(`[settings] "${path}.default[${index}]" must be a string`);
+                        throw new Error(
+                            `[settings] "${path}.default[${index}]" must be a string`,
+                        );
                     }
                     if (!allOptions.includes(defaultValue)) {
-                        throw new Error(`[settings] option "${path}.default[${index}]" does not exist`);
+                        throw new Error(
+                            `[settings] option "${path}.default[${index}]" does not exist`,
+                        );
                     }
                 });
             } else {
                 if (typeof entry.default !== 'string') {
-                    throw new Error(`[settings] "${path}.default" must be a string`);
-                };
-                if (!entry.options.map((option) => option.name).includes(entry.default)) {
-                    throw new Error(`[settings] option "${path}.default" does not exist`);
-                };
+                    throw new Error(
+                        `[settings] "${path}.default" must be a string`,
+                    );
+                }
+                if (
+                    !entry.options
+                        .map((option) => option.name)
+                        .includes(entry.default)
+                ) {
+                    throw new Error(
+                        `[settings] option "${path}.default" does not exist`,
+                    );
+                }
             }
-        };
+        }
     }
-}
+};
 
-export const validateFirstLevelSection = function validateFirstLevelSection (section, path) {
+export const validateFirstLevelSection = function validateFirstLevelSection(
+    section,
+    path,
+) {
     assertString(section.name);
     assertString(section.i18n);
 
     if (!Array.isArray(section.content)) {
         throw new Error(`[settings] "${path}.content" must be an array`);
-    };
+    }
 
     section.content.forEach((entry, i) =>
-        validateEntry(entry, `${path}.content[${i}]`)
+        validateEntry(entry, `${path}.content[${i}]`),
     );
 };
 
@@ -116,7 +140,7 @@ export const validateFirstLevelSection = function validateFirstLevelSection (sec
  * @param {unknown} raw
  * @returns {{ valid: true, config: import('../types/settingsConfig').SettingsConfig } | { valid: false, error: string }}
  */
-export function validateSettingsConfig(raw) {
+export const validateSettingsConfig = function validateSettingsConfig(raw) {
     if (!raw || typeof raw !== 'object') {
         throw new Error('[settings] Config must be an object');
     }
@@ -124,6 +148,6 @@ export function validateSettingsConfig(raw) {
         throw new Error('[settings] "contents" must be an array');
     }
     raw.contents.forEach((entry, i) =>
-        validateFirstLevelSection(entry, `contents[${i}]`)
+        validateFirstLevelSection(entry, `contents[${i}]`),
     );
-}
+};

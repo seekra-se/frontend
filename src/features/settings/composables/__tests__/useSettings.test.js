@@ -33,17 +33,17 @@ vi.mock('../../config.js', () => ({
                         type: 'number',
                         i18n: '',
                         name: 'number',
-                        default: settingDefaultValue
+                        default: settingDefaultValue,
                     },
                     {
                         type: 'bool',
                         i18n: '',
-                        name: 'bool'
-                    }
-                ]
-            }
-        ]
-    }
+                        name: 'bool',
+                    },
+                ],
+            },
+        ],
+    },
 }));
 
 describe('useSettings', () => {
@@ -59,7 +59,7 @@ describe('useSettings', () => {
         });
 
         test('returns default value', () => {
-            const { getSetting, setSetting } = useSettings();
+            const { getSetting } = useSettings();
             expect(getSetting(settingPath)).toBe(settingDefaultValue);
         });
 
@@ -85,7 +85,7 @@ beforeEach(() => {
     setActivePinia(
         createTestingPinia({
             createSpy: vi.fn,
-            stubActions: false
-        })
+            stubActions: false,
+        }),
     );
 });

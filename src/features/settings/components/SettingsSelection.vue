@@ -15,14 +15,14 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
 import { useSettingsStore } from '../stores/settingsStore';
-import { computed, ref, useId, watch } from 'vue';
+import UIIcon from '@/features/icons/components/UIIcon.vue';
+import { computed, useId } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const normalizeSelectedValue = function normalizeSelectedValue (value) {
+const normalizeSelectedValue = function normalizeSelectedValue(value) {
     if (props.setting.allowMultiple) {
         if (Array.isArray(value)) {
             return value;
@@ -44,19 +44,22 @@ const normalizeSelectedValue = function normalizeSelectedValue (value) {
 
 const props = defineProps({
     setting: {
-        required: true
+        required: true,
     },
     path: {
-        required: true
-    }
+        required: true,
+    },
 });
 
 const store = useSettingsStore();
 
-const optionType = computed(() => props.setting.allowMultiple ? 'checkbox' : 'radio');
+const optionType = computed(() =>
+    props.setting.allowMultiple ? 'checkbox' : 'radio',
+);
 const selected = computed({
-    get: () => normalizeSelectedValue(store.get(props.path) ?? props.setting.default),
-    set: (value) => store.set(props.path, value)
+    get: () =>
+        normalizeSelectedValue(store.get(props.path) ?? props.setting.default),
+    set: (value) => store.set(props.path, value),
 });
 
 const labelId = useId();
@@ -72,7 +75,11 @@ const labelId = useId();
                 <label
                     class="settings-button"
                     :title="t(option.i18n)"
-                    :aria-label="t('settings.selection.option.ariaLabel', { option: t(option.i18n) })"
+                    :aria-label="
+                        t('settings.selection.option.ariaLabel', {
+                            option: t(option.i18n),
+                        })
+                    "
                 >
                     <input
                         :type="optionType"
@@ -80,9 +87,13 @@ const labelId = useId();
                         :value="option.name"
                         class="option-input"
                         v-model="selected"
-                    >
+                    />
                     <div class="option-check-mark-wrapper">
-                        <Icon class="option-check-mark" name="check-mark" size="1em" />
+                        <UIIcon
+                            class="option-check-mark"
+                            name="check-mark"
+                            size="1em"
+                        />
                     </div>
                     <div class="input-label">
                         {{ t(option.i18n) }}

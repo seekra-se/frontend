@@ -19,13 +19,13 @@ limitations under the License.
  * @param {string} path - The settings page path.
  * @returns {Array} The settings page path segments.
  */
-export const getSettingsPagePathSegments = function getSettingsPagePathSegments (path) {
+export const getSettingsPagePathSegments = function getSettingsPagePathSegments(
+    path,
+) {
     if (typeof path !== 'string') return [];
     return path
         .replace(/^\.+|\.+$/g, '')
         .split('.')
-        .map(
-            (segment) => segment.replace(/[^a-zA-Z0-9-]/g, '')
-        )
+        .map((segment) => segment.replace(/[^a-zA-Z0-9-]/g, ''))
         .filter(Boolean);
 };

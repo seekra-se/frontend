@@ -42,7 +42,7 @@
     "settings": {
         "input": {
             "done": {
-            "title": "Guardar valor",
+                "title": "Guardar valor",
                 "ariaLabel": "Guarda o valor introduzido"
             }
         },

@@ -14,32 +14,38 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import Switch from '../Switch.vue';
-import { mountComponent } from '@/test-utils/mountComponent.js';
 import { useSettingsStore } from '../../stores/settingsStore.js';
-import { expect, describe, test } from 'vitest';
+import SettingsSwitch from '../SettingsSwitch.vue';
+import { mountComponent } from '@/test-utils/mountComponent.js';
+import { describe, expect, test } from 'vitest';
 import { nextTick } from 'vue';
 
-const getWrapper = function getWrapper ({
+const getWrapper = function getWrapper({
     i18n = 'switch1',
     defaultValue = undefined,
     translations = {},
-    piniaOptions = {}
+    piniaOptions = {},
 } = {}) {
-    return mountComponent(Switch, {
-        attrs: {
-            setting: {
-                type: 'bool',
-                name: 'switch',
-                i18n,
-                default: defaultValue
+    return mountComponent(
+        SettingsSwitch,
+        {
+            attrs: {
+                setting: {
+                    type: 'bool',
+                    name: 'switch',
+                    i18n,
+                    default: defaultValue,
+                },
+                path: 'switch',
             },
-            path: 'switch'
-        }
-    }, translations, [], piniaOptions);
+        },
+        translations,
+        [],
+        piniaOptions,
+    );
 };
 
-describe('Switch', () => {
+describe('SettingsSwitch', () => {
     test('shows value from store', async () => {
         const wrapper = getWrapper();
 
@@ -61,7 +67,7 @@ describe('Switch', () => {
 
     test('shows default value', () => {
         const wrapper = getWrapper({
-            defaultValue: true
+            defaultValue: true,
         });
 
         const switchElement = wrapper.find('.switch-wrapper');
@@ -75,8 +81,8 @@ describe('Switch', () => {
                 setupStores: () => {
                     const store = useSettingsStore();
                     store.set('switch', false);
-                }
-            }
+                },
+            },
         });
 
         const switchElement = wrapper.find('.switch-wrapper');
@@ -89,7 +95,7 @@ describe('Switch', () => {
 
         const switchElement = wrapper.find('.switch-wrapper');
         expect(switchElement.classes('enabled')).toBeFalsy();
-        
+
         store.set('switch', true);
         await nextTick();
         expect(switchElement.classes('enabled')).toBeTruthy();
@@ -97,27 +103,27 @@ describe('Switch', () => {
 
     test('toggles value in store', async () => {
         const wrapper = getWrapper();
-        
+
         const switchElement = wrapper.find('.switch-wrapper');
-        
+
         const store = useSettingsStore();
         expect(store.get('switch')).toBeUndefined();
-        
+
         switchElement.trigger('click');
         await nextTick();
         expect(store.get('switch')).toBe(true);
-        
+
         switchElement.trigger('click');
         await nextTick();
         expect(store.get('switch')).toBe(false);
     });
-    
+
     test('shows correct translation', () => {
         const translation = 'Switch';
 
         const wrapper = getWrapper({
-            translations: { switch1: translation }
-        })
+            translations: { switch1: translation },
+        });
 
         const label = wrapper.find('label');
         expect(label.text()).toBe(translation);

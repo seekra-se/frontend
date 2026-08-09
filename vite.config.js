@@ -14,29 +14,29 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue';
 import path from 'path';
+import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 
 // https://vite.dev/config/
 export default defineConfig({
-  build: {
-    target: 'es2020'
-  },
-  plugins: [
-    vue(),
-    createHtmlPlugin({
-      minify: true
-    })
-  ],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src')
-    }
-  },
-  test: {
-    globals: false,
-    environment: 'jsdom'
-  }
-})
+    build: {
+        target: 'es2020',
+    },
+    plugins: [
+        vue(),
+        createHtmlPlugin({
+            minify: true,
+        }),
+    ],
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, './src'),
+        },
+    },
+    test: {
+        globals: false,
+        environment: 'jsdom',
+    },
+});

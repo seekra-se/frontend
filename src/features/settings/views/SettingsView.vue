@@ -15,11 +15,10 @@ limitations under the License.
 -->
 
 <script setup>
-import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 import SettingsPage from '../components/SettingsPage.vue';
-
 import settingsConfiguration from '../config.js';
 import { getSettingRecursively } from '../utils/getSetting.js';
+import LeftSidebarLayout from '@/layouts/LeftSidebarLayout.vue';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
@@ -31,15 +30,13 @@ const router = useRouter();
 const settings = settingsConfiguration.contents;
 
 const activePath = computed(() => {
-    const segments = route.path
-        .split('/')
-        .filter(Boolean);
+    const segments = route.path.split('/').filter(Boolean);
 
     return segments.slice(1, segments.length);
 });
 
 const activeSection = ref(null);
-const updateSettings = async function updateSettings () {
+const updateSettings = async function updateSettings() {
     const setting = getSettingRecursively(activePath.value, settings);
     if (setting) {
         activeSection.value = setting;
@@ -50,7 +47,9 @@ const updateSettings = async function updateSettings () {
 watch(route, (newRoute) => updateSettings(newRoute));
 onMounted(updateSettings);
 
-const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen (toggleSidebarFunction) {
+const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen(
+    toggleSidebarFunction,
+) {
     if (matchMedia('(max-width: 48rem)').matches) toggleSidebarFunction();
 };
 </script>
@@ -65,11 +64,15 @@ const toggleSidebarIfSmallScreen = function toggleSidebarIfSmallScreen (toggleSi
         <LeftSidebarLayout class="layout">
             <template #sidebar="{ toggleSidebar }">
                 <ul class="sidebar-sections-list">
-                    <li v-for="section in settings">
+                    <li v-for="section in settings" :key="section">
                         <RouterLink
                             :to="`/settings/${section.name}`"
                             class="button button-link link sidebar-section"
-                            :class="{ active: activeSection && activeSection.name === section.name }"
+                            :class="{
+                                active:
+                                    activeSection &&
+                                    activeSection.name === section.name,
+                            }"
                             @click="toggleSidebarIfSmallScreen(toggleSidebar)"
                         >
                             {{ t(section.i18n) }}

@@ -18,29 +18,19 @@ import { createI18n } from 'vue-i18n';
 
 export const fallbackLocale = 'en';
 
-
-export const LANGUAGES_RTL = [
-    'ar'
-];
-export const SUPPORTED_LANGUAGES = [
-    'en',
-    'de',
-    'fr',
-    'es',
-    'pt',
-    'it'
-];
+export const LANGUAGES_RTL = ['ar'];
+export const SUPPORTED_LANGUAGES = ['en', 'de', 'fr', 'es', 'pt', 'it'];
 
 export const i18n = createI18n({
     legacy: false,
     locale: fallbackLocale,
-    fallbackLocale: fallbackLocale,
-    messages: {}
+    fallbackLocale,
+    messages: {},
 });
 
 const loadedLanguages = new Set();
 
-export async function loadLanguage (locale) {
+export const loadLanguage = async function loadLanguage(locale) {
     if (!SUPPORTED_LANGUAGES.includes(locale)) {
         locale = fallbackLocale;
     }
@@ -48,7 +38,7 @@ export async function loadLanguage (locale) {
     if (loadedLanguages.has(locale)) {
         i18n.global.locale.value = locale;
         return;
-    };
+    }
 
     const messages = (await import(`./locales/${locale}.json`)).default;
 
@@ -58,8 +48,10 @@ export async function loadLanguage (locale) {
     loadedLanguages.add(locale);
 };
 
-export const setLocale = async function setLocale (locale) {
+export const setLocale = async function setLocale(locale) {
     await loadLanguage(locale);
     document.documentElement.lang = locale;
-    document.documentElement.dir = LANGUAGES_RTL.includes(locale) ? 'rtl' : 'ltr';
+    document.documentElement.dir = LANGUAGES_RTL.includes(locale)
+        ? 'rtl'
+        : 'ltr';
 };

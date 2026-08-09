@@ -21,9 +21,9 @@ import { describe, expect, test } from 'vitest';
 
 const { getSetting } = useSettings();
 
-const colorSchemeSettingPath = ['appearance', 'colorScheme']
+const colorSchemeSettingPath = ['appearance', 'colorScheme'];
 
-const getWrapper = function getWrapper () {
+const getWrapper = function getWrapper() {
     return mountComponent(ColorSchemeButton);
 };
 
@@ -32,7 +32,7 @@ describe('ColorSchemeButton', () => {
         const wrapper = getWrapper();
 
         expect(getSetting(colorSchemeSettingPath)).toBe('auto');
-        
+
         const colorSchemeButton = wrapper.find('button');
 
         await colorSchemeButton.trigger('click');

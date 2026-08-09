@@ -15,13 +15,12 @@ limitations under the License.
 -->
 
 <script setup>
-import Navbar from './features/nav/components/Navbar.vue';
-import Footer from './features/footer/components/Footer.vue';
-
 import { LANGUAGE_PATH } from './config/featureSettings.js';
-import { updatePageTitle } from './router';
+import AppFooter from './features/footer/components/AppFooter.vue';
+import AppNavbar from './features/nav/components/AppNavbar.vue';
 import { useSettings } from './features/settings/composables/useSettings.js';
 import { setLocale } from './i18n';
+import { updatePageTitle } from './router';
 import { computed, onMounted, watch, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -30,11 +29,11 @@ const route = useRoute();
 const { getSetting } = useSettings();
 const colorScheme = computed(() => getSetting(['appearance', 'colorScheme']));
 
-const updateColorScheme = function updateColorScheme (newColorScheme) {
+const updateColorScheme = function updateColorScheme(newColorScheme) {
     document.body.style.setProperty(colorScheme, {
         auto: 'normal',
         dark: 'dark',
-        light: 'light'
+        light: 'light',
     });
     if (newColorScheme === 'dark') {
         document.body.classList.add('dark');
@@ -46,7 +45,7 @@ const updateColorScheme = function updateColorScheme (newColorScheme) {
     } else {
         document.body.classList.remove('color-scheme-auto');
     }
-}
+};
 watch(colorScheme, (newColorScheme) => {
     updateColorScheme(newColorScheme);
 });
@@ -61,11 +60,11 @@ onMounted(() => {
 
 <template>
     <div id="app-wrapper">
-        <Navbar />
+        <AppNavbar />
 
         <router-view class="main-content" />
 
-        <Footer />
+        <AppFooter />
     </div>
 </template>
 
@@ -73,7 +72,8 @@ onMounted(() => {
 #app-wrapper {
     --main-content-padding-x: 30px;
     --main-content-padding-y: 40px;
-    --main-content-padding: var(--main-content-padding-y) var(--main-content-padding-x);
+    --main-content-padding: var(--main-content-padding-y)
+        var(--main-content-padding-x);
     min-height: 100vh;
     display: flex;
     flex-direction: column;

@@ -60,29 +60,25 @@ describe('fetchLegalContent', () => {
     describe('getLegalNotice', () => {
         describe('success', () => {
             test('returns HTML body', async () => {
-                fetchSpy.mockResolvedValue(
-                    new Response(exampleHtmlDocument)
-                );
+                fetchSpy.mockResolvedValue(new Response(exampleHtmlDocument));
 
-                expect(
-                    (await getLegalNotice()).trim()
-                ).toBe(exampleHtmlWithLinkClass);
+                expect((await getLegalNotice()).trim()).toBe(
+                    exampleHtmlWithLinkClass,
+                );
             });
 
             test('returns HTML <main>', async () => {
                 fetchSpy.mockResolvedValue(
-                    new Response(exampleHtmlDocumentWithMain)
+                    new Response(exampleHtmlDocumentWithMain),
                 );
 
-                expect(
-                    (await getLegalNotice()).trim()
-                ).toBe(exampleHtmlWithLinkClass);
+                expect((await getLegalNotice()).trim()).toBe(
+                    exampleHtmlWithLinkClass,
+                );
             });
 
             test('does not fail on success status code', async () => {
-                fetchSpy.mockResolvedValue(
-                    new Response(null, { status: 206 })
-                );
+                fetchSpy.mockResolvedValue(new Response(null, { status: 206 }));
 
                 await getLegalNotice();
             });
@@ -95,9 +91,7 @@ describe('fetchLegalContent', () => {
             });
 
             test('throws FetchError on HTTP error', async () => {
-                fetchSpy.mockResolvedValue(
-                    new Response(null, { status: 404 })
-                )
+                fetchSpy.mockResolvedValue(new Response(null, { status: 404 }));
                 await expect(getLegalNotice()).rejects.toThrow(FetchError);
             });
 

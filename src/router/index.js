@@ -14,71 +14,71 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { createRouter, createWebHistory } from 'vue-router';
-import { i18n } from '@/i18n';
-
-import SearchView from '../views/SearchView.vue';
 import LegalNoticeView from '@/features/legal/views/LegalNoticeView.vue';
 import SearchResultsView from '@/features/search/views/SearchResultsView.vue';
+import SearchView from '@/features/search/views/SearchView.vue';
 import SettingsView from '@/features/settings/views/SettingsView.vue';
-import NotFound from '../views/NotFound.vue';
+import NotFound from '@/views/NotFound.vue';
+
+import { i18n } from '@/i18n';
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
     {
         path: '/',
         name: 'startPage',
-        component: SearchView
+        component: SearchView,
     },
     {
         path: '/search',
         name: 'searchResults',
         component: SearchResultsView,
-        props: route => ({
-            searchQuery: route.query.q
+        props: (route) => ({
+            searchQuery: route.query.q,
         }),
         meta: {
-            title: (route) => route.query.q
-        }
+            title: (route) => route.query.q,
+        },
     },
     {
         path: '/legal/notice',
         name: 'legalNotice',
         component: LegalNoticeView,
         meta: {
-            title: () => i18n.global.t('legal.notice.title')
-        }
+            title: () => i18n.global.t('legal.notice.title'),
+        },
     },
     {
         path: '/settings/:rest(.*)*',
         name: 'settings',
         component: SettingsView,
         meta: {
-            title: () => i18n.global.t('preferences.settings')
-        }
+            title: () => i18n.global.t('preferences.settings'),
+        },
     },
     {
         path: '/:pathMatch(.*)*',
         name: 'notFound',
-        component: NotFound
+        component: NotFound,
     },
 ];
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
 });
 
-export const updatePageTitle = function updatePageTitle (route) {
+export const updatePageTitle = function updatePageTitle(route) {
     const title =
         typeof route.meta.title === 'function'
-        ? route.meta.title(route)
-        : route.meta.title;
+            ? route.meta.title(route)
+            : route.meta.title;
 
     if (title) {
         document.title = `${title} - Seekra`;
     } else {
         document.title = 'Seekra';
-    };
+    }
 };
 
 // remove trailing slash(es)
@@ -88,9 +88,9 @@ router.beforeEach((route) => {
             path: route.path.replace(/\/+$/, ''),
             query: route.query,
             hash: route.hash,
-            replace: true
+            replace: true,
         };
-    };
+    }
 });
 
 export default router;

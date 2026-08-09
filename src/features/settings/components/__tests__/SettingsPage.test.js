@@ -14,44 +14,53 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import Selection from '../Selection.vue';
+import SettingsSelection from '../SettingsSelection.vue';
 import SettingsInput from '../SettingsInput.vue';
 import SettingsPage from '../SettingsPage.vue';
 import SettingsPageLink from '../SettingsPageLink.vue';
-import Switch from '../Switch.vue';
+import SettingsSwitch from '../SettingsSwitch.vue';
 import { mountComponent } from '@/test-utils/mountComponent.js';
 import { describe, expect, test } from 'vitest';
 
-
-const getWrapper = function getWrapper({ content = [], translations = {}, piniaOptions = {} }) {
-    return mountComponent(SettingsPage, {
-        attrs: {
-            setting: {
-                name: 'section',
-                type: 'section',
-                i18n: 'section',
-                content: content
+const getWrapper = function getWrapper({
+    content = [],
+    translations = {},
+    piniaOptions = {},
+}) {
+    return mountComponent(
+        SettingsPage,
+        {
+            attrs: {
+                setting: {
+                    name: 'section',
+                    type: 'section',
+                    i18n: 'section',
+                    content,
+                },
+                path: 'section',
             },
-            path: 'section'
-        }
-    }, translations, [], piniaOptions);
+        },
+        translations,
+        [],
+        piniaOptions,
+    );
 };
 
 const exampleSettings = [
     {
         type: 'bool',
         name: 'b0',
-        i18n: 'settings.section.b0'
+        i18n: 'settings.section.b0',
     },
     {
         type: 'number',
         name: 'n0',
-        i18n: 'settings.section.n0'
+        i18n: 'settings.section.n0',
     },
     {
         type: 'string',
         name: 'st0',
-        i18n: 'settings.section1.st0'
+        i18n: 'settings.section1.st0',
     },
     {
         type: 'selection',
@@ -61,14 +70,14 @@ const exampleSettings = [
             { name: 'o0', i18n: 'settings.section.se0.o0' },
             { name: 'o1', i18n: 'settings.section.se0.o1' },
             { name: 'o2', i18n: 'settings.section.se0.o2' },
-            { name: 'o3', i18n: 'settings.section.se0.o3' }
-        ]
+            { name: 'o3', i18n: 'settings.section.se0.o3' },
+        ],
     },
     {
         type: 'section',
         name: 's0',
         i18n: 'settings.section.s0',
-        content: []
+        content: [],
     },
     {
         type: 'section',
@@ -79,17 +88,17 @@ const exampleSettings = [
                 type: 'bool',
                 name: 'b0',
                 i18n: 'settings.section.s1.b0',
-                default: true
-            }
-        ]
-    }
+                default: true,
+            },
+        ],
+    },
 ];
 
 describe('SettingsPage', () => {
     test('shows correct heading', () => {
         const translation = 'Example section';
         const wrapper = getWrapper({
-            translations: { section: translation }
+            translations: { section: translation },
         });
 
         const heading = wrapper.find('.section-heading');
@@ -98,9 +107,8 @@ describe('SettingsPage', () => {
 
     test('shows settings correctly', () => {
         const wrapper = getWrapper({
-            content: exampleSettings
+            content: exampleSettings,
         });
-
 
         const settingsWrappers = wrapper.findAll('.setting');
         expect(settingsWrappers.length).toBe(exampleSettings.length);
@@ -108,10 +116,12 @@ describe('SettingsPage', () => {
         exampleSettings.forEach((expectedSetting, index) => {
             const settingWrapper = settingsWrappers[index];
 
-            const switchSetting = settingWrapper.findComponent(Switch);
+            const switchSetting = settingWrapper.findComponent(SettingsSwitch);
             const inputSetting = settingWrapper.findComponent(SettingsInput);
-            const selectionSetting = settingWrapper.findComponent(Selection);
-            const settingsPageLink = settingWrapper.findComponent(SettingsPageLink);
+            const selectionSetting =
+                settingWrapper.findComponent(SettingsSelection);
+            const settingsPageLink =
+                settingWrapper.findComponent(SettingsPageLink);
 
             let setting;
             if (expectedSetting.type === 'bool') {
@@ -121,7 +131,10 @@ describe('SettingsPage', () => {
                 expect(settingsPageLink.exists()).toBe(false);
 
                 setting = switchSetting;
-            } else if (expectedSetting.type === 'string' || expectedSetting.type === 'number') {
+            } else if (
+                expectedSetting.type === 'string' ||
+                expectedSetting.type === 'number'
+            ) {
                 expect(switchSetting.exists()).toBe(false);
                 expect(inputSetting.exists()).toBe(true);
                 expect(selectionSetting.exists()).toBe(false);
@@ -150,10 +163,14 @@ describe('SettingsPage', () => {
                 expectedSetting.type === 'selection'
             ) {
                 expect(setting.props('setting')).toMatchObject(expectedSetting);
-                expect(setting.props('path')).toBe(`section.${expectedSetting.name}`);
+                expect(setting.props('path')).toBe(
+                    `section.${expectedSetting.name}`,
+                );
             } else {
                 expect(setting.props('displayName')).toBe(expectedSetting.i18n);
-                expect(setting.props('target')).toBe(`section.${expectedSetting.name}`);
+                expect(setting.props('target')).toBe(
+                    `section.${expectedSetting.name}`,
+                );
             }
         });
     });

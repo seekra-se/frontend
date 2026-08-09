@@ -15,8 +15,7 @@ limitations under the License.
 -->
 
 <script setup>
-import Icon from '@/features/icons/components/Icon.vue';
-
+import UIIcon from '@/features/icons/components/UIIcon.vue';
 import { useSettings } from '@/features/settings/composables/useSettings';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -27,33 +26,36 @@ const { getSetting, setSetting } = useSettings();
 const colorScheme = computed(() => getSetting(['appearance', 'colorScheme']));
 
 const colorSchemeNextMapper = {
-    'light': 'dark',
-    'dark': 'auto',
-    'auto': 'light'
+    light: 'dark',
+    dark: 'auto',
+    auto: 'light',
 };
 
 const colorSchemeIconMapper = {
-    'dark': 'crescent-moon',
-    'light': 'sun',
-    'auto': 'circle-black-white'
+    dark: 'crescent-moon',
+    light: 'sun',
+    auto: 'circle-black-white',
 };
 
-const getTooltipTranslation = function (colorScheme) {
-    return t(`preferences.colorScheme.switch.${colorSchemeNextMapper[colorScheme]}`);
+const getTooltipTranslation = function getTooltipTranslation(colorScheme) {
+    return t(
+        `preferences.colorScheme.switch.${colorSchemeNextMapper[colorScheme]}`,
+    );
 };
 
-const setColorScheme = function setColorScheme (newColorScheme) {
+const setColorScheme = function setColorScheme(newColorScheme) {
     setSetting(['appearance', 'colorScheme'], newColorScheme);
 };
 </script>
 
 <template>
-    <button class="color-scheme-button"
+    <button
+        class="color-scheme-button"
         @click="setColorScheme(colorSchemeNextMapper[colorScheme])"
         :aria-label="getTooltipTranslation(colorScheme)"
         :title="getTooltipTranslation(colorScheme)"
     >
-        <Icon
+        <UIIcon
             :name="colorSchemeIconMapper[colorSchemeNextMapper[colorScheme]]"
             size="16"
         />

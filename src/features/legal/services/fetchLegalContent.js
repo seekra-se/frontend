@@ -17,7 +17,7 @@ limitations under the License.
 import { FetchError } from '../errors';
 import { getAssetsUrl } from '@/config/env';
 
-const fetchHtml = async function fetchHtml (url, options) {
+const fetchHtml = async function fetchHtml(url, options) {
     let response;
     try {
         response = await fetch(url, options);
@@ -29,16 +29,17 @@ const fetchHtml = async function fetchHtml (url, options) {
     else throw new FetchError();
 };
 
-export const getLegalNotice = async function getLegalNotice () {
-    const legalNoticeUrl = new URL('legal/legal_notice.html', getAssetsUrl()).href;
+export const getLegalNotice = async function getLegalNotice() {
+    const legalNoticeUrl = new URL('legal/legal_notice.html', getAssetsUrl())
+        .href;
     const html = await fetchHtml(legalNoticeUrl);
 
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
     const legalNoticeContainer = doc.querySelector('main') ?? doc.body;
-    legalNoticeContainer.querySelectorAll('a').forEach(
-        (link) => link.classList.add('link')
-    );
+    legalNoticeContainer
+        .querySelectorAll('a')
+        .forEach((link) => link.classList.add('link'));
     return legalNoticeContainer.innerHTML;
 };

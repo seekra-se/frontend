@@ -15,27 +15,33 @@ limitations under the License.
 -->
 
 <script setup>
-import Searchbar from '@/features/search/components/Searchbar.vue';
-
+import SearchBar from '@/features/search/components/SearchBar.vue';
 import { watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const searchQueryModel = defineModel();
 
-watch(() => route.name, name => {
-    searchQueryModel.value = name === 'searchResults' ? route.query.q || '' : '';
-});
+watch(
+    () => route.name,
+    (name) => {
+        searchQueryModel.value =
+            name === 'searchResults' ? route.query.q || '' : '';
+    },
+);
 
-watch(() => route.query.q, q => {
-    if (route.name === 'searchResults') {
-        searchQueryModel.value = q || '';
-    }
-});
+watch(
+    () => route.query.q,
+    (q) => {
+        if (route.name === 'searchResults') {
+            searchQueryModel.value = q || '';
+        }
+    },
+);
 </script>
 
 <template>
-    <Searchbar
+    <SearchBar
         v-if="route.name === 'searchResults'"
         v-model="searchQueryModel"
         auto-submit

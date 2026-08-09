@@ -23,11 +23,11 @@ const { t } = useI18n();
 
 const props = defineProps({
     setting: {
-        required: true
+        required: true,
     },
     path: {
-        required: true
-    }
+        required: true,
+    },
 });
 
 const labelId = useId();
@@ -42,7 +42,7 @@ watch(store, (newStore) => {
 // set value after registering watcher to avoid immediate value change
 enabled.value = store.get(props.path) ?? props.setting.default;
 
-const toggle = function toggle () {
+const toggle = function toggle() {
     enabled.value = !enabled.value;
     store.set(props.path, enabled.value);
 };

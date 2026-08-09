@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-export const ensureUnit = function (d) {
+export const ensureUnit = function ensureUnit(d) {
     if (!d) d = 0;
 
     // ensure that it is a string
@@ -25,7 +25,7 @@ export const ensureUnit = function (d) {
     // if it ends with a number
     if (/\d$/.test(d)) {
         d += 'px';
-    };
+    }
 
     return d;
 };

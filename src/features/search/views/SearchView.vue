@@ -15,33 +15,32 @@ limitations under the License.
 -->
 
 <script setup>
-import Searchbar from '../features/search/components/Searchbar.vue';
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useI18n } from 'vue-i18n';
 import logo from '@/assets/images/logo.svg';
+import SearchBar from '@/features/search/components/SearchBar.vue';
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
-const router = useRouter();
 
 const searchQuery = ref('');
-
-const submitSearch = function () {
-
-};
 </script>
 
 <template>
     <div class="search-content main-content-padding">
-    <header class="global-header">
-        <img :src="logo" alt="Seekra" class="header-logo" />
-        <span class="slogan">
-            {{ t('slogan') }}
-        </span>
-    </header>
-    
+        <header class="global-header">
+            <img :src="logo" alt="Seekra" class="header-logo" />
+            <span class="slogan">
+                {{ t('slogan') }}
+            </span>
+        </header>
+
         <div class="search-container">
-            <Searchbar v-model="searchQuery" ref="searchbar" class="search-bar" auto-submit />
+            <SearchBar
+                v-model="searchQuery"
+                ref="searchbar"
+                class="search-bar"
+                auto-submit
+            />
         </div>
     </div>
 </template>
