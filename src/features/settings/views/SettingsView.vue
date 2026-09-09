@@ -38,9 +38,8 @@ const activePath = computed(() => {
 const activeSection = ref(null);
 const updateSettings = async function updateSettings() {
     const setting = getSettingRecursively(activePath.value, settings);
-    if (setting) {
-        activeSection.value = setting;
-    } else {
+    activeSection.value = setting;
+    if (!setting) {
         await router.push('/settings');
     }
 };
