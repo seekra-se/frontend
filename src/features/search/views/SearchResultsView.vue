@@ -89,7 +89,7 @@ const { t } = useI18n();
         transform: scale(1.02);
     }
     100% {
-        opacity: 100;
+        opacity: 1;
         transform: scale(1);
     }
 }
