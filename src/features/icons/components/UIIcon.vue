@@ -50,5 +50,8 @@ const size = computed(() => ensureUnit(props.size));
     display: flex;
     align-items: center;
     filter: var(--invert);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 </style>
