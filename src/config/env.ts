@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-export const getAssetsUrl = function getAssetsUrl() {
+export const getAssetsUrl = function getAssetsUrl(): string {
     return new URL(
         `${import.meta.env.VITE_ASSETS_BUILD_ID}/`,
         import.meta.env.VITE_ASSETS_BASE_URL,

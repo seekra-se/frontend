@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 import LanguageSwitchButton from '../LanguageSwitchButton.vue';
-import { LANGUAGE_PATH } from '@/config/featureSettings.js';
+import { LANGUAGE_PATH } from '@/config/featureSettings';
 import { useSettings } from '@/features/settings/composables/useSettings.js';
 import { mountComponent } from '@/test-utils/mountComponent.js';
 import { describe, expect, test } from 'vitest';
