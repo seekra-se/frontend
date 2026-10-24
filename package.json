@@ -5,8 +5,10 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "npm run type-check && vite build",
         "preview": "vite preview",
+        "type-check": "vue-tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json",
+        "type-check:watch": "vue-tsc --noEmit -p tsconfig.app.json --watch",
         "test": "vitest",
         "test:run": "vitest run",
         "lint": "eslint .",
