@@ -21,9 +21,14 @@ import SettingsView from '@/features/settings/views/SettingsView.vue';
 import NotFound from '@/views/NotFound.vue';
 
 import { i18n } from '@/i18n';
-import { createRouter, createWebHistory } from 'vue-router';
+import {
+    createRouter,
+    createWebHistory,
+    type RouteLocationNormalizedLoaded,
+    type RouteRecordRaw,
+} from 'vue-router';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'startPage',
@@ -37,7 +42,7 @@ const routes = [
             searchQuery: route.query.q,
         }),
         meta: {
-            title: (route) => route.query.q,
+            title: (route: RouteLocationNormalizedLoaded) => route.query.q,
         },
     },
     {
@@ -68,7 +73,9 @@ const router = createRouter({
     routes,
 });
 
-export const updatePageTitle = function updatePageTitle(route) {
+export const updatePageTitle = function updatePageTitle(
+    route: RouteLocationNormalizedLoaded,
+): void {
     const title =
         typeof route.meta.title === 'function'
             ? route.meta.title(route)
@@ -82,7 +89,7 @@ export const updatePageTitle = function updatePageTitle(route) {
 };
 
 // remove trailing slash(es)
-router.beforeEach((route) => {
+router.beforeEach((route: RouteLocationNormalizedLoaded) => {
     if (route.path !== '/' && route.path.endsWith('/')) {
         return {
             path: route.path.replace(/\/+$/, ''),
