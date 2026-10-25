@@ -28,9 +28,11 @@ export const i18n = createI18n({
     messages: {},
 });
 
-const loadedLanguages = new Set();
+const loadedLanguages = new Set<string>();
 
-export const loadLanguage = async function loadLanguage(locale) {
+export const loadLanguage = async function loadLanguage(
+    locale: string,
+): Promise<void> {
     if (!SUPPORTED_LANGUAGES.includes(locale)) {
         locale = fallbackLocale;
     }
@@ -48,7 +50,9 @@ export const loadLanguage = async function loadLanguage(locale) {
     loadedLanguages.add(locale);
 };
 
-export const setLocale = async function setLocale(locale) {
+export const setLocale = async function setLocale(
+    locale: string,
+): Promise<void> {
     await loadLanguage(locale);
     document.documentElement.lang = locale;
     document.documentElement.dir = LANGUAGES_RTL.includes(locale)
