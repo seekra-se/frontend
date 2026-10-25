@@ -23,7 +23,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 
 import './styles/common.css';
-import rawFonts from './styles/fonts.json';
+import rawFonts from './styles/fonts';
 import './styles/variables/colors.css';
 import './styles/variables/dimensions.css';
 
