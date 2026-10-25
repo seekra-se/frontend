@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { ensureUnit } from '../cssDimensions';
+import { ensureUnit, type RawDimension } from '../cssDimensions';
 import { describe, expect, test } from 'vitest';
 
 describe('cssDimensions', () => {
@@ -129,7 +129,13 @@ describe('cssDimensions', () => {
         },
     ])(
         'ensureUnit returns $expected with input $dimension',
-        ({ dimension, expected }) => {
+        ({
+            dimension,
+            expected,
+        }: {
+            dimension: RawDimension;
+            expected: string;
+        }) => {
             expect(ensureUnit(dimension)).toBe(expected);
         },
     );

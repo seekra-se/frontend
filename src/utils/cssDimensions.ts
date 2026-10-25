@@ -14,7 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-export const ensureUnit = function ensureUnit(d) {
+/*
+ * null and undefined because they are intended to represent empty input
+ * values
+ */
+export type RawDimension = null | number | string | undefined;
+
+export const ensureUnit = function ensureUnit(d: RawDimension): string {
     if (!d) d = 0;
 
     // ensure that it is a string
